@@ -1,0 +1,92 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>官方版 - 疯狂猜球 </title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/mine.css">
+    <link rel="stylesheet" type="text/css" href="css/live.css">
+    <link rel="stylesheet" type="text/css" href="css/bet.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+</head>
+
+<body>
+<div class="luckdraw wrap">
+    <!--滚动新闻-->
+    <section class="notice">
+        <div class="text-scroller">
+            <ul class="scroller-in">
+                <li>恭喜用户小飞侠***昨日中奖<strong>11.5万猜球币</strong></li>
+                <li>恭喜用户对对对***昨日中奖<strong>200元京东卡</strong></li>
+                <li>恭喜用户各环节***昨日中奖<strong>300元京东卡</strong></li>
+                <li>恭喜用户小飞侠***昨日中奖<strong>11.5万猜球币</strong></li>
+                <li>恭喜用户热交换***昨日中奖<strong>500元京东卡</strong></li>
+            </ul>
+        </div>
+    </section>
+    <!--滚动新闻-->
+    <!--大图-->
+    <div class="drawBg">
+        <img src="images/draw_img03.png" alt="">
+        <h1>500元京东卡</h1>
+        <p>中国黄金Au9999薄片金条，央企品质，投资储值</p>
+        <div><span>12万猜球币</span></div>
+    </div>
+    <!--大图-->
+    <!--文字说明-->
+    <div class="draw_container">
+        <h2>奖品说明</h2>
+        <p>1. 500元京东卡</p>
+        <p>2. 在韩国部署“萨德”系统非但解决不了有关国家的安</p>
+        <h2>抽奖说明</h2>
+        <p>1. 500元京东卡</p>
+        <p>2. 在韩国部署“萨德”系统非但解决不了有关国家的安全关切，只会严重破坏地区的战略平衡</p>
+    </div>
+    <!--文字说明-->
+    <div class="gold-btn">
+        <!--我的猜球币-->
+        <div class="my-gold">
+            我的猜球币：<i>16.5</i>万
+        </div>
+        <!--按钮-->
+        <a href="javascript:;" class="btn-lottery">立即抽取</a>
+    </div>
+</div>
+
+<script src="js/zepto.min.js"></script>
+<script src="js/fastclick.min.js"></script>
+<script src="js/TouchSlide.1.1.js"></script>
+<script src="js/alloy_finger.js"></script>
+<script src="js/iscroll-min.js"></script>
+<script>
+    //字幕滚动
+    function textScroll(obj) {
+        var obj = $(obj);
+        var box = obj.find('.scroller-in');
+        var sH = obj.height();
+
+        function scroll() {
+            box.animate({
+                    "-webkit-transform": "translateY(" + (-sH) + "px)",
+                    "transform": "translateY(" + (-sH) + "px)"
+                }, 500,
+                function () {
+                    box.css({
+                        '-webkit-transform': 'translateY(0)',
+                        'transform': 'translateY(0)'
+                    }).find("li").eq(0).appendTo(box);
+                });
+        };
+        setInterval(scroll, 4000);
+    };
+    textScroll('.text-scroller');
+</script>
+</body>
+
+</html>

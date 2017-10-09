@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>疯狂猜球 - 我的</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/mine.css">
+    <link rel="stylesheet" type="text/css" href="css/live.css">
+    <link rel="stylesheet" type="text/css" href="css/bet.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+</head>
+
+<body>
+    <div class="wrap respon2 mine">
+        <!--#include virtual="inc/header_hc.html"-->
+        <nav class="nav">
+            <ul>
+                <li data-url-href="mine.html"><span>竞猜记录</span></li>
+                <li data-url-href="draw/draw_index.html"><span>抽奖场</span></li>
+                <li class="cur" data-url-href="recharge.html"><span>充值</span></li>
+                <li data-url-href="message.html"><span>消息</span></li>
+            </ul>
+        </nav>
+        <div class="main respon2-itm">
+            <div class="scroller pd-t66 clear">
+                <div class="main-top">
+                    <div class="fl">虚拟道具只用于展示，购买道具赠送猜球币</div>
+                    <span class="btn-myprop" data-url="myprop.html">我的道具&gt;</span>
+                </div>
+                <div class="main-list">
+                    <div class="item">
+                        <img src="images/prop01.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>1000</p>
+                        <span class="item-btn">￥ 1</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop02.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>6000</p>
+                        <span class="item-btn">￥ 6</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop03.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>30000</p>
+                        <span class="item-btn">￥ 30</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop04.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>98000</p>
+                        <span class="item-btn">￥ 98</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop05.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>328000</p>
+                        <span class="item-btn">￥ 328</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop06.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>648000</p>
+                        <span class="item-btn">￥ 648</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layer hide"></div>
+    <div class="popDown">
+        <div class="popDown_tit">
+            <h2 class="bet-info">
+                    支付方式
+                </h2>
+            <span class="close"></span>
+        </div>
+        <div class="popCont">
+            <div class="cont_money clear">
+                <span class="fl">￥ 30</span>
+                <span class="fr"><i class="icon-jinbi"></i>30000</span>
+            </div>
+            <div class="btnBox">
+                <a class="btn btn_blue" href="#nogo"><i class="icon_zfb"></i>支付宝支付</a>
+                <a class="btn btn_red" href="#nogo"><i class="icon_500"></i>
+                <span class="btn_two">500支付<!-- <em>余额：361.52元</em> --></span></a>
+            </div>
+        </div>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/fastclick.min.js"></script>
+    <script src="js/TouchSlide.1.1.js"></script>
+    <script src="js/alloy_finger.js"></script>
+    <script src="js/iscroll-min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        //ajaxUrl('draw/draw_index.html');
+
+        var myScroll = new IScroll('.main', {
+            click: true
+        });
+
+        $('.back_index').live('click', function() { //返回
+            window.location.href = "index.html";
+        });
+
+        $("*[data-url-href]").live('click', function() { //所有的跳转，跳转的url=data-url
+            var dataurl = $(this).attr('data-url-href');
+            window.location.href = dataurl;
+        });
+
+        $(".btn-myprop").live('click', function() { //我的道具
+            var dataurl = $(this).attr('data-url');
+            ajaxUrl(dataurl);
+        });
+
+        $('.item-btn').click(function() { //充值弹层
+            $('.layer').removeClass('hide');
+            $('.popDown').addClass('popDown_show');
+        });
+
+        $('.close').click(function() { //充值弹层关闭
+            $(this).parents('.popDown').removeClass('popDown_show');
+            setTimeout(function() {
+                $('.layer').addClass('hide')
+            }, 200)
+        });
+
+
+        function ajaxUrl(url) { //ajax调用不同页面
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                data: "",
+                success: function(data) {
+                    $('.main').html(data);
+                }
+            });
+        }
+
+    });
+    </script>
+</body>
+
+</html>

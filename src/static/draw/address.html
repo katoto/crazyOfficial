@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>疯狂猜球 - 我的</title>
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/mine.css">
+    <link rel="stylesheet" type="text/css" href="../css/live.css">
+    <link rel="stylesheet" type="text/css" href="../css/bet.css">
+    <link rel="stylesheet" type="text/css" href="../css/media.css">
+</head>
+
+<body>
+    <div class="popFull address respon2">
+        <div class="header">
+            <span class="btn-close"></span>
+            <h3>收件地址</h3>
+        </div>
+        <div class="respon2-itm">
+            <div class="full-scroll">
+                <!-- 中间部分开始 -->
+                <div class="address_item">
+                    <div class="address_item_title">收件人：</div>
+                    <input class="address_item_input" type="text" placeholder="请填写您的姓名">
+                </div>
+                <div class="address_item">
+                    <div class="address_item_title">手机号：</div>
+                    <input class="address_item_input" type="text" placeholder="请填写手机号码">
+                </div>
+                <div class="address_item">
+                    <div class="address_item_title">收件地址：</div>
+                    <input class="address_item_input" readOnly="true" type="text" id="address_input" placeholder="请选择地区">
+                    <span class="address_item_select_btn"></span>
+                </div>
+                <div class="address_textarea_container">
+                    <textarea class="address_textarea" placeholder="请填写详细地址（街道、门牌）"></textarea>
+                </div>
+                <div class="addresss_text">为保证奖品正常派发，请按正确格式填写您的收件地址</div>
+                <a class="address_save_btn">保存</a>
+                <!-- 中间部分结束 -->
+            </div>
+        </div>
+        <!-- 底部选择地区开始 -->
+        <div class="addresss_select_container">
+            <div class="addresss_select_top">
+                <p class="draw_back_btn">选择省</p>
+            </div>
+            <div class="address_select_box">
+                <ul class="addresss_select_item_wrapper" id="address_prov">
+                    <li class="addresss_select_item">湖北</li>
+                    <li class="addresss_select_item">湖南</li>
+                    <li class="addresss_select_item">广西</li>
+                    <li class="addresss_select_item">广东</li>
+                    <li class="addresss_select_item">山西</li>
+                    <li class="addresss_select_item">海南</li>
+                </ul>
+                <ul class="addresss_select_item_wrapper address_city transform" id="address_city">
+                    <li class="addresss_select_item">长沙</li>
+                    <li class="addresss_select_item">岳阳</li>
+                    <li class="addresss_select_item">益阳</li>
+                    <li class="addresss_select_item">常德</li>
+                    <li class="addresss_select_item">张家界</li>
+                    <li class="addresss_select_item">吉首</li>
+                </ul>
+                <ul class="addresss_select_item_wrapper address_area transform" id="address_area">
+                    <li class="addresss_select_item">岳麓区</li>
+                    <li class="addresss_select_item">中心区</li>
+                    <li class="addresss_select_item">马鸾区</li>
+                    <li class="addresss_select_item">新城区</li>
+                    <li class="addresss_select_item">郊区</li>
+                    <li class="addresss_select_item">不在区</li>
+                </ul>
+            </div>
+        </div>
+        <!-- 底部选择地区结束 -->
+    </div>
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/fastclick.min.js"></script>
+    <script src="../js/TouchSlide.1.1.js"></script>
+    <script src="../js/alloy_finger.js"></script>
+    <script>
+    (function() {
+        $('.header .btn-close').click(function() {
+            window.history.back();
+        });
+        //填写地址-选择省市区
+        function address() {
+            var ipt = $("#address_input");
+            var box = $(".addresss_select_container");
+            var ul = box.find('ul');
+            var txt = box.find('.draw_back_btn');
+            var prov = $('#address_prov');
+            var city = $('#address_city');
+            var area = $('#address_area');
+            var liProv = $('#address_prov li');
+            var liCity = $('#address_city li');
+            var liArea = $('#address_area li');
+            var addStr = "";
+            ipt.focus(function() { //显示
+                box.addClass('address_show');
+                addStr = "";
+                box.find('li').removeClass('hide');
+                city.addClass('transform');
+                area.addClass('transform');
+                console.log("000");
+            });
+            liProv.click(function() {
+                city.removeClass('transform');
+                txt.text('选择市');
+                $(this).siblings('li').addClass('hide');
+                addStr += $(this).text();
+            });
+            liCity.click(function() {
+                area.removeClass('transform');
+                txt.text('选择区');
+                $(this).siblings('li').addClass('hide');
+                addStr += $(this).text();
+            });
+            liArea.click(function() {
+                box.removeClass('address_show');
+                addStr += $(this).text();
+                ipt.val(addStr);
+            });
+        };
+        address();
+    })();
+    </script>
+</body>
+
+</html>

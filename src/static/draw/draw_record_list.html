@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>疯狂猜球 - 抽奖场</title>
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/mine.css">
+    <link rel="stylesheet" type="text/css" href="../css/live.css">
+    <link rel="stylesheet" type="text/css" href="../css/bet.css">
+    <link rel="stylesheet" type="text/css" href="../css/media.css">
+</head>
+
+<body>
+    <div class="wrap respon2 mine">
+        <section class="topBar">
+            <div class="icon icon_back"></div>
+            <h1>奖品场</h1>
+            <a class="draw_title_btn"><span></span></a>
+            <ul class="draw_title_drap hide">
+                <li data-url-pop="../popfull/address.html">收件地址</li>
+                <li data-url-pop="../popfull/intro.html">抽奖说明</li>
+                <li data-url-pop="../popfull/xunlei.html">迅雷激活码</li>
+            </ul>
+        </section>
+        <div class="main bg2 respon2-itm">
+            <div class="scroller full-scroll">
+                <div class="draw_record_top">中奖记录保留三个月</div>
+                <!-- 中奖记录列表开始 -->
+                <ul class="draw_record_list">
+                    <li>
+                        <img src="../images/draw_img01.png">
+                        <div class="draw_record_list_text_container">
+                            <div><span class="draw_record_list_text">物流状态：</span><a class="draw_record_list_address_btn" data-url="draw/draw_record_address.html">请确认地址</a></div>
+                        </div>
+                        <div class="draw_record_list_name">100元京东卡</div>
+                        <div class="draw_record_list_date">2016-8-10 18:53:25</div>
+                    </li>
+                    <li>
+                        <img src="../images/draw_img04.png">
+                        <div class="draw_record_list_text_container">
+                            <div><span class="draw_record_list_text">物流状态：未发货（顺丰）</span></div>
+                            <div><span class="draw_record_list_text">快递单号：9504863595123</span><a class="draw_record_list_copy_btn">复制</a></div>
+                        </div>
+                        <div class="draw_record_list_name">iPhone 7</div>
+                        <div class="draw_record_list_date">2016-8-10 18:53:25</div>
+                    </li>
+                    <li>
+                        <img src="../images/draw_img02.png">
+                        <div class="draw_record_list_text_container">
+                            <div><span class="draw_record_list_text">卡号：1234587978099</span><a class="draw_record_list_copy_btn">复制</a></div>
+                            <div><span class="draw_record_list_text">密码：123456</span><a class="draw_record_list_copy_btn">复制</a></div>
+                        </div>
+                        <div class="draw_record_list_name">100元手机充值卡</div>
+                        <div class="draw_record_list_date">2016-8-10 18:53:25</div>
+                    </li>
+                    <li>
+                        <img src="../images/draw_img03.png">
+                        <div class="draw_record_list_text_container">
+                            <div><span class="draw_record_list_text">物流状态：未发货（顺丰）</span></div>
+                        </div>
+                        <div class="draw_record_list_name">500元京东卡</div>
+                        <div class="draw_record_list_date">2016-8-10 18:53:25</div>
+                    </li>
+                    <li>
+                        <img src="../images/draw_img03.png">
+                        <div class="draw_record_list_text_container">
+                            <div><span class="draw_record_list_text">物流状态：未发货（顺丰）</span></div>
+                        </div>
+                        <div class="draw_record_list_name">500元京东卡</div>
+                        <div class="draw_record_list_date">2016-8-10 18:53:25</div>
+                    </li>
+                    <li>
+                        <img src="../images/draw_img03.png">
+                        <div class="draw_record_list_text_container">
+                            <div><span class="draw_record_list_text">物流状态：未发货（顺丰）</span></div>
+                        </div>
+                        <div class="draw_record_list_name">500元京东卡</div>
+                        <div class="draw_record_list_date">2016-8-10 18:53:25</div>
+                    </li>
+                    <li>
+                        <img src="../images/draw_img03.png">
+                        <div class="draw_record_list_text_container">
+                            <div><span class="draw_record_list_text">物流状态：未发货（顺丰）</span></div>
+                        </div>
+                        <div class="draw_record_list_name">500元京东卡</div>
+                        <div class="draw_record_list_date">2016-8-10 18:53:25</div>
+                    </li>
+                </ul>
+                <!-- 中奖记录列表结束 -->
+            </div>
+        </div>
+        <!-- 物流弹窗开始 -->
+        <div class="pop pop_logistics hide">
+            <div class="pop_layer"></div>
+            <div class="popIn">
+                <div class="popTit">
+                    <h2 class="logistics_bg_title">物流状态</h2>
+                    <span class="close"></span>
+                </div>
+                <!-- 有物流开始 -->
+                <div class="logistics_item_wrapper">
+                    <div class="scroller">
+                        <div class="logistics_item logistics_item_cur">
+                            <div class="logistics_item_date">
+                                <span class="logistics_item_date01">14:11:37</span>
+                                <span class="logistics_item_date02">08-04</span>
+                            </div>
+                            <div class="logistics_item_line_container">
+                                <span class="logistics_item_line_circle logistics_item_line_circle_current"></span>
+                                <span class="logistics_item_line"></span>
+                            </div>
+                            <div class="logistics_item_text logistics_item_text_current">
+                                【蜂巢自提柜】已签收，签收人凭取货码签收
+                            </div>
+                        </div>
+                        <div class="logistics_item">
+                            <div class="logistics_item_date">
+                                <span class="logistics_item_date01">14:11:37</span>
+                                <span class="logistics_item_date02">08-04</span>
+                            </div>
+                            <div class="logistics_item_line_container">
+                                <span class="logistics_item_line_circle"></span>
+                                <span class="logistics_item_line"></span>
+                            </div>
+                            <div class="logistics_item_text">
+                                【深圳市】快件已到达广东省深圳市龙岗区龙城
+                            </div>
+                        </div>
+                        <div class="logistics_item">
+                            <div class="logistics_item_date">
+                                <span class="logistics_item_date01">14:11:37</span>
+                                <span class="logistics_item_date02">08-04</span>
+                            </div>
+                            <div class="logistics_item_line_container">
+                                <span class="logistics_item_line_circle"></span>
+                                <span class="logistics_item_line"></span>
+                            </div>
+                            <div class="logistics_item_text">
+                                【深圳市】运转中心已发出
+                            </div>
+                        </div>
+                        <div class="logistics_item">
+                            <div class="logistics_item_date">
+                                <span class="logistics_item_date01">14:11:37</span>
+                                <span class="logistics_item_date02">08-04</span>
+                            </div>
+                            <div class="logistics_item_line_container">
+                                <span class="logistics_item_line_circle"></span>
+                                <span class="logistics_item_line"></span>
+                            </div>
+                            <div class="logistics_item_text">
+                                【深圳市】快件已到达 深圳运转中心
+                            </div>
+                        </div>
+                        <div class="logistics_item">
+                            <div class="logistics_item_date">
+                                <span class="logistics_item_date01">14:11:37</span>
+                                <span class="logistics_item_date02">08-04</span>
+                            </div>
+                            <div class="logistics_item_line_container">
+                                <span class="logistics_item_line_circle"></span>
+                                <span class="logistics_item_line"></span>
+                            </div>
+                            <div class="logistics_item_text">
+                                【广州市】快件已到达 广州转运中心2
+                            </div>
+                        </div>
+                        <div class="logistics_item">
+                            <div class="logistics_item_date">
+                                <span class="logistics_item_date01">14:11:37</span>
+                                <span class="logistics_item_date02">08-04</span>
+                            </div>
+                            <div class="logistics_item_line_container">
+                                <span class="logistics_item_line_circle"></span>
+                                <span class="logistics_item_line"></span>
+                            </div>
+                            <div class="logistics_item_text">
+                                【深圳市】快件已到达 深圳运转中心3
+                            </div>
+                        </div>
+                        <div class="logistics_item">
+                            <div class="logistics_item_date">
+                                <span class="logistics_item_date01">14:11:37</span>
+                                <span class="logistics_item_date02">08-04</span>
+                            </div>
+                            <div class="logistics_item_line_container">
+                                <span class="logistics_item_line_circle"></span>
+                                <span class="logistics_item_line"></span>
+                            </div>
+                            <div class="logistics_item_text">
+                                【广州市】快件已到达 广州转运中心4
+                            </div>
+                        </div>
+                        <div class="logistics_item">
+                            <div class="logistics_item_date">
+                                <span class="logistics_item_date01">14:11:37</span>
+                                <span class="logistics_item_date02">08-04</span>
+                            </div>
+                            <div class="logistics_item_line_container">
+                                <span class="logistics_item_line_circle"></span>
+                                <span class="logistics_item_line"></span>
+                            </div>
+                            <div class="logistics_item_text">
+                                【广州市】快件已到达 广州转运中心5
+                            </div>
+                        </div>
+                        <div class="logistics_item">
+                            <div class="logistics_item_date">
+                                <span class="logistics_item_date01">14:11:37</span>
+                                <span class="logistics_item_date02">08-04</span>
+                            </div>
+                            <div class="logistics_item_line_container">
+                                <span class="logistics_item_line_circle"></span>
+                                <span class="logistics_item_line"></span>
+                            </div>
+                            <div class="logistics_item_text">
+                                【广州市】快件已到达 广州转运中心6
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 有物流结束 -->
+                <!-- 无物流开始 -->
+                <div class="logistics_item_wrapper hide">
+                    <div class="logistics_none_text01">物流信息查阅服务暂不可用
+                        <br>您可以复制以下快递单号，自行前往查看</div>
+                    <div class="logistics_none_text02"><span class="draw_record_list_text">快递公司：顺丰快递</span></div>
+                    <div class="logistics_none_text02"><span class="draw_record_list_text">快递单号：1265843592142</span><a class="draw_record_list_copy_btn">复制</a></div>
+                </div>
+                <!-- 无物流结束 -->
+            </div>
+        </div>
+        <!-- 物流弹窗结束 -->
+        <!-- 底部返回按钮开始 -->
+        <div class="draw_record_footer"><a class="draw_record_back_btn" href="draw_index.html">返回抽奖列表</a></div>
+        <!-- 底部返回按钮结束 -->
+    </div>
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/fastclick.min.js"></script>
+    <script src="../js/TouchSlide.1.1.js"></script>
+    <script src="../js/alloy_finger.js"></script>
+    <script src="../js/iscroll-min.js"></script>
+    <script type="text/javascript">
+    function textScroll(obj) { //字幕滚动
+        var obj = $(obj);
+        var box = obj.find('.scroller-in');
+        var sH = obj.height();
+
+        function scroll() {
+            box.animate({
+                    "-webkit-transform": "translateY(" + (-sH) + "px)",
+                    "transform": "translateY(" + (-sH) + "px)"
+                }, 500,
+                function() {
+                    box.css({
+                        '-webkit-transform': 'translateY(0)',
+                        'transform': 'translateY(0)'
+                    });
+                    box.find("li").eq(0).appendTo(box);
+                });
+        };
+        setInterval(scroll, 4000);
+    };
+    textScroll('.text-scroller');
+
+    var myScroll = new IScroll('.main', {
+        mouseWheel: true,
+        click: true
+    });
+
+    var myScrollWuliu = new IScroll('.logistics_item_wrapper', {
+        mouseWheel: true,
+        click: true
+    });
+
+    $(".draw_record_list li").live("click", function() {
+        $(".pop_logistics").removeClass('hide');
+        myScrollWuliu.refresh();
+    });
+
+
+    $("*[data-url]").live('click', function() {
+        var dataurl = $(this).attr('data-url');
+        $(this).parents('.draw_title_drap').addClass('hide');
+        ajaxUrl(dataurl);
+        console.log(dataurl);
+    });
+
+
+    $('.back_index').live('click', function() { //返回
+            window.location.href = "../index.html";
+    });
+
+    $("*[data-url-href]").live('click', function() { //所有的跳转，跳转的url=data-url
+        var url = $(this).attr('data-url-href');
+        window.location.href = url;
+    });
+
+    function ajaxUrl(url) { //ajax调用不同页面
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'html',
+            data: "",
+            success: function(data) {
+                $('.main').html(data);
+            }
+        });
+    }
+
+    $('.draw_title_btn').live("click", function() { //
+        $('.draw_title_drap').toggleClass('hide');
+    });
+
+    $('.close').click(function() {  // 关闭弹层
+        $(this).parents('.pop').addClass('hide');
+    });
+
+    $('.icon_back').click(function () { // 返回前一个页面
+        window.history.back()
+    });
+    </script>
+</body>
+
+</html>

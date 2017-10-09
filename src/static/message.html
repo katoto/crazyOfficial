@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>疯狂猜球 - 我的</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/mine.css">
+    <link rel="stylesheet" type="text/css" href="css/live.css">
+    <link rel="stylesheet" type="text/css" href="css/bet.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+</head>
+
+<body>
+    <div class="wrap respon2 mine">
+        <!--#include virtual="inc/header_hc.html"-->
+        <nav class="nav">
+            <ul>
+                <li data-url-href="mine.html"><span>竞猜记录</span></li>
+                <li data-url-href="draw/draw_index.html"><span>抽奖场</span></li>
+                <li data-url-href="recharge.html"><span>充值</span></li>
+                <li class="cur" data-url-href="message.html"><span>消息</span></li>
+            </ul>
+        </nav>
+        <div class="main message respon2-itm">
+            <div class="full-scroll bg2">
+                <div class="list list-cont">
+                    <div class="list-tit clear">
+                        <h4>[系统] 维护通知<sup></sup></h4>
+                        <span class="time">今天 08:32</span>
+                    </div>
+                    <div class="cont">
+                        亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。
+                    </div>
+                </div>
+                <div class="list list-cont">
+                    <div class="list-tit clear">
+                        <h4>[奖励] 奖励5000猜球币<sup></sup></h4>
+                        <span class="time">今天 08:32</span>
+                    </div>
+                    <div class="cont">
+                        中秋金币大礼，活动时间将于中秋金币大礼，活动时间将于 中秋金币大礼，
+                    </div>
+                    <div class="jiangli">
+                        <strong class="yellow">奖励5000猜球币</strong><span class="btn-lingqu btn-lingqu-no">领取</span>
+                    </div>
+                    <div class="toast hide">领取成功</div>
+                </div>
+                <div class="list list-cont list-yidu">
+                    <div class="list-tit clear">
+                        <h4>[系统] 维护通知<sup></sup></h4>
+                        <span class="time">2/23 15:26</span>
+                    </div>
+                    <div class="cont">
+                        亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。
+                    </div>
+                </div>
+                <div class="list list-cont">
+                    <div class="list-tit clear">
+                        <h4>[系统] 维护通知<sup></sup></h4>
+                        <span class="time">2/23 12:26</span>
+                    </div>
+                    <div class="cont">
+                        亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。
+                    </div>
+                </div>
+                <div class="more"><i class="icon-raw"></i>点击继续加载</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/fastclick.min.js"></script>
+    <script src="js/TouchSlide.1.1.js"></script>
+    <script src="js/alloy_finger.js"></script>
+    <script src="js/iscroll-min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        //ajaxUrl('draw/draw_index.html');
+
+        var myScroll = new IScroll('.main', {
+            click: true
+        });
+
+        $('.back_index').live('click', function() { //返回
+            window.location.href = "index.html";
+        });
+
+        $("*[data-url-href]").live('click', function() { //所有的跳转，跳转的url=data-url
+            var dataurl = $(this).attr('data-url-href');
+            window.location.href = dataurl;
+        });
+
+        $(".btn-myprop").live('click', function() {
+            var dataurl = $(this).attr('data-url');
+            ajaxUrl(dataurl);
+        });
+
+
+        function ajaxUrl(url) { //ajax调用不同页面
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                data: "",
+                success: function(data) {
+                    $('.main').html(data);
+                }
+            });
+        }
+
+    });
+    </script>
+</body>
+
+</html>

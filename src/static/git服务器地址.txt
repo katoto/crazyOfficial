@@ -1,0 +1,7 @@
+service@10.0.0.31:/home/service/touch/crazy_hezuo.git 
+
+service#500wan
+
+
+
+service@10.0.0.31:/home/service/touch/crazy_500app.git 

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>疯狂猜球 - 我的</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/mine.css">
+    <link rel="stylesheet" type="text/css" href="css/live.css">
+    <link rel="stylesheet" type="text/css" href="css/bet.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+</head>
+
+<body>
+    <div class="wrap respon2 mine">
+        <!--#include virtual="inc/header_hc.html"-->
+        <nav class="nav">
+            <ul>
+                <li data-url-href="mine.html"><span>竞猜记录</span></li>
+                <li data-url-href="draw/draw_index.html"><span>抽奖场</span></li>
+                <li data-url-href="recharge.html"><span>充值</span></li>
+                <li class="cur" data-url-href="message.html"><span>消息</span></li>
+            </ul>
+        </nav>
+        <div class="main message respon2-itm">
+            <div class="full-scroll bg2">
+                <div class="emptyBox respon2">
+                    <div class="empty respon2-itm">
+                        <div class="emptyIn">
+                            <span class="icon icon_empty"></span>
+                            <p>暂无消息</p>
+                        </div>
+                    </div>
+                    <section class="brand">
+                        <div class="brandList"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <script src="js/zepto.min.js"></script>
+        <script src="js/fastclick.min.js"></script>
+        <script src="js/TouchSlide.1.1.js"></script>
+        <script src="js/alloy_finger.js"></script>
+        <script src="js/iscroll-min.js"></script>
+        <script type="text/javascript">
+        $(function() {
+            //ajaxUrl('draw/draw_index.html');
+
+            var myScroll = new IScroll('.main', {
+                click: true
+            });
+
+            $('.back_index').live('click', function() { //返回
+                window.location.href = "index.html";
+            });
+
+            $("*[data-url-href]").live('click', function() { //所有的跳转，跳转的url=data-url
+                var dataurl = $(this).attr('data-url-href');
+                window.location.href = dataurl;
+            });
+
+            $(".btn-myprop").live('click', function() {
+                var dataurl = $(this).attr('data-url');
+                ajaxUrl(dataurl);
+            });
+
+
+            function ajaxUrl(url) { //ajax调用不同页面
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'html',
+                    data: "",
+                    success: function(data) {
+                        $('.main').html(data);
+                    }
+                });
+            }
+
+        });
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+.gray_hc{
+    background-color: #5b6072;
+}
+.phbNoList_hc{
+    display: block;
+    width: 0.6rem;
+    height: 0.55rem;
+    text-align: center;
+    margin: 0.5rem auto 0.1rem;
+}
+.phbNoList_p_hc{
+    text-align: center;
+}
+.hot_vsColor_hc{
+    color:#6f799a ;
+}
+.notRun_hc {
+    height: 1.237333rem;
+    background: url(../images/notRun_bg.png) no-repeat center 0;
+    background-size: 100%;
+    position: relative;
+}
+.item_end_single{
+    color:#6f799a ;
+}
+.item_end_single em{
+    color:#6f799a !important;
+}
+.changeColor_hc{-webkit-animation:changeColor_hc 1s both;animation:changeColor_hc 1s both}
+@-webkit-keyframes changeColor_hc{0%{color:#6f799a}
+    25%{color:#ffd146}
+    50%{color:#6f799a}
+    75%{color:#ffd146}
+    100%{color:#6f799a}
+}
+@keyframes changeColor_hc{0%{color:#6f799a}
+    25%{color:#ffd146}
+    50%{color:#6f799a}
+    75%{color:#ffd146}
+    100%{color:#6f799a}
+}
+.hot_slt{
+    color: #cc8a71 !important;
+}

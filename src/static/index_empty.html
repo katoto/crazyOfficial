@@ -1,0 +1,851 @@
+﻿<!DOCTYPE HTML>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-touch-fullscreen" content="yes">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <title>官方版 - 疯狂猜球 </title>
+        <link rel="stylesheet" type="text/css" href="css/public.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/mine.css">
+        <link rel="stylesheet" type="text/css" href="css/live.css">
+        <link rel="stylesheet" type="text/css" href="css/bet.css">
+        <link rel="stylesheet" type="text/css" href="css/media.css">
+    </head>
+
+    <body>
+        <div class="wrap">
+            <!--#include virtual="inc/header_top.html"-->
+            <section class="notice">
+                <div class="text-scroller">
+                    <ul class="scroller-in">
+                        <li>恭喜用户小飞侠***昨日中奖<strong>11.5万猜球币</strong></li>
+                        <li>恭喜用户对对对***昨日中奖<strong>200元京东卡</strong></li>
+                        <li>恭喜用户各环节***昨日中奖<strong>300元京东卡</strong></li>
+                        <li>恭喜用户小飞侠***昨日中奖<strong>11.5万猜球币</strong></li>
+                        <li>恭喜用户热交换***昨日中奖<strong>500元京东卡</strong></li>
+                    </ul>
+                </div>
+            </section>
+            <section class="hot hot2">
+                <div class="hot_vs respon">
+                    <div class="host_vs_l resone-itm active">
+                        <span class="vs_logo"><img src="http://odds.500.com/static/soccerdata/images/TeamPic/teamsignnew_1046.png"></span>
+                        <p class="vs_team">马德里竞技</p>
+                        <p class="vs_pl">主胜 <span>1.56</span></p>
+                    </div>
+                    <div class="hot_vs_c">
+                        <p class="vs_score">1:0</p>
+                        <p class="time">05月25日 18:30</p>
+                        <p class="vs_pl">平局 <span>3.89</span></p>
+                    </div>
+                    <div class="host_vs_r resone-itm">
+                        <span class="vs_logo"><img src="http://odds.500.com/static/soccerdata/images/TeamPic/teamsignnew_883.png"></span>
+                        <p class="vs_team">皇家马德里</p>
+                        <p class="vs_pl">客胜 <span>3.41</span></p>
+                    </div>
+                </div>
+            </section>
+            <section class="quickLink respon">
+                <div class="js_btn_phb resone-itm">
+                    <strong>排行榜</strong>
+                    <span>冲榜有礼</span>
+                    <i class="icon icon_phb"></i>
+                </div>
+                <div class="js_btn_mrrw resone-itm">
+                    <strong>每日任务</strong>
+                    <span>免费领金币</span>
+                    <i class="icon icon_mrrw"></i>
+                </div>
+                <div class="js_btn_jpc resone-itm">
+                    <strong>奖品场</strong>
+                    <span>新货上架</span>
+                    <i class="icon icon_jpb"></i>
+                </div>
+            </section>
+            <section class="listWrap">
+                <header class="listWrap_tit clear">
+                    <ul class="list_menu fl">
+                        <li class="cur">热门赛事</li>
+                        <li class="dis">直播中(48)</li>
+                    </ul>
+                    <a class="list_all" href="alllist.html">全部</a>
+                </header>
+                <div class="listBox">
+                    <div class="emptyBox respon2">
+                    <div class="empty respon2-itm">
+                        <div class="emptyIn">
+                            <span class="icon icon_empty"></span>
+                            <p>暂无热门列表</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="listBox hide">
+                    <div class="emptyBox respon2">
+                    <div class="empty respon2-itm">
+                        <div class="emptyIn">
+                            <span class="icon icon_empty"></span>
+                            <p>暂无直播列表</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+            <section class="brand">
+                <div class="brandList"></div>
+            </section>
+        </div>
+        <!--     <div class="toast">服务器10秒后重启</div>
+ -->
+        <div class="betBar">
+            <div class="betInfo">
+                <div class="bet-info">
+                    <span class="yue">余额 4324.3万</span>
+                    <span class="betMsg">请选择投注金额</span>
+                    <span class="betMoney hide">
+                                <i class="icon-jinbi"></i><em>22.00万</em>&nbsp;&nbsp;可中333.60万&nbsp;&nbsp;<i class="icon-clearup"></i>
+                            </span>
+                    <span class="tips-money hide">已达单笔上限</span>
+                </div>
+                <span class="btn-bar-hide"></span>
+            </div>
+            <div class="moneyWrap clear">
+                <ul class="money">
+                    <li class="item01"><span>&nbsp;</span></li>
+                    <li class="item02"><span>&nbsp;</span></li>
+                    <li class="item03"><span>&nbsp;</span></li>
+                    <li class="item04"><span>&nbsp;</span>
+                        <em class="max"><i>22.5</i>万</em></li>
+                </ul>
+                <div class="btnSubmit">
+                    <div class="text">确&nbsp;&nbsp;认</div>
+                    <div class="loader hide">Loading...</div>
+                    <div class="submitOK hide"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pop pop_phb hide">
+            <div class="pop_layer"></div>
+            <div class="popIn">
+                <div class="popTit">
+                    <ul class="btn_tab">
+                        <li class="cur"><span>榜单</span></li>
+                        <li><span>规则</span></li>
+                    </ul>
+                    <h2 class="title">排行榜</h2>
+                    <span class="close"></span>
+                </div>
+                <div class="box">
+                    <div class="phb_box">
+                        <ul class="list_menu clear">
+                            <li class="cur">本周盈利</li>
+                            <li class="">上周奖励</li>
+                        </ul>
+                        <div class="phb_list phb_list_bz">
+                            <ul class="scroller">
+                                <li>
+                                    <i class="num num_1">1</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>525.26万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num num_2">2</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>425.26万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num num_3">3</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>325.26万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">4</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>98.26万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">5</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>55.26万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">6</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>98.26万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">7</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>55.26万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">8</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>98.26万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">9</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>55.26万
+                            </span>
+                                </li>
+                            </ul>
+                            <ul class="phb_list_me">
+                                <li>
+                                    <i class="num num_100">100</i>
+                                    <em class="num_me">100+</em>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...</span>
+                                    <span class="money">
+                                <i class="icon icon_jinbi"></i>15.26万
+                            </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="phb_list phb_list_sz">
+                            <ul class="scroller">
+                                <li>
+                                    <i class="num num_1">1</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>525.26万</em>
+                            </span>
+                                    <span class="money2">
+                                <i class="icon_jinbi2"></i>奖5万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num num_2">2</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>225.26万</em>
+                            </span>
+                                    <span class="money2">
+                                <i class="icon_jinbi2"></i>奖4万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num num_3">3</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>125.26万</em>
+                            </span>
+                                    <span class="money2">
+                                <i class="icon_jinbi2"></i>奖3万
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">4</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                                </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>75.26万</em>
+                            </span>
+                                    <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">5</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>23.26万</em>
+                            </span>
+                                    <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">6</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>75.26万</em>
+                            </span>
+                                    <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">7</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>23.26万</em>
+                            </span>
+                                    <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">8</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>75.26万</em>
+                            </span>
+                                    <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                                </li>
+                                <li>
+                                    <i class="num">9</i>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>23.26万</em>
+                            </span>
+                                    <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                                </li>
+                            </ul>
+                            <ul class="phb_list_me">
+                                <li>
+                                    <i class="num num_100">100</i>
+                                    <em class="num_me">榜外</em>
+                                    <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                                    <span class="name">雪儿，我们不齐...
+                                <em>-</em>
+                                </span>
+                                    <span class="money2">
+                                <em class="empty">-</em>
+                            </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phb_rule">
+                        <div class="rule">
+                            <dl>
+                                <dt>盈利榜：</dt>
+                                <dd> 1. 计算每周一08:00至下周一08:00时间内结算的订单，以结算的具体时间为准； </dd>
+                                <dd>2. 统计时间内，按照盈利猜球币数排名，前十名可获得奖励； </dd>
+                                <dd>3. 每周一08:00之后自动结算派发上周排行榜奖励； </dd>
+                                <dd>4. 排名信息每周更新一次； </dd>
+                            </dl>
+                            <dl>
+                                <dt>
+                                    兑奖榜： </dt>
+                                <dd>1. 按照每月玩家最高价值兑奖奖品排名；</dd>
+                                <dd> 2. 排名信息每月更新一次； </dd>
+                            </dl>
+                            <dl>
+                                <dt>注意事项：</dt>
+                                <dd> 1. 凡参与竞猜应用，即视为同意本应用规则及免责声明条款； </dd>
+                                <dd>2. 使用任何作弊行为获利的用户，将取消上榜奖励，追回违规所得，且平台保留追究法律责任的权利； </dd>
+                                <dd>3. 本活动所包含内容，与苹果公司Apple Inc.无关； </dd>
+                                <dd>4. 本活动规则解释权归《疯狂猜球》所有。</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pop pop_mrrw hide">
+            <div class="pop_layer"></div>
+            <div class="popIn sign_xunlei">
+                <div class="popTit">
+                    <div class="sign_bg"></div>
+                    <span class="close"></span>
+                </div>
+                <div class="sign">
+                    <ul class="sign_day">
+                        <li class="item have_sign">
+                            <span class="day_num">第1天</span>
+                            <i class="icon icon_jinbi3"></i>
+                            <div class="day_money"><em>100</em>猜球币</div>
+                        </li><li class="item cur">
+                            <span class="day_num">第2天</span>
+                            <i class="icon icon_jinbi3"></i>
+                            <div class="day_money"><em>150</em>猜球币</div>
+                        </li><li class="item">
+                            <span class="day_num">第3天</span>
+                            <i class="icon icon_jinbi2"></i>
+                            <div class="day_money"><em>200</em>猜球币</div>
+                        </li><li class="item">
+                            <span class="day_num">第4天</span>
+                            <i class="icon icon_jinbi2"></i>
+                            <div class="day_money"><em>250</em>猜球币</div>
+                        </li><li class="item">
+                            <span class="day_num">第5天</span>
+                            <i class="icon icon_jinbi4"></i>
+                            <div class="day_money"><em>300</em>猜球币</div>
+                        </li>
+                        <li class="item">
+                            <span class="day_num">第6天</span>
+                            <i class="icon icon_jinbi4"></i>
+                            <div class="day_money"><em>350</em>猜球币</div>
+                        </li>
+                        <li class="item">
+                            <span class="day_num">第7天</span>
+                            <i class="icon icon_jinbi5"></i>
+                            <div class="day_money">随机猜球币</div>
+                        </li>
+                    </ul>
+                    <span class="btn_sign">领取</span>
+                </div>
+            </div>
+        </div>
+        <div class="pop pop_jinbi hide">
+            <div class="pop_layer"></div>
+            <div class="popIn">
+                <div class="light"></div>
+                <div class="info">
+                    <i class="icon icon_jinbi3"></i>
+                    <strong>+100 猜球币</strong>
+                    <p>猜球币可用于抽奖或竞猜！</p>
+                </div>
+            </div>
+        </div>
+        <script src="js/zepto.min.js"></script>
+        <script src="js/fastclick.min.js"></script>
+        <script src="js/TouchSlide.1.1.js"></script>
+        <script src="js/alloy_finger.js"></script>
+        <script src="js/iscroll-min.js"></script>
+        <script>
+        (function() {
+            $('.header_hc .user').click(function() { //跳转到个人中心
+                if (self != top) {
+                    window.parent.location.href = 'mine.html'
+                } else {
+                    window.location.href = 'mine.html'
+                }
+            });
+            //字幕滚动
+            function textScroll(obj) {
+                var obj = $(obj);
+                var box = obj.find('.scroller-in');
+                var sH = obj.height();
+
+                function scroll() {
+                    box.animate({
+                            "-webkit-transform": "translateY(" + (-sH) + "px)",
+                            "transform": "translateY(" + (-sH) + "px)"
+                        }, 500,
+                        function() {
+                            box.css({
+                                '-webkit-transform': 'translateY(0)',
+                                'transform': 'translateY(0)'
+                            }).find("li").eq(0).appendTo(box);
+                        });
+                };
+                setInterval(scroll, 4000);
+            };
+            textScroll('.text-scroller');
+
+            $('.money li').click(function(event) { //钱的按钮
+                $('.bet-info .betMsg').addClass('hide');
+                $('.bet-info .betMoney').removeClass('hide');
+                $('.bet-info .betMoney em, .betShow .item em').addClass('emColor');
+                setTimeout(function() {
+                    $('.bet-info .betMoney em, .betShow .item em').removeClass('emColor');
+                }, 500);
+            });
+
+            $('.icon-clearup').click(function(event) { //清空投注金币
+                $('.bet-info .betMsg').removeClass('hide');
+                $('.bet-info .betMoney').addClass('hide');
+                $('.money li').removeClass('cur');
+            });
+
+            function plColor() { //模拟赔率变动
+                $('.item-pl').eq(2).addClass('changeColor');
+                setTimeout(function() {
+                    $('.item-pl').eq(2).removeClass('changeColor');
+                }, 1000);
+            };
+            setInterval(plColor, 3000);
+
+
+            $('.item .btn_bet').not('.sealing .btn_bet, .btn_bet_end').click(function() { //选项点击效果
+                if ($('.betWrap').hasClass('betEnd')) {
+                    return false; //如果比赛结束，则不可点击，返回
+                }
+                var that = $(this);
+                var cName = that.attr('class');
+                if (cName.indexOf('slt') < 0) {
+                    $('.btn_bet').removeClass('slt');
+                    that.addClass('slt');
+                    $('.betBar').addClass('betBar_show');
+                    $('.wrap').addClass('listWrap-pb');
+                } else {
+                    that.removeClass('slt');
+                    $('.betBar').removeClass('betBar_show');
+                    $('.wrap').removeClass('listWrap-pb');
+                }
+            });
+
+            $('.btnSubmit').click(function(event) { //确定按钮状态效果
+                var txt = $(this).find('.text');
+                var load = $(this).find('.loader');
+                var ok = $(this).find('.submitOK')
+                txt.addClass('hide');
+                load.removeClass('hide');
+                setTimeout(function() {
+                    load.addClass('hide');
+                    ok.removeClass('hide')
+                }, 1000);
+                setTimeout(function() {
+                    ok.addClass('hide');
+                    txt.removeClass('hide')
+                }, 3000);
+            });
+
+            setTimeout(function() { //toast演示
+                $('.toast').addClass('hide');
+            }, 2000);
+
+            function emptyHeight() {
+                var theH =
+                    $('.betEmpty').height();
+            };
+            emptyHeight();
+
+            $('.btn-bar-hide').click(function() { //隐藏投注栏
+                $('.betBar').removeClass('betBar_show');
+                $('.wrap').removeClass('betWrap-pb');
+                $('.item').removeClass('slt');
+            });
+
+            // 热门赛事&直播列表切换
+            $('.list_menu li').click(function() {
+                var _i = $(this).index();
+                var box = $(this).parents('.listWrap').find('.listBox');
+                $(this).addClass('cur').siblings('li').removeClass('cur');
+                box.addClass('hide').eq(_i).removeClass('hide');
+            });
+
+            //排行榜榜单和规则切换
+            $('.btn_tab').click(function() {
+                var obj = $(this).parents('.pop');
+                var box = obj.find('.box');
+                $(this).toggleClass('tab2');
+                box.toggleClass('box2');
+            });
+
+
+            //本周盈利-上周奖励切换
+            function phbTab() {
+                var obj = $('.phb_box');
+                var btn = $('.phb_box .list_menu li');
+                btn.click(function() {
+                    var _i = $(this).index();
+                    if (_i == 0) {
+                        obj.removeClass('phb_box2')
+                    } else if (_i == 1) {
+                        obj.addClass('phb_box2')
+                    }
+                });
+            };
+            phbTab();
+
+            //关闭弹层
+            $('.close').click(function() {
+                $(this).parents('.pop').addClass('hide')
+            });
+
+            $('.js_btn_phb').click(function() { //排行榜弹层
+                $('.pop_phb').removeClass('hide');
+            });
+            $('.js_btn_mrrw').click(function() { //签到弹层
+                $('.pop_mrrw').removeClass('hide');
+            });
+
+            $('.js_btn_jpc').click(function() { //排行榜弹层
+                window.location.href = 'draw/draw_index.html'
+            });
+            $('.btn_record').click(function() {
+                window.location.href = 'mine.html'
+            });
+            $('.btn_msg').click(function() {
+                window.location.href = 'message.html'
+            });
+            $('.my_moeny .btn_add').click(function() {
+                window.location.href = 'recharge.html'
+            });
+
+        })();
+
+
+
+        function refresh() { //刷新
+            var sx = document.getElementById('sx');
+            sx.className = 'refresh-icon refresh-rorate';
+            //setTimeout("sx.className='refresh-icon';",1000);
+        }
+
+        function tab(index) { //内容区内tab切换
+            var tabNav = document.getElementsByClassName('sk-detail-tap');
+            var aLi = tabNav[0].getElementsByTagName('li');
+            var aContent = document.getElementsByClassName('tContent');
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
+                aContent[i].style.display = 'none';
+            }
+            aLi[index].className = 'cur';
+            aContent[index].style.display = 'block';
+        }
+        (function() { //旋转
+            $('.circle').each(function(index, el) {
+                var num = $(this).find('span').text() * 3.6;
+                var _transform = '-webkit-transform' || 'transform';
+                if (num <= 180) {
+                    $(this).find('.right').css(_transform, "rotate(" + num + "deg)");
+                } else {
+                    $(this).find('.right').css(_transform, "rotate(180deg)");
+                    $(this).find('.left').css(_transform, "rotate(" + (num - 180) + "deg)");
+                };
+            });
+
+
+            $('.sk-gz').on("click", function(event) { //关注按钮
+                event.stopPropagation();
+                if ($(this).hasClass('cur')) {
+                    $(this).removeClass('cur');
+                } else {
+                    $(this).addClass('cur');
+                }
+            });
+
+            function scoreChange(score) { //详情页头部篮球比分变化动效
+                var obj = $('.zq-header .fen-bf-lq');
+                obj.each(function(index, el) {
+                    var that = $(this);
+                    var itm = that.find('.score');
+                    var str = '<span class="score">' + score + '</span>';
+                    that.addClass('fen-bf-active');
+
+                    function itmRemove() {
+                        itm.eq(0).remove()
+                        that.append(str);
+                    }
+                    setTimeout(itmRemove, 3000);
+                });
+            };
+            scoreChange(122);
+
+            // $('.itm-bf .fen-bf-lq').addClass('fen-bf-active');
+            // function changeElem(){
+            //     var ele = $('.fen-bf-active').children().first();
+            //     $('.fen-bf-active').children().first().remove();
+            //     $('.fen-bf-active').append('<span class="score"></span>');
+            // }
+            // setTimeout(changeElem,5000);
+            // function removeActive(){
+            //     $('.fen-bf-active').children().first().remove();
+            //     $('.fen-bf-active').removeClass('fen-bf-active');
+
+            // }
+            // setTimeout(removeActive,5000);
+
+            var flag = true;
+
+            function VSnum(support) { //模拟支持率效果
+                var box = $('.comm-vs-box');
+                var obj = box.find('.comm-vs-itm');
+                obj.click(function() {
+                    if (flag) {
+                        flag = false;
+                        box.addClass('box-show');
+                        $(this).addClass('vs-itm-slt');
+                    }
+                });
+            };
+            VSnum();
+
+
+            function commAlert() { //评论弹层
+                var btn = $('.comm-enter');
+                var pop = $('.alert-comm');
+                var layer = $('.alert-comm-layer');
+                var txt = pop.find('.comm-txt');
+                var num = pop.find('.comm-num')
+                var popBtn = pop.find('.ui-alert-btn');
+                btn.click(function(event) {
+                    popShow();
+                    txt.focus();
+                });
+
+                $('.ui-empty').click(function(event) {
+                    popShow();
+                    txt.focus();
+                });
+
+                popBtn.click(function() {
+                    popHide();
+                    txt.focus();
+                });
+
+                function popShow() {
+                    document.addEventListener('touchmove', handler, false);
+                    pop.removeClass('hide');
+                    layer.removeClass('hide');
+                }
+
+                function popHide() {
+                    document.removeEventListener('touchmove', handler, false);
+                    pop.addClass('hide');
+                    layer.addClass('hide');
+                }
+            };
+            commAlert();
+
+            function handler() { //阻止页面滚动
+                event.preventDefault();
+            }
+
+            function clickLike() { //点赞
+                $('.zan-icon').click(function(event) {
+                    var that = $(this);
+                    var num = that.prev('.zan-num');
+                    var n = parseInt(num.text());
+                    if (that.hasClass('zan-icon-red')) {
+                        that.removeClass('zan-icon-red');
+                        num.text(n - 1);
+                    } else {
+                        that.addClass('zan-icon-red');
+                        num.text(n + 1);
+                    }
+                });
+            };
+            clickLike();
+
+            function report() { //举报
+                var btn = $('.list-cont');
+                var layer = $('.ui-alert-layer');
+                var pop = $('.alert-report');
+                var popBtn = pop.find('p');
+
+                btn.click(function() {
+                    popShow();
+                });
+
+                popBtn.click(function() {
+                    var txt = $(this).text();
+                    var tips = $('.ui-alert-tips');
+                    popHide();
+                    if (txt == "举报") { //举报成功，2秒后消失
+                        tips.fadeIn(300);
+                        setTimeout(function() {
+                            tips.fadeOut(300)
+                        }, 2000);
+                    }
+                });
+
+                layer.click(function() {
+                    popHide();
+                });
+
+                function popShow() {
+                    document.addEventListener('touchmove', handler, false);
+                    pop.removeClass('hide');
+                    layer.removeClass('hide');
+                }
+
+                function popHide() {
+                    document.removeEventListener('touchmove', handler, false);
+                    pop.addClass('hide');
+                    layer.addClass('hide');
+                }
+
+            };
+            report();
+
+
+            $('.left-img').click(function(event) {
+                window.location.href = "/touch/league/team.html"
+            });
+
+
+        })();
+
+        // (function() { //热门赛事fixed
+        //     var obj = document.querySelector('.listWrap');
+        //     var wrap = document.querySelector('.wrap');
+        //     if (obj) {
+        //         var topH = obj.offsetTop;
+        //         if ($(obj).css("position").indexOf("sticky") < 0) {
+        //             $(obj).addClass('relative');
+        //             document.addEventListener("scroll", function() {
+        //                 var _top = document.body.scrollTop;
+        //                 if (_top >= topH) {
+        //                     $(obj).addClass('fixed').removeClass('relative');
+        //                 } else {
+        //                     $(obj).addClass('relative').removeClass('fixed');
+        //                 }
+        //             });
+        //         } else {
+        //             return
+        //         }
+        //     }
+        // })();
+        </script>
+    </body>
+
+    </html>

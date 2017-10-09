@@ -1,0 +1,57 @@
+/*屏幕适配*/
+@media only screen and (min-width: 641px) {
+    html, body{
+        font-size: 234.375px;/*no*/
+    }
+}
+
+@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+    html, body {
+        font-size: 200px;/*no*/
+    }
+}
+@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
+    html, body {
+        font-size: 187.5px;/*no*/
+    }
+}
+@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
+    html, body {
+        font-size: 168.75px;/*no*/
+    }
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
+    html, body {
+        font-size: 150px;/*no*/
+    }
+}
+@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
+    html, body {
+        font-size: 129.375px;/*no*/
+    }
+}
+@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
+    html, body {
+        font-size: 125px;/*no*/
+    }
+}
+@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
+    html, body {
+        font-size: 117.1875px;/*no*/
+    }
+}
+@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
+    html, body {
+        font-size: 112.5px;/*no*/
+    }
+}
+@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+    html, body {
+        font-size: 100px;/*no*/
+    }
+}
+@media only screen and (max-width: 240px), only screen and (max-device-width:240px) {
+    html, body {
+        font-size: 75px;/*no*/
+    }
+}

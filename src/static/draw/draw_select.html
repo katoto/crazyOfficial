@@ -1,0 +1,53 @@
+<div class="scroller bg2">
+    <!-- 头部展示开始 -->
+    <div class="draw_select_top">
+        <div class="draw_select_top_text">请选择一个幸运礼盒</div>
+        <div class="draw_select_top_lucky_box_wrapper">
+            <a class="draw_select_top_lucky_box">
+                <img class="draw_select_top_lucky_box_prize" src="../images/draw_img01.png">
+                <img class="draw_select_top_lucky_box_bg" src="../images/bingo_bg.png">
+            </a>
+            <a class="draw_select_top_lucky_box">
+                <img class="draw_select_top_lucky_box_prize" src="../images/draw_img04.png">
+                <img class="draw_select_top_lucky_box_bg" src="../images/bingo_bg.png">
+            </a>
+            <a class="draw_select_top_lucky_box">
+                <img class="draw_select_top_lucky_box_prize" src="../images/draw_img05.png">
+                <img class="draw_select_top_lucky_box_bg" src="../images/bingo_bg.png">
+            </a>
+        </div>
+    </div>
+    <!-- 头部展示结束 -->
+    <!-- 标题开始 -->
+    <div class="draw_select_title_container">50元话费卡抽奖：5300猜球币<a class="draw_select_title_container_btn" href="#nogo" data-url="draw_record_address.html">查看</a></div>
+    <!-- 标题结束 -->
+    <!-- 奖品介绍和抽奖说明开始 -->
+    <div class="draw_select_container">
+        <!--         <div class="draw_select_container_title">奖品介绍</div>
+        <div class="draw_select_container_text">宝箱内含 50元话费卡 或 高额猜球币，话费卡可直接用于手机话费充值。也可前往支付宝等平台充值。</div> -->
+        <div class="draw_select_container_title">抽奖说明</div>
+        <div class="draw_select_container_text" style="margin-bottom: 100px;">1.抽奖扣除等额猜球币；
+            <br>2.中奖后奖品以卡号卡密形式发放</div>
+    </div>
+    <!-- 奖品介绍和抽奖说明结束 -->
+</div>
+    <!-- 两个底部返回按钮开始 -->
+    <div class="draw_record_footer">
+        <a class="draw_record_back_left_btn" href="draw_index.html">返回抽奖列表</a>
+        <a class="draw_record_again_right_btn">再抽一次</a>
+    </div>
+    <!-- 两个底部返回按钮结束 -->
+<script type="text/javascript">
+$(function() {
+    $('.draw_select_top_lucky_box').live("click", function() {
+        var flag = $('.draw_select_top_lucky_box_wrapper').find('.draw_lucky_ok').length;
+        if (flag == 0) {
+            $(this).addClass('draw_lucky_ok');
+
+        }
+    });
+    $('.draw_record_again_right_btn').live("click", function() {
+        $('.draw_select_top_lucky_box').removeClass('draw_lucky_ok')
+    });
+});
+</script>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>疯狂猜球 - 抽奖说明</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/mine.css">
+    <link rel="stylesheet" type="text/css" href="css/live.css">
+    <link rel="stylesheet" type="text/css" href="css/bet.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+</head>
+
+<body>
+    <div class="wrap respon2 lotteryNotes">
+        <div class="header_pop">
+            <div class="btn btn-back">
+            </div>
+            <h3>收件地址</h3>
+        </div>
+        <section class="address respon2" v-show="showAddress" v-tap="{methods:closeSelAddr}">
+            <div class="header_pop">
+                <span class="btn btn-back" v-tap="{methods:hideTapLi,item:'showAddress'}"></span>
+                &lt;!&ndash;<span class="btn-close" ></span>&ndash;&gt;
+                <h3>收件地址</h3>
+            </div>
+            <div class="respon2-itm" v-if="addressMess">
+                <div class="full-scroll">
+                    <div class="address_item">
+                        <div class="address_item_title">收件人：</div>
+                        <input class="address_item_input" type="text" id="input_consig" placeholder="请填写您的姓名"
+                               v-model="addressMess.consignee">
+                    </div>
+                    <div class="address_item">
+                        <div class="address_item_title">手机号：</div>
+                        <input class="address_item_input" type="tel" id="input_tel" placeholder="请填写手机号码"
+                               v-model.trim="addressMess.mobile" @input="confireTel(addressMess.mobile)">
+                    </div>
+                    <div class="address_item" v-tap="{methods:showSelAddress,item:''}">
+                        <div class="address_item_title">收件地址：</div>
+                        <input class="address_item_input" readonly="true" :value="addressMess.allAddress"
+                               type="text" id="address_input" placeholder="请选择地区">
+                        <span class="address_item_select_btn"></span>
+                    </div>
+                    <div class="address_textarea_container">
+                            <textarea class="address_textarea" id="input_textarea" placeholder="请填写详细地址（街道、门牌）"
+                                      v-model="addressMess.street"></textarea>
+                    </div>
+                    <div class="addresss_text">为保证奖品正常派发，请按正确格式填写您的收件地址</div>
+                    <a class="address_save_btn" v-if="addressMess.street"
+                       v-tap="{methods:saveAddrMess,params:isEmptyAdd}">保存</a>
+                </div>
+            </div>
+            <div class="addresss_select_container" :class="{'address_show':isShowSelAddress}">
+                <div class="addresss_select_top">
+                    <p class="draw_back_btn">选择省</p>
+                </div>
+
+                <div class="address_select_box" v-if="ChineseDistricts">
+                    <ul class="addresss_select_item_wrapper" id="address_prov"
+                        v-tap="{methods:show_prov,item:'target'}">
+                        <li class="addresss_select_item" :class="{'hide':hideOtherProv}"
+                            v-for="(province,key) in ChineseDistricts.city[86]" :data-provCode=" key ">{{ province
+                            }}
+                        </li>
+                    </ul>
+                    <ul class="addresss_select_item_wrapper address_city" :class="{'transform':!showCityTran}"
+                        id="address_city" v-tap="{methods:show_city,item:'target'}">
+                        <li class="addresss_select_item" :class="{'hide':hideOtherCity}"
+                            v-for="(city,key) in ChineseDistricts.city[this.selProvTranCode]"
+                            :data-cityCode=" key ">{{ city }}
+                        </li>
+                    </ul>
+                    <ul class="addresss_select_item_wrapper address_area" :class="{'transform':!showAreaTran}"
+                        id="address_area" v-tap="{methods:show_area,item:'target'}">
+                        <li class="addresss_select_item" :class="{'hide':hideOtherArea}"
+                            v-for="(country,key) in ChineseDistricts.city[this.selCityTranCode]"
+                            :data-areaCode=" key ">{{ country }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/fastclick.min.js"></script>
+    <script src="js/TouchSlide.1.1.js"></script>
+    <script src="js/alloy_finger.js"></script>
+    <script src="js/iscroll-min.js"></script>
+    <script type="text/javascript">
+    </script>
+</body>
+
+</html>

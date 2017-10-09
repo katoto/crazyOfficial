@@ -1,0 +1,1108 @@
+
+.endItem .endTips {
+    font-size: 24px;
+    width: 105px;
+    height: 45px;
+    line-height: 45px;
+    margin-left: -49px;
+    margin-top: -9px;
+}
+
+.child-view {
+    -webkit-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.slide-right-enter {
+    opacity: 0;
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+}
+
+.slide-right-enter-active {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.slide-right-leave {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.slide-right-leave-active {
+    opacity: 0;
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+}
+
+.slide-left-enter {
+    opacity: 0;
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+}
+
+.slide-left-enter-active {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.slide-left-leave {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.slide-left-leave-active {
+    opacity: 0;
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+}
+
+.l-box-center {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    flex-flow: column;
+}
+
+.l-box-vertical-center {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    display: flex;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    flex-flow: row;
+}
+
+.l-box-vertical-center-justify {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    flex-flow: row;
+    -webkit-box-align: center;
+    -webkit-box-pack: justify;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.l-box-vertical-center-begin {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    flex-flow: row;
+    -webkit-box-align: center;
+    -webkit-box-pack: start;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.l-box-vertical-center-end {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    flex-flow: row;
+    -webkit-box-align: center;
+    -webkit-box-pack: end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.l-box-horizontal-center {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    display: flex;
+    justify-content: center;
+    -webkit-box-orient: horizontal;
+    flex-flow: row;
+}
+
+.l-flex-column {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    display: flex;
+    flex-flow: column;
+    height: 100%
+}
+
+.l-flex-row {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    display: flex;
+    flex-flow: row;
+    width: 100%
+}
+
+.l-flex-1 {
+    -webkit-box-flex: 1;
+    flex: 1;
+    overflow: hidden
+}
+
+.l-scroll-y {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.l-relative {
+    position: relative;
+}
+
+.topbar {
+    height: 78px;
+    padding: 0 30px;
+    text-align: left;
+    overflow: hidden;
+}
+
+.after-login {
+    line-height: 78px;
+}
+
+.after-login .face {
+    width: 60px;
+    height: 60px;
+    margin-top: 14px;
+    display: block;
+    float: left;
+    position: relative;
+}
+
+.after-login .face img {
+    width: 60px;
+    height: 60px;
+    display: block;
+    border-radius: 50% 50%;
+    overflow: hidden;
+}
+
+.after-login .face .icon {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50% 50%;
+    background: #d3553d;
+    top: 3px;
+    right: 3px;
+}
+
+.after-login .name {
+    float: left;
+    height: 78px;
+    display: block;
+    padding-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 177px;
+}
+
+.after-login .top_money {
+    display: inline-block;
+    padding-left: 30px;
+}
+
+.after-login .myprop {
+    float: right;
+}
+
+.after-login .myprop a {
+    color: #222;
+    position: relative;
+    display: inline-block;
+    width: 154px;
+    height: 42px;
+    line-height: 42px;
+    border: 1px solid #aeafaf;
+    /*no*/
+    border-radius: 22px;
+    text-align: center;
+    color: #222;
+    margin-top: 18px;
+}
+
+.after-login .myprop a:active {
+    background: #eee;
+}
+
+.after-login .myprop .icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: #d3553d;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50% 50%;
+}
+
+.text-scroller {
+    height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+    padding-left: 36px;
+    text-align: left;
+    font-size:24px;
+    color: #6f799a;
+}
+
+.text-scroller::after {
+    width: 28px;
+    height: 24px;
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -12px;
+    background-position: -114px -99px;
+}
+
+.text-scroller li {
+    height: 70px;
+    line-height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 475px;
+}
+
+.wrap_bet .text-scroller li strong {
+    font-weight: normal;
+    color: #c49632;
+}
+
+/*投注页*/
+
+.wrap_bet {
+
+}
+
+.betWrap-pb {
+    padding-bottom: 160px;
+}
+
+.betBox {
+    margin: 0 30px;
+    position: relative;
+    min-height: 180px;
+}
+
+.betBox-in {
+    position: relative;
+}
+
+.boxTit {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.boxTit h3 {
+    font-size: 40px;
+    float: left;
+    position: relative;
+}
+
+.boxTit-jinq .num_jinq {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+.boxInner {
+    position: relative;
+    min-height: 170px;
+}
+
+.boxTit span {
+    float: left;
+    font-size: 28px;
+    color: #6f799a;
+    margin-left: 10px;
+    position: relative;
+    top: 16px;
+}
+
+.boxTit .green {
+    color: #5fbe40;
+}
+
+.bet {
+    display: flex;
+    padding-left: 2px;
+    position: relative;
+    margin-left: -1px;
+}
+
+.bet .item {
+    flex: 1;
+    display: block;
+    width: 100%;
+    background: #26272f;
+    height: 120px;
+    position: relative;
+    transition: all .1s;
+    box-sizing: border-box;
+    margin-right: 1px;
+    /*no*/
+}
+
+.bet .item2 {
+    flex: 2;
+}
+
+.bet .item:first-child {
+    border-radius: 12px 0 0 12px;
+}
+
+.bet .item:last-child {
+    border-radius: 0 12px 12px 0;
+}
+
+.bet .item span {
+    display: block;
+}
+
+.changeColor {
+    animation: changeColor 1s both;
+}
+
+@keyframes changeColor {
+    0% {
+        color: #6f799a;
+    }
+    25% {
+        color: #d49f2e;
+    }
+    50% {
+        color: #6f799a;
+    }
+    75% {
+        color: #d49f2e;
+    }
+    100% {
+        color: #6f799a;
+    }
+}
+
+.bet .item .item-xx {
+    font-size: 32px;
+    margin-top: 5px;
+    line-height: 48px;
+    font-weight: 500;
+}
+
+.bet .item .item-pl {
+    font-size: 26px;
+    color: #6f799a;
+}
+
+.bet .item .item-zc {
+    color: #444a60;
+    font-size: 22px;
+}
+
+.bet .item.slt {
+    background: #3f437e;
+    position: relative;
+    z-index: 5;
+}
+
+.bet .item .red {
+    font-weight: bold;
+}
+
+.bet .item .item-saig {
+    color: #222;
+}
+
+.bet .item.slt .item-xx, .bet .item.slt .item-pl {
+    color: #d9ddff;
+}
+
+.bet .item.slt .item-zc {
+    color: #878fff;
+}
+
+.betBox-end .item, .betBox-end .item .item-zc, .betBox-end .item .item-pl, .bet .item-end .item-pl {
+    color: #444a60;
+}
+
+.item-end {
+    color: #444a60;
+    position: relative;
+}
+
+.endTips {
+    position: absolute;
+    left: 50%;
+    top: 40px;
+    margin-left: -53px;
+    width: 106px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    color: #1f2025;
+    z-index: 5;
+    background: #565d76;
+    border-radius: 20px;
+}
+
+.bet .item-zj .item-xx {
+    color: #d3553d;
+}
+
+/*.bet .item-zj:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background-position: -160px -264px;
+    right: 0;
+    bottom: 0;
+}*/
+
+/*猜进球滚动区*/
+
+.boxTab {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 140px;
+    text-align: right;
+    z-index: 2;
+    height: 52px
+}
+
+.boxTab li {
+    width: 52px;
+    height: 52px;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 100%;
+    background: url(../images/sprite.png) no-repeat #26272f;
+    background-size: 406px;
+}
+
+.boxTab .prev {
+    background-position: -49px -116px;
+}
+
+.boxTab .prev.on {
+    background-position: -102px -116px;
+    background-color: #3f437e;
+}
+
+.boxTab .next {
+    background-position: 2px -116px;
+}
+
+.boxTab .next.on {
+    background-position: -148px -116px;
+    background-color: #3f437e;
+}
+
+#box-scroll {
+    overflow: hidden;
+    min-height: 170px;
+    margin: 0 26px;
+}
+
+#box-scroll .tempWrap .bd {
+    width: 100%;
+}
+
+/*比分切换*/
+
+.betBox-bif .boxWrap {
+    height:620px;
+}
+
+.tab-bif {
+    display: flex;
+    width: 480px;
+    height: 44px;
+    margin: 0 auto 25px;
+}
+
+.tab-bif li {
+    flex: 1;
+    border: 1px solid #3f437e;
+    /*no*/
+    height: 42px;
+    line-height: 42px;
+    background: #1f2025;
+    transition: background .2s, color .2s;
+    color: #3f437e;
+    box-sizing: border-box;
+    margin-left: -1px;
+}
+
+.tab-bif li.cur {
+    background: #3f437e;
+    color: #d9ddff
+}
+
+.tab-bif li:first-child {
+    border-radius: 22px 0 0 22px;
+}
+
+.tab-bif li:last-child {
+    border-radius: 0 22px 22px 0;
+}
+
+/*显示投注信息*/
+
+.betShow {
+    display: flex;
+    width: 690px;
+    height: 75px;
+    padding-top: 5px;
+    font-size: 22px;
+}
+
+.betShow .item {
+    flex: 1;
+    display: block;
+    width: 100%;
+}
+
+.betShow .item em {
+    color: #ffcb06;
+}
+
+.betShow .item .emColor {
+    animation: emColorC .5s ease both
+}
+
+.betShow .item p {
+    height: 30px;
+    line-height: 30px;
+    color: #444a60;
+}
+
+.betEnd .betShow .item em {
+    color: #d1d1d1;
+}
+
+.betEnd .betShow .item p {
+    color: #d3553d;
+}
+
+/*竞猜结束*/
+
+.betEnd .betShow .red em {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/*我的tab切换*/
+
+.mine-tit {
+    padding: 24px 0 10px 0;
+}
+
+.mine-tab {
+    width: 520px;
+    display: flex;
+    height: 60px;
+    margin-left: 80px;
+}
+
+.mine-tab li {
+    display: inline-block;
+    background: #fff;
+    color: #333;
+    border: 1px solid #e8e8e8;
+    /*no*/
+    white-space: nowrap;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    font-size: 26px;
+    margin-left: -1px;
+    /*no*/
+}
+
+.mine-tab .item {
+    flex: 1;
+    width: 100%;
+}
+
+.mine-tab li:first-child {
+    border-radius: 30px 0 0 30px;
+    width: 160px;
+}
+
+.mine-tab li:last-child {
+    border-radius: 0 30px 30px 0;
+}
+
+.mine-tab .cur {
+    border-color: #f85959;
+    color: #f85959;
+    position: relative;
+    z-index: 2;
+}
+
+.mine-tab li:active {
+    background: #ddd;
+}
+
+.mine-tab li .dot {
+    display: inline-block;
+    position: relative;
+    background: #f85959;
+    width: 8px;
+    height: 8px;
+    border-radius: 50% 50%;
+    left: 6px;
+    top: -18px
+}
+
+.mine-info {
+    margin-top: 18px;
+    font-size: 24px;
+    height: 40px;
+    width: 520px;
+    margin-left: 80px;
+}
+
+.mine-info .red {
+    margin-left: 40px;
+}
+
+/*头部*/
+
+.header_bet {
+    position: relative;
+    width: 100%;
+    height: 92px;
+    background: #000;
+    z-index: 9;
+}
+
+.header_bet .header_c {
+    width: 555px;
+    height: 92px;
+    float: left;
+    margin-left: 8px;
+}
+
+.header_bet .team {
+    width: 240px;
+    line-height: 92px;
+    font-size: 28px;
+}
+
+.header_bet .team_l {
+    float: left;
+    text-align: left;
+}
+
+.header_bet .team_r {
+    float: right;
+    text-align: right;
+}
+
+.header_bet .team_logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.header_bet .team_logo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.team_l .team_logo {
+    margin-right: 10px;
+}
+
+.team_r .team_logo {
+    margin-left: 10px;
+}
+
+.header_bet .team_info {
+    position: absolute;
+    width: 140px;
+    height: 92px;
+    left: 50%;
+    top: 0;
+    margin-left: -70px;
+}
+
+.team_info .vs {
+    font-size: 26px;
+    color: #6f799a;
+    height: 92px;
+    display: inline-block;
+    line-height: 92px;
+}
+
+.team_info .time {
+    color: #5fbe40;
+    font-size: 20px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+}
+
+.team_info .score {
+    font-size: 28px;
+    display: block;
+}
+
+.team_info .score i:first-child {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.team_info .score i:last-child {
+    text-align: left;
+    padding-left: 20px;
+}
+
+/*赛事直播*/
+
+.bet_live {
+    height: 292px;
+    overflow: hidden;
+}
+
+/*公告区*/
+
+.wrap_bet .notice {
+    background: #000;
+    padding: 0 30px 0 0;
+    margin: 0;
+}
+
+.wrap_bet .notice .text-scroller {
+    float: left;
+    width: 460px;
+    margin-bottom: 0;
+}
+
+.wrap_bet .notice .icon_jinbi {
+    margin-right: 8px;
+    top: 4px;
+}
+
+.wrap_bet .notice .btn {
+    display: inline-block;
+    width: 68px;
+    height: 68px;
+    position: relative;
+}
+
+.wrap_bet .notice .btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -16px;
+    /*background: url(../images/sprite.png) no-repeat -240px -240px;*/
+    background-image: url(../images/sprite.png);
+    background-repeat: no-repeat;
+    background-size: 406px;
+}
+.wrap_bet .notice .btn_tongji::after {
+    margin-top: -18px;
+    width:44px;
+    height:42px;
+    background-position: -68px -574px;
+}
+.wrap_bet .notice .btn_record::after {
+    margin-top: -20px;
+    width:36px;
+    height:44px;
+    background-position: -128px -570px;
+}
+
+.wrap_bet .notice .btn i {
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 100%;
+    z-index: 2;
+    background: red;
+}
+
+/*投注区目录导航*/
+
+.betNav {
+    height: 90px;
+    display: flex;
+    width: 100%;
+    background: #26272f;
+}
+
+.betNav li {
+    flex: 1;
+}
+
+.betNav li span {
+    display: inline-block;
+    height: 84px;
+    line-height: 84px;
+    padding: 0 15px;
+    border-bottom: 6px solid #26272f;
+    font-size: 28px;
+}
+
+.betNav li.cur span, .betNav li:active span {
+    border-bottom-color: #3f437e;
+    color: #757acb;
+}
+
+.betEara {
+    padding-top: 40px;
+    position: relative;
+    min-height: 500px;
+}
+
+.betEara .empty-msg {
+    margin-top: -60px;
+}
+
+.back_home {
+    position: fixed;
+    right: 30px;
+    bottom: 180px;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, .6);
+    z-index: 90;
+}
+
+.back_home::after {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+    content: '';
+    display: block;
+    background: url(../images/sprite.png) no-repeat -348px -276px;
+    background-size: 406px;
+}
+/*.betEara .icon_jiajiang {*/
+    /*width: 127px;*/
+    /*height: 46px;*/
+    /*background-position: 0 -241px;*/
+    /*top: 20px;*/
+    /*right: 30px;*/
+/*}*/
+
+/*  数据统计弹层 */
+.pop_shuju .popIn {
+    width: 630px;
+    background-color: #1d1e29;
+}
+.pop_shuju .list_menu {
+    margin-left: 118px;
+    width: 400px;
+    padding-top: 30px;
+}
+
+.pop_shuju .box {
+    position: relative;
+    height: 780px;
+    margin-top: 40px;
+}
+
+.pop_shuju .scroller {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.pop_shuju .box .scroller {
+    transform: translateX(0);
+}
+
+.pop_shuju .box .scroller2 {
+    transform: translateX(-100%);
+}
+
+.pop_shuju .box2 .scroller {
+    transform: translateX(100%);
+}
+
+.pop_shuju .box2 .scroller2 {
+    transform: translateX(0);
+}
+
+.table_shuju {
+    text-align: center;
+}
+
+.table_shuju tr td:first-child {
+    padding-left: 30px;
+}
+
+.table_shuju tr td:last-child {
+    padding-right: 30px;
+}
+
+.table_shuju td {
+    height: 110px;
+    color: #d9ddff;
+}
+
+.table_shuju td .num {
+    font-size: 40px;
+}
+.table_shuju td .num.gray {
+    color: #2f3443;
+}
+
+.table_shuju .contrast {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    line-height: 110px;
+}
+
+.table_shuju .contrast strong {
+    display: block;
+    font-size: 32px;
+    font-weight: normal;
+}
+
+.table_shuju .contrast .item {
+    position: absolute;
+    height: 3px;
+    width: 360px;
+    left: 50%;
+    margin-left: -180px;
+    top: 82px;
+}
+
+.table_shuju .contrast .item span {
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    background: #3f437e;
+}
+
+.table_shuju .contrast .item span:first-child {
+    right: 182px;
+}
+
+.table_shuju .contrast .item span:last-child {
+    left: 183px;
+}
+
+.table_shuju .contrast .item .item_more {
+    background: #757acb;
+}
+
+.time_line {
+    width: 1px;/*no*/
+    background: #3f437e;
+    margin: 20px auto 0;
+    color: #6f799a;
+}
+
+.time_line li {
+    position: relative;
+    width: 286px;
+    font-size: 28px;
+    line-height: 66px;
+    text-align: left;
+}
+.time_line li:first-child {
+    top:-5px;
+}
+
+.time_line li::after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+
+.time_line .line_left {
+    transform: translateX(-105%);
+    text-align: right;
+    padding-right: 10px;
+}
+
+.time_line .line_right {
+    padding-left: 16px;
+}
+
+.time_line .line_left span, .time_line .line_left i {
+    float: right;
+    display: inline-block;
+}
+.time_line .line_right span, .time_line .line_right i {
+    float: left;
+    display: inline-block;
+}
+.time_line li .item_time {
+    font-size: 36px;
+    min-width:48px;
+}
+
+.time_line .time_point {
+    display: inline-block;
+    width: 66px;
+    height: 66px;
+    line-height: 66px;
+    font-size: 20px;
+    color: #d9ddff;
+    border-radius: 50% 50%;
+    background: #3f437e;
+    text-align: center;
+    margin-left: -33px;
+}
+
+.time_line .icon {
+    width: 50px;
+    height: 50px;
+    background: url(../images/sprite.png) no-repeat;
+    background-size: 406px;
+    margin: 8px 12px 0;
+}
+
+.time_line .icon_jiaoqiu {
+    background-position: 0 -450px;
+}
+
+.time_line .icon_jinqiu {
+    background-position: -50px -450px;
+}
+
+.time_line .icon_huangpai {
+    background-position: -100px -450px;
+}
+
+.time_line .icon_hongpai {
+    background-position: -150px -450px;
+}
