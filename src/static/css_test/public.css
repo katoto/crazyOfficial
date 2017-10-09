@@ -407,7 +407,7 @@ html, body {
 
 /* topBar */
 .topBar {
-    display: none;
+    /*display: none;*/
     width: 100%;
     height: 80px;
     position: relative;
@@ -555,7 +555,6 @@ html, body {
     float: left;
     font-size:28px;
     color: #6f799a;
-    font-weight:bold;
 }
 .my_moeny>span::before{
     display: inline-block;

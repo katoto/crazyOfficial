@@ -39,11 +39,11 @@
                 <header class="listWrap_tit clear">
                     <span class="hot-match">热门赛事</span>
                     <a class="list_all" v-if="runListNumber==='0'" href="javascript:;" v-tap="{ methods:matchNav ,params:'goMatchList'}">全部赛事(<i style="color: #fff" v-if="runListNumber==='0'"> {{ betListNumber}} </i>)</a>
-                    <a class="list_all" v-else href="javascript:;" v-tap="{ methods:matchNav ,params:'goMatchList'}">全部赛事（<i>{{ runListNumber}}</i>）</a>
+                    <a class="list_all" v-else href="javascript:;" v-tap="{ methods:matchNav ,params:'goMatchList'}">全部赛事( <i>{{ runListNumber}}</i> )</a>
                 </header>
                 <router-view></router-view>
                 <a href="javascript:;" class="all-list" v-tap="{ methods:matchNav ,params:'goMatchList'}">
-                    竞猜更多赛事>
+                    查看全部赛事
                 </a>
             </section>
 

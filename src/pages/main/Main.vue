@@ -309,7 +309,7 @@
                                 </div>
                             </div>
                             <!-- 第几个进球 350-->
-                            <div class="betBox" id="box-scroll" v-tap="{methods:clickPanel}"
+                            <div class="betBox betBox-djg" id="box-scroll" v-tap="{methods:clickPanel}"
                                  v-if="fmdetail.odds[350]!==undefined"
                             >
                                 <div class="boxTit boxTit-jinq clear">
@@ -438,7 +438,7 @@
                                 </slider>
                             </div>
                             <!-- 总进球数 410 -->
-                            <div class="betBox" v-tap="{methods:clickPanel}" v-if="fmdetail.odds[410]!==undefined"
+                            <div class="betBox betBox-zjq" v-tap="{methods:clickPanel}" v-if="fmdetail.odds[410]!==undefined"
                                  :class="{ 'betBox-end': fmdetail.odds[410].State!=='1'&&fmdetail.odds[410].State!=='3'}"
                             >
                                 <div class="boxTit boxTit-zongj clear">

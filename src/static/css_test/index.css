@@ -73,6 +73,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size:28px;
+    color: #6f799a;
 }
 
 .text-scroller li strong {
@@ -184,13 +185,15 @@
 
 /*活动*/
 .act{
-    width:100%;
-    overflow-x: auto;
+    /*width:100%;*/
+    /*height: 174px;*/
+    overflow-y: auto;
     margin: 4px 0 20px 0;
     text-align: center;
 }
 .act-wrap{
     width:1255px;
+    height: 174px;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
 }
@@ -270,11 +273,10 @@
     padding-bottom: 0;
 }
 .listWrap_tit {
-    padding: 0 0 30px 0;
+    padding-top:20px;
     line-height:60px;
     overflow: hidden;
     position: relative;
-    background: #1f2025;
 }
 .listWrap_tit .hot-match{
     position: relative;
@@ -1630,11 +1632,13 @@
     width: 60px;
     height: 60px;
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: 0;
+    right: 0;
     background-color: #b6a084;
     border-radius: 50% 50%;
     padding:0;
+    transform: translate(30px,-30px);
+    -webkit-transform: translate(30px,-30px);
 }
 
 .pop_jiajiang .close::after {

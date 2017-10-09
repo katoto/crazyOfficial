@@ -131,7 +131,7 @@ gulp.task('watch', function() {
     //gulp.watch('src/scripts/*.js', ['scripts']);
 
     //监控所有图片档
-    gulp.watch('src/static/images_test/**/*.*', ['images']);
+    // gulp.watch('src/static/images_test/**/*.*', ['images']);
 
     // 建立即时重整伺服器
     //var server = livereload();
