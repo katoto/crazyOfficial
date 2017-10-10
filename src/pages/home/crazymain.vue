@@ -15,21 +15,31 @@
 
             <!--活动-->
             <section class="act" v-if="homeActivitiesData && homeActivitiesData.length>=2">
-                <div class="act-wrap">
+                <div class="act-wrap hide">
                     <a href="javascript:;" class="act-center" v-tap="{ methods:matchNav ,params:'chargeNew'}">
-                        <img :src="homeActivitiesData[0].image" alt="领奖中心">
-                        <span class="act-t">领奖中心</span>
-                        <span class="act-c">{{ homeActivitiesData[0].description }}</span>
+                        <img :src="homeActivitiesData[0].image" alt="最新活动">
                     </a>
                     <a href="javascript:;" class="act-new"  v-tap="{ methods:matchNav ,params:'activeBox'}">
                         <img :src="homeActivitiesData[1].image" alt="最新活动">
-                        <span class="act-t">最新活动</span>
-                        <span class="act-c">{{ homeActivitiesData[1].description }}</span>
                     </a>
-                    <a href="javascript:;" class="act-down" v-if="homeActivitiesData[2]"
-                       v-tap="{ methods:matchNav ,params:'downLoad'}"
-                    >
+                    <a href="javascript:;" class="act-down" v-if="homeActivitiesData[2]" v-tap="{ methods:matchNav ,params:'downLoad'}">
                         <img :src="homeActivitiesData[2].image" alt="下载">
+                    </a>
+                </div>
+
+                <div class="left swiper-container">
+                    <div class="swiper-wrapper">
+                        <a href="javascript:;" class="swiper-slide act-center">
+                            <img :src="homeActivitiesData[2].image" alt="下载">
+                        </a>
+                        <a href="javascript:;" class="swiper-slide act-new">
+                            <img :src="homeActivitiesData[1].image" alt="领奖中心">
+                        </a>
+                    </div>
+                </div>
+                <div class="right">
+                    <a href="javascript:;" class="act-down">
+                        <img :src="homeActivitiesData[0].image" alt="最新活动">
                     </a>
                 </div>
             </section>

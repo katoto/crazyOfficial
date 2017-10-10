@@ -185,62 +185,31 @@
 
 /*活动*/
 .act{
-    /*width:100%;*/
-    /*height: 174px;*/
-    overflow-y: auto;
-    margin: 4px 0 20px 0;
-    text-align: center;
-}
-.act-wrap{
-    width:1255px;
+    width:100%;
     height: 174px;
     overflow: hidden;
-    -webkit-overflow-scrolling: touch;
+    margin: 4px 0 20px 0;
+}
+.act .left{
+    float: left;
+    width:500px;
+    height:174px;
+    overflow: hidden;
+}
+.act .right{
+     float: right;
+     width:245px;
+     height:174px;
+     overflow: hidden;
 }
 .act a{
     display: block;
-    position: relative;
-    float: left;
+    width:100%;
+    height:100%;
 }
 .act img{
     width: 100%;
     height: 100%;
-}
-.act-center,.act-down{
-    width: 500px;
-    height: 174px;
-}
-.act-new{
-    width: 245px;
-    height: 174px;
-    margin:0 5px;
-}
-.act-t{
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 100%;
-    line-height: 40px;
-    font-size: 32px;
-    font-weight: bold;
-}
-.act-c{
-    position: absolute;
-    left: 0;
-    top: 48px;
-    width: 100%;
-    line-height: 28px;
-    font-size: 20px;
-}
-.act-center span{
-    color: #fff;
-}
-.act-center .act-t{
-    background: url(../images/act-t.png) no-repeat center;
-    background-size:216px 31px;
-}
-.act-new span{
-    color: #ffe670;
 }
 /*活动*/
 /*列表区*/
