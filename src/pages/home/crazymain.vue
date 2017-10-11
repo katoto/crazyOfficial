@@ -48,13 +48,33 @@
             </section>
 
             <!-- 比赛列表 -->
+            <!-- 比赛列表 -->
             <section class="index listWrap">
                 <header class="listWrap_tit clear">
                     <span class="hot-match">热门赛事</span>
                     <a class="list_all" v-if="runListNumber==='0'" href="javascript:;" v-tap="{ methods:matchNav ,params:'goMatchList'}">全部赛事(<i style="color: #fff" v-if="runListNumber==='0'"> {{ betListNumber}} </i>)</a>
-                    <a class="list_all" v-else href="javascript:;" v-tap="{ methods:matchNav ,params:'goMatchList'}">全部赛事( <i>{{ runListNumber}}</i> )</a>
+                    <a class="list_all" v-else href="javascript:;" v-tap="{ methods:matchNav ,params:'goMatchList'}">全部赛事(<i> {{ runListNumber}} </i>)</a>
                 </header>
-                <router-view></router-view>
+                <!--<router-view></router-view>-->
+
+                <div class="listBox">
+                    <template  v-if="matchlist_hot && parseInt(matchlist_hot.length)>1" v-for="item in matchlist_hot">
+                        <matchListTemplate :matchStyle="'hot'" :matchData="item">
+                        </matchListTemplate>
+                    </template>
+                    <template v-if="!matchlist_hot || (matchlist_hot && matchlist_hot.length<=1) ">
+                        <div class="emptyBox respon2">
+                            <div class="empty respon2-itm" >
+                                <div class="emptyIn">
+                                    <span class="icon icon_empty"></span>
+                                    <p>暂无热门赛事</p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+
                 <a href="javascript:;" class="all-list" v-tap="{ methods:matchNav ,params:'goMatchList'}">
                     查看全部赛事
                 </a>
@@ -68,6 +88,7 @@
     import BannerScroll from '~components/banner-scroll.vue'
     import MatchHotPlay from '~components/matchHot-play.vue'
 
+    import MatchListTemplate from '~components/matchlist-template.vue'
     import  { swiper, swiperSlide } from 'vue-awesome-swiper'
     import {platform} from '~common/util'
 
@@ -85,7 +106,7 @@
                     direction: 'vertical',
                     autoHeight: true,
                     onTransitionStart (swiper) {
-                        console.log(swiper)
+//                        console.log(swiper)
                     }
                 }
             }
@@ -93,6 +114,7 @@
         components: {
             BannerScroll,
             MatchHotPlay,
+            MatchListTemplate
         },
         watch: {
             socketData (data) {
@@ -146,8 +168,12 @@
                     _hmt.push(['_trackEvent', '500fkcqH5_领奖中心点击', 'click', '500fkcqH5_领奖中心']);
                     break;
                 case 'activeBox':
-                    this.$store.commit('setActiveBox', true)
-                    _hmt.push(['_trackEvent', '500fkcqH5_最新活动点击', 'click', '500fkcqH5_最新活动']);
+                    if(this.activityListData){
+                        this.$store.commit('setActiveBox', true)
+                        _hmt.push(['_trackEvent', '500fkcqH5_最新活动点击', 'click', '500fkcqH5_最新活动']);
+                    }else{
+                        this.$store.dispatch(actionTypes.getActivityList)
+                    }
                     break;
                 case 'downLoad':
                     if (platform === 'android') {
@@ -164,6 +190,12 @@
         computed: {
             swiper() {
                 return this.$refs.mySwiper.swiper
+            },
+            activityListData () {
+                return this.$store.state.home.activityListData
+            },
+            matchlist_hot () {
+                return this.$store.state.home.matchList_hot
             },
             homeActivitiesData () {
                 return this.$store.state.home.homeActivitiesData

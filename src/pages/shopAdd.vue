@@ -104,21 +104,25 @@ export default {
         },
         methods: {
             saveAddrMess () {
-                let reg = /^1[0-9]{10}$/
-                if (this.addressMess.mobile && reg.test(this.addressMess.mobile)) {
-                    if (!this.currOrderId && this.isSaveBtn || this.currOrderId && this.isConfirmBtn) {
-                        return false
-                    } else {
-                        if (this.currOrderId && this.addressMess.aid && parseInt(this.addressMess.aid) > 0) {
-                            //  修改地址
-                            this.$store.dispatch('modifyAddress', this.currOrderId)
+                if(this.hasUserInfo){
+                    let reg = /^1[0-9]{10}$/;
+                    if (this.addressMess.mobile && reg.test(this.addressMess.mobile)) {
+                        if (!this.currOrderId && this.isSaveBtn || this.currOrderId && this.isConfirmBtn) {
+                            return false
                         } else {
-                            //  新增地址
-                            this.$store.dispatch('addAddress', this.currOrderId)
+                            if (this.currOrderId && this.addressMess.aid && parseInt(this.addressMess.aid) > 0) {
+                                //  修改地址
+                                this.$store.dispatch('modifyAddress', this.currOrderId)
+                            } else {
+                                //  新增地址
+                                this.$store.dispatch('addAddress', this.currOrderId)
+                            }
                         }
+                    } else {
+                        this.$store.dispatch('showToast', '手机号码有误,请重新输入！')
                     }
-                } else {
-                    this.$store.dispatch('showToast', '手机号码有误,请重新输入！')
+                }else{
+                    this.$store.dispatch('doAuth')
                 }
             },
             showSelAddress (obj) {
@@ -231,13 +235,18 @@ export default {
             },
             isSaveBtn () {
                 return this.$store.state.shopAddData.isSaveBtn
+            },
+            hasUserInfo () {
+                return !!this.$store.state.userInfo
             }
         },
         mounted () {
             if (this.$route.params.orderId) {
                 this.currOrderId = this.$route.params.orderId
             }
-            this.$store.dispatch('getAddressMess')
+            if(this.hasUserInfo){
+                this.$store.dispatch('getAddressMess')
+            }
         }
     }
 </script>

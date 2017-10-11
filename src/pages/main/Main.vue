@@ -5899,7 +5899,7 @@
                     thresholdTime: 1000, //
                     loop: false, // 循环滚动
                     infinite: 1, // 无限滚动前后遍历数
-                    slidesToScroll: 1,// 每次滑动项数
+                    slidesToScroll: 1// 每次滑动项数
                 },
                 currentSelection: null,
                 MatchResult_140: null,
@@ -6159,10 +6159,8 @@
                     ck = this.ck.replace(/=/g, '$')
                     window.location.href = 'http://crazybet.choopaoo.com/redPacket/nationFootballRed.html?from=500qqsd&ck=' + ck
                 } else {
-                    if (window.qqsdApp) {
-                        qqsdApp.invoke('login')
-                        return false
-                    }
+                    this.$store.dispatch('doAuth');
+                    return false;
                 }
             },
             showAwardBoxFn () {
@@ -6173,10 +6171,8 @@
                 switch (target) {
                 case 'betlist':
                     if (!this.hasLogin) {
-                        if (window.qqsdApp) {
-                            qqsdApp.invoke('login')
-                            return false
-                        }
+                        this.$store.dispatch('doAuth');
+                        return false;
                     } else {
                         this.$store.dispatch('getGoldList', this.matchid)
                         setTimeout(() => {
@@ -6195,12 +6191,7 @@
                 case 'backHistory':
                     this.$store.state.home.currentBetSelect = null;
                     if (window.location && window.location.hash && window.location.hash.indexOf('from=banner') > -1) {
-                        if (window.qqsdApp) {
-                            //  关闭view
-                            qqsdApp.invoke('close')
-                        } else {
-                            window.history.back()
-                        }
+                        window.history.back()
                     } else {
                         window.history.back()
                     }
@@ -6359,10 +6350,7 @@
             },
             faqi () {
                 if (!this.hasLogin) {
-                    if (window.qqsdApp) {
-                        qqsdApp.invoke('login')
-                        return false
-                    }
+                    this.$store.dispatch('doAuth');
                     return false
                 }
                 if (!this.selectedNum) {

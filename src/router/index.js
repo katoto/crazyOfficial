@@ -10,7 +10,6 @@ Vue.use(VueRouter)
 const homeContent = () => import('~pages/home/homeContent' /* webpackChunkName: "chunks/home_content" */)
 const crazymain = () => import('~pages/home/crazymain' /* webpackChunkName: "chunks/home_crazymain" */)
 const MatchList = () => import('~pages/home/MatchList' /* webpackChunkName: "chunks/home_matchlist" */)
-const matchListHot = () => import('~pages/home/matchList_hot' /* webpackChunkName: "chunks/home_matchlist_hot" */)
 
 const matchListNoEnd = () => import('~pages/home/matchList_noEnd' /* webpackChunkName: "chunks/home_matchilist_noend" */)
 const matchListEnd = () => import('~pages/home/matchList_end' /* webpackChunkName: "chunks/home_matchlist_end" */)
@@ -43,15 +42,8 @@ const router = new VueRouter({
             requiresAuth: true,
             children: [
                 {
-                    path: 'home',
+                    path: 'home/:from?',
                     component: crazymain,
-                    meta: { requireAuth: true },
-                    children: [
-                        {
-                            path: 'hot/:others?',
-                            component: matchListHot
-                        }
-                    ]
                 },
                 {
                     path: 'matchList',
@@ -70,7 +62,7 @@ const router = new VueRouter({
                 },
                 {
                     path: '*',
-                    redirect: '/h5/home/hot'
+                    redirect: '/h5/home'
                 }
             ]
         },
@@ -100,7 +92,7 @@ const router = new VueRouter({
         },
         {
             path: '*',
-            redirect: '/h5/home/hot'
+            redirect: '/h5/home'
         }
     ]
 })
@@ -120,6 +112,11 @@ if (location.search) {
         const ck = args[1]
         const type = args[2]
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew/${type}_@_ck_@_${ck}`)
+    }
+    /* 统计from */
+    if (queryObj.from) {
+        localStorage.setItem('src',queryObj.from);
+        history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/${queryObj.from}`)
     }
 /*
     if(queryObj.jumpToPay && queryObj.jumpToPay ==='true'){

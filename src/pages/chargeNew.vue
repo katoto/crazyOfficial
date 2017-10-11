@@ -518,12 +518,16 @@ export default {
             },
             /* 我的兑换 */
             showPrizeList ({params}) {
-                stopHtml();
-                this.showLuckEnd = false;
-                this.isShowPrizeList = params;
-            /* 可优化 */
-                this.$store.dispatch('getWinGoodList');
-                _hmt.push(['_trackEvent', '500fkcqH5_商城页兑换记录点击', 'click', '500fkcqH5_商城页兑换记录']);
+                if(this.userInfo){
+                    stopHtml();
+                    this.showLuckEnd = false;
+                    this.isShowPrizeList = params;
+                    /* 可优化 */
+                    this.$store.dispatch('getWinGoodList');
+                    _hmt.push(['_trackEvent', '500fkcqH5_商城页兑换记录点击', 'click', '500fkcqH5_商城页兑换记录']);
+                }else{
+                    this.$store.dispatch('doAuth');
+                }
             },
             chosePrizeList () {
                 starHtml();
@@ -531,11 +535,15 @@ export default {
             },
             /* 我的道具 */
             showMyTool ({params}) {
-                stopHtml();
-            /* 可在充值回调后 请求 */
-                this.$store.dispatch('getFootballPropsList');
-                this.isShowMyTool = params;
-                _hmt.push(['_trackEvent', '500fkcqH5_商城页我的道具点击', 'click', '500fkcqH5_商城页我的道具']);
+                if(this.userInfo){
+                    stopHtml();
+                    /* 可在充值回调后 请求 */
+                    this.$store.dispatch('getFootballPropsList');
+                    this.isShowMyTool = params;
+                    _hmt.push(['_trackEvent', '500fkcqH5_商城页我的道具点击', 'click', '500fkcqH5_商城页我的道具']);
+                }else{
+                    this.$store.dispatch('doAuth');
+                }
             },
             choseMyTool () {
                 starHtml();
@@ -546,7 +554,9 @@ export default {
                 if (!params) {
                     this.$router.push('/chargeNew/draw');
                     this.$store.dispatch('getGoodsList');
-                    this.$store.dispatch('getWinGoodList');
+                    if(this.userInfo){
+                        this.$store.dispatch('getWinGoodList');
+                    }
                     _hmt.push(['_trackEvent', '500fkcqH5_商城页兑换点击', 'click', '500fkcqH5_商城页兑换']);
                 } else {
                     this.$router.push('/chargeNew');
@@ -575,6 +585,10 @@ export default {
                 if (!this.current) {
                     this.$store.dispatch('showToast', '至少选择一项')
                     return
+                }
+                if(!this.userInfo){
+                    this.$store.dispatch('doAuth');
+                    return false
                 }
                 let params = {}
                 params.ck = this.$store.state.ck
@@ -642,18 +656,21 @@ export default {
             if (this.$route.params.others && this.$route.params.others === 'draw') {
                 this.isShowChargeTab = false;
                 this.$store.dispatch('getGoodsList');
-            /* 小红点 */
-                this.$store.dispatch('getWinGoodList')
+                if(this.userInfo){
+                    /* 小红点 */
+                    this.$store.dispatch('getWinGoodList')
+                }
             }
             if (this.$route.params.others && this.$route.params.others === 'showList') {
                 stopHtml()
                 this.isShowChargeTab = false
                 this.$store.dispatch('getGoodsList');
-                this.$store.dispatch('getWinGoodList');
                 this.showLuckEnd = false;
                 this.isShowPrizeList = true;
-            /* 可优化 */
-                this.$store.dispatch('getWinGoodList')
+                if(this.userInfo){
+                    /* 可优化 */
+                    this.$store.dispatch('getWinGoodList')
+                }
             }
             if (this.$route.params.others && this.$route.params.others.indexOf('_@_ck_@_') > -1) {
                 let arr = this.$route.params.others.split('_@_');

@@ -68,6 +68,8 @@ export default {
                     setTimeout(() => {
                         this.$store.commit('showBetListbox', true)
                     }, 10)
+                }else{
+                    this.$store.dispatch('doAuth')
                 }
                 _hmt.push(['_trackEvent', '500qqsd_全部赛事页猜球记录点击', 'click', '500qqsd_全部赛事页猜球记录'])
             }

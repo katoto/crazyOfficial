@@ -111,24 +111,28 @@ export default {
             },
             showLuckEndFn () {
                 /* 中奖框 */
-                if (this.luckMessData) {
-                    if(this.luckMessData.company){
-                        this.$store.dispatch('getLuckGoodBingo', {
-                            currGoodsid: this.luckMessData.goodsid,
-                            currConsumgolds: this.luckMessData.consumgolds,
-                            goodstype: this.luckMessData.goodstype,
-                            company:this.luckMessData.company
-                        })
-                    }else{
-                        this.$store.dispatch('getLuckGoodBingo', {
-                            currGoodsid: this.luckMessData.goodsid,
-                            currConsumgolds: this.luckMessData.consumgolds,
-                            goodstype: this.luckMessData.goodstype
-                        })
+                if(this.userInfo){
+                    if (this.luckMessData) {
+                        if(this.luckMessData.company){
+                            this.$store.dispatch('getLuckGoodBingo', {
+                                currGoodsid: this.luckMessData.goodsid,
+                                currConsumgolds: this.luckMessData.consumgolds,
+                                goodstype: this.luckMessData.goodstype,
+                                company:this.luckMessData.company
+                            })
+                        }else{
+                            this.$store.dispatch('getLuckGoodBingo', {
+                                currGoodsid: this.luckMessData.goodsid,
+                                currConsumgolds: this.luckMessData.consumgolds,
+                                goodstype: this.luckMessData.goodstype
+                            })
+                        }
+                    } else {
+                        this.$store.dispatch('showToast', '抽取失败,请重新再试')
+                        this.alertGoodsBox = false
                     }
-                } else {
-                    this.$store.dispatch('showToast', '抽取失败,请重新再试')
-                    this.alertGoodsBox = false
+                }else{
+                    this.$store.dispatch('doAuth')
                 }
             },
             startLuckDraw () {

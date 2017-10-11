@@ -42,17 +42,17 @@
 //                await this.$store.dispatch('localLogin', 8);
 //                await this.$store.dispatch('getUserInfo');
                 /* 线上 登陆 */
-                await this.$store.dispatch('checkLogin')
-            /* 线下 登陆 */
-//                await this.$store.dispatch('localCheckLogin');
-                if (this.isLogin) {
-                    await this.$store.dispatch('getUserInfo')
-                } else {
-                    /* 调登录 */
-                    window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-//                    window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-                    return false;
-                }
+//                await this.$store.dispatch('checkLogin')
+//            /* 线下 登陆 */
+////                await this.$store.dispatch('localCheckLogin');
+//                if (this.isLogin) {
+//                    await this.$store.dispatch('getUserInfo')
+//                } else {
+//                    /* 调登录 */
+//                    window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
+////                    window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
+//                    return false;
+//                }
 
                 if (window.WebSocket) {
                     await this.$store.dispatch('initWebsocket')

@@ -18,7 +18,6 @@
     export default {
         data () {
             return {
-                title: '',
                 msg:'下载APP 加奖',
                 msg2:'10%'
             }

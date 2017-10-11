@@ -663,7 +663,6 @@ const actions = {
         try {
             const activityData = await ajax.get(`/activity/list?ck=${getCk()}&src=${src}&platform=${platform}`)
             commit(mutationTypes.activityData, activityData)
-            commit(mutationTypes.activityData, activityData)
         } catch (e) {
             dispatch('showToast', e.message)
         }

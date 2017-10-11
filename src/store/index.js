@@ -374,6 +374,15 @@ const actions = {
         // window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
         window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
     },
+    async doAuth ({commit, dispatch}) {
+        try {
+            /* 处理登陆（调登陆 ） */
+            console.error('跳登陆')
+        } catch (e) {
+            dispatch('showToast', e.message + '/login/cpuser')
+        }
+    },
+
     async showToast ({commit}, msg) {
         let cb = null, duration = 2000
         if (typeof msg === 'object') {
