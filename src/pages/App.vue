@@ -1,5 +1,6 @@
 <template>
-    <div v-tap="{methods: trackEvent}" class="l-full">
+    <div class="l-full">
+        <!--v-tap="{methods: trackEvent}"-->
         <div class="toast" v-show="toastMsg">{{ toastMsg }}</div>
         <router-view v-if="ready"></router-view>
         <div class="loading" v-else>
@@ -77,14 +78,14 @@
             }
         },
         methods: {
-            trackEvent ({event}) {
-                if (event.target.tagName === 'INPUT' || event.target.tagName === 'SELECT' || event.target.tagName === 'TEXTAREA') {
-                    event.target.focus()
-                }
-                if (event.target.tagName === 'BUTTON') {
-                    event.target.click()
-                }
-            }
+//            trackEvent ({event}) {
+//                if (event.target.tagName === 'INPUT' || event.target.tagName === 'SELECT' || event.target.tagName === 'TEXTAREA') {
+//                    event.target.focus()
+//                }
+//                if (event.target.tagName === 'BUTTON') {
+//                    event.target.click()
+//                }
+//            }
         }
     }
 </script>

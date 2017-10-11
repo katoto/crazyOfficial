@@ -32,6 +32,9 @@ const ShopAdd = () => import('~pages/shopAdd' /* webpackChunkName: "chunks/shopA
 /* 抽奖新页 */
 const luckdrawNew = () => import('~pages/luckdrawNew' /* webpackChunkName: "chunks/luckdrawNew" */)
 
+/* 用户反馈 */
+const UserFeedback = () => import('~pages/userFeedback.vue' /* webpackChunkName: "chunks/userFeedback" */)
+
 // mode 代表浏览器环境   路由是按顺序匹配的
 const router = new VueRouter({
     mode: 'hash',
@@ -89,6 +92,10 @@ const router = new VueRouter({
         {
             path: '/shopAdd/:orderId?',
             component: ShopAdd
+        },
+        {
+            path: '/userFeedback',
+            component: UserFeedback
         },
         {
             path: '*',

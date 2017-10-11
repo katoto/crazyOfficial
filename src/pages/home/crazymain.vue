@@ -250,6 +250,8 @@
             }
         },
         async mounted () {
+            this.$store.commit('setIsHideHomeHead', false)
+
             if (this.matchIDStr) {
                 this.$store.dispatch('subscribe', {
                     ptype: 'list',
@@ -269,6 +271,7 @@
             }
             this.$store.dispatch(actionTypes.setIntervalFn, {type: 'newhot', time: 30000});
             this.$store.dispatch(actionTypes.getActivityList)
+
         },
         beforeRouteLeave (to, from, next) {
             this.$store.dispatch(actionTypes.clearIntervalFn);

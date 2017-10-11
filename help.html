@@ -1,0 +1,425 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="gbk" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>意见反馈-客服中心-500彩票网</title>
+    <link type="text/css" rel="stylesheet" href="http://www.500cache.com/mobile/widget/reset.css" />
+    <link type="text/css" rel="stylesheet" href="http://www.500cache.com/mobile/widget/alert/alert.css" />
+    <link type="text/css" rel="stylesheet" href="http://www.500cache.com/mobile/widget/head/head.css" />
+    <link type="text/css" rel="stylesheet" href="http://www.500cache.com/mobile/touch/css/service.css" />
+    <link type="text/css" rel="stylesheet" href="http://www.500cache.com/mobile/widget/imgView/css.css" />
+    <script src="http://www.500cache.com/mobile/libs/utils/platform.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <!--head begin-->
+    <header id="uiHead" class="ui-head ui-head-nobg">
+        <div class="ui-head-in">
+            <div class="ui-head-l">
+                <span class="ui-head-btn1">返回</span>
+            </div>
+
+        </div>
+    </header>
+    <!--head end-->
+
+    <div class="banner-top bg-staff">
+        <div class="itm-titwrap">
+            <h2 class="itm-tit">意见反馈</h2>
+            <p class="itm-subtit"> / 产品经理</p>
+        </div>
+    </div>
+    <div class="ask-wrap">
+        <div class="ask-write">
+            <textarea name="content" id="submitcontent" class="ask-inp" placeholder="请详细描述你的问题或建议，我们将及时跟进与解决（建议添加相关问题截图）"></textarea>
+            <div class="ask-add-wrap">
+                <span class="ask-add" id="fileSelect">
+                	<input type="file" id="fileElem" name="submitfile1" onchange="handleFiles(this.files)" style="cursor: pointer;">
+                </span>
+            </div>
+        </div>
+        <div class="ask-btns">
+            <span class="btn-red mb10" style="cursor: pointer;">提交</span>
+            <span class="btn-white" data-href="/helpcenter/userproblem/">历史意见反馈</span>
+        </div>
+    </div>
+
+    <!-- <div class="ft-service">
+        <div class="ft-service-in">
+            <a href="tel:4000500500" class="btn-tel">电话客服</a>
+            <a href="javascript:OpenKMBchat.openKMBchat(0);"  class="btn-online service_box js_kfservice_box" id="js_service_box">在线客服</a>
+
+        </div>
+    </div> -->
+</div>
+<span class="ui-alert-tips ui-alert-fixtips hide"><p>只允许上传三张图片</p></span>
+<script src="http://www.500cache.com/public/js/zepto-1.1.4.min.js"></script>
+<script src="http://www.500cache.com/wx/js/popup.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://www.500cache.com/wx/js/wx/wxapi.js"></script>
+
+<script>
+
+    var loginUrl = '';
+    if( location.host.indexOf('.500.com') != -1 ){
+        if(  location.host.indexOf('c.m.500.com') != -1  ){
+            loginUrl =  'http://'+location.host+'/login/?backUrl='+encodeURIComponent( location.href ) ;
+        }else{
+            loginUrl =  'http://'+location.host+'/user/index.php?c=home&a=login&backurl='+encodeURIComponent( location.href ) ;
+        }
+    }else{
+        loginUrl =   'http://wx.500boss.com/index.php?c=login&a=main&backurl='+encodeURIComponent( location.href );
+    }
+
+    //获取app标题
+
+    //ios处理
+    var isApp = !window.EsApp && navigator.userAgent.indexOf("ios_500cp_500com")>-1;
+    if(isApp){
+        location.href = 'rabbit://reloadjs';
+    }
+
+    var usercheck = getCookie('usercheck');
+    var appObj = {
+        isLogin: !!usercheck,
+        isWeixin: function() {
+            return window.navigator.userAgent.toLowerCase().indexOf('micromessenger') != -1;
+        },
+        init: function(data){
+            data = JSON.parse(data);
+            appObj.ck = (typeof data.ck != 'undefined') ? data.ck : '';
+            appObj.isLogin = !!appObj.ck;
+            getCookie('usercheck', appObj.ck, 43200);//写入用户登录信息（可以打通PC和触屏版登陆状态）
+            getCookie('platform', data.platform, 43200);//写入平台信息
+            getCookie('ck_user', data.username, 43200);
+
+        }
+    };
+    //获取cookie值
+    function getCookie(name, value, expires) {
+        if (typeof value != 'undefined') {
+            var expires = !value ? -1 : expires;
+            if (typeof expires == 'number') {
+                var date = new Date();
+                date.setTime(date.getTime() + (expires * 60 * 1000));
+                expires = '; expires=' + date.toUTCString();
+            } else {
+                expires = '';
+            }
+            var _domain = location.host.indexOf('.500.com') != -1 ? '500.com' : '500boss.com';
+            document.cookie = [name, '=', encodeURIComponent(value), expires, '; path=/', '; domain='+_domain].join('');
+        } else {
+            if (m = new RegExp("(^|)" + name + "=([^;]*)(;|$)", "gi").exec(document.cookie)) {
+                return decodeURIComponent(m[2]);
+            }
+            return null;
+        }
+    }
+    function delCookie(name)//删除cookie
+    {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null) document.cookie= name + "="+cval+";path=/;domain=.500.com;expires="+exp.toGMTString();
+    }
+
+
+    if(window.EsApp  || isApp) {
+        if(!window.EsApp){
+            location.href = 'rabbit://reloadjs';
+        }
+        // 在Esun客户端环境
+        EsApp.onApiReady = function() {
+            var selfobj = EsApp.getInfo();
+
+            //隐藏本地头
+            $('#uiHead').css('display','none');
+            EsApp.invoke("titlebar", {isShow:1,title:"意见反馈"});
+
+            appObj.init(JSON.stringify(selfobj));
+            EsApp.on("datachanged", function() {
+                var selfobj = EsApp.getInfo();
+                appObj.init(JSON.stringify(selfobj));
+            });
+        };
+        EsApp.init();
+
+    }
+
+    //去除样式
+    $(".ui-head-btn1,.btn-white,.btn-red").tap(function(){
+        $(this).addClass("active");
+        var _this = $(this);
+        setTimeout(function(){
+            _this.removeClass("active");
+        },200)
+    });
+
+    //返回上一页
+    function return_prepage(url) {
+        if(document.referrer !== '') {
+            window.location.replace(document.referrer);
+        } else {
+            window.location.href=url;
+        }
+    }
+    //返回
+    $(".ui-head-btn1").on('tap', function(){
+        if( getCookie('zixunhelplaiyuan') ){
+            var tiaozhuan = getCookie('zixunhelplaiyuan');
+            delCookie('zixunhelplaiyuan');
+            //window.location.href = tiaozhuan;
+            window.location.replace(tiaozhuan);
+        }else{
+            return_prepage('/helpcenter/');
+        }
+    });
+
+    //跳转到历史意见反馈页面
+    $(".btn-white").on('tap', function(){
+        window.location.href = $(this).attr("data-href");
+    });
+    //提交完成，点击完成退出
+    $(document).on('click','.btn-competed', function(){
+        if( getCookie('zixunhelplaiyuan') ){
+            var tiaozhuan = getCookie('zixunhelplaiyuan');
+            delCookie('zixunhelplaiyuan');
+            //window.location.href = tiaozhuan;
+            window.location.replace(tiaozhuan);
+        }else{
+            return_prepage($(this).attr("data-href"));
+        }
+    });
+
+/* 图片处理 */
+    $(".btn-red").on('click', function(){
+        var flag = isLogin();
+        if ( !flag ) {
+            return false;
+        }
+        var msgplatform = 1;//平台
+        var content = $('#submitcontent').val(); //内容
+        var image = [];
+        //图片base64编码
+        $.each( $('.imagefile'), function(key, value){
+            image[key] = $(this).val();
+        });
+
+        if( content == ''){
+            alertTip(2);
+        }else{
+
+            if( platFormTest('isappios') ){
+                msgplatform = 1;
+            }else if( platFormTest('isappandroid')){
+                msgplatform = 2;
+            }else{
+                msgplatform = 3;
+            }
+            $("#fileElem").remove();
+            alertTip(4);
+            $.ajax({
+                type: 'POST',
+                url: '/index.php?c=helpcenter&a=submituserproblemresult',
+                data: { platform: msgplatform,imagefilename:image ,content:content},
+                dataType: 'json',
+                success: function(d){
+                    switch(d){
+                        case 0:
+                            $('.ui-alert-tips').addClass("hide");
+                            alertTip(7);
+                            break;
+                        case 1:
+                            $('.ui-alert-tips').addClass("hide");
+                            $('.bg-staff').html('<span class="ico-done"></span>');
+                            $('.wrap').append('<div class="tips-box"><p>感谢您的反馈</p><p>我们将尽快跟进解决您的反馈，完善产品</p><span class="btn-red btn-competed" data-href="/helpcenter/" style="cursor: pointer;">完成</span></div>');
+                            $(".ask-wrap").remove();
+                            break;
+                        case 2:
+                            $('.ui-alert-tips').addClass("hide");
+                            alertTip(6);
+                            break;
+                    }
+                },
+                error: function(xhr, type){
+                    $('.ui-alert-tips').addClass("hide");
+                    alertTip(8);
+                }
+            });
+        }
+
+    });
+    //图片删除处理
+
+    $(document).on('click', '.deleteimg', function(){
+        $(this).parent().remove();
+        var imageNUm = $('.itm-img').length;
+        if(document.getElementById("fileSelect")){
+        }else{
+            if( imageNUm < 3){
+                if( window.EsApp ){
+                    $(".ask-add-wrap").append('<span class="ask-add" id="fileSelect"><input type="file" id="fileElem" name="submitfile1"  onchange="handleFiles(this.files)" style="cursor: pointer;"></span>');
+                }else{
+                    $(".ask-add-wrap").append('<p>ffff</p>')
+                    $(".ask-add-wrap").append('<span class="ask-add" id="fileSelect"><input type="file" id="fileElem" name="submitfile1" accept="image/*"  onchange="handleFiles(this.files)" style="cursor: pointer;"></span>');
+                }
+
+            }
+        }
+
+
+    });
+
+
+
+    $(document).on('click','#fileElem', function(e){
+        if ( !(window.File && window.FileReader && window.FileList && window.Blob) ){
+            alertTip(3);
+            return false;
+        }
+    });
+
+    function handleFiles(files) {
+
+        var file = files[0];
+        var reader = new FileReader();
+        reader.onload = function(){
+            var imageHtml = '';
+            if(file.size > 2048576){
+                alertTip(5);
+                return false;
+            }
+            //console.log(image);
+            imageHtml += '<span class="itm-img"><s class="deleteimg" style="cursor: pointer;"></s><img src="';
+            imageHtml += reader.result+'" alt="" data-src="';
+            imageHtml += reader.result+'" class="conPic1">';
+            imageHtml += '<input type="hidden" class="imagefile" name="imagefilename[]" value="'+reader.result+'"';
+            imageHtml +='</span>';
+            $("#fileSelect").before(imageHtml);
+        }
+        reader.readAsDataURL(file);
+        setTimeout(function(){
+            var imageNUm = $('.itm-img').length;
+            if(imageNUm+1 > 3){
+                $("#fileSelect").remove();
+                return false;
+            }
+        },100);
+
+    }
+
+    function alertTip(type){
+        if(type == 1){
+            $('.ui-alert-tips').html('<p>只允许上传三张图片</p>');
+        }else if(type == 2){
+            $('.ui-alert-tips').html('<p>请输入反馈意见内容</p>');
+        }else if(type == 3){
+            $('.ui-alert-tips').html('<p>不支持图片上传</p>');
+        }else if(type == 4){
+            $('.ui-alert-tips').html('<p>意见正在提交中...</p>');
+        }else if(type == 5){
+            $('.ui-alert-tips').html('<p>图片太大请截图</p><p>允许图片最大为2M</p>');
+        }else if(type == 6){
+            $('.ui-alert-tips').html('<p>每天只能上传十次意见反馈</p>');
+        }else if(type == 7){
+            $('.ui-alert-tips').html('<p>意见提交失败...</p><p>请退出重新登录再次尝试</p>');
+            //location.href = loginUrl;
+            //return false;
+        }else if(type == 8){
+            $('.ui-alert-tips').html('<p>服务器出错，稍后再试</p>');
+        }
+
+        if(type == 4){
+            $('.ui-alert-tips').addClass("fadeOut").removeClass("hide");
+            setTimeout(function(){$('.ui-alert-tips').removeClass("fadeOut").addClass("hide")},10000);
+        }else{
+            $('.ui-alert-tips').addClass("fadeOut").removeClass("hide");
+            setTimeout(function(){$('.ui-alert-tips').removeClass("fadeOut").addClass("hide")},1000);
+        }
+
+    }
+
+
+    //获取cookie值
+    function getCookie(name, value, expires) {
+        if (typeof value != 'undefined') {
+            var expires = !value ? -1 : expires;
+            if (typeof expires == 'number') {
+                var date = new Date();
+                date.setTime(date.getTime() + (expires * 60 * 1000));
+                expires = '; expires=' + date.toUTCString();
+            } else {
+                expires = '';
+            }
+            var _domain = location.host.indexOf('.500.com') != -1 ? '500.com' : '500boss.com';
+            document.cookie = [name, '=', encodeURIComponent(value), expires, '; path=/', '; domain='+_domain].join('');
+        } else {
+            if (m = new RegExp("(^|)" + name + "=([^;]*)(;|$)", "gi").exec(document.cookie)) {
+                return decodeURIComponent(m[2]);
+            }
+            return null;
+        }
+    }
+    //判断登陆
+    function isLogin() {
+        var user = getCookie('ck_user');
+        if (window.EsApp) {
+            if (!appObj.isLogin) {
+                EsApp.invoke('login');
+                return false;
+            }
+        } else {
+            if (!user || (typeof arguments[0] != 'undefined' && arguments[0])) {
+                location.href = loginUrl;
+                return false;
+            }
+        }
+        return true;
+    }
+
+    $(document).ready(function(){
+        //非app添加属性区别
+        if( !window.EsApp ){
+            $("#fileElem").attr('accept', 'image/*')
+        }else{
+            //安卓app去除上传图片按钮
+            var platform = getCookie('platform');
+            if( platform == 1 ){
+                $(".ask-add-wrap").remove();
+            }
+        }
+    });
+
+    //顶部随机显示产品经理照片
+    $('.bg-staff').addClass('bg-staff' + (Math.floor(Math.random()*5)+1));
+</script>
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function (load) {
+        "complete" === document.readyState ? load() : window.addEventListener('load', load);
+    })(function () {
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "http://www.500cache.com/mobile/touch/js/log.min.js?v=20150324";
+        document.head.appendChild(s);
+
+        var bp = document.createElement('script');
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+
+
+
+    });
+</script>
+<!-- <script type="text/javascript" src="http://wx.500.com/port/yindaoapi/widget.js"></script> -->
+<script type="text/javascript" src="http://tccache.500.com/public/js/hjk.min.js"></script>
+
+
+</body>
+</html>
