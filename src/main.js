@@ -9,10 +9,14 @@ import storeFactory from './store/index'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 import vueTap from 'v-tap'
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
 // import platform from '~common/platform'
 const store = storeFactory()
 sync(store, router)
 Vue.use(vueTap)
+Vue.use(VueAwesomeSwiper)
 
 const app = new Vue(Object.assign({
     router,

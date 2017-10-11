@@ -5899,7 +5899,7 @@
                     thresholdTime: 1000, //
                     loop: false, // 循环滚动
                     infinite: 1, // 无限滚动前后遍历数
-                    slidesToScroll: 1// 每次滑动项数
+                    slidesToScroll: 1,// 每次滑动项数
                 },
                 currentSelection: null,
                 MatchResult_140: null,

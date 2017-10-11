@@ -37,7 +37,7 @@ export default {
                 animation: false,
                 isMove: false,
                 containerClass: {
-                    'swiper-container-vertical': false
+                    'swiper-container-vertical': true
                 },
                 setIntervalid: '',
                 prefixes: detectPrefixes(),
@@ -123,6 +123,7 @@ export default {
     },
     mounted () {
         let that = this
+
       // 起始跳到指定页 无样式
         that.slide(this.sliderinit.currentPage, 'animationnone')
         // 定制事件
@@ -157,9 +158,9 @@ export default {
 //            结束的情况下不给点击
                 return
             }
-            console.log(params.addMoney + '12321321')
         },
         swipeStart (e) {
+            console.log(111111)
             this.isMove = false
             let that = this
             if (this.basicdata.transitionEnding) {
@@ -373,7 +374,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
   .slider-container {
       overflow: hidden;
       position: relative;

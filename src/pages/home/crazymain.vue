@@ -15,33 +15,36 @@
 
             <!--活动-->
             <section class="act" v-if="homeActivitiesData && homeActivitiesData.length>=2">
-                <div class="act-wrap hide">
-                    <a href="javascript:;" class="act-center" v-tap="{ methods:matchNav ,params:'chargeNew'}">
-                        <img :src="homeActivitiesData[0].image" alt="最新活动">
-                    </a>
-                    <a href="javascript:;" class="act-new"  v-tap="{ methods:matchNav ,params:'activeBox'}">
+                <!--<div class="act-wrap hide">-->
+                    <!--<a href="javascript:;" class="act-center" v-tap="{ methods:matchNav ,params:'chargeNew'}">-->
+                        <!--<img :src="homeActivitiesData[0].image" alt="最新活动">-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="act-new"  v-tap="{ methods:matchNav ,params:'activeBox'}">-->
+                        <!--<img :src="homeActivitiesData[1].image" alt="最新活动">-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="act-down" v-if="homeActivitiesData[2]" v-tap="{ methods:matchNav ,params:'downLoad'}">-->
+                        <!--<img :src="homeActivitiesData[2].image" alt="下载">-->
+                    <!--</a>-->
+                <!--</div>-->
+
+                <swiper class="left" :options="swiperOption"  ref="mySwiper">
+                        <swiper-slide  v-tap="{ methods:matchNav ,params:'chargeNew'}">
+                            <a href="javascript:;" class=" act-center">
+                                <img :src="homeActivitiesData[0].image" alt="下载">
+                            </a>
+                        </swiper-slide>
+                        <swiper-slide v-tap="{ methods:matchNav ,params:'downLoad'}">
+                            <a v-if="homeActivitiesData[2]" href="javascript:;" class=" act-center">
+                                <img :src="homeActivitiesData[2].image" alt="领奖中心">
+                            </a>
+                        </swiper-slide>
+                </swiper>
+                <div class="right" v-tap="{ methods:matchNav ,params:'activeBox'}">
+                    <a href="javascript:;" class="act-down">
                         <img :src="homeActivitiesData[1].image" alt="最新活动">
-                    </a>
-                    <a href="javascript:;" class="act-down" v-if="homeActivitiesData[2]" v-tap="{ methods:matchNav ,params:'downLoad'}">
-                        <img :src="homeActivitiesData[2].image" alt="下载">
                     </a>
                 </div>
 
-                <div class="left swiper-container">
-                    <div class="swiper-wrapper">
-                        <a href="javascript:;" class="swiper-slide act-center">
-                            <img :src="homeActivitiesData[2].image" alt="下载">
-                        </a>
-                        <a href="javascript:;" class="swiper-slide act-new">
-                            <img :src="homeActivitiesData[1].image" alt="领奖中心">
-                        </a>
-                    </div>
-                </div>
-                <div class="right">
-                    <a href="javascript:;" class="act-down">
-                        <img :src="homeActivitiesData[0].image" alt="最新活动">
-                    </a>
-                </div>
             </section>
 
             <!-- 比赛列表 -->
@@ -64,6 +67,8 @@
     import {actionTypes, mutationTypes} from '~store/home'
     import BannerScroll from '~components/banner-scroll.vue'
     import MatchHotPlay from '~components/matchHot-play.vue'
+
+    import  { swiper, swiperSlide } from 'vue-awesome-swiper'
     import {platform} from '~common/util'
 
     export default {
@@ -73,12 +78,21 @@
                 inFlash: false, // 右下角闪动提示
                 flashMsg: '', // 右下角闪动提示
                 allPage: 0,  // 按钮状态
-                currentTap: 'hot'  //  tap 选中样式
+                currentTap: 'hot',  //  tap 选中样式
+                swiperOption: {
+                    // swiper options 所有的配置同swiper官方api配置
+                    autoplay: 3000,
+                    direction: 'vertical',
+                    autoHeight: true,
+                    onTransitionStart (swiper) {
+                        console.log(swiper)
+                    }
+                }
             }
         },
         components: {
             BannerScroll,
-            MatchHotPlay
+            MatchHotPlay,
         },
         watch: {
             socketData (data) {
@@ -148,6 +162,9 @@
             }
         },
         computed: {
+            swiper() {
+                return this.$refs.mySwiper.swiper
+            },
             homeActivitiesData () {
                 return this.$store.state.home.homeActivitiesData
             },

@@ -27,7 +27,6 @@
     export default {
         data () {
             return {
-                title: '',
                 currNav: 'stat',
                 routeMatchid: 'routeMatchid'
             }
