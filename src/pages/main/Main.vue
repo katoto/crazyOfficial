@@ -379,10 +379,7 @@
                                                 </div>
                                             </div>
                                             <div class="betShow">
-                                                <!--  :class="{'hide':!item.Selections['1'].golds &&-->
-                                                <!--!item.Selections['0'].golds &&-->
-                                                <!--!item.Selections['-1'].golds-->
-                                                <!--}"  -->
+
                                                 <div class="item">
                                                     <template
                                                             v-if="item.Selections['1'].golds&&item.Selections['1'].prize_state==='-1'">

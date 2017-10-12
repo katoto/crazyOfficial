@@ -360,21 +360,21 @@
             newUserGuide ({ params }) {
                 /* 新手引导 */
                 switch (params) {
-                case 'img2':
-                    this.showNewUserImg1 = false;
-                    this.showNewUserImg2 = true;
-                    this.showNewUserImg3 = false
-                        ;break;
-                case 'img3':
-                    this.showNewUserImg1 = false;
-                    this.showNewUserImg2 = false;
-                    this.showNewUserImg3 = true;
-                    break;
-                default:
-                    this.showNewUserBox = false;
-                    /* 弹出 + 888 */
-                    this.$store.dispatch(actionTypes.showJinbiBox, {isShow: true, golds: 888, coinTitle: '首次登录奖励'});
-                    this.$store.dispatch('getUserInfo')
+                    case 'img2':
+                        this.showNewUserImg1 = false;
+                        this.showNewUserImg2 = true;
+                        this.showNewUserImg3 = false
+                            ;break;
+                    case 'img3':
+                        this.showNewUserImg1 = false;
+                        this.showNewUserImg2 = false;
+                        this.showNewUserImg3 = true;
+                        break;
+                    default:
+                        this.showNewUserBox = false;
+                        /* 弹出 + 888 */
+                        this.$store.dispatch(actionTypes.showJinbiBox, {isShow: true, golds: 888, coinTitle: '首次登录奖励'});
+                        this.$store.dispatch('getUserInfo')
                 }
             },
             activityFn ({ params }) {
