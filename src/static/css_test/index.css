@@ -1782,56 +1782,7 @@
 }
 /*个人信息弹窗*/
 
-/*吐槽弹窗*/
-.pop-o{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -308px;
-    margin-top: -336.5px;
-    z-index: 99;
-    padding: 50px 65px 62px;
-    border: 4px solid #2f303a;
-    background: #26272f;
-    text-align: center;
-    color: #fff;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
-}
-.pop-o h2{
-    font-size: 50px;
-    line-height: 66px;
-    font-weight: normal;
-}
-.pop-o>span{
-    line-height: 46px;
-    font-size: 28px;
-}
-.pop-o div{
-    padding: 30px 20px 0;
-    background: #2e313f;
-    -webkit-border-radius:20px;
-    -moz-border-radius:20px;
-    border-radius:20px;
-    margin-top: 36px;
-}
-.pop-o img{
-    display: block;
-    width: 438px;
-    height: 289px;
-}
-.pop-o h3{
-    line-height: 86px;
-    font-size: 32px;
-    font-weight: normal;
-    color: #bebfc1;
-}
-.pop-o h3 i{
-    color: #fff;
-    font-weight: bold;
-}
-/*吐槽弹窗*/
+
 
 /*活动弹窗*/
 .popact-in{
