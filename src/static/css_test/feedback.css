@@ -17,11 +17,10 @@
     top:26px;
     content: '';
     display: block;
-    width:26px;
+    width:28px;
     height:26px;
     overflow: hidden;
-    background: url("../images/feedback/feedback-re.png") no-repeat center;
-    background-size: 26px 26px;
+    background-position: -34px -194px;
 }
 .feedback{
     background: #26272f;
@@ -54,12 +53,14 @@ textarea{
 .feedback02{
     background: #26272f;
 }
-.feedback02 img{
+.feedback02::before{
+    content: '';
     display: block;
     width:184px;
     height:184px;
     overflow: hidden;
     margin: 294px auto 65px;
+    background-position: 0px 0px;
 }
 .feedback02 span{
     line-height:88px;
@@ -78,9 +79,10 @@ textarea{
 }
 .ask-add-wrap{
     padding:50px 35px;
-    text-align: left;
+    overflow: hidden;
 }
 .ask-add{
+    float: left;
     display: inline-block;
     width:156px;
     height:156px;
@@ -99,9 +101,10 @@ textarea{
 .itm-img{
     position: relative;
     display: inline-block;
+    float: left;
     width:150px;
     height:150px;
-    margin-right:10px;
+    margin-right:18px;
     border:3px solid #444a60;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -134,8 +137,7 @@ textarea{
     margin: 12px 0 0 12px;
     width: 18px;
     height: 18px;
-    background: url(../images/feedback/deleteimg.png) no-repeat center center;
-    background-size: 18px 18px;
+    background-position: -194px -166px;
 }
 .btn-ask{
     display: block;
@@ -180,8 +182,7 @@ textarea{
     width:25px;
     height:31px;
     overflow: hidden;
-    background: url("../images/feedback/kefu.png") no-repeat center;
-    background-size: 25px 31px;
+    background-position: 0px -194px;
 }
 
 /*-----反馈记录-----*/
@@ -302,7 +303,6 @@ textarea{
     margin:-485px 0 0 -275px;
     background: #393e51;
     display: -webkit-box;
-    display: box;
     -webkit-box-align: center;
 }
 .imgView-box img{
@@ -310,4 +310,10 @@ textarea{
     margin:0 auto;
     max-width: 97%;
     max-height: 100%;
+}
+
+
+.deleteimg::before,.feedback-re::before,.btn-online::before,.feedback02::before{
+    background-image: url("../images/sprite-feedback.png");
+    background-size: 350px;
 }
