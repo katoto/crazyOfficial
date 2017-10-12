@@ -1,0 +1,101 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>官方版 - 疯狂猜球 </title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/mine.css">
+    <link rel="stylesheet" type="text/css" href="css/live.css">
+    <link rel="stylesheet" type="text/css" href="css/bet.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+    <link rel="stylesheet" type="text/css" href="css/feedback.css">
+</head>
+
+<body>
+<div class="l-full">
+    <div class="toast hide">服务器10秒后重启</div>
+    <div id="feedback" class="wrap respon2">
+        <section class="topBar">
+            <div class="icon_back"></div>
+            <h1>我要反馈</h1>
+            <a href="feedback-item.html" class="feedback-re">
+                反馈记录
+            </a>
+        </section>
+        <div class="feedback01">
+            <div class="feedback-c">
+                <div class="ask-write">
+                    <textarea placeholder="请输入您的宝贵意见或建议，我们将认真处理~谢谢！ 建议留下手机号或QQ，方便我们联系您）"></textarea>
+                </div>
+                <div class="ask-add-wrap">
+                    <span class="itm-img">
+                        <span class="deleteimg">
+                        </span>
+                        <img src="images/feedback/testimg.png" alt="">
+                    </span>
+                    <span class="ask-add">
+                        <input type="file">
+                    </span>
+                </div>
+            </div>
+            <a href="javascript:;" class="btn-ask btn-ask-on">
+                提交反馈
+                <!--btn-ask 未输入内容不可提交/btn-ask-on可提交-->
+            </a>
+            <a href="javascript:;" class="btn-online">
+                在线客服
+            </a>
+        </div>
+        <div class="feedback02 hide">
+            <img src="images/feedback/feedback-su.png" alt="">
+            <span>反馈成功！</span>
+            <p>
+                感谢您对疯狂猜球的关注与支持，我们会认真
+            </p>
+            <p>
+                处理您的反馈，尽快修复和完善相关功能。
+            </p>
+        </div>
+    </div>
+</div>
+<!-- 吐槽弹窗 -->
+<div class="pop pop-opinion hide">
+    <div class="pop_layer"></div>
+    <div class="pop-o">
+        <span class="close">
+            <span></span>
+        </span>
+        <div class="pop-t">
+            在线客服
+        </div>
+        <p>微信搜索 "<i>疯狂猜球服务号</i>"</p>
+        <p>在线反馈您的问题</p>
+        <div class="pop-img">
+            <img src="images/img-public.png" alt="疯狂猜球服务号">
+        </div>
+        <h3>还有更新资讯、福利</h3>
+    </div>
+</div>
+<!-- 吐槽弹窗 -->
+<script src="js/zepto.min.js"></script>
+<script>
+    $(function(){
+        $('.deleteimg').click(function(){
+            $(this).parent('.itm-img').remove();
+        });
+        $('.btn-online').click(function(){
+            $('.pop-opinion').removeClass('hide')
+        });
+        $('.close').click(function(){
+            $(this).parents('.pop').addClass('hide')
+        })
+    })
+</script>
+</body>
+</html>
