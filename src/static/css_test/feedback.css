@@ -87,8 +87,7 @@ textarea{
     width:156px;
     height:156px;
     overflow: hidden;
-    background: url("../images/feedback/img-add.png") no-repeat center;
-    background-size: 156px 156px;
+    background-position: -192px 0;
 }
 .ask-add input{
     outline:none;
@@ -266,6 +265,7 @@ textarea{
     padding:0 30px 50px;
     background: #26272f;
     text-align: left;
+    overflow: hidden;
 }
 #feedback-answered .ask-t,#feedback-answered .ask-time{
     color: #6f799a;
@@ -290,6 +290,7 @@ textarea{
     padding:0 30px 50px;
     background: #2d2e37;
     text-align: left;
+    overflow: hidden;
 }
 /*图片详情*/
 .imgView-box{
@@ -313,7 +314,7 @@ textarea{
 }
 
 
-.deleteimg::before,.feedback-re::before,.btn-online::before,.feedback02::before{
+.deleteimg::before,.feedback-re::before,.btn-online::before,.feedback02::before,.ask-add{
     background-image: url("../images/sprite-feedback.png");
     background-size: 350px;
 }
