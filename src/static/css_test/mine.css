@@ -447,8 +447,8 @@
     position: absolute;
     right:0;
     top:0;
-    width:122px;
-    height:122px;
+    width:122px !important;
+    height:122px !important;
     overflow: hidden;
 }
 .back-wrap {

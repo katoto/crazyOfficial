@@ -40,14 +40,7 @@
             <div class="main respon2-itm">
                 <div class="scroller clear">
                     <div class="main-list main-list01 clear" v-show="isShowChargeTab">
-                        <div class="item" v-for="item in chargeList"
-                            :class="{'itemAdd':parseInt( item.attchgolds )>0 ,
-                            'itemAdd6b':parseInt( item.attchgolds )===600,
-                            'itemAdd3k':parseInt( item.attchgolds )===3000,
-                            'itemAdd2w':parseInt( item.attchgolds )===20000,
-                            'itemAdd5w':parseInt( item.attchgolds )===50000,
-                            }"
-                        >
+                        <div class="item" v-for="item in chargeList">
                             <img :src="item.imgurl">
                             <img v-if="item.gifturl !==''" :src="item.gifturl" alt="" class="itemAdd">
                             <!--<p class="item-txt">送<i class="icon-jinbi"></i><strong>{{ (parseInt( item.goldnum ) + parseInt( item.attchgolds )) |golds }}</strong></p>-->
