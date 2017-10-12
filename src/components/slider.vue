@@ -5,7 +5,9 @@
         <!--@touchend="swipeEnd"-->
       <div class="slider-wrapper"
       :style="styleobj"
-
+        @touchmove="swipeMove"
+        @touchstart="swipeStart"
+        @touchend="swipeEnd"
           @mousedown="swipeStart"
           @mouseup="swipeEnd"
           @mousemove="swipeMove"
@@ -37,7 +39,7 @@ export default {
                 animation: false,
                 isMove: false,
                 containerClass: {
-                    'swiper-container-vertical': true
+                    'swiper-container-vertical': false
                 },
                 setIntervalid: '',
                 prefixes: detectPrefixes(),
@@ -123,7 +125,6 @@ export default {
     },
     mounted () {
         let that = this
-
       // 起始跳到指定页 无样式
         that.slide(this.sliderinit.currentPage, 'animationnone')
         // 定制事件
@@ -160,7 +161,6 @@ export default {
             }
         },
         swipeStart (e) {
-            console.log(111111)
             this.isMove = false
             let that = this
             if (this.basicdata.transitionEnding) {
@@ -374,7 +374,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style>
   .slider-container {
       overflow: hidden;
       position: relative;

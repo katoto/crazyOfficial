@@ -16,7 +16,7 @@
         methods: {
             goback () {
                 if (this.personTitle === '商城') {
-                    this.$router.push('/h5/home/hot')
+                    this.$router.push('/h5/home')
                 } else {
                     window.history.back()
                 }
