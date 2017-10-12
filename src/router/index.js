@@ -35,6 +35,7 @@ const luckdrawNew = () => import('~pages/luckdrawNew' /* webpackChunkName: "chun
 /* 用户反馈 */
 const fb_upload = () => import('~pages/feedback/fb_upload.vue' /* webpackChunkName: "chunks/fb_up" */)
 const fb_list = () => import('~pages/feedback/fb_list.vue' /* webpackChunkName: "chunks/fb_list" */)
+const fb_listMore = () => import('~pages/feedback/fb_listMore.vue' /* webpackChunkName: "chunks/fb_listMore" */)
 
 // mode 代表浏览器环境   路由是按顺序匹配的
 const router = new VueRouter({
@@ -101,6 +102,10 @@ const router = new VueRouter({
         {
             path: '/fb_list',
             component: fb_list
+        },
+        {
+            path: '/fb_listMore',
+            component: fb_listMore
         },
         {
             path: '*',

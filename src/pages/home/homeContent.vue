@@ -449,7 +449,8 @@
                     break;
                 case 'option':
                     stopHtml();
-                    this.showOption = true;
+                    this.$router.push('/fb_upload')
+//                    this.showOption = true;
                     _hmt.push(['_trackEvent', '500fkcqH5_我要反馈点击', 'click', '500fkcqH5_我要反馈']);
                     break;
                 case 'crazyPage':

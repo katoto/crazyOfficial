@@ -3,30 +3,22 @@
         <!--v-if="!isHideHomeHead"-->
         <Public_Head class="topBar" person-title="我要反馈"></Public_Head>
 
-        <!--<section class="topBar">-->
-            <!--<div class="icon_back"></div>-->
-            <!--<h1>我要反馈</h1>-->
-            <!--<a href="feedback-item.html" class="feedback-re">-->
-                <!--反馈记录-->
-            <!--</a>-->
-        <!--</section>-->
-
         <div class="feedback01">
             <div class="feedback-c">
                 <div class="ask-write">
-                    <textarea placeholder="请输入您的宝贵意见或建议，我们将认真处理~谢谢！ 建议留下手机号或QQ，方便我们联系您）"></textarea>
+                    <textarea v-model="textareaData" placeholder="请输入您的宝贵意见或建议，我们将认真处理~谢谢！ 建议留下手机号或QQ，方便我们联系您）"></textarea>
                 </div>
                 <div class="ask-add-wrap">
-                    <span class="ask-add" id="fileSelect">
-                        <input type="file" id="fileElem" name="submitfile1"  @change="handleFiles" style="cursor: pointer;">
+                    <span class="ask-add" id="fileSelect" @click="checkFileReader">
+                        <!--<input type="file" name="submitfile1"  @change="handleFiles">-->
+                        <input type="file" name="submitfile1"  @change="handleFiles">
                     </span>
                 </div>
             </div>
-            <a href="javascript:;" class="btn-ask btn-ask-on">
+            <a href="javascript:;" class="btn-red btn-ask" :class="{'btn-ask-on':textareaData}">
                 提交反馈
-                <!--btn-ask 未输入内容不可提交/btn-ask-on可提交-->
             </a>
-            <a href="javascript:;" class="btn-online">
+            <a href="javascript:;" v-tap="{methods:showkefu}" class="btn-online">
                 在线客服
             </a>
         </div>
@@ -41,20 +33,20 @@
             </p>
         </div>
 
-        <!--<div class="ask-wrap">-->
-            <!--<div class="ask-write">-->
-                <!--<textarea name="content" id="submitcontent" class="ask-inp" placeholder="请详细描述你的问题或建议，我们将及时跟进与解决（建议添加相关问题截图）"></textarea>-->
-                <!--<div class="ask-add-wrap">-->
-                <!--<span class="ask-add" id="fileSelect">-->
-                	<!--<input type="file" id="fileElem" name="submitfile1"  @change="handleFiles" style="cursor: pointer;">-->
-                <!--</span>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="ask-btns">-->
-                <!--<span class="btn-red mb10" style="cursor: pointer;">提交</span>-->
-                <!--<span class="btn-white" data-href="/helpcenter/userproblem/">历史意见反馈</span>-->
-            <!--</div>-->
-        <!--</div>-->
+        <form id="form" enctype="multipart/form-data">
+            <input type="text" name="ck">
+
+            <input class="" type="file" name="image">
+            <br/>
+            <br/>
+            <br/>
+            <input type="file" name="image2">
+
+            <input type="button" id="sendAjax" value="点击请求">
+        </form>
+
+        <!-- 吐槽弹窗 -->
+        <Kefu_alert></Kefu_alert>
 
     </div>
 
@@ -63,73 +55,156 @@
 <script>
     import $ from 'bc-zepto.full'
     import Public_Head from '~components/publicHead'
-
+    import Kefu_alert from '~components/kefu-alert'
+    import {aTypes, mTypes} from '~store/feedback'
     export default {
         data(){
             return {
-                title: ''
+                showkf:false,
+                textareaData:'',
             }
         },
         watch: {},
         methods: {
+            showkefu(){
+                this.$store.commit(mTypes.setkefuAlert , false)
+            },
             handleFiles(e){
                 var file = e.target.files[0];
                 var reader = new FileReader();
                 reader.onload = function(){
                     var imageHtml = '';
                     if(file.size > 2048576){
-//                        alertTip(5);
-                        console.error('文件太大')
+                      this.$store.dispatch('showToast', '图片太大请截图');
                         return false;
                     }
-                    //console.log(image);
-                    imageHtml += '<span class="itm-img"><span class="deleteimg" @click="deleteimg"></span><img src="';
+                    imageHtml += '<span class="itm-img"><span class="deleteimg" ></span><img src="';
                     imageHtml += reader.result+'" alt="" data-src="';
                     imageHtml += reader.result+'" class="conPic1">';
-                    imageHtml += '<input type="hidden" class="imagefile" name="imagefilename[]" value="'+reader.result+'"';
+                    imageHtml += '<input type="hidden" class="imagefile" name="imagefilename" value="'+reader.result+'"';
                     imageHtml +='</span>';
 
                     $("#fileSelect").before(imageHtml);
                 }
                 reader.readAsDataURL(file);
                 /* 清楚数据 */
+                $('.deleteimg').unbind('click');
                 setTimeout(function(){
                     var imageNUm = $('.itm-img').length;
+                    $(document).on('click', '.deleteimg', function(){
+                        $(this).parent().remove();
+                        var imageNUm = $('.itm-img').length;
+                        if( !document.getElementById("fileSelect") && imageNUm < 3){
+                            $(".ask-add-wrap").append('<span class="ask-add" id="fileSelect"><input type="file" name="submitfile1" accept="image/*"  onchange="handleFiles(this.files)" ></span>');
+                        }
+                    });
                     if(imageNUm+1 > 3){
                         $("#fileSelect").remove();
                         return false;
                     }
                 },100);
             },
-            deleteimg(e){
-                console.log(e.target)
-                console.log($(e.target))
-                console.log($(e.target).parent())
-                $(e.target).parent().remove();
-//                var imageNUm = $('.itm-img').length;
-//                if(document.getElementById("fileSelect")){
-//                }else{
-//                    if( imageNUm < 3){
-//                        if( window.EsApp ){
-//                            $(".ask-add-wrap").append('<span class="ask-add" id="fileSelect"><input type="file" id="fileElem" name="submitfile1"  onchange="handleFiles(this.files)" style="cursor: pointer;"></span>');
-//                        }else{
-//                            $(".ask-add-wrap").append('<p>ffff</p>')
-//                            $(".ask-add-wrap").append('<span class="ask-add" id="fileSelect"><input type="file" id="fileElem" name="submitfile1" accept="image/*"  onchange="handleFiles(this.files)" style="cursor: pointer;"></span>');
-//                        }
-//
-//                    }
-//                }
-
+            checkFileReader(){
+                if ( !(window.File && window.FileReader && window.FileList && window.Blob) ){
+                    this.$store.dispatch('showToast', '不支持图片上传');
+                    return false;
+                }
             }
-    },
+        },
         computed: {
 
         },
         components: {
-            Public_Head
+            Public_Head,
+            Kefu_alert
         },
         mounted(){
+            $("#sendAjax").on('click', function(){
+                console.log($('#form')[0])
+                console.log(new FormData($('#form')[0]))
+                console.log(new FormData($('#form')[0]).values)
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://192.168.50.12:9899/feedback/upload',
+//                    data: { ck: 'OTk5OTM1MGI0YjllZDcyZTdmNTY1NDAwNDczOTM1ZDg3ODU0MzE4',imgArr:arr},
+                    data: new FormData($('#form')[0]),
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    success: function(d){
+                        switch(d){
+                            case 0:
+                                $('.ui-alert-tips').addClass("hide");
+                                break;
+                            case 1:
+                                $('.ui-alert-tips').addClass("hide");
+                                $('.bg-staff').html('<span class="ico-done"></span>');
+                                $('.wrap').append('<div class="tips-box"><p>感谢您的反馈</p><p>我们将尽快跟进解决您的反馈，完善产品</p><span class="btn-red btn-competed" data-href="/helpcenter/" style="cursor: pointer;">完成</span></div>');
+                                $(".ask-wrap").remove();
+                                break;
+                            case 2:
+                                $('.ui-alert-tips').addClass("hide");
+                                break;
+                        }
+                    },
+                    error: function(xhr, type){
+                        $('.ui-alert-tips').addClass("hide");
+                        alertTip(8);
+                    }
+                });
 
+            });
+
+
+            $(".btn-red").on('click', function(){
+                var msgplatform = 1;//平台
+                var content = $('#submitcontent').val(); //内容
+                var image = [];
+                var imageStr = '';
+                var img2 = '';
+                //图片base64编码
+                $.each( $('.imagefile'), function(key, value){
+                    console.log( $(this).val())
+                    imageStr +=  $(this).val()
+                    img2 += $(this).val().split(',')[1] +'$$$$';
+//                    str.slice(0,str.indexOf(',')+1)
+//                    image[key] = $(this).val();
+                });
+                console.log(img2.slice(0,img2.length-3))
+                $("#fileElem").remove();
+//                console.log(new FormData($('#uploadForm')[0]))
+//                    ,imgArr:image
+//                var arr = [1,2,3]
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://192.168.50.12:9899/feedback/upload',
+                    data: { ck: 'OTk5OTM1MDExNmQ3YzcxZmRhM2I4NWRmOTIzZjNkOThlZjA5NjY5',image: imageStr},
+//                    data: new FormData($('#uploadForm')[0]),
+                    dataType: 'json',
+                    success: function(d){
+                        switch(d){
+                            case 0:
+                                $('.ui-alert-tips').addClass("hide");
+                                break;
+                            case 1:
+                                $('.ui-alert-tips').addClass("hide");
+                                $('.bg-staff').html('<span class="ico-done"></span>');
+                                $('.wrap').append('<div class="tips-box"><p>感谢您的反馈</p><p>我们将尽快跟进解决您的反馈，完善产品</p><span class="btn-red btn-competed" data-href="/helpcenter/" style="cursor: pointer;">完成</span></div>');
+                                $(".ask-wrap").remove();
+                                break;
+                            case 2:
+                                $('.ui-alert-tips').addClass("hide");
+                                break;
+                        }
+                    },
+                    error: function(xhr, type){
+                        $('.ui-alert-tips').addClass("hide");
+                        alertTip(8);
+                    }
+                });
+
+            });
         }
     }
 </script>

@@ -5,15 +5,16 @@ import ajax from '~common/ajax'
 import Vue from 'vue'
 import {platform, src, getCk, convertArrToObj, convertToQueryString, mapMutations, mapActions} from '~common/util'
 const state = {
-    fmdetail: null, // 投注页所有数据
-
+    kefuAlert:true,
 
 }
 const mutationsInfo = mapMutations({
     setNationGetRed (state, data) {
         state.nationGetRed = data
     },
-
+    setkefuAlert (state, data) {
+        state.kefuAlert = data
+    },
 }, 'feedback')
 
 /**

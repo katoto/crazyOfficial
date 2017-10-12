@@ -2,7 +2,7 @@
     <div class="header_pop">
         <span class="btn btn-back"  v-tap="{methods:goback}"></span>
         <h1>{{ this.personTitle }}</h1>
-        <a v-tap="{methods:jumpRight}" class="feedback-re">
+        <a v-tap="{methods:jumpRight}" v-if="showFeedback" class="feedback-re">
             反馈记录
         </a>
     </div>
@@ -13,7 +13,7 @@
         props: ['personTitle'],
         data () {
             return {
-                title: ''
+                showFeedback:false,
             }
         },
         methods: {
@@ -28,6 +28,11 @@
                 if (this.personTitle === '我要反馈') {
                     this.$router.push('/fb_list')
                 }
+            }
+        },
+        mounted(){
+            if (this.personTitle === '我要反馈') {
+                this.showFeedback = true;
             }
         }
     }
