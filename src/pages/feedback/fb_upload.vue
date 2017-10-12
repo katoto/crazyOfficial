@@ -17,10 +17,11 @@
 
 <script>
     import $ from 'bc-zepto.full'
+
     export default {
         data(){
             return {
-                title: '我是頭部'
+                title: ''
             }
         },
         watch: {},

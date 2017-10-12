@@ -33,7 +33,8 @@ const ShopAdd = () => import('~pages/shopAdd' /* webpackChunkName: "chunks/shopA
 const luckdrawNew = () => import('~pages/luckdrawNew' /* webpackChunkName: "chunks/luckdrawNew" */)
 
 /* 用户反馈 */
-const UserFeedback = () => import('~pages/userFeedback.vue' /* webpackChunkName: "chunks/userFeedback" */)
+const fb_upload = () => import('~pages/feedback/fb_upload.vue' /* webpackChunkName: "chunks/fb_up" */)
+const fb_list = () => import('~pages/feedback/fb_list.vue' /* webpackChunkName: "chunks/fb_list" */)
 
 // mode 代表浏览器环境   路由是按顺序匹配的
 const router = new VueRouter({
@@ -94,8 +95,12 @@ const router = new VueRouter({
             component: ShopAdd
         },
         {
-            path: '/userFeedback',
-            component: UserFeedback
+            path: '/fb_upload',
+            component: fb_upload
+        },
+        {
+            path: '/fb_list',
+            component: fb_list
         },
         {
             path: '*',
