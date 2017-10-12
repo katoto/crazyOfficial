@@ -15,6 +15,10 @@
     import '~static/css/live.css'
     import '~static/css/mine.css'
     import '~static/css/media.css'
+
+    /* 到时候移到反馈里 */
+    import '~static/css/feedback.css'
+
     import {platform} from '~common/util'
 
     export default {
@@ -40,8 +44,8 @@
         /* 登陆还得修改下 */
             try {
             //    线下账号  测试  !!!
-//                await this.$store.dispatch('localLogin', 8);
-//                await this.$store.dispatch('getUserInfo');
+                await this.$store.dispatch('localLogin', 8);
+                await this.$store.dispatch('getUserInfo');
                 /* 线上 登陆 */
 //                await this.$store.dispatch('checkLogin')
 //            /* 线下 登陆 */

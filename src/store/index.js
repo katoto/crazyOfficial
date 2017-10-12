@@ -8,6 +8,7 @@ import ajax from '~common/ajax'
 import {addCookie,platform, src, wait, convertToQueryString, getCk} from '~common/util'
 import main from './main'
 import home from './home'
+import feedback from './feedback'
 import $ from 'bc-zepto.full'
 
 Vue.use(Vuex)
@@ -886,6 +887,7 @@ export default () => new Vuex.Store({
     mutations,
     modules: {
         main,
-        home
+        home,
+        feedback
     }
 })
