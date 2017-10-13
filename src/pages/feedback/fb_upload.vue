@@ -6,7 +6,7 @@
         <div class="feedback01">
             <div class="feedback-c">
                 <div class="ask-write">
-                    <textarea v-model="textareaData" placeholder="请输入您的宝贵意见或建议，我们将认真处理~谢谢！ 建议留下手机号或QQ，方便我们联系您）"></textarea>
+                    <textarea v-model="textareaData" id="submitcontent" placeholder="请输入您的宝贵意见或建议，我们将认真处理~谢谢！ 建议留下手机号或QQ，方便我们联系您）"></textarea>
                 </div>
                 <div class="ask-add-wrap">
                     <span class="ask-add" id="fileSelect" @click="checkFileReader">
@@ -33,17 +33,15 @@
             </p>
         </div>
 
-        <form id="form" enctype="multipart/form-data">
-            <input type="text" name="ck">
-
-            <input class="" type="file" name="image">
-            <br/>
-            <br/>
-            <br/>
-            <input type="file" name="image2">
-
-            <input type="button" id="sendAjax" value="点击请求">
-        </form>
+        <div class="imgView-box" style="display: none">
+            <img id="imgMoreData" src="~static/images/testimg.png">
+        </div>
+        <!--  <form id="form" enctype="multipart/form-data">-->
+            <!--<input type="text" name="ck">-->
+            <!--<input class="" type="file" name="image">-->
+            <!--<input type="file" name="image2">-->
+            <!--<input type="button" id="sendAjax" value="点击请求">-->
+        <!--</form>  -->
 
         <!-- 吐槽弹窗 -->
         <Kefu_alert></Kefu_alert>
@@ -53,10 +51,12 @@
 </template>
 
 <script>
-    import $ from 'bc-zepto.full'
     import Public_Head from '~components/publicHead'
     import Kefu_alert from '~components/kefu-alert'
+    import $ from 'bc-zepto.full'
     import {aTypes, mTypes} from '~store/feedback'
+    import {platform, src, getCk, namespace, cptype, convertArrToObj, convertToQueryString} from '~common/util'
+
     export default {
         data(){
             return {
@@ -79,8 +79,7 @@
                         return false;
                     }
                     imageHtml += '<span class="itm-img"><span class="deleteimg" ></span><img src="';
-                    imageHtml += reader.result+'" alt="" data-src="';
-                    imageHtml += reader.result+'" class="conPic1">';
+                    imageHtml += reader.result+'" alt="" class="conPic1">';
                     imageHtml += '<input type="hidden" class="imagefile" name="imagefilename" value="'+reader.result+'"';
                     imageHtml +='</span>';
 
@@ -97,6 +96,11 @@
                         if( !document.getElementById("fileSelect") && imageNUm < 3){
                             $(".ask-add-wrap").append('<span class="ask-add" id="fileSelect"><input type="file" name="submitfile1" accept="image/*"  onchange="handleFiles(this.files)" ></span>');
                         }
+                    });
+                    $(document).on('click', '.itm-img img', function(){
+                        console.log(111111)
+                        $('#imgMoreData').parent().show();
+                        $('#imgMoreData').attr('src',$(this).attr('src'))
                     });
                     if(imageNUm+1 > 3){
                         $("#fileSelect").remove();
@@ -118,69 +122,42 @@
             Public_Head,
             Kefu_alert
         },
-        mounted(){
-            $("#sendAjax").on('click', function(){
-                console.log($('#form')[0])
-                console.log(new FormData($('#form')[0]))
-                console.log(new FormData($('#form')[0]).values)
-                $.ajax({
-                    type: 'POST',
-                    url: 'http://192.168.50.12:9899/feedback/upload',
-//                    data: { ck: 'OTk5OTM1MGI0YjllZDcyZTdmNTY1NDAwNDczOTM1ZDg3ODU0MzE4',imgArr:arr},
-                    data: new FormData($('#form')[0]),
-                    processData: false,
-                    contentType: false,
-                    dataType: 'json',
-                    success: function(d){
-                        switch(d){
-                            case 0:
-                                $('.ui-alert-tips').addClass("hide");
-                                break;
-                            case 1:
-                                $('.ui-alert-tips').addClass("hide");
-                                $('.bg-staff').html('<span class="ico-done"></span>');
-                                $('.wrap').append('<div class="tips-box"><p>感谢您的反馈</p><p>我们将尽快跟进解决您的反馈，完善产品</p><span class="btn-red btn-competed" data-href="/helpcenter/" style="cursor: pointer;">完成</span></div>');
-                                $(".ask-wrap").remove();
-                                break;
-                            case 2:
-                                $('.ui-alert-tips').addClass("hide");
-                                break;
-                        }
-                    },
-                    error: function(xhr, type){
-                        $('.ui-alert-tips').addClass("hide");
-                        alertTip(8);
-                    }
-                });
-
-            });
-
-
+        mounted(t){
+            let that = this;
             $(".btn-red").on('click', function(){
-                var msgplatform = 1;//平台
-                var content = $('#submitcontent').val(); //内容
-                var image = [];
-                var imageStr = '';
-                var img2 = '';
+                let content = $('#submitcontent').val(); //内容
+                let image = [];
+                let imageStr = '';
+                let img2 = '';
                 //图片base64编码
+                if(!content || content === ''){
+                    that.$store.dispatch('showToast', '反馈内容不可为空~');
+                    return false;
+                }
                 $.each( $('.imagefile'), function(key, value){
-                    console.log( $(this).val())
-                    imageStr +=  $(this).val()
+                    imageStr +=  $(this).val();
                     img2 += $(this).val().split(',')[1] +'$$$$';
 //                    str.slice(0,str.indexOf(',')+1)
 //                    image[key] = $(this).val();
                 });
-                console.log(img2.slice(0,img2.length-3))
+
+//                console.log(img2.slice(0,img2.length-3))
+
                 $("#fileElem").remove();
 //                console.log(new FormData($('#uploadForm')[0]))
 //                    ,imgArr:image
 //                var arr = [1,2,3]
-
                 $.ajax({
                     type: 'POST',
                     url: 'http://192.168.50.12:9899/feedback/upload',
-                    data: { ck: 'OTk5OTM1MDExNmQ3YzcxZmRhM2I4NWRmOTIzZjNkOThlZjA5NjY5',image: imageStr},
-//                    data: new FormData($('#uploadForm')[0]),
+                    data: {
+                        ck:getCk(),
+                        os:platform,
+                        src:src,
+                        device:window.navigator.userAgent,
+                        content:that.textareaData,
+                        image: imageStr,
+                    },
                     dataType: 'json',
                     success: function(d){
                         switch(d){
@@ -203,11 +180,51 @@
                         alertTip(8);
                     }
                 });
-
             });
+
+
+
+
         }
     }
+//    $("#sendAjax").on('click', function(){
+//        console.log($('#form')[0])
+//        console.log(new FormData($('#form')[0]))
+//        console.log(new FormData($('#form')[0]).values)
+//        $.ajax({
+//            type: 'POST',
+//            url: 'http://192.168.50.12:9899/feedback/upload',
+////                    data: { ck: 'OTk5OTM1MGI0YjllZDcyZTdmNTY1NDAwNDczOTM1ZDg3ODU0MzE4',imgArr:arr},
+//            data: new FormData($('#form')[0]),
+//            processData: false,
+//            contentType: false,
+//            dataType: 'json',
+//            success: function(d){
+//                switch(d){
+//                    case 0:
+//                        $('.ui-alert-tips').addClass("hide");
+//                        break;
+//                    case 1:
+//                        $('.ui-alert-tips').addClass("hide");
+//                        $('.bg-staff').html('<span class="ico-done"></span>');
+//                        $('.wrap').append('<div class="tips-box"><p>感谢您的反馈</p><p>我们将尽快跟进解决您的反馈，完善产品</p><span class="btn-red btn-competed" data-href="/helpcenter/" style="cursor: pointer;">完成</span></div>');
+//                        $(".ask-wrap").remove();
+//                        break;
+//                    case 2:
+//                        $('.ui-alert-tips').addClass("hide");
+//                        break;
+//                }
+//            },
+//            error: function(xhr, type){
+//                $('.ui-alert-tips').addClass("hide");
+//                alertTip(8);
+//            }
+//        });
+//
+//    });
 </script>
 <style>
+
+
 
 </style>
