@@ -33,9 +33,13 @@
             </p>
         </div>
 
-        <div class="imgView-box" style="display: none">
-            <img id="imgMoreData" src="~static/images/testimg.png">
+        <div class="pop pop-imgView" style="display: none">
+            <div class="pop_layer" onclick="$(this).parent().hide()"></div>
+            <div class="imgView-box">
+                <img id="imgMoreData" src="~static/images/testimg.png">
+            </div>
         </div>
+
         <!--  <form id="form" enctype="multipart/form-data">-->
             <!--<input type="text" name="ck">-->
             <!--<input class="" type="file" name="image">-->
@@ -99,7 +103,7 @@
                     });
                     $(document).on('click', '.itm-img img', function(){
                         console.log(111111)
-                        $('#imgMoreData').parent().show();
+                        $('#imgMoreData').parent().parent().show();
                         $('#imgMoreData').attr('src',$(this).attr('src'))
                     });
                     if(imageNUm+1 > 3){
