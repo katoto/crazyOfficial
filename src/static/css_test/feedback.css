@@ -299,7 +299,7 @@ textarea{
 }
 /*图片详情*/
 .imgView-box{
-    position: fixed;
+    position: absolute;
     width:550px;
     height:970px;
     overflow: hidden;

@@ -140,15 +140,18 @@
 </div>
 
 <!--图片详情-->
-<div class="imgView-box hide">
-    <img src="images/testimg.png" alt="">
+<div class="pop pop-imgView hide">
+    <div class="pop_layer"></div>
+    <div class="imgView-box">
+        <img src="images/testimg.png" alt="">
+    </div>
 </div>
 <script src="js/zepto.min.js"></script>
 <script>
     $('.feedback-items li img').click(function(){
-        $('.imgView-box').removeClass('hide')
+        $('.pop-imgView').removeClass('hide')
     })
-    $('.imgView-box').click(function(){
+    $('.pop-imgView').click(function(){
         $(this).addClass('hide')
     })
 </script>
