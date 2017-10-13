@@ -3,7 +3,7 @@
         <!--v-if="!isHideHomeHead"-->
         <Public_Head class="topBar" person-title="我要反馈"></Public_Head>
 
-        <div class="feedback01">
+        <div class="feedback01" :class="{'hide':!showFeedback01}">
             <div class="feedback-c">
                 <div class="ask-write">
                     <textarea v-model="textareaData" id="submitcontent" placeholder="请输入您的宝贵意见或建议，我们将认真处理~谢谢！ 建议留下手机号或QQ，方便我们联系您）"></textarea>
@@ -22,7 +22,12 @@
                 在线客服
             </a>
         </div>
-        <div class="feedback02 hide">
+
+        <div class="loading" :class="{'hide':!showLoading}">
+            <img src="~static/images/loading.svg" >
+        </div>
+
+        <div class="feedback02 " :class="{'hide':!showFeedback02}">
             <img src="images/feedback/feedback-su.png" alt="">
             <span>反馈成功！</span>
             <p>
@@ -49,7 +54,6 @@
 
         <!-- 吐槽弹窗 -->
         <Kefu_alert></Kefu_alert>
-
     </div>
 
 </template>
@@ -66,6 +70,9 @@
             return {
                 showkf:false,
                 textareaData:'',
+                showLoading:false,
+                showFeedback01:true,
+                showFeedback02:false,
             }
         },
         watch: {},
@@ -102,7 +109,6 @@
                         }
                     });
                     $(document).on('click', '.itm-img img', function(){
-                        console.log(111111)
                         $('#imgMoreData').parent().parent().show();
                         $('#imgMoreData').attr('src',$(this).attr('src'))
                     });
@@ -138,13 +144,13 @@
                     that.$store.dispatch('showToast', '反馈内容不可为空~');
                     return false;
                 }
+                that.showLoading = true;
                 $.each( $('.imagefile'), function(key, value){
                     imageStr +=  $(this).val();
                     img2 += $(this).val().split(',')[1] +'$$$$';
 //                    str.slice(0,str.indexOf(',')+1)
 //                    image[key] = $(this).val();
                 });
-
 //                console.log(img2.slice(0,img2.length-3))
 
                 $("#fileElem").remove();
@@ -155,7 +161,7 @@
                     type: 'POST',
                     url: 'http://192.168.50.12:9899/feedback/upload',
                     data: {
-                        ck:getCk(),
+                        ck:"OTk5OTM1MDQwY2UwZmY4MWIyYThlYzQ3Y2FjOGUzMzVlNjAzNjE4",
                         os:platform,
                         src:src,
                         device:window.navigator.userAgent,
@@ -164,30 +170,20 @@
                     },
                     dataType: 'json',
                     success: function(d){
-                        switch(d){
-                            case 0:
-                                $('.ui-alert-tips').addClass("hide");
-                                break;
-                            case 1:
-                                $('.ui-alert-tips').addClass("hide");
-                                $('.bg-staff').html('<span class="ico-done"></span>');
-                                $('.wrap').append('<div class="tips-box"><p>感谢您的反馈</p><p>我们将尽快跟进解决您的反馈，完善产品</p><span class="btn-red btn-competed" data-href="/helpcenter/" style="cursor: pointer;">完成</span></div>');
-                                $(".ask-wrap").remove();
-                                break;
-                            case 2:
-                                $('.ui-alert-tips').addClass("hide");
-                                break;
+                        that.showLoading = false;
+                        if(d.status==='100'){
+                            that.showFeedback01 = false;
+                            that.showFeedback02 = true;
+                        }else{
+                            that.$store.dispatch('showToast', d.message);
+//                            that.$store.dispatch('showToast', '反馈上传出错，请刷新再试试~');
                         }
                     },
                     error: function(xhr, type){
-                        $('.ui-alert-tips').addClass("hide");
-                        alertTip(8);
+                        that.$store.dispatch('showToast', '上传提交出错，请稍后再试试~~');
                     }
                 });
             });
-
-
-
 
         }
     }

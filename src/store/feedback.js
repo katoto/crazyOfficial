@@ -6,7 +6,7 @@ import Vue from 'vue'
 import {platform, src, getCk, convertArrToObj, convertToQueryString, mapMutations, mapActions} from '~common/util'
 const state = {
     kefuAlert:true,
-
+    feedbackList:null,
 }
 const mutationsInfo = mapMutations({
     setNationGetRed (state, data) {
@@ -15,6 +15,10 @@ const mutationsInfo = mapMutations({
     setkefuAlert (state, data) {
         state.kefuAlert = data
     },
+    setFeedbackList(state,data){
+        state.feedbackList = data
+    }
+
 }, 'feedback')
 
 /**
@@ -39,6 +43,17 @@ const actionsInfo = mapActions({
         }
     },
 
+    async getFeedbackList ({commit, dispatch}) {
+        try {
+           let ck= 'OTk5OTM1MDQwY2UwZmY4MWIyYThlYzQ3Y2FjOGUzMzVlNjAzNjE4'
+            // let InfoData = await ajax.get(`/activity/redpack/info?src=${src}&ck=${getCk()}&platform=${platform}`);
+            let InfoData = await ajax.get(`http://192.168.50.12:9899/feedback/list?src=${src}&ck=${ck}&platform=${platform}`)
+            console.log(InfoData)
+            commit(mTypes.setFeedbackList, InfoData)
+        } catch (e) {
+            dispatch('showToast', e.message)
+        }
+    },
 }, 'main')
 
 export const mTypes = mutationsInfo.mTypes
