@@ -5,15 +5,16 @@
             <ul class="full-scroll" v-if="feedbackList && feedbackList.fb_lst">
 
                 <li  v-for="item in feedbackList.fb_lst"
-                    :class="{'ask-had': item.fb_status==='1',
-                     'ask-hadno': item.fb_status==='2'
+                    :class="{'ask-had': item.fb_status==='2',
+                     'ask-hadno': item.fb_status==='1'
                      }"
+                     v-tap="{'methods': goMoreMess ,params:item.fb_id}"
                 >
                     <span class="ask-t">
                         {{ item.fb_status | statusFormate }}
                     </span>
                     <span class="ask-time">
-                        {{ item.fb_time | formatTime_week }}
+                        {{ item.fb_issue_time | formatTime_week }}
                     </span>
                     <p class="ask-c">
                         {{ item.fb_issues }}
@@ -23,6 +24,11 @@
                     </template>
                 </li>
             </ul>
+
+            <div class="scroller" v-else>
+                <img src="~static/images/empty_Mess.png" class="phbNoList_hc">
+                <p class="phbNoList_p_hc">暂无记录~</p>
+            </div>
         </div>
         <p class="feedback-tips">
             感谢您的热心反馈，我们会在第一时间回复您
@@ -34,22 +40,18 @@
                 <img id="imgMoreData" :src=moreImgView >
             </div>
         </div>
-
     </div>
 </template>
-
 <script>
     import Public_Head from '~components/publicHead'
     import {aTypes, mTypes} from '~store/feedback'
     export default {
         data(){
             return {
-                title: '',
                 moreImgView:'',
                 showPopImg:false,
             }
         },
-        watch: {},
         methods: {
             showMoreImg({params}){
                 this.showPopImg = true;
@@ -57,6 +59,10 @@
             },
             closePopImg(){
                 this.showPopImg = false;
+            },
+            goMoreMess({params}){
+                console.log(params)
+                this.$router.push('/fb_listMore/'+params)
             }
         },
         computed: {
@@ -71,17 +77,6 @@
             this.$store.dispatch(aTypes.getFeedbackList);
         },
         filters: {
-            format: (num) => {
-//                金币格式处理
-                num = Number(num);
-                if (num < 10000) {
-                    return num
-                } else if (num < 100000000) {
-                    return Math.round(num / 10000 * 10) / 10 + '万'
-                } else {
-                    return Math.round(num / 100000000 * 10) / 10 + '亿'
-                }
-            },
             statusFormate:(status)=>{
                 status = status || '0';
                 switch (status){
@@ -142,5 +137,3 @@
         },
     }
 </script>
-<style>
-</style>

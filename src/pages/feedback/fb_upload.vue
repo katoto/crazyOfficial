@@ -75,7 +75,6 @@
                 showFeedback02:false,
             }
         },
-        watch: {},
         methods: {
             showkefu(){
                 this.$store.commit(mTypes.setkefuAlert , false)
@@ -124,9 +123,6 @@
                     return false;
                 }
             }
-        },
-        computed: {
-
         },
         components: {
             Public_Head,
@@ -223,8 +219,3 @@
 //
 //    });
 </script>
-<style>
-
-
-
-</style>

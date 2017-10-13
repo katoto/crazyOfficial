@@ -4,61 +4,45 @@
 
         <div class="respon2-itm">
             <div class="full-scroll">
-                <div class="my-ask">
+                <template v-if="fbMore">
+                    <div class="my-ask">
                     <span class="ask-t">
                         我的反馈
                     </span>
                     <span class="ask-time">
-                       2017/10/1   09:42
+                        {{ fbMore.fb_issue_time |formatTime_week  }}
                     </span>
-                    <p class="ask-c">
-                        你们这产品呀我都不会用，什么鬼啊，叫你们老板出来啊，哼，信不信我打电话报警！
+                        <p class="ask-c">
+                            {{ fbMore.fb_issues }}
+                        </p>
+                        <template v-if="fbMore.fb_images && fbMore.fb_images.length>0">
+                            <span class="itm-img" v-for="imgMore in fbMore.fb_images">
+                                <img :src=imgMore alt="">
+                            </span>
+                        </template>
+                    </div>
+
+                    <div class="my-answer" :class="{'hide':!( fbMore.fb_status !=='0')}">
+                        <span class="ask-t">
+                            客服回复
+                        </span>
+                        <span class="ask-time">
+                            {{ fbMore.fb_comment_time | formatTime_week }}
+                        </span>
+                            <p class="ask-c">
+                                {{ fbMore.fb_comments }}
+                            </p>
+                            <template v-if="fbMore.fb_comment_images && fbMore.fb_comment_images.length>0" >
+                                <span class="itm-img" v-for="imgMore in fbMore.fb_comment_images">
+                                    <img :src=imgMore >
+                                </span>
+                            </template>
+                    </div>
+                    <!--未回复-->
+                    <p class="ask-answeredTips" :class="{'hide':!( fbMore.fb_status === '0')}">
+                        暂无回复，我们会尽快处理
                     </p>
-                    <span class="itm-img">
-                        <img src="~static/images/testimg.png" alt="">
-                    </span>
-                </div>
-                <div class="my-answer">
-                    <span class="ask-t">
-                        客服回复
-                    </span>
-                    <span class="ask-time">
-                       2017/10/1   09:42
-                    </span>
-                    <p class="ask-c">
-                        ^_^ 这个表情写死在开头，您好，再说我扣你钱！我们产品
-                        是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！我们产品是国家许可的啦啦啦啦
-                        啦！我们产品是国家许可的啦啦啦啦啦！
-                    </p>
-                    <span class="itm-img">
-                        <img src="images/testimg.png" alt="">
-                    </span>
-                </div>
-                <!--未回复-->
-                <p class="ask-answeredTips hide">
-                    暂无回复，我们会尽快处理
-                </p>
+                </template>
             </div>
         </div>
         <p class="feedback-tips">
@@ -68,9 +52,15 @@
             在线客服
         </a>
 
+        <div class="pop pop-imgView" :class="{'hide':!showPopImg}">
+            <div class="pop_layer"  v-tap="{'methods': closePopImg }"></div>
+            <div class="imgView-box">
+                <img id="imgMoreData" :src=moreImgView >
+            </div>
+        </div>
+
         <!-- 吐槽弹窗 -->
         <Kefu_alert></Kefu_alert>
-
 
     </div>
 </template>
@@ -84,24 +74,82 @@
     export default {
         data(){
             return {
-                title: ''
+                moreImgView:'',
+                showPopImg:false,
             }
         },
-        watch: {},
         methods: {
+            showMoreImg({params}){
+                this.showPopImg = true;
+                this.moreImgView = params;
+            },
+            closePopImg(){
+                this.showPopImg = false;
+            },
             showkefu(){
                 this.$store.commit(mTypes.setkefuAlert , false)
             },
         },
-        computed: {},
+        computed: {
+            fbMore(){
+                return this.$store.state.feedback.fbMore
+            }
+        },
         components: {
             Public_Head,
             Kefu_alert
         },
         mounted(){
+            if(this.$route.params && this.$route.params.fbId){
+                this.$store.dispatch(aTypes.getfbListMore, this.$route.params.fbId );
+            }
+        },
+        filters: {
+            formatTime_week: (time, format = 'yyyy/MM/dd HH:mm') => {
+                let t = new Date(parseInt(+time) * 1000)
+                let tf = function (i) {
+                    return (i < 10 ? '0' : '') + i
+                }
+                try {
+                    if (~(t.toString().indexOf('GMT+00'))) {
+                        t = new Date((+time * 1000) + (8 * 60 * 60 * 1000))
+                    }
+                } catch (e) {
+                    console.error(e.message)
+                }
 
-        }
+                let weekFormate = function (weekDay) {
+                    switch (weekDay) {
+                        case 0: return '周日'
+                        case 1: return '周一'
+                        case 2: return '周二'
+                        case 3: return '周三'
+                        case 4: return '周四'
+                        case 5: return '周五'
+                        case 6: return '周六'
+                        default : return '时间有误'
+                    }
+                }
+
+                return format.replace(/yyyy|MM|dd|HH|mm|ss|WW/g, function (a) {
+                    switch (a) {
+                        case 'yyyy':
+                            return tf(t.getFullYear())
+                        case 'MM':
+                            return tf(t.getMonth() + 1)
+                        case 'mm':
+                            return tf(t.getMinutes())
+                        case 'dd':
+                            return tf(t.getDate())
+                        case 'HH':
+                            return tf(t.getHours())
+                        case 'ss':
+                            return tf(t.getSeconds())
+                        case 'WW':
+                            return weekFormate(t.getDay())
+                    }
+                })
+            }
+        },
     }
 </script>
-<style>
-</style>

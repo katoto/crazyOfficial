@@ -104,7 +104,7 @@ const router = new VueRouter({
             component: fb_list
         },
         {
-            path: '/fb_listMore',
+            path: '/fb_listMore/:fbId?',
             component: fb_listMore
         },
         {
