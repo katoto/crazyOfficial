@@ -26,15 +26,4 @@ const app = new Vue(Object.assign({
 
 app.$mount('#app')
 
-// platform.ready(() => {
-//     if (window.EsApp) {
-//         EsApp.invoke('titleBar', {isShow: 0})
-//     }
-//     app.$mount('#app')
-// })
-//
-// platform.dataChanged(() => {
-//     location.reload()
-// })
-
 export { app, router, store }

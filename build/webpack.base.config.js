@@ -21,7 +21,7 @@ module.exports = {
         publicPath: '/official2/',
         // chunkFilename: '[name].[chunkhash:8].chunk.js',
         // chunkFilename: '[name].chunk.js',
-        chunkFilename: `[name].chunk.js?[chunkhash:8]`
+        chunkFilename: `[name].chunk.js?[chunkhash:3]`
     },
 
     module: {

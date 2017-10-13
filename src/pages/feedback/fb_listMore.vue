@@ -16,7 +16,9 @@
                             {{ fbMore.fb_issues }}
                         </p>
                         <template v-if="fbMore.fb_images && fbMore.fb_images.length>0">
-                            <span class="itm-img" v-for="imgMore in fbMore.fb_images">
+                            <span class="itm-img" v-for="imgMore in fbMore.fb_images"
+                                  v-tap="{'methods': showMoreImg ,params:imgMore }"
+                            >
                                 <img :src=imgMore alt="">
                             </span>
                         </template>
@@ -33,7 +35,9 @@
                                 {{ fbMore.fb_comments }}
                             </p>
                             <template v-if="fbMore.fb_comment_images && fbMore.fb_comment_images.length>0" >
-                                <span class="itm-img" v-for="imgMore in fbMore.fb_comment_images">
+                                <span class="itm-img" v-for="imgMore in fbMore.fb_comment_images"
+                                      v-tap="{'methods': showMoreImg ,params:imgMore }"
+                                >
                                     <img :src=imgMore >
                                 </span>
                             </template>
@@ -102,6 +106,10 @@
         mounted(){
             if(this.$route.params && this.$route.params.fbId){
                 this.$store.dispatch(aTypes.getfbListMore, this.$route.params.fbId );
+                setTimeout(()=>{
+                    this.$store.dispatch('getUserInfo')
+                },500)
+
             }
         },
         filters: {

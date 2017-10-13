@@ -28,7 +28,7 @@ module.exports = Object.assign({}, base, {
             name: ['vendor', 'manifest'],
             // filename: '[name]/[name].[chunkhash:8].js',
             // filename: '[name]/[name].js',
-            filename: `[name].js?[chunkhash:8]`
+            filename: `[name].js?[chunkhash:3]`
 
         })
         // new WebpackAssetsManifest({})

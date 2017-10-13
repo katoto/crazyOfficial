@@ -135,10 +135,10 @@ if (location.search) {
         localStorage.setItem('src',queryObj.from);
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/${queryObj.from}`)
     }
-/*
-    if(queryObj.jumpToPay && queryObj.jumpToPay ==='true'){
-        history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/hot/showPay`)
-    } */
+    /*
+     if(queryObj.jumpToPay && queryObj.jumpToPay ==='true'){
+     history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/hot/showPay`)
+     } */
 
     if (queryObj.jumpToMsg && queryObj.jumpToMsg === 'true') {
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/hot/showMsg`)
@@ -150,15 +150,15 @@ if (location.search) {
     if(queryObj.jumpToPay && queryObj.jumpToPay ==='true'){
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew/`)
     }
-/*    if(queryObj.login && queryObj.login === 'true' && queryObj.code && queryObj.state === 'STATE' ){
-        /!* 登陆的情况 *!/
-        history.replaceState({},'',`${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/hot/__${queryObj.code}`)
-    }
+    /*    if(queryObj.login && queryObj.login === 'true' && queryObj.code && queryObj.state === 'STATE' ){
+     /!* 登陆的情况 *!/
+     history.replaceState({},'',`${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/hot/__${queryObj.code}`)
+     }
 
-    if (!(queryObj.login) && queryObj.code && queryObj.state === 'STATE') {
-        /!* 充值取code *!/
-        history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/my/charge/_@${queryObj.code}`)
-    }  */
+     if (!(queryObj.login) && queryObj.code && queryObj.state === 'STATE') {
+     /!* 充值取code *!/
+     history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/my/charge/_@${queryObj.code}`)
+     }  */
 }
 
 // 注意暴露出来

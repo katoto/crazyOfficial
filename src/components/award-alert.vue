@@ -22,7 +22,6 @@
                 msg2:'10%'
             }
         },
-        watch: {},
         methods: {
             showAwardBoxFn () {
                 this.$store.commit('showAwardbox', false)
@@ -46,5 +45,4 @@
         }
     }
 </script>
-<style>
-</style>
+

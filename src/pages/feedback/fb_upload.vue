@@ -23,8 +23,9 @@
             </a>
         </div>
 
-        <div class="loading" :class="{'hide':!showLoading}">
-            <img src="~static/images/loading.svg" >
+        <div class="pop pop-loading" :class="{'hide':!showLoading}">
+            <img src="images/loading.svg" alt="">
+            <p>正在提交</p>
         </div>
 
         <div class="feedback02 " :class="{'hide':!showFeedback02}">
@@ -63,7 +64,7 @@
     import Kefu_alert from '~components/kefu-alert'
     import $ from 'bc-zepto.full'
     import {aTypes, mTypes} from '~store/feedback'
-    import {platform, src, getCk, namespace, cptype, convertArrToObj, convertToQueryString} from '~common/util'
+    import {platform, src, getCk} from '~common/util'
 
     export default {
         data(){
@@ -157,7 +158,7 @@
                     type: 'POST',
                     url: 'http://192.168.50.12:9899/feedback/upload',
                     data: {
-                        ck:"OTk5OTM1MDQwY2UwZmY4MWIyYThlYzQ3Y2FjOGUzMzVlNjAzNjE4",
+                        ck:getCk(),
                         os:platform,
                         src:src,
                         device:window.navigator.userAgent,

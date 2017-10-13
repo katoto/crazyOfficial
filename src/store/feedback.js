@@ -36,9 +36,8 @@ const actionsInfo = mapActions({
 
     async getFeedbackList ({commit, dispatch}) {
         try {
-           let ck= 'OTk5OTM1MDQwY2UwZmY4MWIyYThlYzQ3Y2FjOGUzMzVlNjAzNjE4';
             // let InfoData = await ajax.get(`/activity/redpack/info?src=${src}&ck=${getCk()}&platform=${platform}`);
-            let InfoData = await ajax.get(`http://192.168.50.12:9899/feedback/list?src=${src}&ck=${ck}&platform=${platform}`)
+            let InfoData = await ajax.get(`/feedback/list?src=${src}&ck=${getCk()}&platform=${platform}`)
             console.log(InfoData)
             commit(mTypes.setFeedbackList, InfoData)
         } catch (e) {
@@ -47,9 +46,8 @@ const actionsInfo = mapActions({
     },
     async getfbListMore ({commit, dispatch},fbId) {
         try {
-            let ck= 'OTk5OTM1MDQwY2UwZmY4MWIyYThlYzQ3Y2FjOGUzMzVlNjAzNjE4';
             // let InfoData = await ajax.get(`/activity/redpack/info?src=${src}&ck=${getCk()}&platform=${platform}`);
-            let InfoData = await ajax.get(`http://192.168.50.12:9899/feedback/view?fb_id=${fbId}&src=${src}&ck=${ck}&platform=${platform}`)
+            let InfoData = await ajax.get(`/feedback/view?fb_id=${fbId}&src=${src}&ck=${getCk()}&platform=${platform}`)
             console.log(InfoData)
             commit(mTypes.setFbMore, InfoData)
         } catch (e) {

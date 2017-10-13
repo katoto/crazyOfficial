@@ -34,14 +34,14 @@ app.use(function (req, resp, next) {
         forward({
             req,
             resp,
-            // host: 'crazybet.choopaoo.com',
-            // ip: '106.75.139.22',
+            host: 'crazybet.choopaoo.com',
+            ip: '192.168.50.12',
             // host: 'crazybet.choopaoo.com',
             // ip: '192.168.41.76',
-            host: 'crazybet.choopaoo.com',
-            ip: '106.75.167.151',
+            // host: 'crazybet.choopaoo.com',
+            // ip: '106.75.167.151',
             path: req.originalUrl.replace('/api', ''),
-            port: '6899',
+            port: '9899',
             showLog: true
         })
         // 9899

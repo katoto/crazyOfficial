@@ -33,7 +33,6 @@
                                 </div>
                                 <div class="btn-goBet" data-type="开始竞猜" data-tab="beginBet" v-tap="{methods: beginBet}" v-if="(!goldList.currentmatch.list&&goldList.currentmatch.matchinfo.State!='1')||(!goldList.currentmatch.list.length&&goldList.currentmatch.matchinfo.State!='1')">竞猜本场<i class="icon-raw"></i></div>
                                 <div class="btn-goBet" key="wcy" v-tap="{methods: beginBet}" v-if="goldList.currentmatch.matchinfo.State==='1'&&!goldList.currentmatch.list.length">未参与<i class="icon-raw"></i></div>
-                                <!--<div class="btn-goBet">竞猜本场<i class="icon-raw"></i> </div>-->
 
                                 <div class="fr" v-tap="{methods: switchMatch, matchinfo: goldList.currentmatch.matchinfo}" v-if="goldList.currentmatch.list&&goldList.currentmatch.list.length">
                                     <span :class="{'color9': goldList.currentmatch.prize<=0, 'yellow':goldList.currentmatch.prize>0}" class="yellow"> {{ goldList.currentmatch.prize|statusZh }} </span>
@@ -359,5 +358,3 @@
         }
     }
 </script>
-<style>
-</style>

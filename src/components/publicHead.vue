@@ -4,6 +4,7 @@
         <h1>{{ this.personTitle }}</h1>
         <a v-tap="{methods:jumpRight}" v-if="showFeedback" class="feedback-re">
             反馈记录
+            <sup class="dot" v-if="( userInfo.fb_badge && parseInt(userInfo.fb_badge)>0 )"></sup>
         </a>
     </div>
 </template>
@@ -30,10 +31,17 @@
                 }
             }
         },
+
         mounted(){
             if (this.personTitle === '我要反馈') {
                 this.showFeedback = true;
             }
-        }
+        },
+        computed :{
+            userInfo () {
+                return this.$store.state.userInfo
+            },
+        },
+
     }
 </script>

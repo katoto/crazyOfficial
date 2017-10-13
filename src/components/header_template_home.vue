@@ -2,13 +2,13 @@
     <div class="header_hc clear" v-if="userInfo">
         <div class="user" :class="{'on':showHeadBox }" v-tap="{methods:enterMy,params:'headParentBox'}">
                 <span class="face">
-                    <sup class="dot" v-if="(userInfo.notifies!='0') || ( userInfo.prize_records!='0')"></sup>
+                    <sup class="dot" v-if="(userInfo.notifies!='0') || ( userInfo.prize_records!='0')  || (userInfo.fb_badge && parseInt(userInfo.fb_badge)>0 )"></sup>
                 </span>
             <span class="face-arrow"></span>
         </div>
         <div class="link" v-tap="{methods:enterMy,params:'betlist'}">
                 <span class="link-icon">
-                    <sup class="dot" v-if="userInfo && userInfo.newprize && userInfo.newprize !='0'"></sup>
+                    <sup class="dot" v-if=" userInfo && userInfo.newprize && userInfo.newprize !='0'"></sup>
                 </span>
         </div>
         <div class="rank" v-tap="{methods:enterMy,params:'rank'}">

@@ -17,7 +17,7 @@
         </template>
     </div>
     <div v-else class="loading">
-        <img src="~static/images/loading.gif">
+        <img src="~static/images/loading.svg">
     </div>
 </template>
 

@@ -230,6 +230,7 @@
                     </li>
                     <li class="my-fb" v-tap="{methods:enterMy,params:'option'}">
                         <i></i>我要反馈
+                        <sup class="dot" v-if="( userinfo.fb_badge && parseInt(userinfo.fb_badge)>0 )"></sup>
                     </li>
                     <li class="my-down" v-tap="{methods:enterMy,params:'crazyPage'}">
                         <i></i>下载APP

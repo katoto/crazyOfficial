@@ -2,7 +2,7 @@
     <div id="feedback" class="wrap respon2">
         <Public_Head class="topBar" person-title="反馈记录"></Public_Head>
         <div class="feedback-items respon2-itm">
-            <ul class="full-scroll" v-if="feedbackList && feedbackList.fb_lst">
+            <ul class="full-scroll" v-if="feedbackList && feedbackList.fb_lst &&  feedbackList.fb_lst.length>0">
 
                 <li  v-for="item in feedbackList.fb_lst"
                     :class="{'ask-had': item.fb_status==='2',
@@ -24,7 +24,6 @@
                     </template>
                 </li>
             </ul>
-
             <div class="scroller" v-else>
                 <img src="~static/images/empty_Mess.png" class="phbNoList_hc">
                 <p class="phbNoList_p_hc">暂无记录~</p>
