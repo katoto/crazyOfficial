@@ -317,6 +317,33 @@ textarea{
     max-width: 97%;
     max-height: 100%;
 }
+/*loading*/
+.pop-loading{
+    position: fixed;
+    left:50%;
+    top:50%;
+    margin-left:-133px;
+    margin-top:-133px;
+    width:266px;
+    height:266px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.6);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+.pop-loading img{
+    display: block;
+    width:50px;
+    height:50px;
+    margin:80px auto 0;
+}
+.pop-loading p{
+    text-align: center;
+    font-size:32px;
+    color: #fff;
+    margin-top:20px;
+}
 
 
 .deleteimg::before,.feedback-re::before,.btn-online::before,.feedback02::before,.ask-add{
