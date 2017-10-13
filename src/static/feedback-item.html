@@ -24,7 +24,7 @@
         <section class="topBar">
             <div class="icon_back"></div>
             <h1>我要反馈</h1>
-            <a href="feedback-item.html" class="feedback-re">
+            <a href="feedback-item.html" class="feedback-re feedback-re2">
                 反馈记录
             </a>
         </section>
@@ -140,15 +140,18 @@
 </div>
 
 <!--图片详情-->
-<div class="imgView-box hide">
-    <img src="images/testimg.png" alt="">
+<div class="pop pop-imgView hide">
+    <div class="pop_layer"></div>
+    <div class="imgView-box">
+        <img src="images/testimg.png" alt="">
+    </div>
 </div>
 <script src="js/zepto.min.js"></script>
 <script>
     $('.feedback-items li img').click(function(){
-        $('.imgView-box').removeClass('hide')
+        $('.pop-imgView').removeClass('hide')
     })
-    $('.imgView-box').click(function(){
+    $('.pop-imgView').click(function(){
         $(this).addClass('hide')
     })
 </script>

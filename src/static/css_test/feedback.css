@@ -232,9 +232,8 @@ textarea{
     position: relative;
     padding-right:15px;
 }
-.ask-hadno .ask-t::after{
+.ask-hadno .ask-t::after,.feedback-re2::after{
     position: absolute;
-    right:0;
     top:16px;
     content: '';
     display: block;
@@ -245,6 +244,12 @@ textarea{
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
+}
+.ask-hadno .ask-t::after{
+    right:0;
+}
+.feedback-re::after{
+    right:22px;
 }
 .feedback-tips{
     width:100%;
@@ -294,7 +299,7 @@ textarea{
 }
 /*图片详情*/
 .imgView-box{
-    position: fixed;
+    position: absolute;
     width:550px;
     height:970px;
     overflow: hidden;
