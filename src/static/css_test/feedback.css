@@ -345,7 +345,10 @@ textarea{
     margin-top:20px;
 }
 
-
+.feedback-re .dot{
+    top:16px;
+    right:26px;
+}
 .deleteimg::before,.feedback-re::before,.btn-online::before,.feedback02::before,.ask-add{
     background-image: url("../images/sprite-feedback.png");
     background-size: 350px;
