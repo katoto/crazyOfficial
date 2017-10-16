@@ -157,7 +157,7 @@ export default {
         selectMoney (params) {
             if (this.sliderinit.allEnd) {
 //            结束的情况下不给点击
-                return
+
             }
         },
         swipeStart (e) {

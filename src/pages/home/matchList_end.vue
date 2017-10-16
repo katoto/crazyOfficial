@@ -39,7 +39,7 @@ export default {
     },
     mounted () {
 //            end 换成
-        this.$store.dispatch(actionTypes.getFootballMatchList_end);
+        this.$store.dispatch(actionTypes.getFootballMatchList_end)
         this.$store.dispatch(actionTypes.setIntervalFn, { type: 'end', time: 30000 })
     },
     beforeDestroy () {

@@ -14,7 +14,7 @@
         props: ['personTitle'],
         data () {
             return {
-                showFeedback:false,
+                showFeedback: false
             }
         },
         methods: {
@@ -25,23 +25,23 @@
                     window.history.back()
                 }
             },
-            jumpRight(){
+            jumpRight () {
                 if (this.personTitle === '我要反馈') {
                     this.$router.push('/fb_list')
                 }
             }
         },
 
-        mounted(){
+        mounted () {
             if (this.personTitle === '我要反馈') {
-                this.showFeedback = true;
+                this.showFeedback = true
             }
         },
-        computed :{
+        computed: {
             userInfo () {
                 return this.$store.state.userInfo
-            },
-        },
+            }
+        }
 
     }
 </script>

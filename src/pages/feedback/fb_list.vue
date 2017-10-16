@@ -45,47 +45,47 @@
     import Public_Head from '~components/publicHead'
     import {aTypes, mTypes} from '~store/feedback'
     export default {
-        data(){
+        data () {
             return {
-                moreImgView:'',
-                showPopImg:false,
+                moreImgView: '',
+                showPopImg: false
             }
         },
         methods: {
-            showMoreImg({params}){
-                this.showPopImg = true;
-                this.moreImgView = params;
+            showMoreImg ({params}) {
+                this.showPopImg = true
+                this.moreImgView = params
             },
-            closePopImg(){
-                this.showPopImg = false;
+            closePopImg () {
+                this.showPopImg = false
             },
-            goMoreMess({params}){
+            goMoreMess ({params}) {
                 console.log(params)
-                this.$router.push('/fb_listMore/'+params)
+                this.$router.push('/fb_listMore/' + params)
             }
         },
         computed: {
-            feedbackList(){
+            feedbackList () {
                 return this.$store.state.feedback.feedbackList
             }
         },
         components: {
             Public_Head
         },
-        mounted(){
-            this.$store.dispatch(aTypes.getFeedbackList);
+        mounted () {
+            this.$store.dispatch(aTypes.getFeedbackList)
         },
         filters: {
-            statusFormate:(status)=>{
-                status = status || '0';
-                switch (status){
-                    case '0':
-                        return '待回复'
-                        ;break;
-                    case '1':
-                    case '2':
-                        return '已回复'
-                        ;break;
+            statusFormate: (status) => {
+                status = status || '0'
+                switch (status) {
+                case '0':
+                    return '待回复'
+                        ;break
+                case '1':
+                case '2':
+                    return '已回复'
+                        ;break
                 }
             },
             formatTime_week: (time, format = 'yyyy/MM/dd HH:mm') => {
@@ -100,39 +100,23 @@
                 } catch (e) {
                     console.error(e.message)
                 }
-
-                let weekFormate = function (weekDay) {
-                    switch (weekDay) {
-                        case 0: return '周日'
-                        case 1: return '周一'
-                        case 2: return '周二'
-                        case 3: return '周三'
-                        case 4: return '周四'
-                        case 5: return '周五'
-                        case 6: return '周六'
-                        default : return '时间有误'
-                    }
-                }
-
                 return format.replace(/yyyy|MM|dd|HH|mm|ss|WW/g, function (a) {
                     switch (a) {
-                        case 'yyyy':
-                            return tf(t.getFullYear())
-                        case 'MM':
-                            return tf(t.getMonth() + 1)
-                        case 'mm':
-                            return tf(t.getMinutes())
-                        case 'dd':
-                            return tf(t.getDate())
-                        case 'HH':
-                            return tf(t.getHours())
-                        case 'ss':
-                            return tf(t.getSeconds())
-                        case 'WW':
-                            return weekFormate(t.getDay())
+                    case 'yyyy':
+                        return tf(t.getFullYear())
+                    case 'MM':
+                        return tf(t.getMonth() + 1)
+                    case 'mm':
+                        return tf(t.getMinutes())
+                    case 'dd':
+                        return tf(t.getDate())
+                    case 'HH':
+                        return tf(t.getHours())
+                    case 'ss':
+                        return tf(t.getSeconds())
                     }
                 })
             }
-        },
+        }
     }
 </script>

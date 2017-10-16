@@ -11,34 +11,34 @@ export function convertArrToObj (arr, key) {
     }
     return result
 }
-export const getCookie = (sName) =>{
-    let arr = document.cookie.split('; ');
+export const getCookie = (sName) => {
+    let arr = document.cookie.split('; ')
     for (let i = 0, len = arr.length; i < len; i++) {
-        let arr2 = arr[i].split('=');
+        let arr2 = arr[i].split('=')
         if (arr2[0] == sName) {
-            return arr2[1];
+            return arr2[1]
         }
     }
 }
-export const addCookie = (name,value) =>{
-    let Days = 30;
-    let exp = new Date();
-    exp.setTime(exp.getTime() + Days*24*60*60*1000);
-    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+export const addCookie = (name, value) => {
+    let Days = 30
+    let exp = new Date()
+    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000)
+    document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString()
 }
-export const  removeCookie = (sName)=> {
-    addCookie(sName, 0, -1);
+export const removeCookie = (sName) => {
+    addCookie(sName, 0, -1)
 }
 
 export let getCk = function () {
-    if(!localStorage.getItem('ck') || localStorage.getItem('ck') === '' || localStorage.getItem('ck') === 'undefined' ){
-        if(getCookie('ck') && getCookie('ck') !=='' ){
+    if (!localStorage.getItem('ck') || localStorage.getItem('ck') === '' || localStorage.getItem('ck') === 'undefined') {
+        if (getCookie('ck') && getCookie('ck') !== '') {
             return getCookie('ck')
         }
         return ''
     }
     return localStorage.getItem('ck') || ''
-};
+}
 
 export const src = '500touch'
 export const cptype = ''
@@ -60,7 +60,6 @@ export const isLowAndroidVersion = (function () {
     }
     return isLowAndroidVersion
 })()
-
 
 export const convertToQueryString = function (obj) {
     let result = []

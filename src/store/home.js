@@ -29,8 +29,7 @@ const state = {
 
     homeActivitiesData: null, // 活动数据
     betListNumber: 0,
-    activityListData: null,  // 运营数据
-
+    activityListData: null  // 运营数据
 
 }
 

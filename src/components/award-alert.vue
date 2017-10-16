@@ -18,8 +18,8 @@
     export default {
         data () {
             return {
-                msg:'下载APP 加奖',
-                msg2:'10%'
+                msg: '下载APP 加奖',
+                msg2: '10%'
             }
         },
         methods: {
@@ -29,13 +29,13 @@
             imgOnErrorLogo (that) {
                 that.target.setAttribute('src', 'https://crazybet.choopaoo.com/img/esun/upload/8c/70/8c705f765b1611e7b209.jpg')
             },
-            downLoadApp(){
+            downLoadApp () {
                 if (platform === 'android') {
                     window.location.href = 'http://download.choopaoo.com/download/cbet_for_Android_500cpH5.apk'
                 } else {
                     window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
                 }
-                _hmt.push(['_trackEvent', '500fkcqH5_下载app(嘉奖)点击', 'click', '500fkcqH5_下载app']);
+                _hmt.push(['_trackEvent', '500fkcqH5_下载app(嘉奖)点击', 'click', '500fkcqH5_下载app'])
             }
         },
         computed: {
@@ -45,4 +45,3 @@
         }
     }
 </script>
-

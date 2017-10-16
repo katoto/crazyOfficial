@@ -5935,7 +5935,7 @@
             },
             '$store.state.main.faqiState': function (state) {
 //                || state === 0  这个去了，看后续是否有影响
-                if (state === 2 ) {
+                if (state === 2) {
 //                  刷新投注之后的状态
                     setTimeout(() => {
                         this.selectedNum = 0
@@ -6015,8 +6015,8 @@
                 }
                 if (fmdetail && fmdetail.award_url) {
 //                    this.$store.commit('setAwardImg', fmdetail.award_url)
-                    this.$store.commit('setAwardImg', 'https://crazybet.choopaoo.com/img/esun/upload/d5/d7/d5d7597ca4f311e78ca3.jpg');
-                    this.$store.commit('showAwardbox', true);
+                    this.$store.commit('setAwardImg', 'https://crazybet.choopaoo.com/img/esun/upload/d5/d7/d5d7597ca4f311e78ca3.jpg')
+                    this.$store.commit('showAwardbox', true)
                 }
             },
             someList () {
@@ -6156,8 +6156,8 @@
                     ck = this.ck.replace(/=/g, '$')
                     window.location.href = 'http://crazybet.choopaoo.com/redPacket/nationFootballRed.html?from=500qqsd&ck=' + ck
                 } else {
-                    this.$store.dispatch('doAuth');
-                    return false;
+                    this.$store.dispatch('doAuth')
+                    return false
                 }
             },
             showAwardBoxFn () {
@@ -6168,25 +6168,25 @@
                 switch (target) {
                 case 'betlist':
                     if (!this.hasLogin) {
-                        this.$store.dispatch('doAuth');
-                        return false;
+                        this.$store.dispatch('doAuth')
+                        return false
                     } else {
                         this.$store.dispatch('getGoldList', this.matchid)
                         setTimeout(() => {
                             this.$store.commit('showBetListbox', true)
-                        }, 10);
+                        }, 10)
                         this.$store.dispatch('getUserInfo')
                     }
                     _hmt.push(['_trackEvent', '500fkcqH5_投注页猜球记录点击', 'click', '500fkcqH5_投注页猜球记录'])
-                    break;
+                    break
                 case 'homeHot':
-                    this.$store.state.home.currentBetSelect = null;
+                    this.$store.state.home.currentBetSelect = null
                     _hmt.push(['_trackEvent', '500fkcqH5_投注页home点击', 'click', '500fkcqH5_投注页home'])
-                    $('body').scrollTop(0);
-                    this.$router.push(`/h5/home/hot`);
-                    break;
+                    $('body').scrollTop(0)
+                    this.$router.push(`/h5/home/hot`)
+                    break
                 case 'backHistory':
-                    this.$store.state.home.currentBetSelect = null;
+                    this.$store.state.home.currentBetSelect = null
                     if (window.location && window.location.hash && window.location.hash.indexOf('from=banner') > -1) {
                         window.history.back()
                     } else {
@@ -6194,13 +6194,13 @@
                     }
                     break
                 case 'eventCount':
-                    stopHtml();
-                    this.$store.dispatch('getFootballStat', this.matchid);
-                    this.$store.dispatch('getFootballCase', this.matchid);
+                    stopHtml()
+                    this.$store.dispatch('getFootballStat', this.matchid)
+                    this.$store.dispatch('getFootballCase', this.matchid)
                     setTimeout(() => {
                         this.$store.commit('showEventCountbox', true)
-                    }, 10);
-                    _hmt.push(['_trackEvent', '500fkcqH5_投注页事件统计点击', 'click', '500fkcqH5_投注页事件统计']);
+                    }, 10)
+                    _hmt.push(['_trackEvent', '500fkcqH5_投注页事件统计点击', 'click', '500fkcqH5_投注页事件统计'])
                     break
                 }
             },
@@ -6347,7 +6347,7 @@
             },
             faqi () {
                 if (!this.hasLogin) {
-                    this.$store.dispatch('doAuth');
+                    this.$store.dispatch('doAuth')
                     return false
                 }
                 if (!this.selectedNum) {
@@ -6586,10 +6586,10 @@
 
         },
         mounted () {
-            $('body').scrollTop(0);
+            $('body').scrollTop(0)
             setTimeout(() => {
                 this.that_new_Children = this.$children
-            }, 100);
+            }, 100)
             let routeMatchid = this.$route.params.matchid
 
             this.matchid = routeMatchid

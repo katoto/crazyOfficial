@@ -21,23 +21,23 @@
 <script>
     import {aTypes, mTypes} from '~store/feedback'
     export default {
-        data(){
+        data () {
             return {
                 title: '我是頭部'
             }
         },
         watch: {},
         methods: {
-            closekefu(){
-                this.$store.commit(mTypes.setkefuAlert , true)
-            },
+            closekefu () {
+                this.$store.commit(mTypes.setkefuAlert, true)
+            }
         },
         computed: {
-            kefuAlert(){
+            kefuAlert () {
                 return this.$store.state.feedback.kefuAlert
             }
         },
-        mounted(){
+        mounted () {
 
         }
     }

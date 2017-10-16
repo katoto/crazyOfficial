@@ -67,61 +67,61 @@
     import {platform, src, getCk} from '~common/util'
 
     export default {
-        data(){
+        data () {
             return {
-                showkf:false,
-                textareaData:'',
-                showLoading:false,
-                showFeedback01:true,
-                showFeedback02:false,
+                showkf: false,
+                textareaData: '',
+                showLoading: false,
+                showFeedback01: true,
+                showFeedback02: false
             }
         },
         methods: {
-            showkefu(){
-                this.$store.commit(mTypes.setkefuAlert , false)
+            showkefu () {
+                this.$store.commit(mTypes.setkefuAlert, false)
             },
-            handleFiles(e){
-                var file = e.target.files[0];
-                var reader = new FileReader();
-                reader.onload = function(){
-                    var imageHtml = '';
-                    if(file.size > 2048576){
-                      this.$store.dispatch('showToast', '图片太大请截图');
-                        return false;
+            handleFiles (e) {
+                var file = e.target.files[0]
+                var reader = new FileReader()
+                reader.onload = function () {
+                    var imageHtml = ''
+                    if (file.size > 2048576) {
+                        this.$store.dispatch('showToast', '图片太大请截图')
+                        return false
                     }
-                    imageHtml += '<span class="itm-img"><span class="deleteimg" ></span><img src="';
-                    imageHtml += reader.result+'" alt="" class="conPic1">';
-                    imageHtml += '<input type="hidden" class="imagefile" name="imagefilename" value="'+reader.result+'"';
-                    imageHtml +='</span>';
+                    imageHtml += '<span class="itm-img"><span class="deleteimg" ></span><img src="'
+                    imageHtml += reader.result + '" alt="" class="conPic1">'
+                    imageHtml += '<input type="hidden" class="imagefile" name="imagefilename" value="' + reader.result + '"'
+                    imageHtml += '</span>'
 
-                    $("#fileSelect").before(imageHtml);
+                    $('#fileSelect').before(imageHtml)
                 }
-                reader.readAsDataURL(file);
-                /* 清楚数据 */
-                $('.deleteimg').unbind('click');
-                setTimeout(function(){
-                    var imageNUm = $('.itm-img').length;
-                    $(document).on('click', '.deleteimg', function(){
-                        $(this).parent().remove();
-                        var imageNUm = $('.itm-img').length;
-                        if( !document.getElementById("fileSelect") && imageNUm < 3){
-                            $(".ask-add-wrap").append('<span class="ask-add" id="fileSelect"><input type="file" name="submitfile1" accept="image/*"  onchange="handleFiles(this.files)" ></span>');
+                reader.readAsDataURL(file)
+            /* 清楚数据 */
+                $('.deleteimg').unbind('click')
+                setTimeout(function () {
+                    var imageNUm = $('.itm-img').length
+                    $(document).on('click', '.deleteimg', function () {
+                        $(this).parent().remove()
+                        var imageNUm = $('.itm-img').length
+                        if (!document.getElementById('fileSelect') && imageNUm < 3) {
+                            $('.ask-add-wrap').append('<span class="ask-add" id="fileSelect"><input type="file" name="submitfile1" accept="image/*"  onchange="handleFiles(this.files)" ></span>')
                         }
-                    });
-                    $(document).on('click', '.itm-img img', function(){
-                        $('#imgMoreData').parent().parent().show();
-                        $('#imgMoreData').attr('src',$(this).attr('src'))
-                    });
-                    if(imageNUm+1 > 3){
-                        $("#fileSelect").remove();
-                        return false;
+                    })
+                    $(document).on('click', '.itm-img img', function () {
+                        $('#imgMoreData').parent().parent().show()
+                        $('#imgMoreData').attr('src', $(this).attr('src'))
+                    })
+                    if (imageNUm + 1 > 3) {
+                        $('#fileSelect').remove()
+                        return false
                     }
-                },100);
+                }, 100)
             },
-            checkFileReader(){
-                if ( !(window.File && window.FileReader && window.FileList && window.Blob) ){
-                    this.$store.dispatch('showToast', '不支持图片上传');
-                    return false;
+            checkFileReader () {
+                if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
+                    this.$store.dispatch('showToast', '不支持图片上传')
+                    return false
                 }
             }
         },
@@ -129,94 +129,66 @@
             Public_Head,
             Kefu_alert
         },
-        mounted(t){
-            let that = this;
-            $(".btn-red").on('click', function(){
-                let content = $('#submitcontent').val(); //内容
-                let image = [];
-                let imageStr = '';
-                let img2 = '';
-                //图片base64编码
-                if(!content || content === ''){
-                    that.$store.dispatch('showToast', '反馈内容不可为空~');
-                    return false;
+        mounted (t) {
+            const options = {}
+            if (process.env.NODE_ENV === 'production') {
+                if (window.location.protocol === 'http:') {
+                    options.baseURL = window.location.protocol + '//crazybet.choopaoo.com:6899'
+                } else {
+                    options.baseURL = window.location.protocol + '//crazybet.choopaoo.com:46899'
                 }
-                that.showLoading = true;
-                $.each( $('.imagefile'), function(key, value){
-                    imageStr +=  $(this).val();
-                    img2 += $(this).val().split(',')[1] +'$$$$';
+            } else {
+                options.baseURL = '/api'
+            }
+            let that = this
+            $('.btn-red').on('click', function () {
+                let content = $('#submitcontent').val() // 内容
+                let imageStr = ''
+                let img2 = ''
+            // 图片base64编码
+                if (!content || content === '') {
+                    that.$store.dispatch('showToast', '反馈内容不可为空~')
+                    return false
+                } else if (content && content.length > 400) {
+                    that.$store.dispatch('showToast', '反馈文案不能超出400字限制~')
+                    return false
+                }
+                that.showLoading = true
+                $.each($('.imagefile'), function (key, value) {
+                    imageStr += $(this).val()
+                    img2 += $(this).val().split(',')[1] + '$$$$'
 //                    str.slice(0,str.indexOf(',')+1)
-//                    image[key] = $(this).val();
-                });
+                })
 //                console.log(img2.slice(0,img2.length-3))
 
-                $("#fileElem").remove();
-//                console.log(new FormData($('#uploadForm')[0]))
-//                    ,imgArr:image
-//                var arr = [1,2,3]
+                $('#fileElem').remove()
                 $.ajax({
                     type: 'POST',
-                    url: 'http://192.168.50.12:9899/feedback/upload',
+                    url: options.baseURL + '/feedback/upload',
                     data: {
-                        ck:getCk(),
-                        os:platform,
-                        src:src,
-                        device:window.navigator.userAgent,
-                        content:that.textareaData,
-                        image: imageStr,
+                        ck: getCk(),
+                        os: platform,
+                        src: src,
+                        device: window.navigator.userAgent,
+                        content: that.textareaData,
+                        image: imageStr
                     },
                     dataType: 'json',
-                    success: function(d){
-                        that.showLoading = false;
-                        if(d.status==='100'){
-                            that.showFeedback01 = false;
-                            that.showFeedback02 = true;
-                        }else{
-                            that.$store.dispatch('showToast', d.message);
-//                            that.$store.dispatch('showToast', '反馈上传出错，请刷新再试试~');
+                    success: function (d) {
+                        that.showLoading = false
+                        if (d.status === '100') {
+                            that.showFeedback01 = false
+                            that.showFeedback02 = true
+                        } else {
+                            that.$store.dispatch('showToast', d.message)
                         }
                     },
-                    error: function(xhr, type){
-                        that.$store.dispatch('showToast', '上传提交出错，请稍后再试试~~');
+                    error: function (xhr, type) {
+                        that.$store.dispatch('showToast', '上传提交出错，请稍后再试试~~')
                     }
-                });
-            });
-
+                })
+            })
         }
     }
-//    $("#sendAjax").on('click', function(){
-//        console.log($('#form')[0])
-//        console.log(new FormData($('#form')[0]))
-//        console.log(new FormData($('#form')[0]).values)
-//        $.ajax({
-//            type: 'POST',
-//            url: 'http://192.168.50.12:9899/feedback/upload',
-////                    data: { ck: 'OTk5OTM1MGI0YjllZDcyZTdmNTY1NDAwNDczOTM1ZDg3ODU0MzE4',imgArr:arr},
-//            data: new FormData($('#form')[0]),
-//            processData: false,
-//            contentType: false,
-//            dataType: 'json',
-//            success: function(d){
-//                switch(d){
-//                    case 0:
-//                        $('.ui-alert-tips').addClass("hide");
-//                        break;
-//                    case 1:
-//                        $('.ui-alert-tips').addClass("hide");
-//                        $('.bg-staff').html('<span class="ico-done"></span>');
-//                        $('.wrap').append('<div class="tips-box"><p>感谢您的反馈</p><p>我们将尽快跟进解决您的反馈，完善产品</p><span class="btn-red btn-competed" data-href="/helpcenter/" style="cursor: pointer;">完成</span></div>');
-//                        $(".ask-wrap").remove();
-//                        break;
-//                    case 2:
-//                        $('.ui-alert-tips').addClass("hide");
-//                        break;
-//                }
-//            },
-//            error: function(xhr, type){
-//                $('.ui-alert-tips').addClass("hide");
-//                alertTip(8);
-//            }
-//        });
-//
-//    });
+
 </script>

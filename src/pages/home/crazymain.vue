@@ -89,7 +89,7 @@
     import MatchHotPlay from '~components/matchHot-play.vue'
 
     import MatchListTemplate from '~components/matchlist-template.vue'
-    import  { swiper, swiperSlide } from 'vue-awesome-swiper'
+    import { swiper, swiperSlide } from 'vue-awesome-swiper'
     import {platform} from '~common/util'
 
     export default {
@@ -149,46 +149,45 @@
         methods: {
             matchNav ({params}) {
                 // 热门赛事  直播中 全部赛事
-                this.$store.commit(mutationTypes.currentBetSelect, null) ; // 切换隐藏投注框
+                this.$store.commit(mutationTypes.currentBetSelect, null)  // 切换隐藏投注框
                 switch (params) {
                 case 'hot':
-                    _hmt.push(['_trackEvent', '500fkcqH5_首页热门赛事点击', 'click', '500fkcqH5_首页热门赛事']);
-                    this.currentTap = params;
-                    this.$router.replace(`/h5/home/${params}/`);
-                    break;
+                    _hmt.push(['_trackEvent', '500fkcqH5_首页热门赛事点击', 'click', '500fkcqH5_首页热门赛事'])
+                    this.currentTap = params
+                    this.$router.replace(`/h5/home/${params}/`)
+                    break
                 case 'goMatchList':
-                    _hmt.push(['_trackEvent', '500fkcqH5_首页全部赛事点击', 'click', '500fkcqH5_首页全部赛事']);
-                    this.$router.push(`/h5/matchList/noEnd`);
-                    break;
+                    _hmt.push(['_trackEvent', '500fkcqH5_首页全部赛事点击', 'click', '500fkcqH5_首页全部赛事'])
+                    this.$router.push(`/h5/matchList/noEnd`)
+                    break
                 case 'tips':
-                    this.$store.dispatch('showToast', '暂无直播赛事~');
-                    break;
+                    this.$store.dispatch('showToast', '暂无直播赛事~')
+                    break
                 case 'chargeNew':
-                    this.$router.push(`/chargeNew/draw`);
-                    _hmt.push(['_trackEvent', '500fkcqH5_领奖中心点击', 'click', '500fkcqH5_领奖中心']);
-                    break;
+                    this.$router.push(`/chargeNew/draw`)
+                    _hmt.push(['_trackEvent', '500fkcqH5_领奖中心点击', 'click', '500fkcqH5_领奖中心'])
+                    break
                 case 'activeBox':
-                    if(this.activityListData){
+                    if (this.activityListData) {
                         this.$store.commit('setActiveBox', true)
-                        _hmt.push(['_trackEvent', '500fkcqH5_最新活动点击', 'click', '500fkcqH5_最新活动']);
-                    }else{
+                        _hmt.push(['_trackEvent', '500fkcqH5_最新活动点击', 'click', '500fkcqH5_最新活动'])
+                    } else {
                         this.$store.dispatch(actionTypes.getActivityList)
                     }
-                    break;
+                    break
                 case 'downLoad':
                     if (platform === 'android') {
                         window.location.href = 'http://download.choopaoo.com/download/cbet_for_Android_500cpH5.apk'
                     } else {
                         window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
                     }
-                    _hmt.push(['_trackEvent', '500fkcqH5_下载app点击', 'click', '500fkcqH5_下载app']);
-                    break;
-
+                    _hmt.push(['_trackEvent', '500fkcqH5_下载app点击', 'click', '500fkcqH5_下载app'])
+                    break
                 }
             }
         },
         computed: {
-            swiper() {
+            swiper () {
                 return this.$refs.mySwiper.swiper
             },
             activityListData () {
@@ -228,19 +227,19 @@
                 return this.$store.state.home.signList
             },
             isSign () {
-                let isSign = false ; // false 是否有未签到的
+                let isSign = false  // false 是否有未签到的
                 this.signList && this.signList.forEach((item) => {
                     if (item.sign === '0') {
                         isSign = true
                     }
-                });
+                })
                 return isSign
             },
             matchlist_hot () {
                 return this.$store.state.home.matchList_hot
             },
             matchIDStr () {
-                let matchIDStr = '';
+                let matchIDStr = ''
                 if (this.matchlist_hot) {
                     for (let i = 0, len = this.matchlist_hot.length; i < len; i++) {
                         matchIDStr += this.matchlist_hot[i].MatchID + '|'
@@ -258,10 +257,10 @@
                     body: this.matchIDStr
                 })
             }
-            this.$store.dispatch(actionTypes.getFootballMatchList, 'newhot');
+            this.$store.dispatch(actionTypes.getFootballMatchList, 'newhot')
 
-        //  未登录不弹
-            await this.$store.dispatch(actionTypes.getSignList);
+    //  未登录不弹
+            await this.$store.dispatch(actionTypes.getSignList)
             if (this.isSign && this.userInfo) {
                 this.$store.commit(mutationTypes.showSignbox, true)
             }
@@ -269,17 +268,16 @@
             if (!this.crazymainScrollData) {
                 this.$store.dispatch(actionTypes.getcrazyMainInfo)
             }
-            this.$store.dispatch(actionTypes.setIntervalFn, {type: 'newhot', time: 30000});
+            this.$store.dispatch(actionTypes.setIntervalFn, {type: 'newhot', time: 30000})
             this.$store.dispatch(actionTypes.getActivityList)
-
         },
         beforeRouteLeave (to, from, next) {
-            this.$store.dispatch(actionTypes.clearIntervalFn);
+            this.$store.dispatch(actionTypes.clearIntervalFn)
 //            取消订阅
             this.$store.dispatch('unsubscribe', {
                 ptype: 'list',
                 body: this.matchIDStr
-            });
+            })
             next()
         }
     }

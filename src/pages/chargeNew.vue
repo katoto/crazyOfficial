@@ -375,14 +375,14 @@ export default {
             startLuckDraw () {
                 if (this.luckMessData) {
                     console.log(this.luckMessData)
-                    if(this.luckMessData.company){
+                    if (this.luckMessData.company) {
                         this.$store.dispatch('getLuckGoodBingo', {
                             currGoodsid: this.luckMessData.goodsid,
                             currConsumgolds: this.luckMessData.consumgolds,
                             goodstype: this.luckMessData.goodstype,
-                            company:this.luckMessData.company
+                            company: this.luckMessData.company
                         })
-                    }else{
+                    } else {
                         this.$store.dispatch('getLuckGoodBingo', {
                             currGoodsid: this.luckMessData.goodsid,
                             currConsumgolds: this.luckMessData.consumgolds,
@@ -410,36 +410,35 @@ export default {
             },
 
             alertGoodsMess ({params}) {
-                this.alertGoodsBox = true;
-                this.alertGoodsData = params;
-            /* 请求商品信息 */
+                this.alertGoodsBox = true
+                this.alertGoodsData = params
+        /* 请求商品信息 */
                 this.$store.dispatch('getGotoLuckMess', params)
             },
             closeGoodsMess () {
                 /* 关闭抽奖提示花费窗口 */
-                this.alertGoodsBox = false;
+                this.alertGoodsBox = false
                 this.alertGoodsData = null
             },
             showLuckEndFn () {
                 /* 中奖框 */
                 if (this.luckMessData) {
-                    if(this.luckMessData.company){
+                    if (this.luckMessData.company) {
                         this.$store.dispatch('getLuckGoodBingo', {
                             currGoodsid: this.luckMessData.goodsid,
                             currConsumgolds: this.luckMessData.consumgolds,
                             goodstype: this.luckMessData.goodstype,
-                            company:this.luckMessData.company
+                            company: this.luckMessData.company
                         })
-                    }else{
+                    } else {
                         this.$store.dispatch('getLuckGoodBingo', {
                             currGoodsid: this.luckMessData.goodsid,
                             currConsumgolds: this.luckMessData.consumgolds,
                             goodstype: this.luckMessData.goodstype
                         })
                     }
-
                 } else {
-                    this.$store.dispatch('showToast', '抽取失败,请重新再试');
+                    this.$store.dispatch('showToast', '抽取失败,请重新再试')
                     this.alertGoodsBox = false
                 }
             },
@@ -449,16 +448,16 @@ export default {
             },
 
             jumpToPage ({params}) {
-                params = params || '';
+                params = params || ''
                 switch (params) {
                 case 'lotteryNotes':
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页抽奖说明点击', 'click', '500fkcqH5_商城页抽奖说明']);
+                    _hmt.push(['_trackEvent', '500fkcqH5_商城页抽奖说明点击', 'click', '500fkcqH5_商城页抽奖说明'])
                     this.$router.push('/lotteryNotes')
-                    ;break;
+                    ;break
                 case 'shopAdd':
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页收奖地址点击', 'click', '500fkcqH5_商城页收奖地址']);
+                    _hmt.push(['_trackEvent', '500fkcqH5_商城页收奖地址点击', 'click', '500fkcqH5_商城页收奖地址'])
                     this.$router.push('/shopAdd')
-                    ;break;
+                    ;break
                 case 'myHome':
                     ;break
                 }
@@ -511,49 +510,49 @@ export default {
             },
             /* 我的兑换 */
             showPrizeList ({params}) {
-                if(this.userInfo){
-                    stopHtml();
-                    this.showLuckEnd = false;
-                    this.isShowPrizeList = params;
-                    /* 可优化 */
-                    this.$store.dispatch('getWinGoodList');
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页兑换记录点击', 'click', '500fkcqH5_商城页兑换记录']);
-                }else{
-                    this.$store.dispatch('doAuth');
+                if (this.userInfo) {
+                    stopHtml()
+                    this.showLuckEnd = false
+                    this.isShowPrizeList = params
+                /* 可优化 */
+                    this.$store.dispatch('getWinGoodList')
+                    _hmt.push(['_trackEvent', '500fkcqH5_商城页兑换记录点击', 'click', '500fkcqH5_商城页兑换记录'])
+                } else {
+                    this.$store.dispatch('doAuth')
                 }
             },
             chosePrizeList () {
-                starHtml();
+                starHtml()
                 this.isShowPrizeList = false
             },
             /* 我的道具 */
             showMyTool ({params}) {
-                if(this.userInfo){
-                    stopHtml();
-                    /* 可在充值回调后 请求 */
-                    this.$store.dispatch('getFootballPropsList');
-                    this.isShowMyTool = params;
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页我的道具点击', 'click', '500fkcqH5_商城页我的道具']);
-                }else{
-                    this.$store.dispatch('doAuth');
+                if (this.userInfo) {
+                    stopHtml()
+                /* 可在充值回调后 请求 */
+                    this.$store.dispatch('getFootballPropsList')
+                    this.isShowMyTool = params
+                    _hmt.push(['_trackEvent', '500fkcqH5_商城页我的道具点击', 'click', '500fkcqH5_商城页我的道具'])
+                } else {
+                    this.$store.dispatch('doAuth')
                 }
             },
             choseMyTool () {
-                starHtml();
+                starHtml()
                 this.isShowMyTool = false
             },
             /* tap 切换 */
             changeCharge ({params}) {
                 if (!params) {
-                    this.$router.push('/chargeNew/draw');
-                    this.$store.dispatch('getGoodsList');
-                    if(this.userInfo){
-                        this.$store.dispatch('getWinGoodList');
+                    this.$router.push('/chargeNew/draw')
+                    this.$store.dispatch('getGoodsList')
+                    if (this.userInfo) {
+                        this.$store.dispatch('getWinGoodList')
                     }
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页兑换点击', 'click', '500fkcqH5_商城页兑换']);
+                    _hmt.push(['_trackEvent', '500fkcqH5_商城页兑换点击', 'click', '500fkcqH5_商城页兑换'])
                 } else {
-                    this.$router.push('/chargeNew');
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页充值点击', 'click', '500fkcqH5_商城页充值']);
+                    this.$router.push('/chargeNew')
+                    _hmt.push(['_trackEvent', '500fkcqH5_商城页充值点击', 'click', '500fkcqH5_商城页充值'])
                 }
                 this.isShowChargeTab = params
             },
@@ -579,8 +578,8 @@ export default {
                     this.$store.dispatch('showToast', '至少选择一项')
                     return
                 }
-                if(!this.userInfo){
-                    this.$store.dispatch('doAuth');
+                if (!this.userInfo) {
+                    this.$store.dispatch('doAuth')
                     return false
                 }
                 let params = {}
@@ -590,7 +589,7 @@ export default {
                 params.goldnum = this.current.goldnum
                 params.payid = 3009
                 this.$store.dispatch('doCharge', params)
-                _hmt.push(['_trackEvent', '500fkcqH5_充值额度'+ this.current.rmb +'点击', 'click','500fkcqH5_充值额度'+ this.current.rmb]);
+                _hmt.push(['_trackEvent', '500fkcqH5_充值额度' + this.current.rmb + '点击', 'click', '500fkcqH5_充值额度' + this.current.rmb])
             }
 
         },
@@ -647,9 +646,9 @@ export default {
                 this.$store.dispatch('getHomeInfo')
             }
             if (this.$route.params.others && this.$route.params.others === 'draw') {
-                this.isShowChargeTab = false;
-                this.$store.dispatch('getGoodsList');
-                if(this.userInfo){
+                this.isShowChargeTab = false
+                this.$store.dispatch('getGoodsList')
+                if (this.userInfo) {
                     /* 小红点 */
                     this.$store.dispatch('getWinGoodList')
                 }
@@ -657,21 +656,21 @@ export default {
             if (this.$route.params.others && this.$route.params.others === 'showList') {
                 stopHtml()
                 this.isShowChargeTab = false
-                this.$store.dispatch('getGoodsList');
-                this.showLuckEnd = false;
-                this.isShowPrizeList = true;
-                if(this.userInfo){
+                this.$store.dispatch('getGoodsList')
+                this.showLuckEnd = false
+                this.isShowPrizeList = true
+                if (this.userInfo) {
                     /* 可优化 */
                     this.$store.dispatch('getWinGoodList')
                 }
             }
             if (this.$route.params.others && this.$route.params.others.indexOf('_@_ck_@_') > -1) {
-                let arr = this.$route.params.others.split('_@_');
+                let arr = this.$route.params.others.split('_@_')
                 if (arr[0] === '2') {
-                    this.$store.dispatch('showToast', '充值成功');
+                    this.$store.dispatch('showToast', '充值成功')
                     history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
                 } else if (arr[0] === '1') {
-                    this.$store.dispatch('showToast', '支付未完成，请重试');
+                    this.$store.dispatch('showToast', '支付未完成，请重试')
                     history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
                 }
             }
@@ -699,10 +698,10 @@ export default {
             },
             WuliuStatus (status, wuliu) {
 //                物流状态
-                let str = '';
+                let str = ''
                 switch (status) {
                 case '1':
-                    str = '未发货';
+                    str = '未发货'
                     break
                 case '2':
                     str = '已发货(' + wuliu + ')'

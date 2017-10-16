@@ -345,15 +345,15 @@
         },
         methods: {
             jumpToRedCenter () {
-                var ck= '';
-                if(this.ck){
-                    ck = this.ck.replace(/=/g,'$');
-                }else{
-                    this.$store.dispatch('doAuthLogin');
-                    return false;
+                var ck = ''
+                if (this.ck) {
+                    ck = this.ck.replace(/=/g, '$')
+                } else {
+                    this.$store.dispatch('doAuthLogin')
+                    return false
                 }
                 /* 带上参数 ！！ */
-                window.location.href = 'http://crazybet.choopaoo.com/guoqing/?from=500app&h5ck='+ck+'&fromCopy=fromCopy';
+                window.location.href = 'http://crazybet.choopaoo.com/guoqing/?from=500app&h5ck=' + ck + '&fromCopy=fromCopy'
             },
             activityJumpFn ({ params }) {
                 location.href = params
@@ -361,21 +361,21 @@
             newUserGuide ({ params }) {
                 /* 新手引导 */
                 switch (params) {
-                    case 'img2':
-                        this.showNewUserImg1 = false;
-                        this.showNewUserImg2 = true;
-                        this.showNewUserImg3 = false
-                            ;break;
-                    case 'img3':
-                        this.showNewUserImg1 = false;
-                        this.showNewUserImg2 = false;
-                        this.showNewUserImg3 = true;
-                        break;
-                    default:
-                        this.showNewUserBox = false;
-                        /* 弹出 + 888 */
-                        this.$store.dispatch(actionTypes.showJinbiBox, {isShow: true, golds: 888, coinTitle: '首次登录奖励'});
-                        this.$store.dispatch('getUserInfo')
+                case 'img2':
+                    this.showNewUserImg1 = false
+                    this.showNewUserImg2 = true
+                    this.showNewUserImg3 = false
+                            ;break
+                case 'img3':
+                    this.showNewUserImg1 = false
+                    this.showNewUserImg2 = false
+                    this.showNewUserImg3 = true
+                    break
+                default:
+                    this.showNewUserBox = false
+                    /* 弹出 + 888 */
+                    this.$store.dispatch(actionTypes.showJinbiBox, {isShow: true, golds: 888, coinTitle: '首次登录奖励'})
+                    this.$store.dispatch('getUserInfo')
                 }
             },
             activityFn ({ params }) {
@@ -400,7 +400,7 @@
                 this.showOption = false
             },
             closeActBox () {
-                starHtml();
+                starHtml()
                 this.$store.commit('setActiveBox', false)
             },
             closeHeadBox () {
@@ -439,32 +439,32 @@
             enterMy ({params}) {
                 switch (params) {
                 case 'message':
-                    this.$store.dispatch('getMessageList');
-                    stopHtml();
-                    this.$store.state.msgAllData.messPageNum = 1;
-                    this.$store.commit('showMessbox', true);
+                    this.$store.dispatch('getMessageList')
+                    stopHtml()
+                    this.$store.state.msgAllData.messPageNum = 1
+                    this.$store.commit('showMessbox', true)
                     setTimeout(() => {
                         document.querySelector('.message').scrollTop = 0
-                    }, 11);
-                    _hmt.push(['_trackEvent', '500fkcqH5_我的消息点击', 'click', '500fkcqH5_我的消息']);
-                    break;
+                    }, 11)
+                    _hmt.push(['_trackEvent', '500fkcqH5_我的消息点击', 'click', '500fkcqH5_我的消息'])
+                    break
                 case 'option':
-                    stopHtml();
+                    stopHtml()
                     this.$router.push('/fb_upload')
 //                    this.showOption = true;
-                    _hmt.push(['_trackEvent', '500fkcqH5_我要反馈点击', 'click', '500fkcqH5_我要反馈']);
-                    break;
+                    _hmt.push(['_trackEvent', '500fkcqH5_我要反馈点击', 'click', '500fkcqH5_我要反馈'])
+                    break
                 case 'crazyPage':
                     if (platform === 'android') {
                         window.location.href = 'http://download.choopaoo.com/download/cbet_for_Android_500cpH5.apk'
                     } else {
                         window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
                     }
-                    _hmt.push(['_trackEvent', '500fkcqH5_下载app(头像内)点击', 'click', '500fkcqH5_下载app']);
-                    break;
+                    _hmt.push(['_trackEvent', '500fkcqH5_下载app(头像内)点击', 'click', '500fkcqH5_下载app'])
+                    break
                 case 'goHelp':
-                    _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明']);
-                    this.$router.push('/help');
+                    _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
+                    this.$router.push('/help')
                     break
                 }
             }
@@ -484,8 +484,8 @@
         computed: {
             activityListData () {
                 if (this.$store.state.home.activityListData && this.$store.state.home.activityListData.length > 0) {
-                    this.activeCurrOn = this.$store.state.home.activityListData[0].number;
-                    this.activeCurrImg = this.$store.state.home.activityListData[0].photo_url;
+                    this.activeCurrOn = this.$store.state.home.activityListData[0].number
+                    this.activeCurrImg = this.$store.state.home.activityListData[0].photo_url
                     this.activeCurrLink = this.$store.state.home.activityListData[0].link
                 }
                 return this.$store.state.home.activityListData
@@ -545,13 +545,13 @@
             },
             isSign () {
                 if (this.signList) {
-                    let isSign = '1' ; //  1 代表已签到  0，代表未签到
+                    let isSign = '1'  //  1 代表已签到  0，代表未签到
                     this.signList.forEach((item) => {
                         if (item.sign === '0') {
-                            isSign = '0';
+                            isSign = '0'
                             return false
                         }
-                    });
+                    })
                     return isSign
                 }
             },
@@ -560,7 +560,7 @@
             },
             ck () {
                 return this.$store.state.ck
-            },
+            }
         },
         components: {
             SendOrder,
@@ -572,7 +572,7 @@
         },
         filters: {
             format: (num) => {
-                num = Number(num);
+                num = Number(num)
                 if (isNaN(num)) {
                     return 0
                 }

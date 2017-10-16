@@ -273,7 +273,7 @@
         filters: {
             format: (num) => {
 //                金币格式处理
-                num = Number(num);
+                num = Number(num)
                 if (num < 10000) {
                     return num
                 } else if (num < 100000000) {
@@ -285,4 +285,3 @@
         }
     }
 </script>
-

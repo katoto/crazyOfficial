@@ -89,52 +89,52 @@
 <script>
     import PublicHead from '~components/publicHead'
     export default {
-            data () {
-                return {
-                    helpSel: {
-                        helpSel_1: true,
-                        helpSel_2: false,
-                        helpSel_3: false,
-                        helpSel_4: false,
-                        helpSel_5: false,
-                        helpSel_6: false,
-                        helpSel_7: false
-                    }
+        data () {
+            return {
+                helpSel: {
+                    helpSel_1: true,
+                    helpSel_2: false,
+                    helpSel_3: false,
+                    helpSel_4: false,
+                    helpSel_5: false,
+                    helpSel_6: false,
+                    helpSel_7: false
                 }
-            },
-            methods: {
-                helpItem ({helpSel}) {
-    //                切换帮助里头的选项
-                    switch (helpSel) {
-                    case 'helpSel_1':
-                        this.helpSel.helpSel_1 = !this.helpSel.helpSel_1
-                        break
-                    case 'helpSel_2':
-                        this.helpSel.helpSel_2 = !this.helpSel.helpSel_2
-                        break
-                    case 'helpSel_3':
-                        this.helpSel.helpSel_3 = !this.helpSel.helpSel_3
-                        break
-                    case 'helpSel_4':
-                        this.helpSel.helpSel_4 = !this.helpSel.helpSel_4
-                        break
-                    case 'helpSel_5':
-                        this.helpSel.helpSel_5 = !this.helpSel.helpSel_5
-                        break
-                    case 'helpSel_6':
-                        this.helpSel.helpSel_6 = !this.helpSel.helpSel_6
-                        break
-                    case 'helpSel_7':
-                        this.helpSel.helpSel_7 = !this.helpSel.helpSel_7
-                        break
-                    case 'backHistory':
-                        window.history.back()
-                        break
-                    }
-                }
-            },
-            components: {
-                PublicHead
             }
+        },
+        methods: {
+            helpItem ({helpSel}) {
+    //                切换帮助里头的选项
+                switch (helpSel) {
+                case 'helpSel_1':
+                    this.helpSel.helpSel_1 = !this.helpSel.helpSel_1
+                    break
+                case 'helpSel_2':
+                    this.helpSel.helpSel_2 = !this.helpSel.helpSel_2
+                    break
+                case 'helpSel_3':
+                    this.helpSel.helpSel_3 = !this.helpSel.helpSel_3
+                    break
+                case 'helpSel_4':
+                    this.helpSel.helpSel_4 = !this.helpSel.helpSel_4
+                    break
+                case 'helpSel_5':
+                    this.helpSel.helpSel_5 = !this.helpSel.helpSel_5
+                    break
+                case 'helpSel_6':
+                    this.helpSel.helpSel_6 = !this.helpSel.helpSel_6
+                    break
+                case 'helpSel_7':
+                    this.helpSel.helpSel_7 = !this.helpSel.helpSel_7
+                    break
+                case 'backHistory':
+                    window.history.back()
+                    break
+                }
+            }
+        },
+        components: {
+            PublicHead
         }
+    }
 </script>

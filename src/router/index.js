@@ -48,7 +48,7 @@ const router = new VueRouter({
             children: [
                 {
                     path: 'home/:from?',
-                    component: crazymain,
+                    component: crazymain
                 },
                 {
                     path: 'matchList',
@@ -132,7 +132,7 @@ if (location.search) {
     }
     /* 统计from */
     if (queryObj.from) {
-        localStorage.setItem('src',queryObj.from);
+        localStorage.setItem('src', queryObj.from)
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/${queryObj.from}`)
     }
     /*
@@ -144,10 +144,10 @@ if (location.search) {
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/hot/showMsg`)
     }
 
-    if(queryObj.jumpToRank && queryObj.jumpToRank ==='true'){
+    if (queryObj.jumpToRank && queryObj.jumpToRank === 'true') {
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/hot/@@_@rank`)
     }
-    if(queryObj.jumpToPay && queryObj.jumpToPay ==='true'){
+    if (queryObj.jumpToPay && queryObj.jumpToPay === 'true') {
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew/`)
     }
     /*    if(queryObj.login && queryObj.login === 'true' && queryObj.code && queryObj.state === 'STATE' ){

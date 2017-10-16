@@ -111,16 +111,16 @@ export default {
             },
             showLuckEndFn () {
                 /* 中奖框 */
-                if(this.userInfo){
+                if (this.userInfo) {
                     if (this.luckMessData) {
-                        if(this.luckMessData.company){
+                        if (this.luckMessData.company) {
                             this.$store.dispatch('getLuckGoodBingo', {
                                 currGoodsid: this.luckMessData.goodsid,
                                 currConsumgolds: this.luckMessData.consumgolds,
                                 goodstype: this.luckMessData.goodstype,
-                                company:this.luckMessData.company
+                                company: this.luckMessData.company
                             })
-                        }else{
+                        } else {
                             this.$store.dispatch('getLuckGoodBingo', {
                                 currGoodsid: this.luckMessData.goodsid,
                                 currConsumgolds: this.luckMessData.consumgolds,
@@ -131,7 +131,7 @@ export default {
                         this.$store.dispatch('showToast', '抽取失败,请重新再试')
                         this.alertGoodsBox = false
                     }
-                }else{
+                } else {
                     this.$store.dispatch('doAuth')
                 }
             },

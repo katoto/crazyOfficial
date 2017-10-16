@@ -64,68 +64,68 @@
         methods: {
             enterMy ({params}) {
                 switch (params) {
-                    case 'betlist':
-                        stopHtml();
-                        console.log('show betlist');
-                        this.$store.dispatch('getGoldList', 0);
+                case 'betlist':
+                    stopHtml()
+                    console.log('show betlist')
+                    this.$store.dispatch('getGoldList', 0)
+                    setTimeout(() => {
+                        this.$store.commit('showBetListbox', true)
+                        this.$store.dispatch('getUserInfo')
+                    }, 10)
+                    _hmt.push(['_trackEvent', '500fkcqH5_首页猜球记录点击', 'click', '500fkcqH5_猜球记录'])
+
+                    break
+                case 'charge':
+                    _hmt.push(['_trackEvent', '500fkcqH5_首页充值点击', 'click', '500fkcqH5_首页充值'])
+                    this.$router.push(`/chargeNew`)
+
+                    break
+                case 'rank':
+                    if (!this.rankList) {
+                        this.$store.dispatch(actionTypes.getrankList)
                         setTimeout(() => {
-                            this.$store.commit('showBetListbox', true);
-                            this.$store.dispatch('getUserInfo')
-                        }, 10);
-                        _hmt.push(['_trackEvent', '500fkcqH5_首页猜球记录点击', 'click', '500fkcqH5_猜球记录']);
-
-                        break;
-                    case 'charge':
-                        _hmt.push(['_trackEvent', '500fkcqH5_首页充值点击', 'click', '500fkcqH5_首页充值']);
-                        this.$router.push(`/chargeNew`);
-
-                        break;
-                    case 'rank':
-                        if (!this.rankList) {
-                            this.$store.dispatch(actionTypes.getrankList);
-                            setTimeout(() => {
-                                this.$store.commit(mutationTypes.showRankbox, true)
-                            }, 10)
-                        } else {
                             this.$store.commit(mutationTypes.showRankbox, true)
-                        }
-                        stopHtml();
-                        _hmt.push(['_trackEvent', '500fkcqH5_首页猜球记录点击', 'click', '500fkcqH5_首页猜球记录']);
-                        break;
-                    case 'headParentBox':
-                        if (this.showHeadBox) {
-                            this.$store.commit('showHeadBox', false)
-                        } else {
-                            this.$store.commit('showHeadBox', true)
-                        }
-                        ;break;
-                    case 'backHistory':
-                        window.history.back();
-                        break;
-                    case 'backApp':
-                        window.history.back();
-                        break;
-                    case 'doAuth':
-                        this.$store.dispatch('doAuth');
-                        break;
+                        }, 10)
+                    } else {
+                        this.$store.commit(mutationTypes.showRankbox, true)
+                    }
+                    stopHtml()
+                    _hmt.push(['_trackEvent', '500fkcqH5_首页猜球记录点击', 'click', '500fkcqH5_首页猜球记录'])
+                    break
+                case 'headParentBox':
+                    if (this.showHeadBox) {
+                        this.$store.commit('showHeadBox', false)
+                    } else {
+                        this.$store.commit('showHeadBox', true)
+                    }
+                    ;break
+                case 'backHistory':
+                    window.history.back()
+                    break
+                case 'backApp':
+                    window.history.back()
+                    break
+                case 'doAuth':
+                    this.$store.dispatch('doAuth')
+                    break
                 }
             },
             imgOnError (that) {
                 that.target.setAttribute('src', 'http://img.choopaoo.com/esun/upload/be/83/be837ad8049611e797ef.png')
             },
             nav ({params}) {
-                this.currentNav = params;
-                this.$store.commit(mutationTypes.currentBetSelect, null);  // 切换隐藏投注框
+                this.currentNav = params
+                this.$store.commit(mutationTypes.currentBetSelect, null)  // 切换隐藏投注框
                 switch (params) {
-                    case 'noEnd':
-                    case 'end':
-                        if (params === 'noEnd') {
-                            _hmt.push(['_trackEvent', '500fkcqH5_全部赛事页未结束点击', 'click', '500fkcqH5_未结束点击'])
-                        } else {
-                            _hmt.push(['_trackEvent', '500fkcqH5_全部赛事页已结束点击', 'click', '500fkcqH5_全部赛事页已结束'])
-                        }
-                        this.$router.replace(`/h5/matchList/${params}/`);
-                        break
+                case 'noEnd':
+                case 'end':
+                    if (params === 'noEnd') {
+                        _hmt.push(['_trackEvent', '500fkcqH5_全部赛事页未结束点击', 'click', '500fkcqH5_未结束点击'])
+                    } else {
+                        _hmt.push(['_trackEvent', '500fkcqH5_全部赛事页已结束点击', 'click', '500fkcqH5_全部赛事页已结束'])
+                    }
+                    this.$router.replace(`/h5/matchList/${params}/`)
+                    break
                 }
             },
             openBetListbox () {
@@ -155,7 +155,7 @@
         },
         filters: {
             format: (num) => {
-                num = Number(num);
+                num = Number(num)
                 if (num < 10000) {
                     return num
                 } else if (num < 100000000) {

@@ -76,26 +76,26 @@
     import {aTypes, mTypes} from '~store/feedback'
 
     export default {
-        data(){
+        data () {
             return {
-                moreImgView:'',
-                showPopImg:false,
+                moreImgView: '',
+                showPopImg: false
             }
         },
         methods: {
-            showMoreImg({params}){
-                this.showPopImg = true;
-                this.moreImgView = params;
+            showMoreImg ({params}) {
+                this.showPopImg = true
+                this.moreImgView = params
             },
-            closePopImg(){
-                this.showPopImg = false;
+            closePopImg () {
+                this.showPopImg = false
             },
-            showkefu(){
-                this.$store.commit(mTypes.setkefuAlert , false)
-            },
+            showkefu () {
+                this.$store.commit(mTypes.setkefuAlert, false)
+            }
         },
         computed: {
-            fbMore(){
+            fbMore () {
                 return this.$store.state.feedback.fbMore
             }
         },
@@ -103,13 +103,12 @@
             Public_Head,
             Kefu_alert
         },
-        mounted(){
-            if(this.$route.params && this.$route.params.fbId){
-                this.$store.dispatch(aTypes.getfbListMore, this.$route.params.fbId );
-                setTimeout(()=>{
+        mounted () {
+            if (this.$route.params && this.$route.params.fbId) {
+                this.$store.dispatch(aTypes.getfbListMore, this.$route.params.fbId)
+                setTimeout(() => {
                     this.$store.dispatch('getUserInfo')
-                },500)
-
+                }, 500)
             }
         },
         filters: {
@@ -126,38 +125,23 @@
                     console.error(e.message)
                 }
 
-                let weekFormate = function (weekDay) {
-                    switch (weekDay) {
-                        case 0: return '周日'
-                        case 1: return '周一'
-                        case 2: return '周二'
-                        case 3: return '周三'
-                        case 4: return '周四'
-                        case 5: return '周五'
-                        case 6: return '周六'
-                        default : return '时间有误'
-                    }
-                }
-
                 return format.replace(/yyyy|MM|dd|HH|mm|ss|WW/g, function (a) {
                     switch (a) {
-                        case 'yyyy':
-                            return tf(t.getFullYear())
-                        case 'MM':
-                            return tf(t.getMonth() + 1)
-                        case 'mm':
-                            return tf(t.getMinutes())
-                        case 'dd':
-                            return tf(t.getDate())
-                        case 'HH':
-                            return tf(t.getHours())
-                        case 'ss':
-                            return tf(t.getSeconds())
-                        case 'WW':
-                            return weekFormate(t.getDay())
+                    case 'yyyy':
+                        return tf(t.getFullYear())
+                    case 'MM':
+                        return tf(t.getMonth() + 1)
+                    case 'mm':
+                        return tf(t.getMinutes())
+                    case 'dd':
+                        return tf(t.getDate())
+                    case 'HH':
+                        return tf(t.getHours())
+                    case 'ss':
+                        return tf(t.getSeconds())
                     }
                 })
             }
-        },
+        }
     }
 </script>

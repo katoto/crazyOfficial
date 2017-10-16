@@ -47,8 +47,8 @@ export default {
         },
         methods: {
             nav ({params}) {
-                this.currentNav = params;
-                this.$store.commit(mutationTypes.currentBetSelect, null);  // 切换隐藏投注框
+                this.currentNav = params
+                this.$store.commit(mutationTypes.currentBetSelect, null)  // 切换隐藏投注框
                 switch (params) {
                 case 'noEnd':
                 case 'end':
@@ -57,18 +57,18 @@ export default {
                     } else {
                         _hmt.push(['_trackEvent', '500fkcqH5_全部赛事已结束点击', 'click', '500fkcqH5_全部赛事已结束'])
                     }
-                    this.$router.replace(`/h5/matchList/${params}/`);
+                    this.$router.replace(`/h5/matchList/${params}/`)
                     break
                 }
             },
             openBetListbox () {
                 if (this.hasLogin) {
-                    stopHtml();
-                    this.$store.dispatch('getGoldList', 0);
+                    stopHtml()
+                    this.$store.dispatch('getGoldList', 0)
                     setTimeout(() => {
                         this.$store.commit('showBetListbox', true)
                     }, 10)
-                }else{
+                } else {
                     this.$store.dispatch('doAuth')
                 }
                 _hmt.push(['_trackEvent', '500qqsd_全部赛事页猜球记录点击', 'click', '500qqsd_全部赛事页猜球记录'])

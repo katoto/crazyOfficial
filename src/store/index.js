@@ -5,7 +5,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import ajax from '~common/ajax'
-import {addCookie,platform, src, wait, convertToQueryString, getCk} from '~common/util'
+import {addCookie, platform, src, wait, convertToQueryString, getCk} from '~common/util'
 import main from './main'
 import home from './home'
 import feedback from './feedback'
@@ -404,7 +404,7 @@ const actions = {
             if (e.code === '136' || e.code === '102') {
                 dispatch('clearLoginState', 0)
                 //  再次调起登陆
-                dispatch('doAuthLogin');
+                dispatch('doAuthLogin')
                 return false
             }
             dispatch('showToast', e.message + '/user/info')

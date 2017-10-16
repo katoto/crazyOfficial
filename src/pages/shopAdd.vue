@@ -104,8 +104,8 @@ export default {
         },
         methods: {
             saveAddrMess () {
-                if(this.hasUserInfo){
-                    let reg = /^1[0-9]{10}$/;
+                if (this.hasUserInfo) {
+                    let reg = /^1[0-9]{10}$/
                     if (this.addressMess.mobile && reg.test(this.addressMess.mobile)) {
                         if (!this.currOrderId && this.isSaveBtn || this.currOrderId && this.isConfirmBtn) {
                             return false
@@ -121,7 +121,7 @@ export default {
                     } else {
                         this.$store.dispatch('showToast', '手机号码有误,请重新输入！')
                     }
-                }else{
+                } else {
                     this.$store.dispatch('doAuth')
                 }
             },
@@ -244,7 +244,7 @@ export default {
             if (this.$route.params.orderId) {
                 this.currOrderId = this.$route.params.orderId
             }
-            if(this.hasUserInfo){
+            if (this.hasUserInfo) {
                 this.$store.dispatch('getAddressMess')
             }
         }
