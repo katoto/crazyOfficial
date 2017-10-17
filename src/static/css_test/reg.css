@@ -1,5 +1,22 @@
 @charset "UTF-8";
 
+.header,.logo,.user-co .delete,.user-icon,.reg-warning::before,.user-d::after,.pop-userImg-c li.on::after{
+    background-image: url("../images/sprite-reg.png");
+    background-size: 750px;
+}
+
+#user .topBar{
+    background: #1b1b20;
+}
+#user h1{
+    color: #d9ddff;
+}
+#user .header .icon_back::after{
+    opacity: 0.5;
+}
+.reg-c,.login-c,.findPsd-c,.setPsd-c{
+    padding:0 30px;
+}
 .user-co{
     position: relative;
     margin-bottom:16px;
@@ -27,9 +44,23 @@
     position: absolute;
     top:30px;
     right:36px;
-    width: 30px;
-    height: 30px;
-    background-position: -320px -482px;
+    width: 32px;
+    height: 32px;
+    background-position: -318px -480px;
+}
+.user-pass .eye-iconOn{
+    width: 34px;
+    height: 24px;
+    background-position: -328px -444px;
+    top:34px;
+    right:100px;
+}
+.user-pass .eye-iconOff{
+    width: 36px;
+    height: 18px;
+    background-position: -372px -444px;
+    top:40px;
+    right:100px;
 }
 #user ::-webkit-input-placeholder{
     color: #67708f;
@@ -37,7 +68,7 @@
 
 #user .btn{
     display: block;
-    width:100%;
+    width:680px;
     height:80px;
     overflow: hidden;
     background: #3f437e;
@@ -54,44 +85,49 @@
     color: #8a8cab !important;
 }
 /*注册-登录*/
-.reg-c,.login-c{
-    padding:0 30px;
-}
-.reg-c form,.login-c form{
-    margin-top:44px;
-}
+
 .header{
     width:750px;
     height: 364px;
     overflow: hidden;
     background-position: 0px 0px;
+    margin-bottom:44px;
 }
 .header .top{
     height:88px;
     border-bottom:1px solid #2d2f37;
 }
-.logo{
+#user .logo{
     width: 274px;
     height: 147px;
     margin:30px auto 0;
     background-position: 0px -444px;
 }
+#user .header p{
+    line-height:90px;
+    font-size:28px;
+    color: #6f799a;
+}
 .phone-icon{
-    width: 26px;
+    width: 29px;
     height: 36px;
-    background-position: -284px -482px;
+    background-position: -283px -482px;
     left:36px;
     top:28px;
 }
 .pas-icon{
-    width: 32px;
-    height: 36px;
-    background-position: -690px -374px;
+    width: 34px;
+    height: 43px;
+    background-position: -690px -368px;
     left:32px;
-    top:26px;
+    top:24px;
 }
 .msg-icon{
-
+    width: 36px;
+    height: 32px;
+    background-position: -284px -440px;
+    left:32px;
+    top:28px;
 }
 .reg-warning{
     position: relative;
@@ -107,9 +143,9 @@
     position: absolute;
     left:0;
     top:4px;
-    width: 24px;
-    height: 24px;
-    background-position: -359px -482px;
+    width: 26px;
+    height: 26px;
+    background-position: -358px -480px;
 }
 .to-foeget{
     float: right;
@@ -117,25 +153,36 @@
     color: #6f799a;
     line-height:34px;
 }
-.btn-login{
+.btn-login,.btn-reg,.btn-next{
     margin-top:45px;
 }
-.reg-tips{
+.btn-set{
+    margin-top:48px;
+}
+.login-tips{
     margin-top:58px;
     text-align: center;
     font-size:28px;
     color: #6f799a;
 }
-.reg-tips a{
+.login-tips a{
     color: #878fff;
 }
+.reg-tips,.reg-tips a{
+    margin-top:360px;
+    text-align: center;
+    font-size:28px;
+    color: #6f799a;
+}
+.reg-tips a{
+    text-decoration: underline;
+}
 .btn-down{
-    position: absolute;
-    bottom:44px;
-    left:0;
+    display: block;
     width:100%;
     font-size:22px;
     color: #878fff;
+    margin-top:380px;
 }
 .user-msg{
     float: left;
@@ -143,9 +190,162 @@
 .user-msg input{
     width:388px !important;
 }
-
-
-.header,.logo,.user-co .delete,.user-icon,.reg-warning::before{
-    background-image: url("../images/sprite-reg.png");
-    background-size: 750px;
+.user-msg01,.user-msg02{
+    float: right;
+    width: 266px;
+    height: 90px;
+    overflow: hidden;
+    line-height: 90px;
+    border: 1px solid #32343e;
+    outline: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 30px;
+    text-align: center;
 }
+.user-msg01{
+    color: #d9ddff;
+}
+.user-msg02{
+    color: #6f799a;
+}
+/*找回密码*/
+.find-tips,.set-tips{
+    margin-top:3px;
+    line-height:77px;
+    font-size:28px;
+    color: #6f799a;
+    text-align: left;
+}
+.find-tips01{
+    margin-top:400px;
+    line-height:64px;
+    font-size:26px;
+    color: #444a60;
+}
+.findPsd-c .btn-online{
+    margin:0 auto;
+}
+/*个人中心*/
+.user-d{
+    position: relative;
+    padding: 0 30px;
+    height:100px;
+    overflow: hidden;
+    line-height:100px;
+    background: #26272f;
+}
+.user-d::after{
+    position: absolute;
+    right:24px;
+    top:40px;
+    content: '';
+    display: block;
+    width: 14px;
+    height: 24px;
+    background-position: -732px -374px;
+}
+.user-d img{
+    display: block;
+    float: right;
+    width:60px;
+    height:60px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin:20px 52px 0 0;
+}
+.user-d+.user-d{
+    margin-top:1px;
+}
+.user-d span{
+    float: left;
+    font-size:32px;
+    color: #6f799a;
+}
+.my-name{
+    float: right;
+    margin-right:52px;
+    font-size:32px;
+    color: #d9ddff;
+}
+.btn-exit{
+    margin:680px auto 0;
+}
+.btn-keep{
+    margin:94px auto 0;
+}
+.btn-save{
+    width:590px !important;
+    margin: 36px auto 0;
+}
+.chang-tips{
+    line-height: 50px;
+    font-size: 26px;
+    color: #6f799a;
+    text-align: left;
+    text-indent:30px;
+}
+.chang-name input{
+    text-indent:30px !important;
+    border:none !important;
+}
+/*弹窗*/
+.pop-userImg .pop-o{
+    height:820px;
+    margin-top:-410px;
+}
+.pop-userImg-c{
+    position: relative;
+    width:598px;
+    height:545px;
+    /*overflow: hidden;*/
+    margin:0 auto;
+}
+.pop-userImg-c ul{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    margin-bottom:24px;
+}
+.pop-userImg-c li{
+    position: relative;
+    display: block;
+    border:4px solid transparent;
+    width:124px;
+    height:124px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.pop-userImg-c li.on{
+    border-color: #48cd1d;
+}
+.pop-userImg-c li.on::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width:40px;
+    height:38px;
+    overflow: hidden;
+    background-position: -328px -526px;
+    left:100px;
+    bottom:0;
+}
+.pop-userImg-c img{
+    display: block;
+    width:124px;
+    height:124px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+
+
+
+
+
