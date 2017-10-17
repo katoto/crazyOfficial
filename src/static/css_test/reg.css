@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+.user-co{
+    position: relative;
+    margin-bottom:16px;
+    overflow: hidden;
+}
+#user input{
+    width:100%;
+    height:90px;
+    overflow: hidden;
+    line-height:90px;
+    background: #26272f;
+    border:1px solid #32343e;
+    outline:none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-size:30px;
+    color: #d9ddff;
+    text-indent: 100px;
+}
+#user .user-icon{
+    position: absolute;
+}
+#user .delete{
+    position: absolute;
+    top:30px;
+    right:36px;
+    width: 30px;
+    height: 30px;
+    background-position: -320px -482px;
+}
+#user ::-webkit-input-placeholder{
+    color: #67708f;
+}
+
+#user .btn{
+    display: block;
+    width:100%;
+    height:80px;
+    overflow: hidden;
+    background: #3f437e;
+    border:none;
+    outline:none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size:36px;
+    color: #fff;
+}
+#user .btn01{
+    color: #8a8cab !important;
+}
+/*注册-登录*/
+.reg-c,.login-c{
+    padding:0 30px;
+}
+.reg-c form,.login-c form{
+    margin-top:44px;
+}
+.header{
+    width:750px;
+    height: 364px;
+    overflow: hidden;
+    background-position: 0px 0px;
+}
+.header .top{
+    height:88px;
+    border-bottom:1px solid #2d2f37;
+}
+.logo{
+    width: 274px;
+    height: 147px;
+    margin:30px auto 0;
+    background-position: 0px -444px;
+}
+.phone-icon{
+    width: 26px;
+    height: 36px;
+    background-position: -284px -482px;
+    left:36px;
+    top:28px;
+}
+.pas-icon{
+    width: 32px;
+    height: 36px;
+    background-position: -690px -374px;
+    left:32px;
+    top:26px;
+}
+.msg-icon{
+
+}
+.reg-warning{
+    position: relative;
+    float: left;
+    font-size:26px;
+    color: #fc5a5d;
+    padding-left:34px;
+    line-height:34px;
+}
+.reg-warning::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left:0;
+    top:4px;
+    width: 24px;
+    height: 24px;
+    background-position: -359px -482px;
+}
+.to-foeget{
+    float: right;
+    font-size:26px;
+    color: #6f799a;
+    line-height:34px;
+}
+.btn-login{
+    margin-top:45px;
+}
+.reg-tips{
+    margin-top:58px;
+    text-align: center;
+    font-size:28px;
+    color: #6f799a;
+}
+.reg-tips a{
+    color: #878fff;
+}
+.btn-down{
+    position: absolute;
+    bottom:44px;
+    left:0;
+    width:100%;
+    font-size:22px;
+    color: #878fff;
+}
+.user-msg{
+    float: left;
+}
+.user-msg input{
+    width:388px !important;
+}
+
+
+.header,.logo,.user-co .delete,.user-icon,.reg-warning::before{
+    background-image: url("../images/sprite-reg.png");
+    background-size: 750px;
+}

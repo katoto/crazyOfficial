@@ -157,6 +157,7 @@ textarea{
     color: #fff;
 }
 .btn-online{
+    position: relative;
     display: block;
     width:125px;
     padding-left: 40px;
@@ -165,12 +166,7 @@ textarea{
     line-height:32px;
     font-size:30px;
     color: #878fff;
-}
-#feedback .btn-online{
-    position: absolute;
-    left:50%;
-    margin-left:-80px;
-    bottom:130px;
+    margin:320px auto 0;
 }
 .btn-online::before{
     content: '';
