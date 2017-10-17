@@ -4,7 +4,6 @@
     background-image: url("../images/sprite-reg.png");
     background-size: 750px;
 }
-
 #user .topBar{
     background: #1b1b20;
 }
@@ -23,6 +22,7 @@
     overflow: hidden;
 }
 #user input{
+    display: block;
     width:100%;
     height:90px;
     overflow: hidden;
@@ -169,10 +169,12 @@
     color: #878fff;
 }
 .reg-tips,.reg-tips a{
-    margin-top:360px;
     text-align: center;
     font-size:28px;
     color: #6f799a;
+}
+.reg-tips{
+    margin-top:100px;
 }
 .reg-tips a{
     text-decoration: underline;
@@ -182,7 +184,7 @@
     width:100%;
     font-size:22px;
     color: #878fff;
-    margin-top:380px;
+    margin-top:150px;
 }
 .user-msg{
     float: left;
@@ -205,7 +207,8 @@
     text-align: center;
 }
 .user-msg01{
-    color: #d9ddff;
+    color: #878fff;
+    border-color: #878fff;
 }
 .user-msg02{
     color: #6f799a;

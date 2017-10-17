@@ -23,11 +23,11 @@
     <div class="toast hide">服务器10秒后重启</div>
     <div id="user" class="wrap respon2">
         <!--登录注册主页面用header，其他用topBar-->
-        <div class="topBar ">
+        <div class="topBar hide">
             <div class="icon_back"></div>
             <h1>找回密码</h1>
         </div>
-        <div class="header hide">
+        <div class="header ">
              <div class="top">
                  <div class="icon_back"></div>
              </div>
@@ -63,7 +63,7 @@
                 下载官方APP
             </a>
         </div>
-        <div class="login-c hide">
+        <div class="login-c ">
             <form action="" method="post">
                 <div class="user-co user-phone">
                     <span class="user-icon phone-icon"></span>
@@ -83,8 +83,8 @@
                     <span class="delete"></span>
                 </div>
                 <!--user-msg01 or user-msg02-->
-                <a href="javascript:;" class="user-co user-msg01">
-                    57s 后重发
+                <a href="javascript:;" class="user-co user-msg02">
+                    获取验证码
                 </a>
 
                 <div class="overflow">
@@ -99,7 +99,7 @@
             </form>
             <p class="reg-tips">创建帐号即代表你同意 <a href="javascript:;">用户协议</a> </p>
         </div>
-        <div class="findPsd-c ">
+        <div class="findPsd-c hide">
             <p class="find-tips">设置方便您记忆的新密码</p>
             <form action="" method="post">
                 <div class="user-co user-phone">
@@ -113,7 +113,7 @@
                     <span class="delete"></span>
                 </div>
                 <!--user-msg01 or user-msg02-->
-                <a href="javascript:;" class="user-co user-msg01">
+                <a href="javascript:;" class="user-co user-msg02">
                     57s 后重发
                 </a>
                 <div class="overflow">
@@ -172,80 +172,80 @@
         </div>
 
         <!--选择头像弹窗-->
-        <div class="pop pop-userImg hide">
-            <div class="pop_layer"></div>
-            <div class="pop-o">
-                <span class="close">
-                    <span></span>
-                </span>
-                <div class="pop-t">
-                    选择头像
-                </div>
-                <div class="pop-userImg-c">
-                    <div class="full-scroll">
-                        <ul>
-                            <li class="on">
-                                <img src="images/reg/use-img00.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img01.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img02.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img03.png" alt="">
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <img src="images/reg/use-img10.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img11.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img12.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img13.png" alt="">
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <img src="images/reg/use-img20.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img21.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img22.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img23.png" alt="">
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <img src="images/reg/use-img30.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img31.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img32.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/reg/use-img33.png" alt="">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <button class="btn btn-save">
-                    确 定
-                </button>
-            </div>
-        </div>
+        <!--<div class="pop pop-userImg hide">-->
+            <!--<div class="pop_layer"></div>-->
+            <!--<div class="pop-o">-->
+                <!--<span class="close">-->
+                    <!--<span></span>-->
+                <!--</span>-->
+                <!--<div class="pop-t">-->
+                    <!--选择头像-->
+                <!--</div>-->
+                <!--<div class="pop-userImg-c">-->
+                    <!--<div class="full-scroll">-->
+                        <!--<ul>-->
+                            <!--<li class="on">-->
+                                <!--<img src="images/reg/use-img00.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img01.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img02.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img03.png" alt="">-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                        <!--<ul>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img10.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img11.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img12.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img13.png" alt="">-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                        <!--<ul>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img20.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img21.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img22.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img23.png" alt="">-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                        <!--<ul>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img30.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img31.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img32.png" alt="">-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<img src="images/reg/use-img33.png" alt="">-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<button class="btn btn-save">-->
+                    <!--确 定-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </div>
 
