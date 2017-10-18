@@ -2,36 +2,38 @@
     <div id="feedback" class="wrap respon2">
         <Public_Head class="topBar" person-title="反馈记录"></Public_Head>
         <div class="feedback-items respon2-itm">
-            <ul class="full-scroll" v-if="feedbackList && feedbackList.fb_lst &&  feedbackList.fb_lst.length>0">
-
-                <li  v-for="item in feedbackList.fb_lst"
-                    :class="{'ask-had': item.fb_status==='2',
-                     'ask-hadno': item.fb_status==='1'
-                     }"
-                     v-tap="{'methods': goMoreMess ,params:item.fb_id}"
-                >
-                    <span class="ask-t">
-                        {{ item.fb_status | statusFormate }}
-                    </span>
-                    <span class="ask-time">
-                        {{ item.fb_issue_time | formatTime_week }}
-                    </span>
-                    <p class="ask-c">
-                        {{ item.fb_issues }}
-                    </p>
-                    <template v-if="item.fb_images && item.fb_images.length>0">
-                        <img v-for="imgItem in item.fb_images" v-tap="{'methods': showMoreImg ,params:imgItem }" :src=imgItem>
-                    </template>
-                </li>
-            </ul>
-            <div class="scroller" v-else>
-                <img src="~static/images/empty_Mess.png" class="phbNoList_hc">
-                <p class="phbNoList_p_hc">暂无记录~</p>
+            <div class="full-scroll">
+                <ul class="" v-if="feedbackList && feedbackList.fb_lst &&  feedbackList.fb_lst.length>0">
+                    <li  v-for="item in feedbackList.fb_lst"
+                        :class="{'ask-had': item.fb_status==='2',
+                         'ask-hadno': item.fb_status==='1'
+                         }"
+                         v-tap="{'methods': goMoreMess ,params:item.fb_id}"
+                    >
+                        <span class="ask-t">
+                            {{ item.fb_status | statusFormate }}
+                        </span>
+                        <span class="ask-time">
+                            {{ item.fb_issue_time | formatTime_week }}
+                        </span>
+                        <p class="ask-c">
+                            {{ item.fb_issues }}
+                        </p>
+                        <template v-if="item.fb_images && item.fb_images.length>0">
+                            <img v-for="imgItem in item.fb_images" v-tap="{'methods': showMoreImg ,params:imgItem }" :src=imgItem>
+                        </template>
+                    </li>
+                </ul>
+                <div class="scroller" v-else>
+                    <img src="~static/images/empty_Mess.png" class="phbNoList_hc">
+                    <p class="phbNoList_p_hc">暂无记录~</p>
+                </div>
+                <p class="feedback-tips">
+                    感谢您的热心反馈，我们会在第一时间回复您
+                </p>
             </div>
         </div>
-        <p class="feedback-tips">
-            感谢您的热心反馈，我们会在第一时间回复您
-        </p>
+
         <!-- 弹窗 -->
         <div class="pop pop-imgView" :class="{'hide':!showPopImg}">
             <div class="pop_layer"  v-tap="{'methods': closePopImg }"></div>

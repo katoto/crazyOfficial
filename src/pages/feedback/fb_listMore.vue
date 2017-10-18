@@ -46,16 +46,15 @@
                     <p class="ask-answeredTips" :class="{'hide':!( fbMore.fb_status === '0')}">
                         暂无回复，我们会尽快处理
                     </p>
+                    <p class="feedback-tips">
+                        没解决问题？请联系
+                    </p>
+                    <a href="javascript:;" v-tap="{methods : showkefu }" class="btn-online">
+                        在线客服
+                    </a>
                 </template>
             </div>
         </div>
-        <p class="feedback-tips">
-            没解决问题？请联系
-        </p>
-        <a href="javascript:;" v-tap="{methods : showkefu }" class="btn-online">
-            在线客服
-        </a>
-
         <div class="pop pop-imgView" :class="{'hide':!showPopImg}">
             <div class="pop_layer"  v-tap="{'methods': closePopImg }"></div>
             <div class="imgView-box">
