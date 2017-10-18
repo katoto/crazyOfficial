@@ -36,6 +36,9 @@
     font-size:30px;
     color: #d9ddff;
     text-indent: 100px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
 }
 #user .user-icon{
     position: absolute;
@@ -48,19 +51,22 @@
     height: 32px;
     background-position: -318px -480px;
 }
+.reg-c .user-pass .delete{
+    right:100px !important;
+}
 .user-pass .eye-iconOn{
     width: 34px;
     height: 24px;
     background-position: -328px -444px;
     top:34px;
-    right:100px;
+    right:36px;
 }
 .user-pass .eye-iconOff{
     width: 36px;
     height: 18px;
     background-position: -372px -444px;
     top:40px;
-    right:100px;
+    right:36px;
 }
 #user ::-webkit-input-placeholder{
     color: #67708f;
