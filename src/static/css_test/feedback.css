@@ -122,21 +122,20 @@ textarea{
     top:-20px;
     right:-20px;
     display: block;
-    width:40px;
-    height:40px;
+    width:60px;
+    height:60px;
     overflow: hidden;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    background: rgba(51,51,51,.5) ;
 }
 .deleteimg::before{
     content: "";
     display: block;
-    margin: 12px 0 0 12px;
-    width: 18px;
-    height: 18px;
-    background-position: -194px -166px;
+    margin: 0 auto;
+    width: 46px;
+    height: 46px;
+    background-position: -240px -168px;
 }
 .btn-ask{
     display: block;
@@ -147,14 +146,11 @@ textarea{
     line-height:80px;
     background: #3f437e;
     font-size:36px;
-    color: #c1c2d1;
+    color: #fff;
     margin:36px auto 0;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
-}
-.btn-ask-on{
-    color: #fff;
 }
 .btn-online{
     position: relative;

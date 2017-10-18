@@ -1388,8 +1388,10 @@ html, body {
 }
 /*吐槽弹窗*/
 
-
-
+/*不可点击的按钮*/
+.btn-unable{
+    color: #6f799a !important;
+}
 
 
 /*弹窗效果*/
