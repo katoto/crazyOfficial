@@ -29,6 +29,7 @@
     line-height:90px;
     background: #26272f;
     border:1px solid #32343e;
+    /*no*/
     outline:none;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -102,6 +103,13 @@
 .header .top{
     height:88px;
     border-bottom:1px solid #2d2f37;
+}
+.header .top .to-login{
+    line-height:88px;
+    float: right;
+    font-size:30px;
+    color: #6f799a;
+    margin-right:36px;
 }
 #user .logo{
     width: 274px;
@@ -201,10 +209,11 @@
 .user-msg01,.user-msg02{
     float: right;
     width: 266px;
-    height: 90px;
+    height: 88px;
     overflow: hidden;
-    line-height: 90px;
+    line-height: 88px;
     border: 1px solid #32343e;
+    /*no*/
     outline: none;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
