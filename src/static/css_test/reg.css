@@ -1,6 +1,16 @@
 @charset "UTF-8";
 
-.header,.logo,.user-co .delete,.user-icon,.reg-warning::before,.user-d::after,.pop-userImg-c li.on::after{
+.header,
+.logo,
+#user .delete::after,
+.user-icon,
+.reg-warning::before,
+.user-d::after,
+.pop-userImg-c li.on::after,
+.user-pass .eye-iconOff::after,
+.user-pass .eye-iconOn::after
+
+{
     background-image: url("../images/sprite-reg.png");
     background-size: 750px;
 }
@@ -24,9 +34,9 @@
 #user input{
     display: block;
     width:100%;
-    height:90px;
+    height:92px;
     overflow: hidden;
-    line-height:90px;
+    line-height:92px;
     background: #26272f;
     border:1px solid #32343e;
     /*no*/
@@ -45,29 +55,56 @@
     position: absolute;
 }
 #user .delete{
+    display: block;
     position: absolute;
-    top:30px;
-    right:36px;
-    width: 32px;
-    height: 32px;
+    /*top:30px;*/
+    /*right:36px;*/
+    top:0;
+    right:18px;
+    width: 66px;
+    height: 90px;
+
+}
+#user .delete::after{
+    content: '';
+    display: block;
+    width:32px;
+    height:32px;
+    margin:30px auto;
     background-position: -318px -480px;
 }
-.reg-c .user-pass .delete{
-    right:100px !important;
+.reg-c .user-pass .delete,.setPsd-c .user-pass .delete{
+    right:80px !important;
 }
 .user-pass .eye-iconOn{
+    position: absolute;
+    width:60px;
+    height:90px;
+    top:0;
+    right:24px;
+}
+.user-pass .eye-iconOn::after{
+    content: '';
+    display: block;
     width: 34px;
-    height: 24px;
+    height: 26px;
     background-position: -328px -444px;
-    top:34px;
-    right:36px;
+    margin:34px auto 0;
 }
 .user-pass .eye-iconOff{
+    position: absolute;
+    width:60px;
+    height:90px;
+    top:0;
+    right:18px;
+}
+.user-pass .eye-iconOff::after{
+    content: '';
+    display: block;
     width: 36px;
     height: 18px;
     background-position: -372px -444px;
-    top:40px;
-    right:36px;
+    margin:40px auto 0;
 }
 #user ::-webkit-input-placeholder{
     color: #67708f;
@@ -89,7 +126,7 @@
     color: #fff;
 }
 #user .btn01{
-    color: #8a8cab !important;
+    color: #6f799a !important;
 }
 /*注册-登录*/
 
@@ -209,9 +246,9 @@
 .user-msg01,.user-msg02{
     float: right;
     width: 266px;
-    height: 88px;
+    height: 90px;
     overflow: hidden;
-    line-height: 88px;
+    line-height: 90px;
     border: 1px solid #32343e;
     /*no*/
     outline: none;
@@ -362,8 +399,23 @@
     border-radius: 50%;
 }
 
-
-
+/*用户注册协议*/
+.reg-pact{
+    text-align: left;
+}
+.pact-info{
+    padding:20px;
+    text-indent:2em;
+    color: #fff;
+}
+.reg-pact .cont-tit h4 {
+    float: left;
+    color: #c1c1c1;
+}
+.reg-pact .cont-tit .icon-raw{
+    float: right;
+    margin-top: .170667rem;
+}
 
 
 
