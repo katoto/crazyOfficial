@@ -15,10 +15,10 @@
                     </span>
                 </div>
             </div>
-            <a href="javascript:;" class="btn-red btn-ask" :class="{'btn-ask-on':textareaData}">
+            <a href="javascript:;" class="btn-red btn-ask" :class="{'btn-unable':!textareaData}">
                 提交反馈
             </a>
-            <a href="javascript:;" v-tap="{methods:showkefu}" class="btn-online">
+            <a href="javascript:;" style="color: #878fff ;!important;" v-tap="{methods:showkefu}" class="btn-online">
                 在线客服
             </a>
         </div>
@@ -29,7 +29,6 @@
         </div>
 
         <div class="feedback02 " :class="{'hide':!showFeedback02}">
-            <img src="images/feedback/feedback-su.png" alt="">
             <span>反馈成功！</span>
             <p>
                 感谢您对疯狂猜球的关注与支持，我们会认真
@@ -78,15 +77,17 @@
         },
         methods: {
             showkefu () {
+                $('#submitcontent').blur();
                 this.$store.commit(mTypes.setkefuAlert, false)
             },
             handleFiles (e) {
+                var that = this;
                 var file = e.target.files[0]
                 var reader = new FileReader()
                 reader.onload = function () {
                     var imageHtml = ''
-                    if (file.size > 2048576) {
-                        this.$store.dispatch('showToast', '图片太大请截图')
+                    if (file.size > 4048576) {
+                        that.$store.dispatch('showToast', '图片过大请更换');
                         return false
                     }
                     imageHtml += '<span class="itm-img"><span class="deleteimg" ></span><img src="'
@@ -101,7 +102,8 @@
                 $('.deleteimg').unbind('click')
                 setTimeout(function () {
                     var imageNUm = $('.itm-img').length
-                    $(document).on('click', '.deleteimg', function () {
+                    $('.deleteimg').on('click', function () {
+                        console.log('close');
                         $(this).parent().remove()
                         var imageNUm = $('.itm-img').length
                         if (!document.getElementById('fileSelect') && imageNUm < 3) {
@@ -134,9 +136,11 @@
             if (process.env.NODE_ENV === 'production') {
                 if (window.location.protocol === 'http:') {
                     options.baseURL = window.location.protocol + '//crazybet.choopaoo.com:6899'
-                } else {
+                }else {
                     options.baseURL = window.location.protocol + '//crazybet.choopaoo.com:46899'
                 }
+            }else if (process.env.NODE_ENV === 'preRelease') {
+                options.baseURL = 'http://crazybet.choopaoo.com:3899'
             } else {
                 options.baseURL = '/api'
             }
@@ -144,19 +148,19 @@
             $('.btn-red').on('click', function () {
                 let content = $('#submitcontent').val() // 内容
                 let imageStr = ''
-                let img2 = ''
+//                let img2 = ''
             // 图片base64编码
                 if (!content || content === '') {
                     that.$store.dispatch('showToast', '反馈内容不可为空~')
                     return false
                 } else if (content && content.length > 400) {
-                    that.$store.dispatch('showToast', '反馈文案不能超出400字限制~')
+                    that.$store.dispatch('showToast', '超过字数限制，最多400字')
                     return false
                 }
-                that.showLoading = true
+                that.showLoading = true;
                 $.each($('.imagefile'), function (key, value) {
                     imageStr += $(this).val()
-                    img2 += $(this).val().split(',')[1] + '$$$$'
+//                    img2 += $(this).val().split(',')[1] + '$$$$'
 //                    str.slice(0,str.indexOf(',')+1)
                 })
 //                console.log(img2.slice(0,img2.length-3))
@@ -174,6 +178,7 @@
                         image: imageStr
                     },
                     dataType: 'json',
+                    timeout: 50000,
                     success: function (d) {
                         that.showLoading = false
                         if (d.status === '100') {
@@ -184,7 +189,7 @@
                         }
                     },
                     error: function (xhr, type) {
-                        that.$store.dispatch('showToast', '上传提交出错，请稍后再试试~~')
+                        that.$store.dispatch('showToast', '网络请求失败，请检查')
                     }
                 })
             })

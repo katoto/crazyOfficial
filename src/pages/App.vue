@@ -40,16 +40,16 @@
             }
         },
         async mounted () {
-            console.log(window.location.href)
+            console.log(window.location.href);
         /* 登陆还得修改下 */
             try {
             //    线下账号  测试  !!!
-                await this.$store.dispatch('localLogin', 8)
+                await this.$store.dispatch('localLogin', 1234)
                 await this.$store.dispatch('getUserInfo')
             /* 线上 登陆 */
 //                await this.$store.dispatch('checkLogin')
 //            /* 线下 登陆 */
-/// /                await this.$store.dispatch('localCheckLogin');
+//               await this.$store.dispatch('localCheckLogin');
 //                if (this.isLogin) {
 //                    await this.$store.dispatch('getUserInfo')
 //                } else {
