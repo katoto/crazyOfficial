@@ -8,7 +8,8 @@
 .user-d::after,
 .pop-userImg-c li.on::after,
 .user-pass .eye-iconOff::after,
-.user-pass .eye-iconOn::after
+.user-pass .eye-iconOn::after,
+.re-fresh::after
 
 {
     background-image: url("../images/sprite-reg.png");
@@ -395,6 +396,33 @@
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+.user-code{
+    float: right;
+    overflow: hidden;
+}
+.user-code img{
+    display: block;
+    float: left;
+    width:200px;
+    height:90px;
+    border:1px solid #32343e;
+}
+.re-fresh{
+    width:60px;
+    height:92px;
+    overflow: hidden;
+    float: right;
+}
+.re-fresh::after{
+    content: '';
+    display: block;
+    width:34px;
+    height:38px;
+    margin:26px 0 0 26px;
+    overflow: hidden;
+    background-position: -388px -520px;
+}
+
 
 /*用户注册协议*/
 .reg-pact{

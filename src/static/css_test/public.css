@@ -237,7 +237,7 @@ input[type=text], input[type=number], input[type=password] {
     display: -webkit-flex;
     display: flex;
     flex-direction: column;
-    /*默认可以不用谢*/
+    /*默认可以不用写*/
     box-orient: vertical;
     /*没有浏览器支持*/
 }
