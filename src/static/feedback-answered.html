@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="css/bet.css">
     <link rel="stylesheet" type="text/css" href="css/media.css">
     <link rel="stylesheet" type="text/css" href="css/feedback.css">
+    <link href="https://cdn.bootcss.com/Swiper/4.0.1/css/swiper.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/Swiper/4.0.1/js/swiper.min.js"></script>
 </head>
 
 <body>
@@ -93,13 +95,36 @@
                 </a>
             </div>
         </div>
-
     </div>
 </div>
 
+
+<div class="pop pop-imgView">
+    <div class="pop_layer"></div>
+    <div class="imgView-box">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/testimg.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/empty_Mess.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/QQ截图20171019102324.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/bg-sumUnit.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="js/zepto.min.js"></script>
 <script>
-
+    var swiper = new Swiper('.swiper-container', {
+        autoplay:2500
+    });
 </script>
 </body>
 </html>
