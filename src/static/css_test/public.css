@@ -234,10 +234,12 @@ input[type=text], input[type=number], input[type=password] {
 .respon2 {
     height: 100%;
     width: 100%;
-    display: flex;
     display: -webkit-flex;
+    display: flex;
     flex-direction: column;
+    /*默认可以不用谢*/
     box-orient: vertical;
+    /*没有浏览器支持*/
 }
 
 .respon2-itm {
@@ -411,8 +413,6 @@ html, body {
     width: 100%;
     height: 80px;
     position: relative;
-    left: 0;
-    top: 0;
     z-index: 10;
     background: #1f2025;
 }
