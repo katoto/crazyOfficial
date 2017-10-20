@@ -37,7 +37,7 @@
              <p class="">畅玩猜球 新用户立领888币</p>
               <!--登录主页隐藏这个p，注册才显示-->
         </div>
-        <div class="login-c ">
+        <div class="login-c hide">
             <form action="" method="post">
                 <div class="user-co user-phone">
                     <span class="user-icon phone-icon"></span>
@@ -176,9 +176,12 @@
                 退出账号
             </button>
         </div>
-        <div class="chang-name hide">
+        <div class="chang-name ">
             <p class="chang-tips">用户昵称只可以修改一次</p>
-            <input type="text" value="丹猪头Danlinc">
+            <div class="chang-box">
+                <input type="text" value="丹猪头Danlinc">
+                <span class="delete"></span>
+            </div>
             <button class="btn btn-keep">
                 保 存
             </button>
