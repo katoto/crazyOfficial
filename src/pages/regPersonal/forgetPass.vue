@@ -101,15 +101,8 @@
                 this.$store.commit(mTypes.setfPTips , '');
                 this.userPassWordBlur = false;
             },
-
             headBack(){
                 window.history.back();
-//                if(this.Ptitle === '找回密码') {
-//                    window.history.back();
-//                }
-//                }else{
-////                    this.changeTab({params:'per_center'})
-//                }
             },
             showkefu () {
                 this.$store.commit('setkefuAlert', false)
@@ -134,18 +127,12 @@
             againConfirm () {
                 /* 确认  function */
                 if (this.userPassWord === '') {
-                    this.$store.dispatch('showToast', {
-                        duration: 1000,
-                        message: '请输入重置密码'
-                    });
+                    this.$store.commit(mTypes.setfPTips , '请输入重置密码');
                     return false
                 } else {
                     let pass_reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
                     if (!(pass_reg.test(this.userPassWord))) {
-                        this.$store.dispatch('showToast', {
-                            duration: 1000,
-                            message: '请设置6~12位数字、字母组合密码'
-                        });
+                        this.$store.commit(mTypes.setfPTips , '请设置6~12位数字、字母组合密码');
                         return false
                     }
                     /* 重置密码 */
@@ -199,10 +186,7 @@
                         }
                     }, 1000)
                 } else {
-                    this.$store.dispatch('showToast', {
-                        duration: 1000,
-                        message: '请输入正确的手机号'
-                    })
+                    this.$store.commit(mTypes.setfPTips , '请输入正确的手机号');
                 }
             },
             delNumber({ params }){
@@ -262,7 +246,6 @@
         },
         computed: {
             resetSign () {
-                console.log(this.$store.state.regPerson.resetSign);
                 return this.$store.state.regPerson.resetSign;
             },
             fPTips () {

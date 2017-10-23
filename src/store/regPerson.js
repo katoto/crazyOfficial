@@ -22,11 +22,18 @@ const state = {
     isSendTelLogin:false,
     autoTelNumber:null,
 
+    autoLoginNumber:null,
+    autoLoginPassword:null,
+
     fPTips:null,
 }
 const mutationsInfo = mapMutations({
-    setfPTips( state ,data ){
-        state.fPTips = data;
+    autoLoginNumber( state ,data ){
+        state.autoLoginNumber = data;
+    },
+
+    autoLoginPassword( state ,data ){
+        state.autoLoginPassword = data;
     },
 
     autoTelNumber( state ,data ){
@@ -47,6 +54,10 @@ const mutationsInfo = mapMutations({
     setPCTips(state,data){
         state.PCTips = data ;
     },
+    setfPTips( state ,data ){
+        state.fPTips = data ;
+    },
+
     setShowImg( state ,data){
         state.showImg = data
     },
@@ -108,14 +119,17 @@ const actionsInfo = mapActions({
         /* 重置密码 */
         try {
             let resetData = null;
-            console.log(state.resetSign)
+            console.log(state.resetSign);
             resetData = await ajax.get(`http://192.168.41.76:8691/user/modfiy/password?mobile=${params.mobile}&sign=${state.resetSign}&password=${params.password}`)
             console.log(resetData);
             commit('removeCk');
             dispatch('showToast', {
                 message: '密码设置成功',
                 cb: () => {
+                    commit(mTypes.autoLoginNumber , params.mobile );
+                    commit(mTypes.autoLoginPassword ,  params.password );
                     router.push('/login');
+
                 }
             });
         } catch (e) {

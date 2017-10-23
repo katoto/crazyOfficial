@@ -43,7 +43,7 @@ const Regis = () => import('~pages/regPersonal/Regis.vue' /* webpackChunkName: "
 const ForgetPass = () => import('~pages/regPersonal/forgetPass.vue' /* webpackChunkName: "chunks/forgetPass" */)
 const RegProtocol = () => import('~pages/regPersonal/RegProtocol.vue' /* webpackChunkName: "chunks/RegProtocol" */)
 
-const personCT = () => import('~pages/regPersonal/personCenter.vue' /* webpackChunkName: "chunks/RegProtocol" */)
+const personCT = () => import('~pages/regPersonal/personCenter.vue' /* webpackChunkName: "chunks/personCT" */)
 
 
 // mode 代表浏览器环境   路由是按顺序匹配的

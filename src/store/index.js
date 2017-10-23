@@ -288,16 +288,14 @@ const mutations = {
 const actions = {
     clearLoginState ({commit, dispatch}, data) {
         commit('ck', '' );
-        localStorage.removeItem('ck')
+        addCookie('ck', '');
+        localStorage.setItem('ck', '')
     },
 
     /* 检查是否登录 */
     async checkLogin ({commit, dispatch}, params) {
         try {
             const hasCk = await getCk();
-            console.log(hasCk)
-            console.log('131414')
-
             if ( hasCk && hasCk !== 'undefined' &&  hasCk !== '' ) {
                 commit('setIsLogin', true)
             } else {
@@ -308,67 +306,11 @@ const actions = {
         }
     },
 
-    // async localCheckLogin ({commit, dispatch}, params) {
-    //     try {
-    //         const waitCodePromise = () => {
-    //             return new Promise((resolve, reject) => {
-    //                 let url = `http://passport.500boss.com/auth/index.php?action=checkuserlogin&client_id=500guess&webtype=2129&isnew=1&callback=checkLogin`
-    //                 $.ajax({
-    //                     url: url,
-    //                     type: 'get',
-    //                     dataType: 'jsonp',
-    //                     jsonp: 'jpcallback',
-    //                     jsonpCallback: 'checkLogin',
-    //                     success: function (data) {
-    //                         resolve(data)
-    //                     },
-    //                     error: function (e) {
-    //                         reject('0')
-    //                         dispatch('showToast', e.message)
-    //                     }
-    //                 })
-    //             })
-    //         }
-    //         const CodeData = await waitCodePromise()
-    //         if (CodeData && CodeData.code === 100 && CodeData.msg) {
-    //             if (CodeData.msg.islogin === '1' && CodeData.msg.code !== '0') {
-    //                 /* 已经登录 */
-    //                 commit('setIsLogin', true)
-    //                 commit('setNew500Code', CodeData.msg.code)
-    //                 /* 是否直接给建成 */
-    //                 await dispatch('doLogin', CodeData.msg.code)
-    //             } else {
-    //                 commit('setIsLogin', false)
-    //                 window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-    //             }
-    //         } else {
-    //             dispatch('showToast', '登录有误')
-    //         }
-    //     } catch (e) {
-    //         dispatch('showToast', e.message + '/login/cpuser')
-    //     }
-    // },
-    //
-    // async doLogin ({commit, dispatch}, params) {
-    //     try {
-    //         let doLoginData = null
-    //         doLoginData = await ajax.get(`/login/cpuser?token=${params}&cptype=500&src=${src}&platform=${platform}`)
-    //         localStorage.setItem('ck', doLoginData.ck)
-    //         addCookie('ck', doLoginData.ck)
-    //         commit('ck', doLoginData.ck)
-    //         return doLoginData.ck
-    //     } catch (e) {
-    //         dispatch('showToast', e.message + '/login/cpuser')
-    //     }
-    // },
-    // async doAuthLogin ({commit}) {
-    //     // window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-    //     window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-    // },
     async doAuth ({commit, dispatch}) {
         try {
             /* 处理登陆（调登陆 ） */
             router.push('/login');
+            dispatch('clearLoginState')
         } catch (e) {
             dispatch('showToast', e.message + 'doAuth')
         }
@@ -392,9 +334,9 @@ const actions = {
             commit('userInfo', userInfo)
         } catch (e) {
             if (e.code === '136' || e.code === '102') {
-                dispatch('clearLoginState', 0)
+                dispatch('clearLoginState')
                 //  再次调起登陆
-                dispatch('doAuthLogin')
+                dispatch('doAuth')
                 return false
             }
             dispatch('showToast', e.message + '/user/info')
@@ -609,8 +551,8 @@ const actions = {
             commit('setGoodsList', goodsList)
         } catch (e) {
             if (~e.message.indexOf('未登录') || ~e.message.indexOf('其他设备登录')) {
-                dispatch('clearLoginState', 0)
-                dispatch('doAuthLogin')
+                dispatch('clearLoginState')
+                dispatch('doAuth')
                 return false
             }
             dispatch('showToast', e.message)

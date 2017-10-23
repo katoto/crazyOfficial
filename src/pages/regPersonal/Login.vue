@@ -16,12 +16,16 @@
                 </div>
                 <div class="user-co user-pass">
                     <span class="user-icon pas-icon"></span>
+                    <span
+                            v-tap="{ methods:showCodeFn}" :class="{ 'eye-iconOn':showCode ,'eye-iconOff':!showCode }"
+                    ></span>
                     <input type="password" v-model="userPassWord" @focus="checkuserPassWordFocus" @blur="checkPw" id="passDom" @input="inpEvent" name="password" placeholder="密码">
-                    <span class="delete" v-if="userPassWord && !userPassWordBlur" v-tap="{ methods:delNumber ,params:'userPassWord'}"></span>
+                    <span class="delete" style="right: .341333rem!important;" v-if="userPassWord && !userPassWordBlur" v-tap="{ methods:delNumber ,params:'userPassWord'}"></span>
                 </div>
                 <div class="user-co user-veri" v-if="isShowImgCode && isShowImgCode.iscode==='1'">
                     <div class="user-co user-msg">
                         <span class="user-icon msg-icon"></span>
+
                         <input v-model="telCode" type="text" @focus="checktelCodeFocus" @blur="checkCode" @input="inpEvent" id="LoCode" name="telCode" placeholder="输入右侧验证码">
                         <span class="delete" v-if="telCode"  v-tap="{ methods:delNumber ,params:'telCode'}"></span>
                     </div>
@@ -49,7 +53,9 @@
 
             </div>
             <p class="login-tips">新用户立领888币，<a href="javascript:;" v-tap="{methods:goPageFn,target:'register' }">一键注册</a></p>
-            <a href="javascript:;" class="btn-down">
+            <a href="javascript:;" class="btn-down"
+               v-tap="{methods:goPageFn,target:'downLoad' }"
+            >
                 下载官方APP
             </a>
         </div>
@@ -58,6 +64,7 @@
 
 <script>
     import {aTypes, mTypes} from '~store/regPerson'
+    import {starHtml, stopHtml, platform} from '~common/util'
     export default {
         data () {
             return {
@@ -116,9 +123,23 @@
             },
             autoTelNumber(){
                 return this.$store.state.regPerson.autoTelNumber
+            },
+            autoLoginNumber(){
+                return this.$store.state.regPerson.autoLoginNumber
+            },
+            autoLoginPassword(){
+                return this.$store.state.regPerson.autoLoginPassword
             }
         },
         methods: {
+            showCodeFn () {
+                if (this.showCode) {
+                    document.getElementById('passDom').setAttribute('type', 'password')
+                } else {
+                    document.getElementById('passDom').setAttribute('type', 'text')
+                }
+                this.showCode = !(this.showCode)
+            },
             checktelCodeFocus(){
                 if( this.isSerError ){
                     this.$store.commit(mTypes.setLoTips , '');
@@ -162,14 +183,20 @@
                 target = target || 'backHistory';
                 switch (target) {
                     case 'forgetPass':
-                        _hmt.push(['_trackEvent', '合伙人注册页合作协议点击', 'click', '合伙人注册页合作协议']);
                         this.$router.push(`/forgetPass`);
+                        _hmt.push(['_trackEvent', '合伙人注册页合作协议点击', 'click', '合伙人注册页合作协议']);
                         break;
                     case 'register':
                         _hmt.push(['_trackEvent', '合伙人注册页登陆点击', 'click', '合伙人注册页登陆']);
-                        this.$router.push(`/register`);
+                        this.$router.push(`/register/`);
                         break;
-                    case 'downLoadApp':
+                    case 'downLoad':
+
+                        if (platform === 'android') {
+                            window.location.href = 'http://download.choopaoo.com/download/cbet_for_Android_500cpH5.apk'
+                        } else {
+                            window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
+                        }
                         break;
                     case 'backHistory':
                         window.history.back();
@@ -264,6 +291,14 @@
             if( this.autoTelNumber ){
                 this.telNumber = this.autoTelNumber;
                 this.$store.commit(mTypes.autoTelNumber,null);
+            }
+            if( this.autoLoginNumber ){
+                this.telNumber = this.autoLoginNumber;
+                this.$store.commit(mTypes.autoLoginNumber,null);
+            }
+            if( this.autoLoginPassword ){
+                this.userPassWord = this.autoLoginPassword;
+                this.$store.commit(mTypes.autoLoginPassword,null);
             }
         },
     }
