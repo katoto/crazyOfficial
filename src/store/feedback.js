@@ -5,7 +5,6 @@ import ajax from '~common/ajax'
 import {platform, src, getCk, mapMutations, mapActions} from '~common/util'
 
 const state = {
-    kefuAlert: true,
     feedbackList: null,
     fbMore: null
 }
@@ -13,9 +12,7 @@ const mutationsInfo = mapMutations({
     setNationGetRed (state, data) {
         state.nationGetRed = data
     },
-    setkefuAlert (state, data) {
-        state.kefuAlert = data
-    },
+
     setFeedbackList (state, data) {
         state.feedbackList = data
     },
@@ -47,7 +44,7 @@ const actionsInfo = mapActions({
         }
     }
 
-}, 'main')
+}, 'feedback')
 
 export const mTypes = mutationsInfo.mTypes
 const mutations = mutationsInfo.mutations

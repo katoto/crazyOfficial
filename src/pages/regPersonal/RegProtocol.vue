@@ -1,0 +1,304 @@
+<template>
+    <div id="user" class="wrap respon2">
+        <div class="topBar">
+            <div class="icon_back"
+                 v-tap="{methods:goPageFn,target:'backHistory' }"
+            ></div>
+            <h1>《疯狂猜球》用户服务协议</h1>
+        </div>
+        <!--用户协议-->
+        <div class="reg-pact respon2-itm">
+            <div class="full-scroll">
+                <div class="pact-info">
+                    欢迎申请使用由深圳市广天地科技有限公司疯狂猜球开发团队（下称“疯狂猜球网”）开发并运营的《疯狂猜球》在线手机网络应用服务，为了保障用户的权益，请在同意登录并使用《疯狂猜球》前，详细阅读《疯狂猜球用户服务协议》 (以下简称《协议》)所有内容。本《协议》系由用户与疯狂猜球网就《疯狂猜球》手机网络版应用产品及服务所订立的协议。
+                    疯狂猜球网在此特别提醒用户认真阅读本《协议》的全部条款，特别是其中免除或者限制疯狂猜球网责任的条款和其它限制用户权利的条款，这些条款应在中国法律所允许的范围内最大程度地适用且通常用粗体字或红色字体表述。
+                    如用户不同意本《协议》的条款，请不要安装、使用《疯狂猜球》或者相关服务。用户一旦点击“接受”并安装《疯狂猜球》，或者登录、开始使用及/或继续使用《疯狂猜球》或相关服务，即视为用户同意并已经接受本《协议》中全部条款。此后您不得以未阅读本《协议》内容或类似理由提出任何形式的抗辩。
+                </div>
+                <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_1'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第一条 定义和说明</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_1 }"></i>
+                        </div>
+                        <div class="cont" :class="{ 'hide': !helpSel.helpSel_1}">
+                            1.	《疯狂猜球》：指疯狂猜球网提供的《疯狂猜球》移动端应用（包括但不限于：该移动端应用的Android版、iOS版等任何可在移动智能设备上操作的适配版本），以及与该等移动端应用相关的更新、升级、补丁等。<br>
+                            2.	用户：指通过疯狂猜球网提供的合法途径获得《疯狂猜球》应用软件使用许可而安装、并按照《疯狂猜球》登录规则登录并使用《疯狂猜球》应用软件产品及服务的个人。
+                            用户可以根据本《协议》以及疯狂猜球网不时更新和公布的其他规则(包括但不限于疯狂猜球网在官方网站上公布服务政策、外挂处理流程、盗号处理流程等)使用疯狂猜球网提供的产品和服务。
+                            用户有权在使用疯狂猜球网提供的产品和服务的期间监督疯狂猜球网及疯狂猜球网的工作人员是否按照疯狂猜球网所公布的标准向用户提供产品和服务，也可以随时向疯狂猜球网提出与疯狂猜球网的产品和服务有关意见和建议。
+
+                        </div>
+                    </div>
+                </div>
+                <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_2'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第二条 资费政策</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_2 }"></i>
+                        </div>
+                        <div class="cont" :class="{ 'hide': !helpSel.helpSel_2}">
+                            有关产品和服务的收费标准、购买方式等信息疯狂猜球网将会放置在该产品和服务网页的相应位置。
+                            疯狂猜球网将有权决定疯狂猜球网所提供的产品和服务的资费标准和收费方式，疯狂猜球网可能会就不同的产品和服务制定不同的资费标准和收费方式，也可能按照疯狂猜球网所提供的产品和服务的不同阶段确定不同的资费标准和收费方式。
+
+                        </div>
+                    </div>
+                </div>
+                <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_3'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第三条 用户账号</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_3 }"></i>
+                        </div>
+                        <div class="cont" :class="{ 'hide': !helpSel.helpSel_3}">
+                            1.账号的用途
+                            a)用户可以登录一个或几个账号用于参加《疯狂猜球》。<br>
+                            b)用户进行账号登录后方可参与《疯狂猜球》应用。<br>
+                            c)用户进行账号充值。<br>
+                            2.账号的取得<br>
+                            a)用户必须完全同意全部用户条款并完成登录。<br>
+                            b)用户登录成功，会得到唯一用户ID，并成为《疯狂猜球》的正式成员。<br>
+                            c)登录过程中，用户应按照相关应用界面上的要求输入正确的个人基本资料。<br>
+                            3.账号的修改<br>
+                            a)为保障用户的权益且账号的唯一性，用户无法自行修改自己的账号。<br>
+                            b)用户可随时修改密码。<br>
+                            c)用户账号信息发生变更而未及时修改，导致无法证明用户的有效身份，疯狂猜球网有权拒绝提供任何信息或承担任何义务。<br>
+                            4.账号的保护<br>
+                            a)用户应妥善保管自己的账号和密码，并对自己的账号和密码安全负全部责任。<br>
+                            b)用户若发现任何非法使用的账号或存在安全漏洞的情况，请立即通知疯狂猜球网。<br>
+                            c)若疯狂猜球网发现疑似遭盗用的账号，可以立即终止该账号的使用权。<br>
+                            d)若因为用户自身原因，而导致账号、密码遭他人非法使用时，疯狂猜球网将不负责处理且不承担任何责任。用户自身原因包括但不限于：任意向第三者透露账号和密码及所有登录资料；多人共享同一个账号；安装非法或来路不明的程序等。<br>
+                            5.账号的制裁<br>
+                            疯狂猜球网将按照本《协议》及相关服务政策、外挂处理流程、盗号处理流程等具体规定，对违反该些应用管理规定的用户给予账号制裁。<br>
+                            6.账号的删除<br>
+                            用户同意在用户有下列情况下，疯狂猜球网可以删除用户登录的账号，终止向用户提供产品和服务：<br>
+                            a)违反本合约的规定。<br>
+                            b)提供虚假登录信息。<br>
+                            c)通过非法手段、不正当手段或其他不公平的手段使用疯狂猜球网的产品和服务或参与疯狂猜球网活动。<br>
+                            d)有损害疯狂猜球网正当利益的行为。<br>
+                            e)有严重损害其他用户的行为。<br>
+                            f)有违反中华人民共和国的法律、法规的行为或言论。<br>
+                            g)有违背社会风俗、社会道德和互联网一般道德和礼仪的行为。<br>
+                            h)其他妨碍疯狂猜球网提供产品和服务或疯狂猜球网认为的严重不当行为。<br>
+                            疯狂猜球网因上述原因删除用户登录的账号后即不再对用户承担任何义务和责任。
+                        </div>
+                    </div>
+                </div>
+                <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_4'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第四条 疯狂猜球网的义务</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_4 }"></i>
+                        </div>
+                        <div class="cont"  :class="{ 'hide': !helpSel.helpSel_4}">
+                            1.疯狂猜球网通过手机互联网络为用户提供手机应用服务。<br>
+                            2.对于用户登录过程中登记的个人资料，疯狂猜球网同意在未获得用户同意以前，不对外揭露，但以下情况除外：
+                            a)相应的政府机关、司法机关的要求；
+                            b)现行的法律法规的要求；
+                            c)疯狂猜球网合理怀疑用户有危害国家安全或其他违法情形，疯狂猜球网主动将相关资料供公安机关调查处理；
+                            d)为保障疯狂猜球网权益；
+                        </div>
+                    </div>
+                </div>
+                <div class="list"  v-tap="{methods:helpItem,helpSel:'helpSel_5'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第五条 用户的义务</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_5 }"></i>
+                        </div>
+                        <div class="cont" :class="{ 'hide': !helpSel.helpSel_5}">
+                            1. 除非本《协议》另有规定，否则，未经疯狂猜球网书面同意，用户不得实施下列行为（无论是营利的还是非营利的）：<br>
+                            a)复制、翻录、传播和陈列《疯狂猜球》的程序、使用手册和其它图文音像资料的全部或部分内容。<br>
+                            b)公开展示和播放《疯狂猜球》的全部或部分内容。<br>
+                            c)出租、销售本软件或者利用《疯狂猜球》从事营利行为。<br>
+                            d)修改或遮盖《疯狂猜球》程序、图像、动画、包装和手册等内容上的产品名称、公司标志、商标（或）版权信息、其他知识产权声明等内容。<br>
+                            e)其它违反著作权法、计算机软件保护条例和相关法律法规的行为。<br>
+                            2. 用户应通过合法的途径使用《疯狂猜球》和相关服务，不得作出以下侵害疯狂猜球网或第三人利益，扰乱应用秩序，违反应用公平性、违反本《协议》或者疯狂猜球网发布的其他规则或者国家有关法律法规规定的行为，包括但不限于：<br>
+                            a)修改、翻译、注释、整理、汇编、演绎《疯狂猜球》；<br>
+                            b)反向工程、反向编译或者反汇编《疯狂猜球》，或者采用其他技术手段对《疯狂猜球》进行分析、修改、攻击、衍生；<br>
+                            c)使用任何外挂程序或应用修改程序（本《协议》所称“外挂程序”是指独立于《疯狂猜球》应用软件之外的，能够在应用运行的同时影响应用操作的所有程序，包括但不限于模拟用户操作、改变操作环境、修改数据等一切类型。如国家有关法律、法规及政府主管部门的规章或规范性文件规定的外挂定义与本《协议》有冲突，则以法律、法规、部门规章或规范性文件规定的为准），对《疯狂猜球》进行还原工程、编译、译码或修改，包括但不限于修改《疯狂猜球》所使用的任何专有通讯协议、对动态随机存取内存（RAM）中资料进行修改或锁定；<br>
+                            d)使用异常的方法登录《疯狂猜球》（包括但不限于使用非疯狂猜球网开发、授权或认可的第三方软件、系统登录应用）、使用网络加速器等外挂软件或机器人程序等恶意破坏服务设施、扰乱正常服务秩序的行为；<br>
+                            e)通过异常或者非法方式使用《疯狂猜球》（包括但不限于利用《疯狂猜球》登录应用私服），恶意破环《疯狂猜球》，扰乱正常的服务秩序或者实施其他不正当行为；<br>
+                            f)制作、传播或使用外挂、封包、加速软件及其它各种作弊程序，或组织、教唆他人使用此类软件程序，或销售此类软件程序而为个人或组织谋取经济利益；<br>
+                            g)使用任何方式或方法，试图攻击提供应用服务的相关服务器、路由器、交换机以及其他设备，以达到非法获得或修改未经授权的数据资料、影响《疯狂猜球》正常应用服务，以及其他危害性目的的任何行为；<br>
+                            h)利用《疯狂猜球》或者线上应用系统可能存在的技术缺陷或漏洞而以各种形式为自己及他人牟利（包括但不限于复制应用中的虚拟物品等）或者从事其他不正当行为。<br>
+                            i)违反国家有关法律法规的规定，利用《疯狂猜球》制作、复制、发布和传播信息。
+                            　一旦疯狂猜球网通过内部的监测程序发现或经其他用户举报而发现用户有可能正在从事上述行为，则疯狂猜球网有权作出独立的判断并采取相应的措施，该措施包括但不限于限制用户帐号的登陆、限制用户在应用中的活动、终止本软件授权、删除与复制有关的物品（包括复制出的虚拟物品和参与复制的虚拟物品）、删除用户的帐号并要求用户赔偿因从事上述行为而给疯狂猜球网造成的损失等。<br>
+                            疯狂猜球网在此特别提示用户：<br>
+                            基于软件产品本身的特殊性及本《协议》责任限制条款所述，尽管疯狂猜球网将尽最大努力解决已知的漏洞和错误（Bug），但用户知道或应该知道本产品仍可能包含未知的漏洞和错误（Bug）等。<br>
+                            由于虚拟物品之间的交易（疯狂猜球网已特别承诺要求用户不得参加虚拟物品与真实货币或者物品的交易行为）存在一定的风险（包括但不限于虚拟物品因复制等数据异常而可能被删除；国家现阶段法律对其价值认定仍处于空白等），用户在交易过程中应对交易方及交易物品尽审慎注意义务，除非该交易系依照疯狂猜球网书面明确指示为之，疯狂猜球网将不对该交易中产生的任何问题进行支持和保障。
+                        </div>
+                    </div>
+                </div>
+                <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_6'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第六条 服务的中断、停止</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_6 }"></i>
+                        </div>
+                        <div class="cont" :class="{ 'hide': !helpSel.helpSel_6}">
+                            为了网站的正常运行，疯狂猜球网需要定期或不定期地对应用进行停机维护，因此类情况而造成的正常服务中断、停止，用户应该予以理解，疯狂猜球网则有义务尽力避免服务中断、停止或将中断、停止时间限制在最短时间内；<br>
+                            发生下列情形之一时，疯狂猜球网有权停止或中断应用服务器所提供之服务，对因此而产生的不便或损害，疯狂猜球网对用户或第三人均不承担任何责任：<br>
+                            a)定期检查或施工，更新软硬件等，疯狂猜球网有权暂停服务，但疯狂猜球网会尽快完成维护、更新工作；<br>
+                            b)服务器遭受损坏，无法正常运作；<br>
+                            c)突发性的软硬件设备与电子通信设备故障；<br>
+                            d)网路提供商线路或其它故障；<br>
+                            e)在紧急情况之下为维护国家安全或其它会员及第三者之人身安全；<br>
+                            f)不可抗力及其他第三方原因。<br>
+                            除前款所述情形外，用户同意疯狂猜球网享有通过在提前1个月本手机网络应用官方网站公告通知的方式中断或终止部分或全部网络服务的权利，用户已明确知晓上述权利的授予且知晓因上述权利的行使可能给自身及其他第三方造成的直接或间接利益减损，用户在此明确表示不追究疯狂猜球网因行使上述单方中断或终止服务权利而可能导致的一切责任。<br>
+                            疯狂猜球网在此特别提示用户：《疯狂猜球》所含虚拟物品系为增加应用乐趣而设置，并随应用的停止运营而消失，用户一经获得将不得以任何形式退还给疯狂猜球网。鉴于网络应用的特殊性质，虚拟物品仅在应用的运营期内有效。
+                        </div>
+                    </div>
+                </div>
+                <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_7'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第七条 责任限制</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_7 }"> </i>
+                        </div>
+                        <div class="cont" :class="{ 'hide': !helpSel.helpSel_7}">
+                            对于疯狂猜球网的产品和服务，疯狂猜球网仅作下述有限保证，该有限保证取代任何文档、包装、或其他资料中的任何其他明示或默示的保证(如果有)。疯狂猜球网仅以 "现有状况且包含所有错误"的形式提供相关的产品、软件或程序及任何支持服务，并仅保证(1)疯狂猜球网所提供的产品和服务能基本符合疯狂猜球网正式公布的要求。
+                            <br>(2)疯狂猜球网所提供的相关产品和服务基本与疯狂猜球网正式公布的服务承诺相符。
+                            <br>(3)疯狂猜球网仅在商业上允许的合理范围内尽力解决疯狂猜球网在提供产品和服务过程中所遇到的任何问题。在适用法律允许的最大范围内，疯狂猜球网明确表示不提供任何其他类型的保证，不论是明示的或默示的，包括但不限于适销性、适用性、可靠性、准确性、完整性、无病毒以及无错误的任何默示保证和责任。另外，在适用法律允许的最大范围内，疯狂猜球网并不担保疯狂猜球网所提供的产品和服务一定能满足用户的要求，也不担保提供的产品和服务不会被中断，并且对产品和服务的及时性，安全性，出错发生，以及信息是否能准确，及时，顺利的传送均不作任何担保。在适用法律允许的最大范围内，疯狂猜球网不就因用户使用疯狂猜球网的产品和服务引起的，或在任何方面与疯狂猜球网的产品和服务有关的任何意外的、非直接的、特殊的、或间接的损害或请求(包括但不限于因人身伤害、因隐私泄漏、因未能履行包括诚信或合理谨慎在内的任何责任、因过失和因任何其他金钱上的损失或其他损失而造成的损害赔偿)承担任何责任。用户在本手机网络应用官方网站上所表达的观点、建议和其它内容均为用户本人看法，不代表疯狂猜球网的观点。疯狂猜球网保留采取包括但不限于合并服务器等形式以达到服务器资源优化利用的权利，如发生上述情形，疯狂猜球网有义务保障用户资料的完整性。
+                        </div>
+                    </div>
+                </div>
+                <div class="list"  v-tap="{methods:helpItem,helpSel:'helpSel_8'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第八条 变更</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_8 }"></i>
+                        </div>
+                        <div class="cont" :class="{ 'hide': !helpSel.helpSel_8}">
+                            疯狂猜球网有权在必要时修改本《协议》、应用公约和用户守则。疯狂猜球网的用户协议条款、应用公约和用户守则一旦发生变动，将会在该款手机网络应用的重要页面上提示修改内容。如果用户不同意疯狂猜球网修改的内容，用户可以主动取消获得的网络服务。如果用户在修改内容公告后15天内未主动取消服务，则视为接受条款的变更；<br>修改内容公告后用户如果仍继续使用疯狂猜球网提供的产品和服务亦构成对条款变更的接受。
+                        </div>
+                    </div>
+                </div>
+                <div class="list"  v-tap="{methods:helpItem,helpSel:'helpSel_9'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第九条 知识产权</h4>
+                            <i class="icon-raw"  :class="{ 'rotate180':!helpSel.helpSel_9 }"></i>
+                        </div>
+                        <div class="cont" :class="{ 'hide': !helpSel.helpSel_9}">
+                            1.疯狂猜球网发布的《疯狂猜球》所有的作品及资料，其著作权、专利权、商标专用权、商业秘密权及其它知识产权，均为疯狂猜球网或授权疯狂猜球网使用的合法权利人所有，除非事先经疯狂猜球网或其权利人的合法授权，任何人皆不得擅自以任何形式使用，否则疯狂猜球网可立即终止向用户提供产品和服务，并依法追究其法律责任，赔偿疯狂猜球网一切损失。<br>
+                            2.未经疯狂猜球网授权，任何人不得擅自复制、反编译(de-compile)、反汇编(disassemble)任何功能或程序，不得对任何功能和或程序进行反向工程(reverse engineering)。
+                        </div>
+                    </div>
+                </div>
+                <div class="list"  v-tap="{methods:helpItem,helpSel:'helpSel_10'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第十条 通知</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_10 }"></i>
+                        </div>
+                        <div class="cont" :class="{ 'hide':!helpSel.helpSel_10 }">
+                            疯狂猜球网所有发给用户的通知可通过重要页面的公告或电子邮件或常规的信件传送。
+                        </div>
+                    </div>
+                </div>
+                <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_11'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第十一条 授权</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_11 }"></i>
+                        </div>
+                        <div class="cont" :class="{ 'hide':!helpSel.helpSel_11 }">
+                            用户原创作品上载、传送、输入或以其他方式提供至《疯狂猜球》应用官方时，视为用户除保留署名权外，其他著作权均转让疯狂猜球网；<br>疯狂猜球网可使用、修改、编辑、复制、公开播送、发行上述作品，并可将前述权利转/分授权他人；<br>用户授权疯狂猜球网行使上述行为所必需的一切权利，包括但不限于著作权、肖像权等。
+                        </div>
+                    </div>
+                </div>
+                <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_12'}">
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <h4>第十二条 纠纷</h4>
+                            <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_12 }"></i>
+                        </div>
+                        <div class="cont"  :class="{ 'hide':!helpSel.helpSel_12 }">
+                            1.本用户条款适用中华人民共和国的法律。<br>
+                            2.如疯狂猜球网服务条款与中华人民共和国法律相抵触时，则这些条款将完全按法律规定重新解释，而其它条款法律效力不变。<br>
+                            3.如出现纠纷，用户和疯狂猜球网一致同意交由疯狂猜球网所在地法院管辖。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data () {
+            return {
+                helpSel: {
+                    helpSel_1: false,
+                    helpSel_2: false,
+                    helpSel_3: false,
+                    helpSel_4: false,
+                    helpSel_5: false,
+                    helpSel_6: false,
+                    helpSel_7: false,
+                    helpSel_8: false,
+                    helpSel_9: false,
+                    helpSel_10: false,
+                    helpSel_11: false,
+                    helpSel_12: false,
+                }
+            }
+        },
+        watch: {},
+        methods: {
+            helpItem ({helpSel}) {
+                //                切换帮助里头的选项
+                switch (helpSel) {
+                    case 'helpSel_1':
+                        this.helpSel.helpSel_1 = !this.helpSel.helpSel_1
+                        break
+                    case 'helpSel_2':
+                        this.helpSel.helpSel_2 = !this.helpSel.helpSel_2
+                        break
+                    case 'helpSel_3':
+                        this.helpSel.helpSel_3 = !this.helpSel.helpSel_3
+                        break
+                    case 'helpSel_4':
+                        this.helpSel.helpSel_4 = !this.helpSel.helpSel_4
+                        break
+                    case 'helpSel_5':
+                        this.helpSel.helpSel_5 = !this.helpSel.helpSel_5
+                        break
+                    case 'helpSel_6':
+                        this.helpSel.helpSel_6 = !this.helpSel.helpSel_6
+                        break
+                    case 'helpSel_7':
+                        this.helpSel.helpSel_7 = !this.helpSel.helpSel_7
+                        break
+                    case 'helpSel_8':
+                        this.helpSel.helpSel_8 = !this.helpSel.helpSel_8
+                        break
+                    case 'helpSel_9':
+                        this.helpSel.helpSel_9 = !this.helpSel.helpSel_9
+                        break
+                    case 'helpSel_10':
+                        this.helpSel.helpSel_10 = !this.helpSel.helpSel_10
+                        break
+                    case 'helpSel_11':
+                        this.helpSel.helpSel_11 = !this.helpSel.helpSel_11
+                        break
+                    case 'helpSel_12':
+                        this.helpSel.helpSel_12 = !this.helpSel.helpSel_12
+                        break
+                }
+            },
+            goPageFn ({ target }) {
+                target = target || 'backHistory';
+                switch (target) {
+                    case 'backHistory':
+                        window.history.back();
+                        break
+                }
+            },
+        },
+        computed: {},
+        mounted () {
+
+        }
+    }
+</script>

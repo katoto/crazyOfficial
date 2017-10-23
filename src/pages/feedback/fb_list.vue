@@ -37,7 +37,7 @@
         <!-- 弹窗 -->
         <div class="pop pop-imgView" :class="{'hide':!showPopImg}">
             <div class="pop_layer"  v-tap="{'methods': closePopImg }"></div>
-            <div class="imgView-box">
+            <div class="imgView-box" v-tap="{'methods': closePopImg }">
                 <img id="imgMoreData" :src=moreImgView >
             </div>
         </div>

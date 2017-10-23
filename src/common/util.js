@@ -33,7 +33,7 @@ export const removeCookie = (sName) => {
 export let getCk = function () {
     if (!localStorage.getItem('ck') || localStorage.getItem('ck') === '' || localStorage.getItem('ck') === 'undefined') {
         if (getCookie('ck') && getCookie('ck') !== '') {
-            return getCookie('ck')
+            return getCookie('ck');
         }
         return ''
     }

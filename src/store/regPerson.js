@@ -1,0 +1,238 @@
+/**
+ * Created by xiezg on 2017/10/19.
+ */
+
+import ajax from '~common/ajax'
+import {platform,convertToQueryString , src, getCk, mapMutations, mapActions} from '~common/util'
+import router from '../router'
+const state = {
+    IsShowImgCode:null,
+    loginData:null,
+    regisData:null,
+    resetSign:null,
+    showImg:false,
+
+    PCTips:null,
+
+    LoTips:null,
+    isSerError:false,
+
+    rGTips:null,
+
+    isSendTelLogin:false,
+    autoTelNumber:null,
+
+    fPTips:null,
+}
+const mutationsInfo = mapMutations({
+    setfPTips( state ,data ){
+        state.fPTips = data;
+    },
+
+    autoTelNumber( state ,data ){
+        state.autoTelNumber = data;
+    },
+    isSendTelLogin(state,data){
+        state.isSendTelLogin = data;
+    },
+    setrGTips( state ,data ){
+        state.rGTips = data;
+    },
+    setIsSerError(state,data){
+        state.isSerError = data ;
+    },
+    setLoTips(state,data){
+        state.LoTips = data ;
+    },
+    setPCTips(state,data){
+        state.PCTips = data ;
+    },
+    setShowImg( state ,data){
+        state.showImg = data
+    },
+    setIsShowImgCode( state ,data ){
+        state.IsShowImgCode = data
+    },
+    setLoginData( state,data){
+        state.loginData = data
+    },
+    setRegis( state ,data ){
+        state.regisData = data
+    },
+    setcheckWdReset(state,data){
+        state.resetSign = data;
+    }
+}, 'regPerson');
+
+const actionsInfo = mapActions({
+    async setUserImg ({commit,state , dispatch}, img) {
+        /* 重置密码 */
+        try {
+            let nameResult = null;
+            nameResult = await ajax.get(`http://192.168.41.76:8691/user/modfiy/photo?photo=${img}&ck=${getCk()}`)
+            dispatch('getUserInfo');
+            dispatch('showToast', {
+                message: '选择成功',
+                cb:()=>{
+                    commit(mTypes.setShowImg , false)
+                }
+            });
+        } catch (e) {
+            if(e.code){
+
+            }else{
+                dispatch('showToast', e.message)
+            }
+        }
+    },
+    async renameNickName ({commit,state , dispatch}, nickName) {
+        /* 重置密码 */
+        try {
+            let nameResult = null;
+            nameResult = await ajax.get(`http://192.168.41.76:8691/user/modfiy/username?username=${nickName}&ck=${getCk()}`);
+            dispatch('showToast', {
+                message: '修改成功',
+                cb: () => {
+                    router.push('/login');
+                }
+            });
+        } catch (e) {
+            if(e.status){
+                dispatch('showToast', e.message)
+            }else{
+                dispatch('showToast', e.message)
+            }
+        }
+    },
+    async passWdReset ({commit,state , dispatch}, params) {
+        /* 重置密码 */
+        try {
+            let resetData = null;
+            console.log(state.resetSign)
+            resetData = await ajax.get(`http://192.168.41.76:8691/user/modfiy/password?mobile=${params.mobile}&sign=${state.resetSign}&password=${params.password}`)
+            console.log(resetData);
+            commit('removeCk');
+            dispatch('showToast', {
+                message: '密码设置成功',
+                cb: () => {
+                    router.push('/login');
+                }
+            });
+        } catch (e) {
+            if(e.code){
+
+            }else{
+                dispatch('showToast', e.message)
+            }
+        }
+    },
+    async checkWdReset ({commit, dispatch}, params) {
+        /*  重置密码验证手机code  */
+        try {
+            let checkData = null;
+            checkData = await ajax.get(`http://192.168.41.76:8691/user/modfiy/password/verifycode?mobile=${params.mobile}&verifycode=${params.verifycode}&platform=${platform}`);
+            commit(mTypes.setcheckWdReset, checkData.sign);
+            console.log(checkData)
+        } catch (e) {
+            commit(mTypes.setIsSerError , true );
+            commit(mTypes.setfPTips , e.message );
+
+            // if(e.code){
+            //     dispatch('showToast', )
+            // }else{
+            //     dispatch('showToast', e.message)
+            // }
+        }
+    },
+    async getTelCode ({state, commit, dispatch}, data) {
+        // 获tel
+        // http://192.168.41.76:8691/login/mobile/sms?mobile=13319403333
+        console.log(data);
+        try {
+            let codeData;
+            if(typeof data==="object" && data.vtype && typeof data.vtype ==='string'){
+                codeData = await ajax.get(`http://192.168.41.76:8691/login/mobile/sms?mobile=${data.mobile}&vtype=${data.vtype}`);
+            }else{
+                codeData = await ajax.get(`http://192.168.41.76:8691/login/mobile/sms?mobile=${data}`);
+            }
+            console.log(codeData)
+        } catch (e) {
+            console.log(e.message);
+            dispatch('showToast', e.message);
+            if(e.message ==='手机号已经注册'){
+                commit(mTypes.isSendTelLogin,true)
+            }
+        }
+    },
+    async getIsShowImgCode ({state, commit, dispatch}, deviceId) {
+        // 获tel
+        // http://192.168.41.76:8691/login/mobile/sms?mobile=13319403333
+        console.log(deviceId)
+        try {
+            let IsShowImgCode = await ajax.get(`http://192.168.41.76:8691/login/verifycode/code?deviceid=${deviceId}`);
+            console.log(IsShowImgCode)
+            if (IsShowImgCode !== '') {
+                commit(mTypes.setIsShowImgCode, IsShowImgCode)
+            }
+        } catch (e) {
+            dispatch('showToast', e.message)
+        }
+    },
+    async setRegis ({state, commit, dispatch}, data) {
+        /* 注册 */
+        let sendData = Object.assign(data, {
+            platform : platform,
+            src: src,
+            channel: src,
+        });
+        console.log(sendData);
+        // 是否需要
+        try {
+            let regisData = await ajax.post(`http://192.168.41.76:8691/login/mobile`,sendData );
+            console.log(regisData)
+            if (regisData !== '') {
+                commit(mTypes.setRegis, regisData)
+            }
+        } catch (e) {
+            commit(mTypes.setIsSerError , true );
+            commit(mTypes.setrGTips , e.message);
+        }
+    },
+    async doLogin ({state, commit, dispatch}, data) {
+        /* 注册 */
+        console.log(data);
+        let sendData = Object.assign(data, {
+            platform : platform,
+            src: src,
+            channel: src,
+        });
+        console.log(sendData);
+        // 是否需要
+        try {
+            let loginData = await ajax.post(`http://192.168.41.76:8691/login/mobile`,sendData,);
+            console.log(loginData);
+            if (loginData !== '' && loginData.ck) {
+                commit(mTypes.setLoginData , loginData)
+            }else{
+                commit(mTypes.setIsSerError , true );
+                commit(mTypes.setLoTips , '账号或者密码错误，请重新输入');
+                dispatch(aTypes.getIsShowImgCode, localStorage.getItem('deviceTime') )
+            }
+        } catch (e) {
+            if(e.code){
+                dispatch(aTypes.getIsShowImgCode, localStorage.getItem('deviceTime') )
+            }
+            commit(mTypes.setIsSerError , true );
+            commit(mTypes.setLoTips , e.message );
+        }
+    },
+
+
+}, 'regPerson')
+
+export const mTypes = mutationsInfo.mTypes
+const mutations = mutationsInfo.mutations
+export const aTypes = actionsInfo.aTypes
+const actions = actionsInfo.actions
+export default {state, mutations, actions}
+

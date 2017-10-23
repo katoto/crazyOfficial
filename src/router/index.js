@@ -37,6 +37,15 @@ const fb_upload = () => import('~pages/feedback/fb_upload.vue' /* webpackChunkNa
 const fb_list = () => import('~pages/feedback/fb_list.vue' /* webpackChunkName: "chunks/fb_list" */)
 const fb_listMore = () => import('~pages/feedback/fb_listMore.vue' /* webpackChunkName: "chunks/fb_listMore" */)
 
+/* 登陆 注册 忘记密码 个人中心 */
+const Login = () => import('~pages/regPersonal/Login.vue' /* webpackChunkName: "chunks/Login" */)
+const Regis = () => import('~pages/regPersonal/Regis.vue' /* webpackChunkName: "chunks/Regis" */)
+const ForgetPass = () => import('~pages/regPersonal/forgetPass.vue' /* webpackChunkName: "chunks/forgetPass" */)
+const RegProtocol = () => import('~pages/regPersonal/RegProtocol.vue' /* webpackChunkName: "chunks/RegProtocol" */)
+
+const personCT = () => import('~pages/regPersonal/personCenter.vue' /* webpackChunkName: "chunks/RegProtocol" */)
+
+
 // mode 代表浏览器环境   路由是按顺序匹配的
 const router = new VueRouter({
     mode: 'hash',
@@ -70,6 +79,26 @@ const router = new VueRouter({
                     redirect: '/h5/home'
                 }
             ]
+        },
+        {
+            path: '/personCenter',
+            component: personCT
+        },
+        {
+            path: '/register',
+            component: Regis
+        },
+        {
+            path: '/login',
+            component: Login
+        },
+        {
+            path: '/forgetPass',
+            component: ForgetPass
+        },
+        {
+            path: '/regProtocol',
+            component: RegProtocol
         },
         {
             path: '/main/:matchid',

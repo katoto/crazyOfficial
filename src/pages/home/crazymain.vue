@@ -270,6 +270,9 @@
             }
             this.$store.dispatch(actionTypes.setIntervalFn, {type: 'newhot', time: 30000})
             this.$store.dispatch(actionTypes.getActivityList)
+
+            this.$store.commit('showHeightTips' , false )
+
         },
         beforeRouteLeave (to, from, next) {
             this.$store.dispatch(actionTypes.clearIntervalFn)

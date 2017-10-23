@@ -1,7 +1,7 @@
 <template>
     <div class="l-full">
         <!--v-tap="{methods: trackEvent}"-->
-        <div class="toast" v-show="toastMsg">{{ toastMsg }}</div>
+        <div class="toast" v-show="toastMsg" :class="{'tipsHeight': showHeightTips }">{{ toastMsg }}</div>
         <router-view v-if="ready"></router-view>
         <div class="loading" v-else>
             <img src="~static/images/loading.svg" >
@@ -18,6 +18,8 @@
 
     /* 到时候移到反馈里 */
     import '~static/css/feedback.css'
+
+    import '~static/css/reg.css'
 
     import {platform} from '~common/util'
 
@@ -37,27 +39,26 @@
             },
             isLogin () {
                 return this.$store.state.isLogin
+            },
+            showHeightTips(){
+                return this.$store.state.showHeightTips
             }
         },
         async mounted () {
-            console.log(window.location.href);
+//            console.log(window.location.href);
         /* 登陆还得修改下 */
             try {
             //    线下账号  测试  !!!
-                await this.$store.dispatch('localLogin', 1234)
-                await this.$store.dispatch('getUserInfo')
+//                await this.$store.dispatch('localLogin', 1234)
+//                await this.$store.dispatch('getUserInfo')
             /* 线上 登陆 */
 //                await this.$store.dispatch('checkLogin')
-//            /* 线下 登陆 */
-//               await this.$store.dispatch('localCheckLogin');
-//                if (this.isLogin) {
-//                    await this.$store.dispatch('getUserInfo')
-//                } else {
-//                    /* 调登录 */
-//                    window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-/// /                    window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-//                    return false;
-//                }
+
+                await this.$store.dispatch('checkLogin');
+
+                if (this.isLogin) {
+                    await this.$store.dispatch('getUserInfo')
+                }
 
                 if (window.WebSocket) {
                     await this.$store.dispatch('initWebsocket')
@@ -68,7 +69,7 @@
             } catch (e) {
                 if (e.code === '102') {
                     try {
-                        await this.$store.dispatch('initWebsocket')
+                        await this.$store.dispatch('initWebsocket');
                         this.ready = true
                     } catch (e) {
                         this.ready = true
@@ -82,14 +83,12 @@
             }
         },
         methods: {
-//            trackEvent ({event}) {
-//                if (event.target.tagName === 'INPUT' || event.target.tagName === 'SELECT' || event.target.tagName === 'TEXTAREA') {
-//                    event.target.focus()
-//                }
-//                if (event.target.tagName === 'BUTTON') {
-//                    event.target.click()
-//                }
-//            }
+
         }
     }
 </script>
+<style>
+    .tipsHeight{
+        top:30% !important;
+    }
+</style>

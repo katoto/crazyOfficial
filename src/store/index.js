@@ -5,10 +5,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import ajax from '~common/ajax'
-import {addCookie, platform, src, wait, convertToQueryString, getCk} from '~common/util'
+import {addCookie, removeCookie , platform, src, wait, convertToQueryString, getCk} from '~common/util'
 import main from './main'
 import home from './home'
 import feedback from './feedback'
+import regPerson from './regPerson'
+import router from '../router'
 import $ from 'bc-zepto.full'
 
 Vue.use(Vuex)
@@ -22,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // 全局的就是直接变量，一个页面一个对象
 const state = {
-    ck: 0,
+    ck: '',
     userInfo: null,
     toastMsg: null,
     isLowAndroidVersion: false,
@@ -85,12 +87,22 @@ const state = {
     },
     isLogin: false,
     isHideHomeHead: false, // 隐藏头部
-    new500Code: null,
     activeBox: {
         showActBox: false // 弹窗
-    }
+    },
+    showHeightTips:false,
+
+    kefuAlert: true,
+
 }
 const mutations = {
+    setkefuAlert (state, data) {
+        state.kefuAlert = data
+    },
+
+    showHeightTips(state ,data){
+        state.showHeightTips = data
+    },
     setActiveBox (state, data) {
         state.activeBox.showActBox = data
     },
@@ -100,9 +112,7 @@ const mutations = {
     setIsLogin (state, data) {
         state.isLogin = data
     },
-    setNew500Code (state, data) {
-        state.new500Code = data
-    },
+
     setIsConfirmBtn (state, data) {
         state.shopAddData.isConfirmBtn = data
     },
@@ -178,8 +188,14 @@ const mutations = {
         state.cp_login_state = data
     },
     ck (state, ck) {
-        state.ck = ck
+        state.ck = ck;
+        addCookie('ck', ck);
         localStorage.setItem('ck', ck)
+    },
+    removeCk(state){
+        state.ck = '';
+        addCookie('ck', '');
+        localStorage.setItem('ck', '')
     },
     userInfo (state, userInfo) {
         if (userInfo && userInfo.photo === '') {
@@ -271,116 +287,90 @@ const mutations = {
 }
 const actions = {
     clearLoginState ({commit, dispatch}, data) {
-        commit('ck', '0')
+        commit('ck', '' );
         localStorage.removeItem('ck')
     },
 
     /* 检查是否登录 */
     async checkLogin ({commit, dispatch}, params) {
         try {
-            const waitCodePromise = () => {
-                return new Promise((resolve, reject) => {
-                    let url = `http://passport.500.com/auth/index.php?action=checkuserlogin&client_id=500guess&webtype=2129&isnew=1&callback=checkLogin`
-                    $.ajax({
-                        url: url,
-                        type: 'get',
-                        dataType: 'jsonp',
-                        jsonp: 'jpcallback',
-                        jsonpCallback: 'checkLogin',
-                        success: function (data) {
-                            resolve(data)
-                        },
-                        error: function (e) {
-                            reject('0')
-                            dispatch('showToast', e.message)
-                        }
-                    })
-                })
-            }
-            const CodeData = await waitCodePromise()
-            console.log(CodeData)
-            if (CodeData && CodeData.code === 100 && CodeData.msg) {
-                if (CodeData.msg.islogin === '1' && CodeData.msg.code !== '0') {
-                    /* 已经登录 */
-                    commit('setIsLogin', true)
-                    commit('setNew500Code', CodeData.msg.code)
-                    /* 是否直接 */
-                    await dispatch('doLogin', CodeData.msg.code)
-                } else {
-                    commit('setIsLogin', false)
-                    window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-                }
+            const hasCk = await getCk();
+            console.log(hasCk)
+            console.log('131414')
+
+            if ( hasCk && hasCk !== 'undefined' &&  hasCk !== '' ) {
+                commit('setIsLogin', true)
             } else {
-                dispatch('showToast', '登录有误')
+                commit('setIsLogin', false)
             }
         } catch (e) {
-            dispatch('showToast', e.message + '/login/cpuser')
+            dispatch('showToast', '检查ck有误')
         }
     },
 
-    async localCheckLogin ({commit, dispatch}, params) {
-        try {
-            const waitCodePromise = () => {
-                return new Promise((resolve, reject) => {
-                    let url = `http://passport.500boss.com/auth/index.php?action=checkuserlogin&client_id=500guess&webtype=2129&isnew=1&callback=checkLogin`
-                    $.ajax({
-                        url: url,
-                        type: 'get',
-                        dataType: 'jsonp',
-                        jsonp: 'jpcallback',
-                        jsonpCallback: 'checkLogin',
-                        success: function (data) {
-                            resolve(data)
-                        },
-                        error: function (e) {
-                            reject('0')
-                            dispatch('showToast', e.message)
-                        }
-                    })
-                })
-            }
-            const CodeData = await waitCodePromise()
-            if (CodeData && CodeData.code === 100 && CodeData.msg) {
-                if (CodeData.msg.islogin === '1' && CodeData.msg.code !== '0') {
-                    /* 已经登录 */
-                    commit('setIsLogin', true)
-                    commit('setNew500Code', CodeData.msg.code)
-                    /* 是否直接给建成 */
-                    await dispatch('doLogin', CodeData.msg.code)
-                } else {
-                    commit('setIsLogin', false)
-                    window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-                }
-            } else {
-                dispatch('showToast', '登录有误')
-            }
-        } catch (e) {
-            dispatch('showToast', e.message + '/login/cpuser')
-        }
-    },
-
-    async doLogin ({commit, dispatch}, params) {
-        try {
-            let doLoginData = null
-            doLoginData = await ajax.get(`/login/cpuser?token=${params}&cptype=500&src=${src}&platform=${platform}`)
-            localStorage.setItem('ck', doLoginData.ck)
-            addCookie('ck', doLoginData.ck)
-            commit('ck', doLoginData.ck)
-            return doLoginData.ck
-        } catch (e) {
-            dispatch('showToast', e.message + '/login/cpuser')
-        }
-    },
-    async doAuthLogin ({commit}) {
-        // window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-        window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
-    },
+    // async localCheckLogin ({commit, dispatch}, params) {
+    //     try {
+    //         const waitCodePromise = () => {
+    //             return new Promise((resolve, reject) => {
+    //                 let url = `http://passport.500boss.com/auth/index.php?action=checkuserlogin&client_id=500guess&webtype=2129&isnew=1&callback=checkLogin`
+    //                 $.ajax({
+    //                     url: url,
+    //                     type: 'get',
+    //                     dataType: 'jsonp',
+    //                     jsonp: 'jpcallback',
+    //                     jsonpCallback: 'checkLogin',
+    //                     success: function (data) {
+    //                         resolve(data)
+    //                     },
+    //                     error: function (e) {
+    //                         reject('0')
+    //                         dispatch('showToast', e.message)
+    //                     }
+    //                 })
+    //             })
+    //         }
+    //         const CodeData = await waitCodePromise()
+    //         if (CodeData && CodeData.code === 100 && CodeData.msg) {
+    //             if (CodeData.msg.islogin === '1' && CodeData.msg.code !== '0') {
+    //                 /* 已经登录 */
+    //                 commit('setIsLogin', true)
+    //                 commit('setNew500Code', CodeData.msg.code)
+    //                 /* 是否直接给建成 */
+    //                 await dispatch('doLogin', CodeData.msg.code)
+    //             } else {
+    //                 commit('setIsLogin', false)
+    //                 window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
+    //             }
+    //         } else {
+    //             dispatch('showToast', '登录有误')
+    //         }
+    //     } catch (e) {
+    //         dispatch('showToast', e.message + '/login/cpuser')
+    //     }
+    // },
+    //
+    // async doLogin ({commit, dispatch}, params) {
+    //     try {
+    //         let doLoginData = null
+    //         doLoginData = await ajax.get(`/login/cpuser?token=${params}&cptype=500&src=${src}&platform=${platform}`)
+    //         localStorage.setItem('ck', doLoginData.ck)
+    //         addCookie('ck', doLoginData.ck)
+    //         commit('ck', doLoginData.ck)
+    //         return doLoginData.ck
+    //     } catch (e) {
+    //         dispatch('showToast', e.message + '/login/cpuser')
+    //     }
+    // },
+    // async doAuthLogin ({commit}) {
+    //     // window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
+    //     window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/fkcqH5/#/h5/home/hot'
+    // },
     async doAuth ({commit, dispatch}) {
         try {
             /* 处理登陆（调登陆 ） */
-            console.error('跳登陆')
+            router.push('/login');
         } catch (e) {
-            dispatch('showToast', e.message + '/login/cpuser')
+            dispatch('showToast', e.message + 'doAuth')
         }
     },
 
@@ -888,6 +878,7 @@ export default () => new Vuex.Store({
     modules: {
         main,
         home,
-        feedback
+        feedback,
+        regPerson
     }
 })

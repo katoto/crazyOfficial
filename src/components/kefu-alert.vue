@@ -29,12 +29,12 @@
         watch: {},
         methods: {
             closekefu () {
-                this.$store.commit(mTypes.setkefuAlert, true)
+                this.$store.commit('setkefuAlert', true)
             }
         },
         computed: {
             kefuAlert () {
-                return this.$store.state.feedback.kefuAlert
+                return this.$store.state.kefuAlert
             }
         },
         mounted () {

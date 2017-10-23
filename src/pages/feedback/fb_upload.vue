@@ -6,7 +6,7 @@
         <div class="feedback01" :class="{'hide':!showFeedback01}">
             <div class="feedback-c">
                 <div class="ask-write">
-                    <textarea v-model="textareaData" id="submitcontent" placeholder="请输入您的宝贵意见或建议，我们将认真处理~谢谢！ 建议留下手机号或QQ，方便我们联系您）"></textarea>
+                    <textarea v-model="textareaData" id="submitcontent" placeholder="请输入您的宝贵意见或建议，我们将认真处理~谢谢！ （建议留下手机号或QQ，方便我们联系您）"></textarea>
                 </div>
                 <div class="ask-add-wrap">
                     <span class="ask-add" id="fileSelect" @click="checkFileReader">
@@ -40,7 +40,7 @@
 
         <div class="pop pop-imgView" style="display: none">
             <div class="pop_layer" onclick="$(this).parent().hide()"></div>
-            <div class="imgView-box">
+            <div class="imgView-box" onclick="$(this).parent().hide()">
                 <img id="imgMoreData" src="~static/images/testimg.png">
             </div>
         </div>
@@ -78,7 +78,7 @@
         methods: {
             showkefu () {
                 $('#submitcontent').blur();
-                this.$store.commit(mTypes.setkefuAlert, false)
+                this.$store.commit('setkefuAlert', false)
             },
             handleFiles (e) {
                 var that = this;

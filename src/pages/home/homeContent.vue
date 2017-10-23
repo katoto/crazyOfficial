@@ -208,7 +208,7 @@
             <div class="pop_layer" key="event" v-tap="{ methods:closeHeadBox}"></div>
             <div class="pop-user" v-if="userinfo">
                 <ul>
-                    <li class="my-msg">
+                    <li class="my-msg" v-tap="{methods:enterMy,params:'personCenter'}">
                         <img :src="userinfo.photo" @error="imgOnError" alt="用户头像">
                         <div>
                             <span class="user-name">{{userinfo.username}}</span>
@@ -465,7 +465,11 @@
                 case 'goHelp':
                     _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
                     this.$router.push('/help')
-                    break
+                    break;
+                case 'personCenter':
+                    _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
+                    this.$router.push('/personCenter')
+                    break;
                 }
             }
         },
