@@ -2049,37 +2049,16 @@
 }
 /*商城导航*/
 /*商城-我的道具弹窗*/
-.mytool{
-    position: absolute;
-    left:50%;
-    top:50%;
-    margin-left:-335px;
-    margin-top:-448px;
-    width:670px;
+.pop-mytool{
     text-align: center;
-    border:4px solid #2f303a;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    background: #26272f;
 }
-
-.my-t{
-    width:367px;
-    height:60px;
-    background-position: 0 -505px;
-    line-height:60px;
-    font-size:34px;
-    color: #d9ddff;
-    margin:0 auto;
-}
-.mytool p{
+.pop-mytool .popIn p{
     line-height:90px;
     font-size:24px;
     color: #6f799a;
     border-bottom:1px solid #3c3d44;
 }
-.mytool-c img{
+.popIn-c img{
     position: absolute;
     left:50%;
     top:50%;
@@ -2089,14 +2068,14 @@
     width:210px;
     height:163px;
 }
-.mytool-c{
+.popIn-c{
     height:730px;
     overflow-y: auto;
 }
-.mytool-c ul{
+.popIn-c ul{
     overflow: hidden;
 }
-.mytool-c li{
+.popIn-c li{
     position: relative;
     float: left;
     width:50%;
@@ -2108,11 +2087,11 @@
     border-bottom:1px solid #3c3d44;
     /*no*/
 }
-.mytool-c li:nth-child(2n-1){
+.popIn-c li:nth-child(2n-1){
     border-right:1px solid #3c3d44;
     /*no*/
 }
-.mytool-c span{
+.popIn-c span{
     position: absolute;
     right:0;
     bottom:0;
@@ -2121,14 +2100,14 @@
     height:55px;
     overflow: hidden;
     line-height:55px;
-    background: #3c3d44;
-    font-size:24px;
+    background: #444a60;
+    font-size:32px;
     color: #d9ddff;
     -webkit-border-top-left-radius: 8px;
     -moz-border-top-left-radius: 8px;
     border-top-left-radius: 8px;
 }
-.mytool-c .item-no img {
+.popIn-c .item-no img {
     opacity: .3;
 }
 /*商城-我的道具弹窗*/
@@ -2151,6 +2130,7 @@
     line-height:90px;
     font-size:24px;
     color: #6f799a;
+    text-align: center;
 }
 .pop-myexchange .emptyIn{
     position: relative;
@@ -2363,58 +2343,4 @@
 }
 /*花费猜球币弹窗*/
 /*中奖弹窗*/
-.pop-winning-c{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-top:-244px;
-    margin-left:-338px;
-    width:608px;
-    height:370px;
-    padding:90px 30px 20px;
-    border: 4px solid #2f303a;
-    text-align: center;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
-    background: #26272f;
-}
-.pop-winning h2{
-    position: absolute;
-    left:50%;
-    top:-50px;
-    margin-left:-238px;
-    width:476px;
-    height:97px;
-    overflow: hidden;
-    background-image: url("../images/pop_phb.png");
-    background-size: 476px;
-    background-position: 0 -482px;
-    font-size:0;
-    
-}
-.pop-winning-c img{
-    display: block;
-    margin:0 auto;
-    width:210px;
-}
-.pop-winning-c h3{
-    font-size:30px;
-    color: #fff;
-    font-weight:normal;
-    line-height:90px;
-}
-.btn-myWinning{
-    display: block;
-    width:100%;
-    height:80px;
-    overflow: hidden;
-    background: #e5393a;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    line-height:80px;
-    font-size:36px;
-    color: #fff;
-}
 /*中奖弹窗*/
