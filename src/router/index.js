@@ -161,8 +161,10 @@ if (location.search) {
     }
     /* 统计from */
     if (queryObj.from) {
-        localStorage.setItem('src', queryObj.from)
-        history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/${queryObj.from}`)
+        localStorage.setItem('src', queryObj.from);
+        console.log( queryObj.from );
+        document.cookie = 'src' + '=' + 'queryObj.from' ;
+        history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home`)
     }
     /*
      if(queryObj.jumpToPay && queryObj.jumpToPay ==='true'){
