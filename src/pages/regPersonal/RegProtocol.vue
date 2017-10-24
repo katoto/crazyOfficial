@@ -240,7 +240,7 @@
                     helpSel_9: false,
                     helpSel_10: false,
                     helpSel_11: false,
-                    helpSel_12: false,
+                    helpSel_12: false
                 }
             }
         },
@@ -249,52 +249,52 @@
             helpItem ({helpSel}) {
                 //                切换帮助里头的选项
                 switch (helpSel) {
-                    case 'helpSel_1':
-                        this.helpSel.helpSel_1 = !this.helpSel.helpSel_1
-                        break
-                    case 'helpSel_2':
-                        this.helpSel.helpSel_2 = !this.helpSel.helpSel_2
-                        break
-                    case 'helpSel_3':
-                        this.helpSel.helpSel_3 = !this.helpSel.helpSel_3
-                        break
-                    case 'helpSel_4':
-                        this.helpSel.helpSel_4 = !this.helpSel.helpSel_4
-                        break
-                    case 'helpSel_5':
-                        this.helpSel.helpSel_5 = !this.helpSel.helpSel_5
-                        break
-                    case 'helpSel_6':
-                        this.helpSel.helpSel_6 = !this.helpSel.helpSel_6
-                        break
-                    case 'helpSel_7':
-                        this.helpSel.helpSel_7 = !this.helpSel.helpSel_7
-                        break
-                    case 'helpSel_8':
-                        this.helpSel.helpSel_8 = !this.helpSel.helpSel_8
-                        break
-                    case 'helpSel_9':
-                        this.helpSel.helpSel_9 = !this.helpSel.helpSel_9
-                        break
-                    case 'helpSel_10':
-                        this.helpSel.helpSel_10 = !this.helpSel.helpSel_10
-                        break
-                    case 'helpSel_11':
-                        this.helpSel.helpSel_11 = !this.helpSel.helpSel_11
-                        break
-                    case 'helpSel_12':
-                        this.helpSel.helpSel_12 = !this.helpSel.helpSel_12
-                        break
+                case 'helpSel_1':
+                    this.helpSel.helpSel_1 = !this.helpSel.helpSel_1
+                    break
+                case 'helpSel_2':
+                    this.helpSel.helpSel_2 = !this.helpSel.helpSel_2
+                    break
+                case 'helpSel_3':
+                    this.helpSel.helpSel_3 = !this.helpSel.helpSel_3
+                    break
+                case 'helpSel_4':
+                    this.helpSel.helpSel_4 = !this.helpSel.helpSel_4
+                    break
+                case 'helpSel_5':
+                    this.helpSel.helpSel_5 = !this.helpSel.helpSel_5
+                    break
+                case 'helpSel_6':
+                    this.helpSel.helpSel_6 = !this.helpSel.helpSel_6
+                    break
+                case 'helpSel_7':
+                    this.helpSel.helpSel_7 = !this.helpSel.helpSel_7
+                    break
+                case 'helpSel_8':
+                    this.helpSel.helpSel_8 = !this.helpSel.helpSel_8
+                    break
+                case 'helpSel_9':
+                    this.helpSel.helpSel_9 = !this.helpSel.helpSel_9
+                    break
+                case 'helpSel_10':
+                    this.helpSel.helpSel_10 = !this.helpSel.helpSel_10
+                    break
+                case 'helpSel_11':
+                    this.helpSel.helpSel_11 = !this.helpSel.helpSel_11
+                    break
+                case 'helpSel_12':
+                    this.helpSel.helpSel_12 = !this.helpSel.helpSel_12
+                    break
                 }
             },
             goPageFn ({ target }) {
-                target = target || 'backHistory';
+                target = target || 'backHistory'
                 switch (target) {
-                    case 'backHistory':
-                        window.history.back();
-                        break
+                case 'backHistory':
+                    window.history.back()
+                    break
                 }
-            },
+            }
         },
         computed: {},
         mounted () {

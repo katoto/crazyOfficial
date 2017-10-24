@@ -5,7 +5,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import ajax from '~common/ajax'
-import {addCookie, removeCookie , platform, src, wait, convertToQueryString, getCk} from '~common/util'
+import {addCookie, removeCookie, platform, src, wait, convertToQueryString, getCk} from '~common/util'
 import main from './main'
 import home from './home'
 import feedback from './feedback'
@@ -90,9 +90,9 @@ const state = {
     activeBox: {
         showActBox: false // 弹窗
     },
-    showHeightTips:false,
+    showHeightTips: false,
 
-    kefuAlert: true,
+    kefuAlert: true
 
 }
 const mutations = {
@@ -100,7 +100,7 @@ const mutations = {
         state.kefuAlert = data
     },
 
-    showHeightTips(state ,data){
+    showHeightTips (state, data) {
         state.showHeightTips = data
     },
     setActiveBox (state, data) {
@@ -188,13 +188,13 @@ const mutations = {
         state.cp_login_state = data
     },
     ck (state, ck) {
-        state.ck = ck;
-        addCookie('ck', ck);
+        state.ck = ck
+        addCookie('ck', ck)
         localStorage.setItem('ck', ck)
     },
-    removeCk(state){
-        state.ck = '';
-        addCookie('ck', '');
+    removeCk (state) {
+        state.ck = ''
+        addCookie('ck', '')
         localStorage.setItem('ck', '')
     },
     userInfo (state, userInfo) {
@@ -287,16 +287,16 @@ const mutations = {
 }
 const actions = {
     clearLoginState ({commit, dispatch}, data) {
-        commit('ck', '' );
-        addCookie('ck', '');
+        commit('ck', '')
+        addCookie('ck', '')
         localStorage.setItem('ck', '')
     },
 
     /* 检查是否登录 */
     async checkLogin ({commit, dispatch}, params) {
         try {
-            const hasCk = await getCk();
-            if ( hasCk && hasCk !== 'undefined' &&  hasCk !== '' ) {
+            const hasCk = await getCk()
+            if (hasCk && hasCk !== 'undefined' && hasCk !== '') {
                 commit('setIsLogin', true)
             } else {
                 commit('setIsLogin', false)
@@ -309,7 +309,7 @@ const actions = {
     async doAuth ({commit, dispatch}) {
         try {
             /* 处理登陆（调登陆 ） */
-            router.push('/login');
+            router.push('/login')
             dispatch('clearLoginState')
         } catch (e) {
             dispatch('showToast', e.message + 'doAuth')

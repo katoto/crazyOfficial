@@ -77,17 +77,17 @@
         },
         methods: {
             showkefu () {
-                $('#submitcontent').blur();
+                $('#submitcontent').blur()
                 this.$store.commit('setkefuAlert', false)
             },
             handleFiles (e) {
-                var that = this;
+                var that = this
                 var file = e.target.files[0]
                 var reader = new FileReader()
                 reader.onload = function () {
                     var imageHtml = ''
                     if (file.size > 4048576) {
-                        that.$store.dispatch('showToast', '图片过大请更换');
+                        that.$store.dispatch('showToast', '图片过大请更换')
                         return false
                     }
                     imageHtml += '<span class="itm-img"><span class="deleteimg" ></span><img src="'
@@ -103,7 +103,7 @@
                 setTimeout(function () {
                     var imageNUm = $('.itm-img').length
                     $('.deleteimg').on('click', function () {
-                        console.log('close');
+                        console.log('close')
                         $(this).parent().remove()
                         var imageNUm = $('.itm-img').length
                         if (!document.getElementById('fileSelect') && imageNUm < 3) {
@@ -136,10 +136,10 @@
             if (process.env.NODE_ENV === 'production') {
                 if (window.location.protocol === 'http:') {
                     options.baseURL = window.location.protocol + '//crazybet.choopaoo.com:6899'
-                }else {
+                } else {
                     options.baseURL = window.location.protocol + '//crazybet.choopaoo.com:46899'
                 }
-            }else if (process.env.NODE_ENV === 'preRelease') {
+            } else if (process.env.NODE_ENV === 'preRelease') {
                 options.baseURL = 'http://crazybet.choopaoo.com:3899'
             } else {
                 options.baseURL = '/api'
@@ -157,7 +157,7 @@
                     that.$store.dispatch('showToast', '超过字数限制，最多400字')
                     return false
                 }
-                that.showLoading = true;
+                that.showLoading = true
                 $.each($('.imagefile'), function (key, value) {
                     imageStr += $(this).val()
 //                    img2 += $(this).val().split(',')[1] + '$$$$'

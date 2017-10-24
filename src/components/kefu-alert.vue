@@ -1,10 +1,10 @@
 <template>
-    <div class="pop pop-opinion" :class="{'hide':kefuAlert}">
+    <div class="pop pop02 pop-opinion" :class="{'hide':kefuAlert}">
         <div class="pop_layer"  v-tap="{methods:closekefu}"></div>
         <div class="pop-o">
-    <span class="close" v-tap="{methods:closekefu}" >
-        <span></span>
-    </span>
+            <span class="close" v-tap="{methods:closekefu}" >
+                <span></span>
+            </span>
             <div class="pop-t">
                 在线客服
             </div>

@@ -21,7 +21,7 @@
                 </div>
                 <!--user-msg01 or user-msg02-->
                 <a href="javascript:;"
-                   v-tap="{ methods:sendCodeFn }" class="user-co" :class="{'user-msg01':telNumber !=='' , 'user-msg02':telNumber ==='' || addUnable}"
+                   v-tap="{ methods:sendCodeFn }" class="user-co" :class="{'user-msg01':telNumber.length ===11 , 'user-msg02':telNumber.length !==11 || addUnable}"
                 >
                     {{ countDownStr }}
                 </a>
@@ -82,124 +82,131 @@
             return {
                 telNumber: '',
                 telCode: '',
-                userPassWord:'',
-                showCode:false,
+                userPassWord: '',
+                showCode: false,
 
-                nextBox:false,
+                nextBox: false,
 
-                forgetTitle:'找回密码',
+                forgetTitle: '找回密码',
                 countDownStr: '获取验证码',
                 addUnable: false,
 
-                telNumberBlur:true,
-                telCodeBlur:true,
-                userPassWordBlur:true,
+                telNumberBlur: true,
+                telCodeBlur: true,
+                userPassWordBlur: true
             }
         },
         methods: {
-            checkuserPassWordFocus(){
-                this.$store.commit(mTypes.setfPTips , '');
-                this.userPassWordBlur = false;
+            checkuserPassWordFocus () {
+                this.$store.commit(mTypes.setfPTips, '')
+                this.userPassWordBlur = false
             },
-            headBack(){
-                window.history.back();
+            headBack () {
+                window.history.back()
             },
             showkefu () {
                 this.$store.commit('setkefuAlert', false)
             },
-            checkCode(e){
-                this.telCodeBlur = true;
+            checkCode (e) {
+                this.telCodeBlur = true
 //                this.$store.commit(mTypes.setIsSerError , false );
-                if(e.target.value.length !== 4 ){
-                    this.$store.commit(mTypes.setfPTips , '请输入4位验证码');
+                if (e.target.value.length !== 4) {
+                    this.$store.commit(mTypes.setfPTips, '请输入4位验证码')
                     return false
-                }else{
-                    this.$store.commit(mTypes.setfPTips , '');
+                } else {
+                    this.$store.commit(mTypes.setfPTips, '')
                 }
             },
-            checkTelNumberFocus(){
-                this.telNumberBlur = false;
-                this.$store.commit(mTypes.setfPTips , '');
+            checkTelNumberFocus () {
+                this.telNumberBlur = false
+                this.$store.commit(mTypes.setfPTips, '')
             },
-            checkTelCodeFocus(){
-                this.telCodeBlur = false;
+            checkTelCodeFocus () {
+                this.telCodeBlur = false
             },
             againConfirm () {
                 /* 确认  function */
+                if (!this.userPassWord) {
+                    return false
+                }
+
                 if (this.userPassWord === '') {
-                    this.$store.commit(mTypes.setfPTips , '请输入重置密码');
+                    this.$store.commit(mTypes.setfPTips, '请输入重置密码')
                     return false
                 } else {
-                    let pass_reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
+                    let pass_reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/
                     if (!(pass_reg.test(this.userPassWord))) {
-                        this.$store.commit(mTypes.setfPTips , '请设置6~12位数字、字母组合密码');
+                        this.$store.commit(mTypes.setfPTips, '请设置6~12位数字、字母组合密码')
                         return false
                     }
                     /* 重置密码 */
-                    this.$store.dispatch(aTypes.passWdReset , Object.assign({}, { password: this.userPassWord ,mobile :this.telNumber }))
+                    this.$store.dispatch(aTypes.passWdReset, Object.assign({}, { password: this.userPassWord, mobile: this.telNumber }))
                 }
             },
 
             /*  */
             forgetNext () {
                 /* 下一步  function */
-                let forgetData = null;
+                let forgetData = null
+                if (!this.telNumber || !this.telCode) {
+                    return false
+                }
                 /* 提交 */
-                document.getElementById('LoPhone').blur();
-                document.getElementById('LoCode').blur();
+                document.getElementById('LoPhone').blur()
+                document.getElementById('LoCode').blur()
 
                 if (this.telNumber === '') {
-                    this.$store.commit(mTypes.setfPTips , '请输入手机号');
+                    this.$store.commit(mTypes.setfPTips, '请输入手机号')
                     return false
                 } else if (this.telCode === '') {
-                    this.$store.commit(mTypes.setfPTips , '请输入4位验证码');
+                    this.$store.commit(mTypes.setfPTips, '请输入4位验证码')
                     return false
                 }
 
                 /* 提交数据 */
-                forgetData = Object.assign({}, { mobile: this.telNumber, verifycode: this.telCode });
+                forgetData = Object.assign({}, { mobile: this.telNumber, verifycode: this.telCode })
                 this.$store.dispatch(aTypes.checkWdReset, forgetData)
             },
             sendCodeFn () {
                 if (this.telNumber === '') { return false }
-                let tel_reg = /^1[34578]\d{9}$/;
+                let tel_reg = /^1[34578]\d{9}$/
                 if (tel_reg.test(this.telNumber)) {
-                    let codeTime = 60;
-                    let times = null;
+                    let codeTime = 60
+                    let times = null
                     if (this.countDownStr !== '获取验证码') {
                         return false
                     }
-                    this.countDownStr = '重发（' + codeTime + 's）';
-                    this.addUnable = true;
+                    this.countDownStr = '重发（' + codeTime + 's）'
+                    this.addUnable = true
 
                     this.$store.dispatch(aTypes.getTelCode, Object.assign({}, { mobile: this.telNumber, vtype: 'forgetPass' }))
                     times = setInterval(() => {
-                        codeTime = codeTime - 1;
+                        codeTime = codeTime - 1
                         if (codeTime === 0) {
-                            this.countDownStr = '获取验证码';
-                            this.addUnable = false;
-                            codeTime = 60;
+                            this.countDownStr = '获取验证码'
+                            this.addUnable = false
+                            codeTime = 60
                             clearInterval(times)
                         } else {
-                            this.countDownStr = '重发（' + codeTime + 's）';
+                            this.countDownStr = '重发（' + codeTime + 's）'
                             this.addUnable = true
                         }
                     }, 1000)
                 } else {
-                    this.$store.commit(mTypes.setfPTips , '请输入正确的手机号');
+                    this.$store.commit(mTypes.setfPTips, '请输入正确的手机号')
                 }
             },
-            delNumber({ params }){
+            delNumber ({ params }) {
                 switch (params) {
-                    case 'telNumber':
-                        this.telNumber = '';
-                        break;
-                    case 'userPassWord':
-                        this.userPassWord = '';
-                        break;
-                    case 'telCode':
-                        this.telCode = '';
-                        break;
+                case 'telNumber':
+                    this.telNumber = ''
+                    break
+                case 'userPassWord':
+                    this.userPassWord = ''
+                    break
+                case 'telCode':
+                    this.telCode = ''
+                    break
                 }
             },
 
@@ -210,7 +217,7 @@
                     }
                 }
                 if (e.target.name === 'telCode') {
-                    this.$store.commit(mTypes.setfPTips , '');
+                    this.$store.commit(mTypes.setfPTips, '')
                     if (e.target.value.length > 4) {
                         this.telCode = e.target.value.slice(0, 4)
                     }
@@ -222,10 +229,10 @@
                 }
             },
             checkTel (e) {
-                let tel_reg = /^1[34578]\d{9}$/;
-                this.telNumberBlur = true;
-                if (! ( tel_reg.test(e.target.value)) && e.target.value !=='') {
-                    this.$store.commit(mTypes.setfPTips , '请输入正确的手机号');
+                let tel_reg = /^1[34578]\d{9}$/
+                this.telNumberBlur = true
+                if (!(tel_reg.test(e.target.value)) && e.target.value !== '') {
+                    this.$store.commit(mTypes.setfPTips, '请输入正确的手机号')
                 }
             },
             showCodeFn () {
@@ -237,38 +244,38 @@
                 this.showCode = !(this.showCode)
             },
             checkPassWord (e) {
-                let pass_reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
-                this.userPassWordBlur = true;
-                if (!(pass_reg.test(e.target.value)) && pass_reg.test(e.target.value)!=='' && this.nextBox) {
-                    this.$store.commit(mTypes.setfPTips , '请设置6~12位数字、字母组合密码');
+                let pass_reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/
+                this.userPassWordBlur = true
+                if (!(pass_reg.test(e.target.value)) && pass_reg.test(e.target.value) !== '' && this.nextBox) {
+                    this.$store.commit(mTypes.setfPTips, '请设置6~12位数字、字母组合密码')
                 }
-            },
+            }
         },
         computed: {
             resetSign () {
-                return this.$store.state.regPerson.resetSign;
+                return this.$store.state.regPerson.resetSign
             },
             fPTips () {
                 return this.$store.state.regPerson.fPTips
-            },
+            }
         },
         watch: {
-            resetSign(sign){
-                if(sign){
-                    this.forgetTitle = '重置密码';
-                    this.nextBox = true;
-                    return false;
+            resetSign (sign) {
+                if (sign) {
+                    this.forgetTitle = '重置密码'
+                    this.nextBox = true
+                    return false
                 }
-                this.forgetTitle = '找回密码';
-                this.nextBox = false;
+                this.forgetTitle = '找回密码'
+                this.nextBox = false
             }
         },
         mounted () {
-            this.$store.commit('showHeightTips' , true );
+            this.$store.commit('showHeightTips', true)
         },
         components: {
             Kefu_alert
-        },
+        }
     }
 </script>
 <style>

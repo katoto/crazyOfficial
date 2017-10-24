@@ -211,13 +211,15 @@
             </div>
         </div>
 
-        <div class="pop pop-winning" :class="{'hide':!showLuckEnd}">
+        <div class="pop pop01 pop-winning" :class="{'hide':!showLuckEnd}">
             <div class="pop_layer" v-tap="{methods: closeLuckEnd}"></div>
-            <div class="pop-winning-c" v-if="alertGoodsData">
+            <div class="popIn" v-if="alertGoodsData">
                 <div class="close" v-tap="{methods: closeLuckEnd}">
                     <span></span>
                 </div>
-                <h2>恭喜中奖</h2>
+                <div class="popTit">
+                    <h2>恭喜中奖</h2>
+                </div>
                 <img :src="alertGoodsData.imgurl" >
                 <h3>{{ alertGoodsData.name }}</h3>
                 <a href="javascript:;" class="btn-myWinning" v-tap="{methods: showPrizeList, params: true}">查看奖品</a>

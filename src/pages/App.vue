@@ -15,6 +15,7 @@
     import '~static/css/live.css'
     import '~static/css/mine.css'
     import '~static/css/media.css'
+    import '~static/css/pop.css'
 
     /* 到时候移到反馈里 */
     import '~static/css/feedback.css'
@@ -40,7 +41,7 @@
             isLogin () {
                 return this.$store.state.isLogin
             },
-            showHeightTips(){
+            showHeightTips () {
                 return this.$store.state.showHeightTips
             }
         },
@@ -49,12 +50,12 @@
         /* 登陆还得修改下 */
             try {
             //    线下账号  测试  !!!
-                await this.$store.dispatch('localLogin', 4312)
+                await this.$store.dispatch('localLogin', 12345)
                 await this.$store.dispatch('getUserInfo')
             /* 线上 登陆 */
 //                await this.$store.dispatch('checkLogin')
 
-                await this.$store.dispatch('checkLogin');
+                await this.$store.dispatch('checkLogin')
 
                 if (this.isLogin) {
                     await this.$store.dispatch('getUserInfo')
@@ -69,7 +70,7 @@
             } catch (e) {
                 if (e.code === '102') {
                     try {
-                        await this.$store.dispatch('initWebsocket');
+                        await this.$store.dispatch('initWebsocket')
                         this.ready = true
                     } catch (e) {
                         this.ready = true

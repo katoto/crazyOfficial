@@ -7,19 +7,19 @@
             <router-view></router-view>
         </div>
         <!-- 排行版 hide-->
-        <div class="pop pop_phb" :class="{'hide':!showRankbox}">
+        <div class="pop pop01 pop_phb" :class="{'hide':!showRankbox}">
             <div class="pop_layer"  v-tap="{ methods:closeRankList}"></div>
             <div class="popIn">
                 <div class="popTit">
-                    <ul class="btn_tab" :class="{'tab2':isrankRule}" v-tap="{ methods:showRankRule,tab:!isrankRule}">
-                        <li><span>榜单</span></li>
-                        <li><span >规则</span></li>
-                    </ul>
                     <h2 class="title">排行榜</h2>
-                    <span class="close" v-tap="{ methods:closeRankList}">
-                        <span></span>
-                    </span>
                 </div>
+                <span class="close" v-tap="{ methods:closeRankList}">
+                        <span></span>
+                </span>
+                <ul class="btn_tab" :class="{'tab2':isrankRule}" v-tap="{ methods:showRankRule,tab:!isrankRule}">
+                    <li class="cur"><span>榜单</span></li>
+                    <li><span >规则</span></li>
+                </ul>
                 <div class="box" :class="{'box2':isrankRule}" v-if="rankList">
                     <div class="phb_box" :class="{'phb_box2':this.showRankType==='lastWeek'}">
                         <ul class="list_menu clear">
@@ -138,15 +138,17 @@
         </div>
 
         <!-- 每日签到  每次请求   -->
-        <div class="pop pop_mrrw" :class="{'hide':!showSignbox}">
+        <div class="pop pop01 pop_mrrw" :class="{'hide':!showSignbox}">
             <div class="pop_layer"  v-tap="{ methods:closeSignList}"></div>
-            <div class="popIn">
+            <div class="popIn sign_xunlei">
+                <span class="close"  v-tap="{ methods:closeSignList}">
+                    <span></span>
+                </span>
                 <div class="popTit">
-                    <div class="sign_bg"></div>
-                    <span class="close" v-tap="{ methods:closeSignList}"> <span></span> </span>
+                    <h2 class="title"></h2>
                 </div>
                 <div class="sign">
-                    <ul class="sign_day">
+                    <ul class="sign_day" v-if="signList && signList.length>0">
                         <li class="item " :class="{'have_sign':item.sign==='1','cur':item.sign==='0'}" v-for="item in signList">
                             <span class="day_num">第{{ item.idx }}天</span>
                             <i class="icon icon_jinbi3" v-if="Number(item.idx)<=2"></i>
@@ -157,7 +159,9 @@
                             <div class="day_money" v-else><em>{{ item.item }}</em>猜球币</div>
                         </li>
                     </ul>
-
+                    <ul v-else>
+                        <p style="height:1.4rem;font-size: 0.14rem">暂无签到列表~</p>
+                    </ul>
                     <span class="btn_sign" v-if="isSign==='0'" v-tap="{ methods:marketSignFn,idx:currentIdx }" key="1">领取</span>
                     <span class="btn_sign gray_hc" v-if="isSign==='1'" key="0">已领取</span>
                 </div>
@@ -272,10 +276,10 @@
         </div>
 
         <!--活动弹窗-->
-        <div class="pop pop-act" :class="{'hide':!showActBox}">
+        <div class="pop pop01 pop-act" :class="{'hide':!showActBox}">
             <div class="pop_layer" v-tap="{ methods:closeActBox}">
             </div>
-            <div class="popact-in">
+            <div class="popIn">
             <span class="close"  v-tap="{ methods:closeActBox}">
                 <span></span>
             </span>
@@ -465,11 +469,11 @@
                 case 'goHelp':
                     _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
                     this.$router.push('/help')
-                    break;
+                    break
                 case 'personCenter':
                     _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
                     this.$router.push('/personCenter')
-                    break;
+                    break
                 }
             }
         },

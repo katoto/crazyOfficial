@@ -143,128 +143,126 @@
     import {actionTypes, mutationTypes} from '~store/home'
 
     export default {
-        data(){
+        data () {
             return {
                 Ptitle: '个人中心',
-                selTab:'per_center',
-                showCenter:true,
-                showName:false,
-                nickName:null,
-                selUserImg:null,
-                isClick:false,
-                nickNameBlur:true,
+                selTab: 'per_center',
+                showCenter: true,
+                showName: false,
+                nickName: null,
+                selUserImg: null,
+                isClick: false,
+                nickNameBlur: true
             }
         },
         methods: {
-            checkNickNameBlur(){
-                let regNickName = /[`~!@#$^&*()=|{}':;',\[\].<>\/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%]/ ;
-                this.nickNameBlur = true;
-                if( regNickName.test( this.nickName ) ){
-                    this.$store.commit(mTypes.setPCTips , '不可使用特殊字符')
-                } else if(this.nickName.length <=2 && this.nickName.length >=16 ){
-                    this.$store.commit(mTypes.setPCTips , '2-16个字符,支持中英文、数字');
-                }
-
-            },
-            checkNickNameFocus(){
-                this.nickNameBlur = false ;
-                this.$store.commit(mTypes.setPCTips , '');
-            },
-            headBack(){
-                if(this.Ptitle === '个人中心'){
-                    window.history.back();
-                }else{
-                    this.changeTab({params:'per_center'})
+            checkNickNameBlur () {
+                let regNickName = /[`~!@#$^&*()=|{}':;',\[\].<>\/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%]/
+                this.nickNameBlur = true
+                if (regNickName.test(this.nickName)) {
+                    this.$store.commit(mTypes.setPCTips, '不可使用特殊字符')
+                } else if (this.nickName.length <= 2 && this.nickName.length >= 16) {
+                    this.$store.commit(mTypes.setPCTips, '2-16个字符,支持中英文、数字')
                 }
             },
-            clickImg(e){
-                let evtTarget = e.event.target;
-                if(evtTarget && evtTarget.nodeName==='IMG'){
-                    let lis = document.querySelectorAll('#selImgDom li');
-                    for( let i=0,len=lis.length;i<len;i++ ){
+            checkNickNameFocus () {
+                this.nickNameBlur = false
+                this.$store.commit(mTypes.setPCTips, '')
+            },
+            headBack () {
+                if (this.Ptitle === '个人中心') {
+                    window.history.back()
+                } else {
+                    this.changeTab({params: 'per_center'})
+                }
+            },
+            clickImg (e) {
+                let evtTarget = e.event.target
+                if (evtTarget && evtTarget.nodeName === 'IMG') {
+                    let lis = document.querySelectorAll('#selImgDom li')
+                    for (let i = 0, len = lis.length; i < len; i++) {
                         lis[i].className = ''
                     }
-                    evtTarget.parentNode.className='on';
+                    evtTarget.parentNode.className = 'on'
                     this.selUserImg = evtTarget.getAttribute('src')
                 }
             },
-            savaUserImg(){
-                if(!this.selUserImg){
+            savaUserImg () {
+                if (!this.selUserImg) {
                     this.$store.dispatch('showToast', {
                         duration: 1000,
                         message: '请选择一个头像'
-                    });
-                    return false;
+                    })
+                    return false
                 }
-                this.$store.dispatch(aTypes.setUserImg,this.selUserImg );
+                this.$store.dispatch(aTypes.setUserImg, this.selUserImg)
             },
-            reName(e){
+            reName (e) {
                 //  修改昵称
-                let regNickName = /[`~!@#$^&*()=|{}':;',\[\].<>\/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%]/ ;
-                if(~e.event.target.className.indexOf('btn-unable') ){
-                    return  false;
+                let regNickName = /[`~!@#$^&*()=|{}':;',\[\].<>\/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%]/
+                if (~e.event.target.className.indexOf('btn-unable')) {
+                    return false
                 }
 
-                if( regNickName.test( this.nickName ) ){
-                    this.$store.commit(mTypes.setPCTips , '不可使用特殊字符')
-                } else if(this.nickName.length >=2 && this.nickName.length <=16 ){
-                    this.$store.dispatch(aTypes.renameNickName,this.nickName.replace(/^\s+|\s+$/g,'').replace(/\s+/g,'') );
-                }else{
-                    this.$store.commit(mTypes.setPCTips , '2-16个字符,支持中英文、数字');
+                if (regNickName.test(this.nickName)) {
+                    this.$store.commit(mTypes.setPCTips, '不可使用特殊字符')
+                } else if (this.nickName.length >= 2 && this.nickName.length <= 16) {
+                    this.$store.dispatch(aTypes.renameNickName, this.nickName.replace(/^\s+|\s+$/g, '').replace(/\s+/g, ''))
+                } else {
+                    this.$store.commit(mTypes.setPCTips, '2-16个字符,支持中英文、数字')
                 }
             },
-            checkNickName(e){
+            checkNickName (e) {
                 if (e.target.name === 'nick') {
                     if (e.target.value.length > 16) {
                         this.nickName = e.target.value.slice(0, 16)
                     }
-                    if( this.nickName.length >=2 && this.nickName.length <=16 ){
-                        this.isClick = true;
-                    }else{
-                        this.isClick = false;
+                    if (this.nickName.length >= 2 && this.nickName.length <= 16) {
+                        this.isClick = true
+                    } else {
+                        this.isClick = false
                     }
                 }
             },
-            exit(){
-                this.$store.commit('removeCk');
-                setTimeout(()=>{
-
-                    // 更新接口数据
+            exit () {
+                this.$store.commit('removeCk')
+                setTimeout(() => {
+                // 更新接口数据
 //                    this.$store.dispatch('checkLogin');
 //                    this.$store.dispatch(actionTypes.getFootballMatchList, 'newhot')
 //                    this.$store.dispatch(actionTypes.getSignList)
 //                    this.$store.dispatch(actionTypes.getActivityList)
-                    this.$router.push(`/h5/home`);
-                    window.location.reload();
-                },10)
+                    this.$router.push(`/h5/home`)
+                    window.location.reload()
+                }, 10)
             },
-            changeTab({ params }){
-                switch (params){
-                    case 'per_center':
-                        this.Ptitle = '个人中心';
-                        this.showCenter = true;
-                        this.showName = false;
-                        this.$store.commit(mTypes.setShowImg ,false)
+            changeTab ({ params }) {
+                switch (params) {
+                case 'per_center':
+                    this.Ptitle = '个人中心'
+                    this.showCenter = true
+                    this.showName = false
+                    this.$store.commit(mTypes.setShowImg, false)
 
-                        ;break;
-                    case 'per_name':
-                        this.Ptitle = '修改昵称';
-                        if(this.userInfo){
-                            this.nickName = this.userInfo.username
-                        }
-                        document.getElementById('nickInp').focus();
-                        this.showCenter = false;
-                        this.showName = true;
-                        this.$store.commit(mTypes.setShowImg ,false)
-                        ;break;
-                    case 'per_img':
-                        this.showCenter = false;
-                        this.showName = false;
-                        this.$store.commit(mTypes.setShowImg ,true)
-                        ;break;
-                    case 'delNickName':
-                        this.nickName = '';
-                        ;break;
+                        ;break
+                case 'per_name':
+                    this.Ptitle = '修改昵称'
+                    if (this.userInfo) {
+                        this.nickName = this.userInfo.username
+                    }
+                    document.getElementById('nickInp').focus()
+                    this.showCenter = false
+                    this.showName = true
+                    this.$store.commit(mTypes.setShowImg, false)
+                        ;break
+                case 'per_img':
+                    this.showCenter = false
+                    this.showName = false
+                    this.$store.commit(mTypes.setShowImg, true)
+                        ;break
+                case 'delNickName':
+                    this.nickName = ''
+                    ;break
                 }
             }
         },
@@ -279,15 +277,15 @@
                 return this.$store.state.regPerson.PCTips
             }
         },
-        mounted(){
+        mounted () {
         },
-        watch:{
-            showImg(data){
-                if(data===false){
-                    this.Ptitle = '个人中心';
-                    this.showCenter = true;
-                    this.showName = false;
-                    this.$store.commit(mTypes.setShowImg ,false)
+        watch: {
+            showImg (data) {
+                if (data === false) {
+                    this.Ptitle = '个人中心'
+                    this.showCenter = true
+                    this.showName = false
+                    this.$store.commit(mTypes.setShowImg, false)
                 }
             }
         }

@@ -45,7 +45,6 @@ const RegProtocol = () => import('~pages/regPersonal/RegProtocol.vue' /* webpack
 
 const personCT = () => import('~pages/regPersonal/personCenter.vue' /* webpackChunkName: "chunks/personCT" */)
 
-
 // mode 代表浏览器环境   路由是按顺序匹配的
 const router = new VueRouter({
     mode: 'hash',
@@ -161,9 +160,9 @@ if (location.search) {
     }
     /* 统计from */
     if (queryObj.from) {
-        localStorage.setItem('src', queryObj.from);
-        console.log( queryObj.from );
-        document.cookie = 'src' + '=' + 'queryObj.from' ;
+        localStorage.setItem('src', queryObj.from)
+        console.log(queryObj.from)
+        document.cookie = 'src' + '=' + 'queryObj.from'
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home`)
     }
     /*

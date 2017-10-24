@@ -3,178 +3,191 @@
  */
 
 import ajax from '~common/ajax'
-import {platform,convertToQueryString , src, getCk, mapMutations, mapActions} from '~common/util'
+import {platform, convertToQueryString, src, getCk, mapMutations, mapActions} from '~common/util'
 import router from '../router'
 const state = {
-    IsShowImgCode:null,
-    loginData:null,
-    regisData:null,
-    resetSign:null,
-    showImg:false,
+    IsShowImgCode: null,
+    loginData: null,
+    regisData: null,
+    resetSign: null,
+    showImg: false,
 
-    PCTips:null,
+    PCTips: null,
 
-    LoTips:null,
-    isSerError:false,
+    LoTips: null,
+    isSerError: false,
 
-    rGTips:null,
+    rGTips: null,
 
-    isSendTelLogin:false,
-    autoTelNumber:null,
+    isSendTelLogin: false,
+    autoTelNumber: null,
 
-    autoLoginNumber:null,
-    autoLoginPassword:null,
+    autoLoginNumber: null,
+    autoLoginPassword: null,
 
-    fPTips:null,
+    fPTips: null,
+
+    autoGoRegisterTel: null,
+    autoGoRegisterPass: null
+
 }
 const mutationsInfo = mapMutations({
-    autoLoginNumber( state ,data ){
-        state.autoLoginNumber = data;
+    autoGoRegisterTel (state, data) {
+        state.autoGoRegisterTel = data
+    },
+    autoGoRegisterPass (state, data) {
+        state.autoGoRegisterPass = data
+    },
+    autoLoginNumber (state, data) {
+        state.autoLoginNumber = data
     },
 
-    autoLoginPassword( state ,data ){
-        state.autoLoginPassword = data;
+    autoLoginPassword (state, data) {
+        state.autoLoginPassword = data
     },
 
-    autoTelNumber( state ,data ){
-        state.autoTelNumber = data;
+    autoTelNumber (state, data) {
+        state.autoTelNumber = data
     },
-    isSendTelLogin(state,data){
-        state.isSendTelLogin = data;
+    isSendTelLogin (state, data) {
+        state.isSendTelLogin = data
     },
-    setrGTips( state ,data ){
-        state.rGTips = data;
+    setrGTips (state, data) {
+        state.rGTips = data
     },
-    setIsSerError(state,data){
-        state.isSerError = data ;
+    setIsSerError (state, data) {
+        state.isSerError = data
     },
-    setLoTips(state,data){
-        state.LoTips = data ;
+    setLoTips (state, data) {
+        state.LoTips = data
     },
-    setPCTips(state,data){
-        state.PCTips = data ;
+    setPCTips (state, data) {
+        state.PCTips = data
     },
-    setfPTips( state ,data ){
-        state.fPTips = data ;
+    setfPTips (state, data) {
+        state.fPTips = data
     },
 
-    setShowImg( state ,data){
+    setShowImg (state, data) {
         state.showImg = data
     },
-    setIsShowImgCode( state ,data ){
+    setIsShowImgCode (state, data) {
         state.IsShowImgCode = data
     },
-    setLoginData( state,data){
+    setLoginData (state, data) {
         state.loginData = data
     },
-    setRegis( state ,data ){
+    setRegis (state, data) {
         state.regisData = data
     },
-    setcheckWdReset(state,data){
-        state.resetSign = data;
+    setcheckWdReset (state, data) {
+        state.resetSign = data
     }
-}, 'regPerson');
+}, 'regPerson')
 
 const actionsInfo = mapActions({
-    async setUserImg ({commit,state , dispatch}, img) {
+    async setUserImg ({commit, state, dispatch}, img) {
         /* 重置密码 */
         try {
-            let nameResult = null;
+            let nameResult = null
             nameResult = await ajax.get(`/user/modfiy/photo?photo=${img}&ck=${getCk()}`)
-            dispatch('getUserInfo');
+            dispatch('getUserInfo')
             dispatch('showToast', {
                 message: '选择成功',
-                cb:()=>{
-                    commit(mTypes.setShowImg , false)
+                cb: () => {
+                    commit(mTypes.setShowImg, false)
                 }
-            });
+            })
         } catch (e) {
-            if(e.code){
+            if (e.code) {
 
-            }else{
+            } else {
                 dispatch('showToast', e.message)
             }
         }
     },
-    async renameNickName ({commit,state , dispatch}, nickName) {
+    async renameNickName ({commit, state, dispatch}, nickName) {
         /* 重置密码 */
         try {
-            let nameResult = null;
-            nameResult = await ajax.get(`/user/modfiy/username?username=${nickName}&ck=${getCk()}`);
+            let nameResult = null
+            nameResult = await ajax.get(`/user/modfiy/username?username=${nickName}&ck=${getCk()}`)
             dispatch('showToast', {
                 message: '修改成功',
                 cb: () => {
-                    router.push('/login');
+                    router.push('/login')
                 }
-            });
+            })
         } catch (e) {
-            if(e.status){
+            if (e.status) {
                 dispatch('showToast', e.message)
-            }else{
+            } else {
                 dispatch('showToast', e.message)
             }
         }
     },
-    async passWdReset ({commit,state , dispatch}, params) {
+    async passWdReset ({commit, state, dispatch}, params) {
         /* 重置密码 */
         try {
-            let resetData = null;
-            console.log(state.resetSign);
+            let resetData = null
+            console.log(state.resetSign)
             resetData = await ajax.get(`/user/modfiy/password?mobile=${params.mobile}&sign=${state.resetSign}&password=${params.password}`)
-            console.log(resetData);
-            commit('removeCk');
+            console.log(resetData)
+            commit('removeCk')
             dispatch('showToast', {
                 message: '密码设置成功',
                 cb: () => {
-                    commit(mTypes.autoLoginNumber , params.mobile );
-                    commit(mTypes.autoLoginPassword ,  params.password );
-                    router.push('/login');
-
+                    commit(mTypes.autoLoginNumber, params.mobile)
+                    commit(mTypes.autoLoginPassword, params.password)
+                    router.push('/login')
                 }
-            });
+            })
         } catch (e) {
-            if(e.code){
-
-            }else{
-                dispatch('showToast', e.message)
-            }
+            dispatch('showToast', e.message)
         }
     },
     async checkWdReset ({commit, dispatch}, params) {
         /*  重置密码验证手机code  */
         try {
-            let checkData = null;
-            checkData = await ajax.get(`/user/modfiy/password/verifycode?mobile=${params.mobile}&verifycode=${params.verifycode}&platform=${platform}`);
-            commit(mTypes.setcheckWdReset, checkData.sign);
+            let checkData = null
+            checkData = await ajax.get(`/user/modfiy/password/verifycode?mobile=${params.mobile}&verifycode=${params.verifycode}&platform=${platform}`)
+            commit(mTypes.setcheckWdReset, checkData.sign)
             console.log(checkData)
         } catch (e) {
-            commit(mTypes.setIsSerError , true );
-            commit(mTypes.setfPTips , e.message );
-
-            // if(e.code){
-            //     dispatch('showToast', )
-            // }else{
-            //     dispatch('showToast', e.message)
-            // }
+            if (e.code) {
+                switch (e.code) {
+                case '20101':
+                case '20102':
+                case '20103':
+                case '20104':
+                case '20105':
+                case '20106':
+                case '20107':
+                    commit(mTypes.setIsSerError, true)
+                    commit(mTypes.setfPTips, e.message)
+                    ; break
+                }
+            } else {
+                dispatch('showToast', e.message)
+            }
         }
     },
     async getTelCode ({state, commit, dispatch}, data) {
         // 获tel
         // /login/mobile/sms?mobile=13319403333
-        console.log(data);
+        console.log(data)
         try {
-            let codeData;
-            if(typeof data==="object" && data.vtype && typeof data.vtype ==='string'){
-                codeData = await ajax.get(`/login/mobile/sms?mobile=${data.mobile}&vtype=${data.vtype}`);
-            }else{
-                codeData = await ajax.get(`/login/mobile/sms?mobile=${data}`);
+            let codeData
+            if (typeof data === 'object' && data.vtype && typeof data.vtype === 'string') {
+                codeData = await ajax.get(`/login/mobile/sms?mobile=${data.mobile}&vtype=${data.vtype}`)
+            } else {
+                codeData = await ajax.get(`/login/mobile/sms?mobile=${data}`)
             }
             console.log(codeData)
         } catch (e) {
-            console.log(e.message);
-            dispatch('showToast', e.message);
-            if(e.message ==='手机号已经注册'){
-                commit(mTypes.isSendTelLogin,true)
+            console.log(e.message)
+            dispatch('showToast', e.message)
+            if (e.message === '手机号已经注册') {
+                commit(mTypes.isSendTelLogin, true)
             }
         }
     },
@@ -183,7 +196,7 @@ const actionsInfo = mapActions({
         // /login/mobile/sms?mobile=13319403333
         console.log(deviceId)
         try {
-            let IsShowImgCode = await ajax.get(`/login/verifycode/code?deviceid=${deviceId}`);
+            let IsShowImgCode = await ajax.get(`/login/verifycode/code?deviceid=${deviceId}`)
             console.log(IsShowImgCode)
             if (IsShowImgCode !== '') {
                 commit(mTypes.setIsShowImgCode, IsShowImgCode)
@@ -195,52 +208,77 @@ const actionsInfo = mapActions({
     async setRegis ({state, commit, dispatch}, data) {
         /* 注册 */
         let sendData = Object.assign(data, {
-            platform : platform,
+            platform: platform,
             src: src,
-            channel: src,
-        });
-        console.log(sendData);
+            channel: src
+        })
+        console.log(sendData)
         // 是否需要
         try {
-            let regisData = await ajax.post(`/login/mobile`,sendData );
+            let regisData = await ajax.post(`/login/mobile`, sendData)
             console.log(regisData)
             if (regisData !== '') {
                 commit(mTypes.setRegis, regisData)
             }
         } catch (e) {
-            commit(mTypes.setIsSerError , true );
-            commit(mTypes.setrGTips , e.message);
+            if (e.code) {
+                switch (e.code) {
+                case '20101':
+                case '20102':
+                case '20103':
+                case '20104':
+                case '20105':
+                case '20106':
+                case '20107':
+                    commit(mTypes.setIsSerError, true)
+                    commit(mTypes.setrGTips, e.message)
+                        ; break
+                }
+            } else {
+                dispatch('showToast', e.message)
+            }
         }
     },
     async doLogin ({state, commit, dispatch}, data) {
         /* 注册 */
-        console.log(data);
+        console.log(data)
         let sendData = Object.assign(data, {
-            platform : platform,
+            platform: platform,
             src: src,
-            channel: src,
-        });
-        console.log(sendData);
+            channel: src
+        })
+        console.log(sendData)
         // 是否需要
         try {
-            let loginData = await ajax.post(`/login/mobile`,sendData,);
-            console.log(loginData);
+            let loginData = await ajax.post(`/login/mobile`, sendData)
+            console.log(loginData)
             if (loginData !== '' && loginData.ck) {
-                commit(mTypes.setLoginData , loginData)
-            }else{
-                commit(mTypes.setIsSerError , true );
-                commit(mTypes.setLoTips , '账号或者密码错误，请重新输入');
-                dispatch(aTypes.getIsShowImgCode, localStorage.getItem('deviceTime') )
+                commit(mTypes.setLoginData, loginData)
+            } else {
+                commit(mTypes.setIsSerError, true)
+                commit(mTypes.setLoTips, '账号或者密码错误，请重新输入')
+                dispatch(aTypes.getIsShowImgCode, localStorage.getItem('deviceTime'))
             }
         } catch (e) {
-            if(e.code){
-                dispatch(aTypes.getIsShowImgCode, localStorage.getItem('deviceTime') )
+            if (e.code) {
+                dispatch(aTypes.getIsShowImgCode, localStorage.getItem('deviceTime'))
+                switch (e.code) {
+                case '20101':
+                case '20102':
+                case '20103':
+                case '20104':
+                case '20105':
+                case '20106':
+                case '20107':
+                    commit(mTypes.setIsSerError, true)
+                    commit(mTypes.setLoTips, e.message)
+                    ; break
+                }
+            } else {
+                dispatch('showToast', e.message)
             }
-            commit(mTypes.setIsSerError , true );
-            commit(mTypes.setLoTips , e.message );
         }
-    },
-
+    }
 
 }, 'regPerson')
 
@@ -249,4 +287,3 @@ const mutations = mutationsInfo.mutations
 export const aTypes = actionsInfo.aTypes
 const actions = actionsInfo.actions
 export default {state, mutations, actions}
-

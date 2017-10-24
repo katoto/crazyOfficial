@@ -75,32 +75,32 @@
                 showCode: false,
                 codeType: 'password',
                 countDownStr: '获取验证码',
-                loginBtnStr:'登  录',
+                loginBtnStr: '登  录',
                 addUnable: false,
-                deviceId:null,
+                deviceId: null,
 
-                telNumberBlur:true,
-                userPassWordBlur:true,
-                telCodeBlur:true,
+                telNumberBlur: true,
+                userPassWordBlur: true,
+                telCodeBlur: true
             }
         },
         watch: {
             loginData (loginData) {
-                console.log(loginData);
+                console.log(loginData)
                 if (loginData) {
                     if (loginData.ck) {
                         /* 可以到后台 */
-                        let _this = this;
-                        this.$store.commit('ck', loginData.ck);
-                        /* 来源 ！！！！！！！ */
-                        this.$store.dispatch('showToast',{
-                            message:'登录成功',
-                            cb(){
-                                _this.$store.dispatch('getUserInfo');
-                                _this.$router.push(`/h5/home`);
-                                _this.$store.dispatch('checkLogin');
+                        let _this = this
+                        this.$store.commit('ck', loginData.ck)
+                    /* 来源 ！！！！！！！ */
+                        this.$store.dispatch('showToast', {
+                            message: '登录成功',
+                            cb () {
+                                _this.$store.dispatch('getUserInfo')
+                                _this.$router.push(`/h5/home`)
+                                _this.$store.dispatch('checkLogin')
                             }
-                        });
+                        })
                     } else {
                         /* 审核页面 */
                         this.$router.push(`/register`)
@@ -112,7 +112,7 @@
             isShowImgCode () {
                 return this.$store.state.regPerson.IsShowImgCode
             },
-            loginData(){
+            loginData () {
                 return this.$store.state.regPerson.loginData
             },
             LoTips () {
@@ -121,13 +121,13 @@
             isSerError () {
                 return this.$store.state.regPerson.isSerError
             },
-            autoTelNumber(){
+            autoTelNumber () {
                 return this.$store.state.regPerson.autoTelNumber
             },
-            autoLoginNumber(){
+            autoLoginNumber () {
                 return this.$store.state.regPerson.autoLoginNumber
             },
-            autoLoginPassword(){
+            autoLoginPassword () {
                 return this.$store.state.regPerson.autoLoginPassword
             }
         },
@@ -140,109 +140,123 @@
                 }
                 this.showCode = !(this.showCode)
             },
-            checktelCodeFocus(){
-                if( this.isSerError ){
-                    this.$store.commit(mTypes.setLoTips , '');
+            checktelCodeFocus () {
+                if (this.isSerError) {
+                    this.$store.commit(mTypes.setLoTips, '')
                 }
-                this.telCodeBlur = false;
+                this.telCodeBlur = false
             },
-            checkuserPassWordFocus(){
-                if( this.isSerError ){
-                    this.$store.commit(mTypes.setLoTips , '');
+            checkuserPassWordFocus () {
+                if (this.isSerError) {
+                    this.$store.commit(mTypes.setLoTips, '')
                 }
-                this.userPassWordBlur = false;
+                this.userPassWordBlur = false
             },
-            checkTelNumberFocus(){
-                this.$store.commit(mTypes.setLoTips , '');
-                this.telNumberBlur = false;
+            checkTelNumberFocus () {
+                this.$store.commit(mTypes.setLoTips, '')
+                this.telNumberBlur = false
             },
-            checkCode( e ){
-                this.telCodeBlur = true;
-                this.$store.commit(mTypes.setIsSerError , false );
+            checkCode (e) {
+                this.telCodeBlur = true
+                this.$store.commit(mTypes.setIsSerError, false)
 
-                if(e.target.value.length !== 4 ){
-                    this.$store.commit(mTypes.setLoTips , '请输入4位验证码');
+                if (e.target.value.length !== 4) {
+                    this.$store.commit(mTypes.setLoTips, '请输入4位验证码')
                     return false
-                }else{
-                    this.$store.commit(mTypes.setLoTips , '');
+                } else {
+                    this.$store.commit(mTypes.setLoTips, '')
                 }
             },
-            checkPw(){
-                this.userPassWordBlur = true;
+            checkPw () {
+                this.userPassWordBlur = true
             },
             checkTel (e) {
-                let tel_reg = /^1[34578]\d{9}$/;
-                this.telNumberBlur = true;
-                if (! ( tel_reg.test(e.target.value)) && e.target.value !=='') {
-                    this.$store.commit(mTypes.setIsSerError , false );
-                    this.$store.commit(mTypes.setLoTips , '请输入手机号');
+                let tel_reg = /^1[34578]\d{9}$/
+                this.telNumberBlur = true
+                if (!(tel_reg.test(e.target.value)) && e.target.value !== '') {
+                    this.$store.commit(mTypes.setIsSerError, false)
+                    this.$store.commit(mTypes.setLoTips, '请输入正确的手机号')
                 }
             },
 
             goPageFn ({ target }) {
-                target = target || 'backHistory';
+                target = target || 'backHistory'
                 switch (target) {
-                    case 'forgetPass':
-                        this.$router.push(`/forgetPass`);
-                        _hmt.push(['_trackEvent', '合伙人注册页合作协议点击', 'click', '合伙人注册页合作协议']);
-                        break;
-                    case 'register':
-                        _hmt.push(['_trackEvent', '合伙人注册页登陆点击', 'click', '合伙人注册页登陆']);
-                        this.$router.push(`/register/`);
-                        break;
-                    case 'downLoad':
-                        if (platform === 'android') {
-                            window.location.href = 'http://download.choopaoo.com/download/cbet_for_Android_500cpH5.apk'
-                        } else {
-                            window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
-                        }
-                        break;
-                    case 'backHistory':
-                        window.history.back();
-                        break
+                case 'forgetPass':
+                    this.$router.push(`/forgetPass`)
+                    _hmt.push(['_trackEvent', '合伙人注册页合作协议点击', 'click', '合伙人注册页合作协议'])
+                    break
+                case 'register':
+                    let tel_reg = /^1[34578]\d{9}$/
+                    if (tel_reg.test(this.telNumber) && this.telNumber !== '') {
+                        this.$store.commit(mTypes.autoGoRegisterTel, this.telNumber)
+                    } else {
+                        this.$store.commit(mTypes.autoGoRegisterTel, null)
+                    }
+                    if (this.userPassWord !== '') {
+                        this.$store.commit(mTypes.autoGoRegisterPass, this.userPassWord)
+                    } else {
+                        this.$store.commit(mTypes.autoGoRegisterPass, null)
+                    }
+                    _hmt.push(['_trackEvent', '合伙人注册页登陆点击', 'click', '合伙人注册页登陆'])
+                    this.$router.push(`/register/`)
+                    break
+                case 'downLoad':
+                    if (platform === 'android') {
+                        window.location.href = 'http://download.choopaoo.com/download/cbet_for_Android_500cpH5.apk'
+                    } else {
+                        window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
+                    }
+                    break
+                case 'backHistory':
+                    window.history.back()
+                    break
                 }
             },
 
-            freshImgCode(){
+            freshImgCode () {
                 this.$store.dispatch(aTypes.getIsShowImgCode, localStorage.getItem('deviceTime'))
             },
 
             LoginFn () {
-                let loginData = null;
-                /* 提交 */
-                if( this.LoTips !=='' ){
-                    return false;
+                let loginData = null
+            /* 提交 */
+                if (!this.telNumber || !this.userPassWord || this.LoTips) {
+                    return false
+                }
+                if (this.LoTips !== '') {
+                    return false
                 }
                 if (this.telNumber === '') {
-                    this.$store.commit(mTypes.setIsSerError , false );
-                    this.$store.commit(mTypes.setLoTips , '请输入正确的手机号');
+                    this.$store.commit(mTypes.setIsSerError, false)
+                    this.$store.commit(mTypes.setLoTips, '请输入正确的手机号')
                     return false
                 } else if (this.userPassWord === '') {
-                    this.$store.commit(mTypes.setIsSerError , false );
-                    this.$store.commit(mTypes.setLoTips , '请输入密码');
+                    this.$store.commit(mTypes.setIsSerError, false)
+                    this.$store.commit(mTypes.setLoTips, '请输入密码')
                     return false
                 }
-                let tel_reg = /^1[34578]\d{9}$/;
-                if (! ( this.telNumber ) &&this.telNumber !=='') {
-                    this.$store.commit(mTypes.setIsSerError , false );
-                    this.$store.commit(mTypes.setLoTips , '请输入正确的手机号');
+                let tel_reg = /^1[34578]\d{9}$/
+                if (!(this.telNumber) && this.telNumber !== '') {
+                    this.$store.commit(mTypes.setIsSerError, false)
+                    this.$store.commit(mTypes.setLoTips, '请输入正确的手机号')
                 }
 
-                document.getElementById('LoPhone').blur();
-                document.getElementById('passDom').blur();
+                document.getElementById('LoPhone').blur()
+                document.getElementById('passDom').blur()
 
-                if(document.getElementById('LoCode')){
-                    document.getElementById('LoCode').blur();
+                if (document.getElementById('LoCode')) {
+                    document.getElementById('LoCode').blur()
                 }
 
                 /* 提交数据  验证码的  */
                 loginData = Object.assign({}, {
-                    logintype : 'login',
+                    logintype: 'login',
                     mobile: this.telNumber,
                     password: this.userPassWord,
-                    verifycode:this.telCode,
-                    deviceid:this.deviceId,
-                });
+                    verifycode: this.telCode,
+                    deviceid: this.deviceId
+                })
                 this.$store.dispatch(aTypes.doLogin, loginData)
             },
 
@@ -263,42 +277,42 @@
                     }
                 }
             },
-            delNumber({ params }){
+            delNumber ({ params }) {
                 switch (params) {
-                    case 'telNumber':
-                        this.telNumber = '';
-                        break;
-                    case 'userPassWord':
-                        this.userPassWord = '';
-                        break;
-                    case 'telCode':
-                        this.telCode = '';
-                        break;
+                case 'telNumber':
+                    this.telNumber = ''
+                    break
+                case 'userPassWord':
+                    this.userPassWord = ''
+                    break
+                case 'telCode':
+                    this.telCode = ''
+                    break
                 }
-            },
+            }
         },
         async mounted () {
-            let deviceId = localStorage.getItem('deviceTime');
-            if(! (deviceId) || deviceId === 'undefined'){
-                let newId = new Date().getTime();
-                deviceId = newId;
-                localStorage.setItem('deviceTime',newId);
+            let deviceId = localStorage.getItem('deviceTime')
+            if (!(deviceId) || deviceId === 'undefined') {
+                let newId = new Date().getTime()
+                deviceId = newId
+                localStorage.setItem('deviceTime', newId)
             }
-            this.deviceId = deviceId;
-            await this.$store.dispatch(aTypes.getIsShowImgCode, deviceId );
-            this.$store.commit('showHeightTips' , true );
-            if( this.autoTelNumber ){
-                this.telNumber = this.autoTelNumber;
-                this.$store.commit(mTypes.autoTelNumber,null);
+            this.deviceId = deviceId
+            await this.$store.dispatch(aTypes.getIsShowImgCode, deviceId)
+            this.$store.commit('showHeightTips', true)
+            if (this.autoTelNumber) {
+                this.telNumber = this.autoTelNumber
+                this.$store.commit(mTypes.autoTelNumber, null)
             }
-            if( this.autoLoginNumber ){
-                this.telNumber = this.autoLoginNumber;
-                this.$store.commit(mTypes.autoLoginNumber,null);
+            if (this.autoLoginNumber) {
+                this.telNumber = this.autoLoginNumber
+                this.$store.commit(mTypes.autoLoginNumber, null)
             }
-            if( this.autoLoginPassword ){
-                this.userPassWord = this.autoLoginPassword;
-                this.$store.commit(mTypes.autoLoginPassword,null);
+            if (this.autoLoginPassword) {
+                this.userPassWord = this.autoLoginPassword
+                this.$store.commit(mTypes.autoLoginPassword, null)
             }
-        },
+        }
     }
 </script>

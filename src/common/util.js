@@ -33,7 +33,7 @@ export const removeCookie = (sName) => {
 export let getCk = function () {
     if (!localStorage.getItem('ck') || localStorage.getItem('ck') === '' || localStorage.getItem('ck') === 'undefined') {
         if (getCookie('ck') && getCookie('ck') !== '') {
-            return getCookie('ck');
+            return getCookie('ck')
         }
         return ''
     }
@@ -43,16 +43,15 @@ export let getCk = function () {
 // export const src = '500touch'
 
 export const src = (function () {
-    let defaultSrc = '500touch';
+    let defaultSrc = '500app'
     if (!localStorage.getItem('src') || localStorage.getItem('src') === '' || localStorage.getItem('src') === 'undefined') {
         if (getCookie('src') && getCookie('src') !== '') {
-            return getCookie('src');
+            return getCookie('src')
         }
         return defaultSrc
     }
     return localStorage.getItem('src') || defaultSrc
 })()
-
 
 export const cptype = ''
 

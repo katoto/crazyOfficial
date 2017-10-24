@@ -39,7 +39,7 @@
                 </div>
                 <!--1 or user-msg02-->
                 <a href="javascript:;"
-                   v-tap="{ methods:sendCodeFn }" class="user-co" :class="{'user-msg01':telNumber !=='' , 'user-msg02':telNumber ==='' || addUnable}"
+                   v-tap="{ methods:sendCodeFn }" class="user-co" :class="{'user-msg01':telNumber.length === 11 , 'user-msg02': telNumber.length !== 11 || addUnable }"
                 >
                     {{ countDownStr }}
                 </a>
@@ -77,147 +77,150 @@
                 countDownStr: '获取验证码',
                 addUnable: false,
 
-                telNumberBlur:true,
-                userPassWordBlur:true,
+                telNumberBlur: true,
+                userPassWordBlur: true,
 
-                telCodeBlur:true,
+                telCodeBlur: true
             }
         },
         methods: {
-            checkTelNumberFocus(){
-                this.telNumberBlur = false;
-                this.$store.commit(mTypes.setrGTips , '');
+            checkTelNumberFocus () {
+                this.telNumberBlur = false
+                this.$store.commit(mTypes.setrGTips, '')
             },
-            checkuserPassWordFocus(){
-                if( this.isSerError ){
-                    this.$store.commit(mTypes.setrGTips , '');
+            checkuserPassWordFocus () {
+                if (this.isSerError) {
+                    this.$store.commit(mTypes.setrGTips, '')
                 }
-                this.userPassWordBlur = false;
+                this.userPassWordBlur = false
             },
-            checkCode(e){
-                this.telCodeBlur = true;
-                this.$store.commit(mTypes.setIsSerError , false );
+            checkCode (e) {
+                this.telCodeBlur = true
+                this.$store.commit(mTypes.setIsSerError, false)
 
-                if(e.target.value.length !== 4 ){
-                    this.$store.commit(mTypes.setrGTips , '请输入4位验证码');
+                if (e.target.value.length !== 4) {
+                    this.$store.commit(mTypes.setrGTips, '请输入4位验证码')
                     return false
-                }else{
-                    this.$store.commit(mTypes.setrGTips , '');
+                } else {
+                    this.$store.commit(mTypes.setrGTips, '')
                 }
             },
-            checkTelCodeFocus(){
-                this.telCodeBlur = false;
+            checkTelCodeFocus () {
+                this.telCodeBlur = false
 //                this.$store.commit(mTypes.setrGTips , '');
             },
             sendSubmit () {
-                let sendData = null;
+                let sendData = null
+                if (!this.telCode || !this.telNumber || !this.userPassWord) {
+                    return false
+                }
             /* 提交 */
                 if (this.telNumber === '') {
-                    this.$store.commit(mTypes.setIsSerError , false );
-                    this.$store.commit(mTypes.setrGTips , '请输入手机号');
+                    this.$store.commit(mTypes.setIsSerError, false)
+                    this.$store.commit(mTypes.setrGTips, '请输入手机号')
 
                     return false
                 } else if (this.telCode === '') {
-                    this.$store.commit(mTypes.setIsSerError , false );
-                    this.$store.commit(mTypes.setrGTips , '请输入4位验证码');
+                    this.$store.commit(mTypes.setIsSerError, false)
+                    this.$store.commit(mTypes.setrGTips, '请输入4位验证码')
 
                     return false
                 } else if (this.userPassWord === '') {
-                    this.$store.commit(mTypes.setIsSerError , false );
-                    this.$store.commit(mTypes.setrGTips , '请设置6~12位数字、字母组合密码');
+                    this.$store.commit(mTypes.setIsSerError, false)
+                    this.$store.commit(mTypes.setrGTips, '请设置6~12位数字、字母组合密码')
                     return false
                 }
-                document.getElementById('LoPhone').blur();
-                document.getElementById('passDom').blur();
-                document.getElementById('LoCode').blur();
+                document.getElementById('LoPhone').blur()
+                document.getElementById('passDom').blur()
+                document.getElementById('LoCode').blur()
 
-            /* 提交数据  divicedid */
+        /* 提交数据  divicedid */
                 sendData = Object.assign({}, {
-                    logintype : 'reg',
+                    logintype: 'reg',
                     mobile: this.telNumber,
                     verifycode: this.telCode,
-                    password: this.userPassWord,
-                });
-                this.$store.dispatch(aTypes.setRegis , sendData);
-            /* function  */
+                    password: this.userPassWord
+                })
+                this.$store.dispatch(aTypes.setRegis, sendData)
+        /* function  */
             },
             goPageFn ({ target }) {
-                target = target || 'backHistory';
+                target = target || 'backHistory'
                 switch (target) {
-                    case 'login':
-                        _hmt.push(['_trackEvent', '合伙人注册页登陆点击', 'click', '合伙人注册页登陆']);
-                        if( this.isSendTelLogin ){
-                            this.$store.commit(mTypes.autoTelNumber,this.telNumber);
-                        }else{
-                            this.$store.commit(mTypes.autoTelNumber,null);
-                        }
-                        this.$store.commit(mTypes.isSendTelLogin,false);
-                        this.$router.push(`/login`);
-                        break;
-                    case 'regProtocol':
-                        this.$router.push(`/regProtocol`);
-                        break;
-                    case 'backHistory':
-                        window.history.back();
-                        break
+                case 'login':
+                    _hmt.push(['_trackEvent', '合伙人注册页登陆点击', 'click', '合伙人注册页登陆'])
+                    if (this.isSendTelLogin) {
+                        this.$store.commit(mTypes.autoTelNumber, this.telNumber)
+                    } else {
+                        this.$store.commit(mTypes.autoTelNumber, null)
+                    }
+                    this.$store.commit(mTypes.isSendTelLogin, false)
+                    this.$router.push(`/login`)
+                    break
+                case 'regProtocol':
+                    this.$router.push(`/regProtocol`)
+                    break
+                case 'backHistory':
+                    window.history.back()
+                    break
                 }
             },
             sendCodeFn () {
                 if (this.telNumber === '') { return false }
-                let tel_reg = /^1[34578]\d{9}$/;
+                let tel_reg = /^1[34578]\d{9}$/
                 if (tel_reg.test(this.telNumber)) {
-                    let codeTime = 60;
-                    let times = null;
+                    let codeTime = 60
+                    let times = null
                     if (this.countDownStr !== '获取验证码') {
                         return false
                     }
-                    this.countDownStr = '重发（' + codeTime + 's）';
-                    this.addUnable = true;
-                    this.$store.dispatch(aTypes.getTelCode,this.telNumber );
+                    this.countDownStr = '重发（' + codeTime + 's）'
+                    this.addUnable = true
+                    this.$store.dispatch(aTypes.getTelCode, this.telNumber)
                     times = setInterval(() => {
-                        codeTime = codeTime - 1;
+                        codeTime = codeTime - 1
                         if (codeTime === 0) {
-                            this.countDownStr = '获取验证码';
-                            this.addUnable = false;
-                            codeTime = 60;
+                            this.countDownStr = '获取验证码'
+                            this.addUnable = false
+                            codeTime = 60
                             clearInterval(times)
                         } else {
-                            this.countDownStr = '重发（' + codeTime + 's）';
+                            this.countDownStr = '重发（' + codeTime + 's）'
                             this.addUnable = true
                         }
                     }, 1000)
                 } else {
-                    this.$store.commit(mTypes.setIsSerError , false );
-                    this.$store.commit(mTypes.setrGTips , '请输入正确的手机号');
+                    this.$store.commit(mTypes.setIsSerError, false)
+                    this.$store.commit(mTypes.setrGTips, '请输入正确的手机号')
                 }
             },
-            delNumber({ params }){
+            delNumber ({ params }) {
                 switch (params) {
-                    case 'telNumber':
-                        this.telNumber = '';
-                        break;
-                    case 'userPassWord':
-                        this.userPassWord = '';
-                        break;
-                    case 'telCode':
-                        this.telCode = '';
-                        break;
+                case 'telNumber':
+                    this.telNumber = ''
+                    break
+                case 'userPassWord':
+                    this.userPassWord = ''
+                    break
+                case 'telCode':
+                    this.telCode = ''
+                    break
                 }
             },
             checkPassWord (e) {
-                let pass_reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
-                this.userPassWordBlur = true;
-                if (!(pass_reg.test(e.target.value))  && e.target.value !=='') {
-                    this.$store.commit(mTypes.setIsSerError , true );
-                    this.$store.commit(mTypes.setrGTips , '请设置6~12位数字、字母组合密码');
+                let pass_reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/
+                this.userPassWordBlur = true
+                if (!(pass_reg.test(e.target.value)) && e.target.value !== '') {
+                    this.$store.commit(mTypes.setIsSerError, true)
+                    this.$store.commit(mTypes.setrGTips, '请设置6~12位数字、字母组合密码')
                 }
             },
             checkTel (e) {
-                let tel_reg = /^1[34578]\d{9}$/;
-                this.telNumberBlur = true;
-                if (! ( tel_reg.test(e.target.value)) && e.target.value !=='' ) {
-                    this.$store.commit(mTypes.setIsSerError , false );
-                    this.$store.commit(mTypes.setrGTips , '请输入正确的手机号');
+                let tel_reg = /^1[34578]\d{9}$/
+                this.telNumberBlur = true
+                if (!(tel_reg.test(e.target.value)) && e.target.value !== '') {
+                    this.$store.commit(mTypes.setIsSerError, false)
+                    this.$store.commit(mTypes.setrGTips, '请输入正确的手机号')
                 }
             },
             showCodeFn () {
@@ -235,7 +238,7 @@
                     }
                 }
                 if (e.target.name === 'check') {
-                    this.$store.commit(mTypes.setrGTips , '');
+                    this.$store.commit(mTypes.setrGTips, '')
                     if (e.target.value.length > 4) {
                         this.telCode = e.target.value.slice(0, 4)
                     }
@@ -245,7 +248,7 @@
                         this.userPassWord = e.target.value.slice(0, 25)
                     }
                 }
-            },
+            }
 
         },
         computed: {
@@ -261,19 +264,33 @@
             isSendTelLogin () {
                 return this.$store.state.regPerson.isSendTelLogin
             },
-            autoTelNumber(){
+            autoTelNumber () {
                 return this.$store.state.regPerson.autoTelNumber
+            },
+            autoGoRegisterTel () {
+                return this.$store.state.regPerson.autoGoRegisterTel
+            },
+            autoGoRegisterPass () {
+                return this.$store.state.regPerson.autoGoRegisterPass
             }
         },
         mounted () {
-            this.$store.commit(mTypes.isSendTelLogin,false)
+            console.log(this.autoGoRegisterTel)
+            console.log(this.autoGoRegisterPass)
+            if (this.autoGoRegisterTel && this.autoGoRegisterTel !=='undefined') {
+                this.telNumber = this.autoGoRegisterTel;
+            }
+            if (this.autoGoRegisterPass && this.autoGoRegisterPass !=='undefined') {
+                this.userPassWord = this.autoGoRegisterPass;
+            }
+            this.$store.commit(mTypes.isSendTelLogin, false)
         },
         watch: {
             regisData (regisData) {
-                console.log('watch',regisData)
+                console.log('watch', regisData)
                 if (regisData.ck) {
                     /* 可以到后台 */
-                    this.$store.commit('ck', regisData.ck);
+                    this.$store.commit('ck', regisData.ck)
                     this.$store.dispatch('showToast', {
                         duration: 1000,
                         message: '注册成功',
@@ -297,4 +314,3 @@
         border-color: #32343e;
     }
 </style>
-
