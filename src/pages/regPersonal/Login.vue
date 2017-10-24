@@ -187,17 +187,6 @@
                     _hmt.push(['_trackEvent', '合伙人注册页合作协议点击', 'click', '合伙人注册页合作协议'])
                     break
                 case 'register':
-                    let tel_reg = /^1[34578]\d{9}$/
-                    if (tel_reg.test(this.telNumber) && this.telNumber !== '') {
-                        this.$store.commit(mTypes.autoGoRegisterTel, this.telNumber)
-                    } else {
-                        this.$store.commit(mTypes.autoGoRegisterTel, null)
-                    }
-                    if (this.userPassWord !== '') {
-                        this.$store.commit(mTypes.autoGoRegisterPass, this.userPassWord)
-                    } else {
-                        this.$store.commit(mTypes.autoGoRegisterPass, null)
-                    }
                     _hmt.push(['_trackEvent', '合伙人注册页登陆点击', 'click', '合伙人注册页登陆'])
                     this.$router.push(`/register/`)
                     break

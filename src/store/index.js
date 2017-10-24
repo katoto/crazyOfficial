@@ -330,7 +330,7 @@ const actions = {
     },
     async getUserInfo ({state, commit, dispatch}) {
         try {
-            let userInfo = await ajax.get(`/user/info?ck=${getCk()}&src=${src}`)
+            let userInfo = await ajax.get(`/user/info?ck=${getCk()}&src=${src()}`)
             commit('userInfo', userInfo)
         } catch (e) {
             if (e.code === '136' || e.code === '102') {
@@ -350,7 +350,7 @@ const actions = {
             state.msgAllData.isReadyGet = false
             state.msgAllData.isAddMessList = true
             try {
-                const {notifies_list} = await ajax.get(`/notify/pull?ck=${getCk()}&platform=${platform}&page=${pageNum}&src=${src}`)
+                const {notifies_list} = await ajax.get(`/notify/pull?ck=${getCk()}&platform=${platform}&page=${pageNum}&src=${src()}`)
                 state.msgAllData.isAddMessList = false
                 state.msgAllData.isReadyGet = true
                 notifies_list.forEach(item => {
@@ -374,7 +374,7 @@ const actions = {
     },
     async lqPrize ({commit, dispatch}, pid) {
         try {
-            const prizeInfo = await ajax.get(`/activity/prize/dole?pid=${pid}&ck=${getCk()}&platform=${platform}&src=${src}`)
+            const prizeInfo = await ajax.get(`/activity/prize/dole?pid=${pid}&ck=${getCk()}&platform=${platform}&src=${src()}`)
             prizeInfo.prize.pid = pid
             commit('lqSuccess', prizeInfo.prize)
             dispatch('getUserInfo')
@@ -389,7 +389,7 @@ const actions = {
             matchid = 0
         }
         try {
-            const goldlist = await ajax.post(`/trade/gold/list?matchid=${matchid}&ck=${getCk()}&platform=${platform}&src=${src}`)
+            const goldlist = await ajax.post(`/trade/gold/list?matchid=${matchid}&ck=${getCk()}&platform=${platform}&src=${src()}`)
 
             commit('setGoldList', goldlist)
         } catch (e) {
@@ -484,7 +484,7 @@ const actions = {
     /*  充值列表 */
     async getChargeList ({commit, dispatch}) {
         try {
-            const chargeList = await ajax.get(`/shops/golds/list?ck=${getCk()}&platform=${platform}&src=${src}`)
+            const chargeList = await ajax.get(`/shops/golds/list?ck=${getCk()}&platform=${platform}&src=${src()}`)
             commit('setChargeList', chargeList)
         } catch (e) {
             dispatch('showToast', e.message)
@@ -494,7 +494,7 @@ const actions = {
     /*  我的充值icon列表 */
     async getFootballPropsList ({commit, dispatch}) {
         try {
-            const footballPropsList = await ajax.get(`/personal/props/list?ck=${getCk()}&src=${src}&platform=${platform}`)
+            const footballPropsList = await ajax.get(`/personal/props/list?ck=${getCk()}&src=${src()}&platform=${platform}`)
             commit('setFootballPropsList', footballPropsList)
         } catch (e) {
             dispatch('showToast', e.message)
@@ -504,7 +504,7 @@ const actions = {
     // 赛事统计  统计数据
     async getFootballStat ({commit, dispatch}, matchid) {
         try {
-            let footballStatData = await ajax.get(`/match/football/stat?src=${src}&matchid=${matchid}&platform=${platform}`)
+            let footballStatData = await ajax.get(`/match/football/stat?src=${src()}&matchid=${matchid}&platform=${platform}`)
             footballStatData.stats && commit('setfootballStatData', footballStatData.stats)
         } catch (e) {
             dispatch('showToast', e.message)
@@ -513,7 +513,7 @@ const actions = {
     // 赛事统计
     async getFootballCase ({commit, dispatch}, matchid) {
         try {
-            let footballCaseData = await ajax.get(`/match/football/case?src=${src}&matchid=${matchid}&platform=${platform}`)
+            let footballCaseData = await ajax.get(`/match/football/case?src=${src()}&matchid=${matchid}&platform=${platform}`)
             footballCaseData.cases && commit('setfootballCaseData', footballCaseData.cases)
         } catch (e) {
             dispatch('showToast', e.message)
@@ -529,7 +529,7 @@ const actions = {
     /* 新增 */
     async getHomeInfo ({commit, dispatch, state}) {
         try {
-            const homeInfo = await ajax.get(`/home/info?location=shops&src=${src}&platform=${platform}`)
+            const homeInfo = await ajax.get(`/home/info?location=shops&src=${src()}&platform=${platform}`)
             if (homeInfo.banner) {
                 if (homeInfo.banner.length) {
                     commit('setBannerScrollData', homeInfo.banner)
@@ -547,7 +547,7 @@ const actions = {
     },
     async getGoodsList ({commit, dispatch}) {
         try {
-            const goodsList = await ajax.get(`/shops/goods/lists?platform=${platform}&src=${src}`)
+            const goodsList = await ajax.get(`/shops/goods/lists?platform=${platform}&src=${src()}`)
             commit('setGoodsList', goodsList)
         } catch (e) {
             if (~e.message.indexOf('未登录') || ~e.message.indexOf('其他设备登录')) {
@@ -560,7 +560,7 @@ const actions = {
     },
     async getWinGoodList ({commit, dispatch}) {
         try {
-            const winGoodList = await ajax.get(`/shops/lottery/records?&ck=${getCk()}&page=1&limit=100&src=${src}&platform=${platform}`)
+            const winGoodList = await ajax.get(`/shops/lottery/records?&ck=${getCk()}&page=1&limit=100&src=${src()}&platform=${platform}`)
             commit('setWinGoodList', winGoodList)
         } catch (e) {
             dispatch('showToast', e.message)
@@ -568,7 +568,7 @@ const actions = {
     },
     async getAddressMess ({commit, dispatch, state}) {
         try {
-            const addressMess = await ajax.get(`/shipping/address/get?platform=${platform}&ck=${getCk()}&src=${src}`)
+            const addressMess = await ajax.get(`/shipping/address/get?platform=${platform}&ck=${getCk()}&src=${src()}`)
             if (!Object.keys(addressMess).length) {
                 addressMess.consignee = ''
                 addressMess.mobile = ''
@@ -621,7 +621,7 @@ const actions = {
         try {
             const result = await ajax.get(`/shipping/address/add?platform=${platform}&ck=${ck}&consignee=${state.shopAddData.addressMess.consignee}&mobile=${state.shopAddData.addressMess.mobile}
 &country=中国&city=${state.shopAddData.addressMess.city}&province=${state.shopAddData.addressMess.province}&district=${state.shopAddData.addressMess.district}&street=${state.shopAddData.addressMess.street}
-&oid=${newOid}&src=${src}`)
+&oid=${newOid}&src=${src()}`)
             // 如果是未确认的保存
             state.shopAddData.AddressId = result.aid
             commit('setIsSaveBtn', true)
@@ -663,7 +663,7 @@ const actions = {
         try {
             await ajax.get(`/shipping/address/modify?platform=${platform}&ck=${ck}&consignee=${state.shopAddData.addressMess.consignee}&mobile=${state.shopAddData.addressMess.mobile}
 &country=中国&city=${state.shopAddData.addressMess.city}&province=${state.shopAddData.addressMess.province}&district=${state.shopAddData.addressMess.district}&street=${state.shopAddData.addressMess.street}
-&oid=${oid}&aid=${state.shopAddData.addressMess.aid}&src=${src}`)
+&oid=${oid}&aid=${state.shopAddData.addressMess.aid}&src=${src()}`)
             dispatch('showToast', '确认收货地址成功')
             commit('setIsConfirmBtn', true)
         } catch (e) {
@@ -673,7 +673,7 @@ const actions = {
 
     async getGotoLuckMess ({commit, dispatch}, item) {
         try {
-            const {goods_detail, restcard} = await ajax.get(`/shops/goods/detail?ck=${getCk()}&goodsid=${item.goodsid}&platform=${platform}&src=${src}&goodstype=${item.goodstype}&company=${item.company}`)
+            const {goods_detail, restcard} = await ajax.get(`/shops/goods/detail?ck=${getCk()}&goodsid=${item.goodsid}&platform=${platform}&src=${src()}&goodstype=${item.goodstype}&company=${item.company}`)
             commit('setGotoLuckMess', goods_detail)
             commit('setChooseIDCartNumber', restcard)
         } catch (e) {
@@ -685,9 +685,9 @@ const actions = {
         try {
             let sendLuckStr = ''
             if (obj.company) {
-                sendLuckStr = `/shops/goods/bingo?ck=${getCk()}&goodsid=${obj.currGoodsid}&consumgolds=${obj.currConsumgolds}&platform=${platform}&goodstype=${obj.goodstype}&src=${src}&company=${obj.company}`
+                sendLuckStr = `/shops/goods/bingo?ck=${getCk()}&goodsid=${obj.currGoodsid}&consumgolds=${obj.currConsumgolds}&platform=${platform}&goodstype=${obj.goodstype}&src=${src()}&company=${obj.company}`
             } else {
-                sendLuckStr = `/shops/goods/bingo?ck=${getCk()}&goodsid=${obj.currGoodsid}&consumgolds=${obj.currConsumgolds}&platform=${platform}&goodstype=${obj.goodstype}&src=${src}`
+                sendLuckStr = `/shops/goods/bingo?ck=${getCk()}&goodsid=${obj.currGoodsid}&consumgolds=${obj.currConsumgolds}&platform=${platform}&goodstype=${obj.goodstype}&src=${src()}`
             }
             const luckGoodBingo = await ajax.get(sendLuckStr)
             commit('setLuckGoodBingo', luckGoodBingo)
@@ -728,7 +728,7 @@ const actions = {
     /* 物流 */
     async getLogisticMess ({commit, dispatch}, orderNum) {
         try {
-            const logisticMess = await ajax.get(`/logistics/get?sid=${orderNum}&src=${src}`)
+            const logisticMess = await ajax.get(`/logistics/get?sid=${orderNum}&src=${src()}`)
             commit('setLogisticMess', logisticMess)
         } catch (e) {
             dispatch('showToast', e.message)

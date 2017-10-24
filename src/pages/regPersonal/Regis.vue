@@ -275,14 +275,6 @@
             }
         },
         mounted () {
-            console.log(this.autoGoRegisterTel)
-            console.log(this.autoGoRegisterPass)
-            if (this.autoGoRegisterTel && this.autoGoRegisterTel !=='undefined') {
-                this.telNumber = this.autoGoRegisterTel;
-            }
-            if (this.autoGoRegisterPass && this.autoGoRegisterPass !=='undefined') {
-                this.userPassWord = this.autoGoRegisterPass;
-            }
             this.$store.commit(mTypes.isSendTelLogin, false)
         },
         watch: {

@@ -430,7 +430,7 @@ const actions = {
     /*   签到行为  */
     async [actionTypes.marketSign] ({commit, dispatch, state}, idx = '1') {
         try {
-            const resp = await ajax.get(`/activity/market/sign?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src}&idx=${idx}`)
+            const resp = await ajax.get(`/activity/market/sign?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src()}&idx=${idx}`)
             if (resp) {
                 commit(mutationTypes.showSignbox, false)
                 dispatch(actionTypes.showJinbiBox, resp)
@@ -449,7 +449,7 @@ const actions = {
     /*   签到列表  */
     async [actionTypes.getSignList] ({commit, dispatch}) {
         try {
-            const resp = await ajax.get(`/activity/sign/list?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src}`)
+            const resp = await ajax.get(`/activity/sign/list?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src()}`)
             if (resp) {
                 commit(mutationTypes.signList, resp.signlist)
             }
@@ -465,7 +465,7 @@ const actions = {
     /*   排行榜  */
     async [actionTypes.getrankList] ({commit, dispatch}) {
         try {
-            const resp = await ajax.get(`/home/ranklist?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src}`)
+            const resp = await ajax.get(`/home/ranklist?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src()}`)
             if (resp) {
                 commit(mutationTypes.rankList, resp)
             }
@@ -486,7 +486,7 @@ const actions = {
             params.platform = platform
             commit(mutationTypes.changeState, 1)
             /* 确定最新赔率 */
-            let marketdata = await ajax.get(`/match/football/market?cptype=${cptype}&matchid=${params.matchid}&platform=${platform}&src=${src}`)
+            let marketdata = await ajax.get(`/match/football/market?cptype=${cptype}&matchid=${params.matchid}&platform=${platform}&src=${src()}`)
 
             for (let i = 0, len = marketdata.Markets.length; i < len; i++) {
                 marketdata.Markets[i].Selections = convertArrToObj(marketdata.Markets[i].Selections, 'Selection')
@@ -559,7 +559,7 @@ const actions = {
     /* 比赛列表  含热门 直播 全部未结束  */
     async [actionTypes.getFootballMatchList] ({commit, dispatch, state}, listtype = 'newhot') {
         try {
-            const resp = await ajax.get(`/match/football/list?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src}&listtype=${listtype}`)
+            const resp = await ajax.get(`/match/football/list?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src()}&listtype=${listtype}`)
             if (resp) {
                 let MaxIndex = 0
                 let MaxWeight = 0
@@ -632,7 +632,7 @@ const actions = {
     /* 比赛列表 已结束 */
     async [actionTypes.getFootballMatchList_end] ({commit, dispatch, state}) {
         try {
-            const resp = await ajax.get(`/match/football/finished?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src}`)
+            const resp = await ajax.get(`/match/football/finished?cptype=${cptype}&ck=${getCk()}&platform=${platform}&src=${src()}`)
             if (resp) {
                 let sliceData1 = resp.matches.slice(0, 4)
                 if (state.matchList_end) {
@@ -651,7 +651,7 @@ const actions = {
 
     async [actionTypes.getcrazyMainInfo] ({commit, dispatch}) {
         try {
-            const homeInfo = await ajax.get(`/home/info?location=home&src=${src}&platform=${platform}`)
+            const homeInfo = await ajax.get(`/home/info?location=home&src=${src()}&platform=${platform}`)
             commit(mutationTypes.homeInfo, homeInfo)
         } catch (e) {
             dispatch('showToast', e.message)
@@ -660,7 +660,7 @@ const actions = {
 /* 活动中心 */
     async [actionTypes.getActivityList] ({commit, dispatch}) {
         try {
-            const activityData = await ajax.get(`/activity/list?ck=${getCk()}&src=${src}&platform=${platform}`)
+            const activityData = await ajax.get(`/activity/list?ck=${getCk()}&src=${src()}&platform=${platform}`)
             commit(mutationTypes.activityData, activityData)
         } catch (e) {
             dispatch('showToast', e.message)
@@ -670,7 +670,7 @@ const actions = {
     /* 活动中心 清除小红点 */
     async [actionTypes.clearActivityHot] ({commit, dispatch}, number) {
         try {
-            const activityHotBack = await ajax.get(`/activity/single?ck=${getCk()}&number=${number}&src=${src}&platform=${platform}`)
+            const activityHotBack = await ajax.get(`/activity/single?ck=${getCk()}&number=${number}&src=${src()}&platform=${platform}`)
             console.log(activityHotBack)
         } catch (e) {
             dispatch('showToast', e.message)

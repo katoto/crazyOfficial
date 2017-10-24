@@ -304,8 +304,8 @@ const actionsInfo = mapActions({
 
     async getRedTimeInfo ({commit, dispatch}) {
         try {
-            // let InfoData = await ajax.get(`/activity/redpack/info?src=${src}&ck=${getCk()}&platform=${platform}`);
-            let InfoData = await ajax.get(`http://crazybet.choopaoo.com:7899/activity/redpack/info?src=${src}&ck=${getCk()}&platform=${platform}`)
+            // let InfoData = await ajax.get(`/activity/redpack/info?src=${src()}&ck=${getCk()}&platform=${platform}`);
+            let InfoData = await ajax.get(`http://crazybet.choopaoo.com:7899/activity/redpack/info?src=${src()}&ck=${getCk()}&platform=${platform}`)
             console.log(InfoData)
             commit(mTypes.setNationGetRed, InfoData)
         } catch (e) {
@@ -316,7 +316,7 @@ const actionsInfo = mapActions({
     async getHomeInfo ({commit, dispatch}, matchid) {
         try {
             const defaultBanner = ['恭喜小土豆**抽到<strong>iPhone7 (红)</strong>', '恭喜yan**抽到<strong>100元联通话费卡</strong>', '恭喜小土豆**抽到<strong>500元京东卡</strong>']
-            let {banner} = await ajax.get(`/home/info?location=home&src=${src}&matchid=${matchid}&platform=${platform}`)
+            let {banner} = await ajax.get(`/home/info?location=home&src=${src()}&matchid=${matchid}&platform=${platform}`)
             if (banner) {
                 banner = banner.concat(defaultBanner)
             } else {
@@ -329,7 +329,7 @@ const actionsInfo = mapActions({
     },
     async getFootballMatchDetail ({commit, dispatch}, matchid) {
         try {
-            let fmdetail = await ajax.get(`/match/football/detail?matchid=${matchid}&ck=${getCk()}&platform=${platform}&src=${src}`)
+            let fmdetail = await ajax.get(`/match/football/detail?matchid=${matchid}&ck=${getCk()}&platform=${platform}&src=${src()}`)
             if (fmdetail.odds) {
                 let ruleType350 = []
                 //
@@ -367,7 +367,7 @@ const actionsInfo = mapActions({
         commit(mTypes.updateOdds, odds)   // 更新赔率
     },
     fetchMatchInfoByHttp ({commit, dispatch}, matchid) {
-        return ajax.get(`/match/football/market?cptype=&matchid=${matchid}&platform=${platform}&src=${src}`).then((data) => {
+        return ajax.get(`/match/football/market?cptype=&matchid=${matchid}&platform=${platform}&src=${src()}`).then((data) => {
             // dispatch(aTypes.updateMarkets, data.Markets)
             let ruleType350 = []
             for (let i = 0, len = data.Markets.length; i < len; i++) {

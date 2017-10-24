@@ -27,17 +27,10 @@ const state = {
 
     fPTips: null,
 
-    autoGoRegisterTel: null,
-    autoGoRegisterPass: null
 
 }
 const mutationsInfo = mapMutations({
-    autoGoRegisterTel (state, data) {
-        state.autoGoRegisterTel = data
-    },
-    autoGoRegisterPass (state, data) {
-        state.autoGoRegisterPass = data
-    },
+
     autoLoginNumber (state, data) {
         state.autoLoginNumber = data
     },

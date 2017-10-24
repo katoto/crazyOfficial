@@ -41,8 +41,7 @@ export let getCk = function () {
 }
 
 // export const src = '500touch'
-
-export const src = (function () {
+export let src = function () {
     let defaultSrc = '500app'
     if (!localStorage.getItem('src') || localStorage.getItem('src') === '' || localStorage.getItem('src') === 'undefined') {
         if (getCookie('src') && getCookie('src') !== '') {
@@ -51,7 +50,7 @@ export const src = (function () {
         return defaultSrc
     }
     return localStorage.getItem('src') || defaultSrc
-})()
+}
 
 export const cptype = ''
 
