@@ -1,5 +1,5 @@
 <template>
-    <div class="pop pop02 pop_record">
+    <div class="pop pop_record">
         <div class="pop_layer" v-tap="{ methods:closeBetListbox }"></div>
         <div class="popIn">
             <div class="popTit">

@@ -14,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="css/live.css">
     <link rel="stylesheet" type="text/css" href="css/bet.css">
     <link rel="stylesheet" type="text/css" href="css/media.css">
-    <link rel="stylesheet" type="text/css" href="css/pop.css">
     <link rel="apple-touch-icon-precomposed" href="images/icon57.png" /> <!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icon72.png" /> <!-- iPad，72x72 像素，可以没有，但推荐有 -->
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icon114.png" /> <!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有 -->
@@ -474,7 +473,342 @@
 </div>
 <!-- 投注选项弹层 start -->
 
-<!--特殊类弹窗-->
+<!-- 排行榜弹层 start -->
+<div class="pop pop_phb hide">
+    <div class="pop_layer"></div>
+    <div class="popIn">
+        <div class="popTit">
+            <ul class="btn_tab">
+                <li class="cur"><span>榜单</span></li>
+                <li><span>规则</span></li>
+            </ul>
+            <h2 class="title">排行榜</h2>
+            <span class="close">
+                <span></span>
+            </span>
+        </div>
+        <div class="box">
+            <div class="phb_box">
+                <ul class="list_menu clear">
+                    <li class="cur">本周盈利</li>
+                    <li class="">上周奖励</li>
+                </ul>
+                <div class="phb_list phb_list_bz">
+                    <ul class="scroller">
+                        <li>
+                            <i class="num num_1">1</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...</span>
+                            <span class="money">
+                                <i class="icon icon_jinbi"></i>525.26万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num num_2">2</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...</span>
+                            <span class="money">
+                                <i class="icon icon_jinbi"></i>425.26万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num num_3">3</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...</span>
+                            <span class="money">
+                                <i class="icon icon_jinbi"></i>325.26万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">4</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...</span>
+                            <span class="money">
+                                <i class="icon icon_jinbi"></i>98.26万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">5</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...</span>
+                            <span class="money">
+                                <i class="icon icon_jinbi"></i>55.26万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">6</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...</span>
+                            <span class="money">
+                                <i class="icon icon_jinbi"></i>98.26万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">7</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...</span>
+                            <span class="money">
+                                <i class="icon icon_jinbi"></i>55.26万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">8</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...</span>
+                            <span class="money">
+                                <i class="icon icon_jinbi"></i>98.26万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">9</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...</span>
+                            <span class="money">
+                                <i class="icon icon_jinbi"></i>55.26万
+                            </span>
+                        </li>
+                    </ul>
+                    <!--<ul class="phb_list_me">-->
+                    <!--<li>-->
+                    <!--<i class="num num_100">100</i>-->
+                    <!--<em class="num_me">100+</em>-->
+                    <!--<span class="face">-->
+                    <!--<img src="images/face.jpg">-->
+                    <!--</span>-->
+                    <!--<span class="name">雪儿，我们不齐...</span>-->
+                    <!--<span class="money">-->
+                    <!--<i class="icon icon_jinbi"></i>15.26万-->
+                    <!--</span>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                </div>
+                <div class="phb_list phb_list_sz">
+                    <ul class="scroller">
+                        <li>
+                            <i class="num num_1">1</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>525.26万</em>
+                            </span>
+                            <span class="money2">
+                                <i class="icon_jinbi2"></i>奖5万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num num_2">2</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>225.26万</em>
+                            </span>
+                            <span class="money2">
+                                <i class="icon_jinbi2"></i>奖4万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num num_3">3</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>125.26万</em>
+                            </span>
+                            <span class="money2">
+                                <i class="icon_jinbi2"></i>奖3万
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">4</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                                </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>75.26万</em>
+                            </span>
+                            <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">5</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>23.26万</em>
+                            </span>
+                            <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">6</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>75.26万</em>
+                            </span>
+                            <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">7</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>23.26万</em>
+                            </span>
+                            <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">8</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>75.26万</em>
+                            </span>
+                            <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                        </li>
+                        <li>
+                            <i class="num">9</i>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>23.26万</em>
+                            </span>
+                            <span class="money2">
+                                <i class="icon_jinbi3"></i>奖8000
+                            </span>
+                        </li>
+                    </ul>
+                    <ul class="phb_list_me">
+                        <li>
+                            <i class="num num_100">100</i>
+                            <em class="num_me">榜外</em>
+                            <span class="face">
+                                <img src="images/face.jpg">
+                            </span>
+                            <span class="name">雪儿，我们不齐...
+                                <em>-</em>
+                                </span>
+                            <span class="money2">
+                                <em class="empty">-</em>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="phb_rule">
+                <div class="rule">
+                    <dl>
+                        <dt>盈利榜：</dt>
+                        <dd> 1. 计算每周一08:00至下周一08:00时间内结算的订单，以结算的具体时间为准；</dd>
+                        <dd>2. 统计时间内，按照盈利猜球币数排名，前十名可获得奖励；</dd>
+                        <dd>3. 每周一08:00之后自动结算派发上周排行榜奖励；</dd>
+                        <dd>4. 排名信息每周更新一次；</dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            兑奖榜：
+                        </dt>
+                        <dd>1. 按照每月玩家最高价值兑奖奖品排名；</dd>
+                        <dd> 2. 排名信息每月更新一次；</dd>
+                    </dl>
+                    <dl>
+                        <dt>注意事项：</dt>
+                        <dd> 1. 凡参与竞猜应用，即视为同意本应用规则及免责声明条款；</dd>
+                        <dd>2. 使用任何作弊行为获利的用户，将取消上榜奖励，追回违规所得，且平台保留追究法律责任的权利；</dd>
+                        <dd>3. 本活动所包含内容，与苹果公司Apple Inc.无关；</dd>
+                        <dd>4. 本活动规则解释权归《疯狂猜球》所有。</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 排行榜弹层 end -->
+
+<!-- 每日领金币弹层 start -->
+<div class="pop pop_mrrw hide">
+    <div class="pop_layer"></div>
+    <div class="popIn sign_xunlei">
+        <div class="popTit">
+            <div class="sign_bg"></div>
+            <span class="close"></span>
+        </div>
+        <div class="sign">
+            <ul class="sign_day">
+                <li class="item have_sign">
+                    <span class="day_num">第1天</span>
+                    <i class="icon icon_jinbi3"></i>
+                    <div class="day_money"><em>100</em>猜球币</div>
+                </li>
+                <li class="item cur">
+                    <span class="day_num">第2天</span>
+                    <i class="icon icon_jinbi3"></i>
+                    <div class="day_money"><em>150</em>猜球币</div>
+                </li>
+                <li class="item">
+                    <span class="day_num">第3天</span>
+                    <i class="icon icon_jinbi2"></i>
+                    <div class="day_money"><em>200</em>猜球币</div>
+                </li>
+                <li class="item">
+                    <span class="day_num">第4天</span>
+                    <i class="icon icon_jinbi2"></i>
+                    <div class="day_money"><em>250</em>猜球币</div>
+                </li>
+                <li class="item">
+                    <span class="day_num">第5天</span>
+                    <i class="icon icon_jinbi4"></i>
+                    <div class="day_money"><em>300</em>猜球币</div>
+                </li>
+                <li class="item">
+                    <span class="day_num">第6天</span>
+                    <i class="icon icon_jinbi4"></i>
+                    <div class="day_money"><em>350</em>猜球币</div>
+                </li>
+                <li class="item">
+                    <span class="day_num">第7天</span>
+                    <i class="icon icon_jinbi5"></i>
+                    <div class="day_money">随机猜球币</div>
+                </li>
+            </ul>
+            <span class="btn_sign">领取</span>
+        </div>
+    </div>
+</div>
+<!-- 每日领金币弹层 end -->
 
 <!-- 金币弹层 start -->
 <div class="pop pop_jinbi hide">
@@ -490,8 +824,342 @@
 </div>
 <!-- 金币弹层 end -->
 
+<!-- 消息弹层 start -->
+<div class="pop pop_msg message hide">
+    <div class="pop_layer"></div>
+    <div class="popIn">
+        <div class="popTit">
+            <h2 class="title">我的消息</h2>
+            <span class="close"></span>
+            <span class="user_id">ID：568129</span>
+        </div>
+        <div class="box">
+            <div class="scroller">
+                <div class="msg_item">
+                    <div class="msg_tit">
+                        <h3>[系统] 维护通知<sup></sup></h3>
+                        <p class="msg_time">今天&nbsp;&nbsp;15:30</p>
+                        <i class="icon icon_raw"></i>
+                    </div>
+                    <div class="msg_cont">
+                        亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。
+                    </div>
+                </div>
+                <div class="msg_item">
+                    <div class="msg_tit">
+                        <h3>[系统] 维护通知<sup></sup></h3>
+                        <p class="msg_time">今天&nbsp;&nbsp;15:30</p>
+                    </div>
+                    <div class="msg_cont">
+                        中秋金币大礼，活动时间将于中秋金币大礼，活动时间将于 中秋金币大礼。
+                    </div>
+                    <div class="jiangli">
+                        <strong class="yellow">奖励5000猜球币</strong><span class="btn-lingqu btn-lingqu-no">领取</span>
+                    </div>
+                </div>
+                <div class="msg_item msg_item_yidu">
+                    <div class="msg_tit">
+                        <h3>[系统] 维护通知<sup></sup></h3>
+                        <p class="msg_time">今天&nbsp;&nbsp;15:30</p>
+                        <i class="icon icon_raw icon_rawdown"></i>
+                    </div>
+                    <div class="msg_cont" style="display: none;">
+                        亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。
+                    </div>
+                </div>
+                <div class="msg_item">
+                    <div class="msg_tit">
+                        <h3>[系统] 维护通知<sup></sup></h3>
+                        <p class="msg_time">今天&nbsp;&nbsp;15:30</p>
+                        <i class="icon icon_raw"></i>
+                    </div>
+                    <div class="msg_cont">
+                        亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。
+                    </div>
+                </div>
+                <div class="msg_item">
+                    <div class="msg_tit">
+                        <h3>[系统] 维护通知<sup></sup></h3>
+                        <p class="msg_time">今天&nbsp;&nbsp;15:30</p>
+                    </div>
+                    <div class="msg_cont">
+                        中秋金币大礼，活动时间将于中秋金币大礼，活动时间将于 中秋金币大礼。
+                    </div>
+                    <div class="jiangli">
+                        <strong class="yellow">奖励5000猜球币</strong><span class="btn-lingqu btn-lingqu-no">领取</span>
+                    </div>
+                </div>
+                <div class="msg_item msg_item_yidu">
+                    <div class="msg_tit">
+                        <h3>[系统] 维护通知<sup></sup></h3>
+                        <p class="msg_time">今天&nbsp;&nbsp;15:30</p>
+                        <i class="icon icon_raw icon_rawdown"></i>
+                    </div>
+                    <div class="msg_cont" style="display: none;">
+                        亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 消息弹层 end -->
+
+<!-- 猜球记录弹层 start -->
+<div class="pop pop_record hide">
+    <div class="pop_layer"></div>
+    <div class="popIn">
+        <div class="popTit">
+            <h2 class="title">竞猜记录</h2>
+            <span class="close">
+                <span></span>
+            </span>
+        </div>
+        <div class="box">
+            <div class="scroller">
+                <div class="list">
+                    <div class="list-tit">
+                        <h3>本场记录</h3>
+                    </div>
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <div class="fl"> 曼切斯特城<span>vs</span>摩纳哥</div>
+                            <div class="btn-goBet">竞猜本场<i class="icon-raw"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="list-tit">
+                        <h3>2017/01/26 星期二</h3>
+                    </div>
+                    <div class="list-cont">
+                        <div class="cont-tit cur">
+                            <div class="fl"> 曼切斯特城<span>vs</span>摩纳哥</div>
+                            <div class="fr"><span class="color9">待开奖</span><i class="icon-raw"></i></div>
+                        </div>
+                        <div class="cont hide">
+                            <table cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                <tr>
+                                    <th width="22%" align="left">玩法</th>
+                                    <th align="left">选项</th>
+                                    <th width="20%" align="right">猜球币</th>
+                                    <th width="20%" align="right">结果</th>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="color9">赛果</td>
+                                    <td align="left">曼切斯特城 1.25</td>
+                                    <td align="right">500</td>
+                                    <td align="right" class="color9">待开奖</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="color9">赛果</td>
+                                    <td align="left">摩纳哥 2.01</td>
+                                    <td align="right">500</td>
+                                    <td align="right" class="color9">待开奖</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="color9">第10个进球</td>
+                                    <td align="left">曼切斯特城@22.75</td>
+                                    <td align="right" class="green">366.00万</td>
+                                    <td align="right" class="color9"><p class="green">已返还</p>交易异常</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="list-tit">
+                        <h3>2017/01/25 星期一</h3>
+                    </div>
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <div class="fl"> 曼切斯特城<span>vs</span>摩纳哥</div>
+                            <div class="fr"><span class="yellow">中 5000</span><i class="icon-raw"></i></div>
+                        </div>
+                        <div class="cont">
+                            <table cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                <tr>
+                                    <th width="20%" align="left">玩法</th>
+                                    <th align="left">选项</th>
+                                    <th width="28%" align="right">猜球币</th>
+                                    <th width="18%" align="right">结果</th>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="color9">赛果</td>
+                                    <td align="left">曼切斯特城 1.25</td>
+                                    <td align="right">500</td>
+                                    <td align="right" class="yellow">中 5000</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="color9">赛果</td>
+                                    <td align="left">摩纳哥 2.01</td>
+                                    <td align="right">500</td>
+                                    <td align="right" class="color9">未中奖</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="color9">第1个进球</td>
+                                    <td align="left">曼切斯特城 1.75</td>
+                                    <td align="right">500</td>
+                                    <td align="right" class="color9">未中奖</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="list-cont">
+                        <div class="cont-tit">
+                            <div class="fl"> 曼切斯特城<span>vs</span>摩纳哥</div>
+                            <div class="fr"><span class="color9">未中奖</span><i class="icon-raw"></i></div>
+                        </div>
+                        <div class="cont">
+                            <table cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                <tr>
+                                    <th width="20%" align="left">玩法</th>
+                                    <th align="left">选项</th>
+                                    <th width="28%" align="right">猜球币</th>
+                                    <th width="18%" align="right">结果</th>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="color9">赛果</td>
+                                    <td align="left">曼切斯特城 1.25</td>
+                                    <td align="right">500</td>
+                                    <td align="right" class="color9">未中奖</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="color9">单双</td>
+                                    <td align="left">单 2.01</td>
+                                    <td align="right">500</td>
+                                    <td align="right" class="color9">未中奖</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="color9">第1个进球</td>
+                                    <td align="left">曼切斯特城 1.75</td>
+                                    <td align="right">500</td>
+                                    <td align="right" class="color9">未中奖</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 猜球记录弹层 end -->
+
+<!-- 充值弹层 start -->
+<div class="pop pop_recharge hide">
+    <div class="pop_layer"></div>
+    <div class="popIn">
+        <div class="popTit">
+            <ul class="btn_tab">
+                <li class="cur"><span>充值</span></li>
+                <li><span>我的</span></li>
+            </ul>
+            <h2 class="title">充值</h2>
+            <span class="close"></span>
+        </div>
+        <div class="box">
+            <div class="main-list">
+                <p class="info">虚拟道具只用于展示，购买道具赠送猜球币</p>
+                <div class="scroller clear">
+                    <div class="item">
+                        <img src="images/prop01.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>1000</p>
+                        <span class="item-btn">￥ 1</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop02.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>6000</p>
+                        <span class="item-btn">￥ 6</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop03.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>30000</p>
+                        <span class="item-btn">￥ 30</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop04.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>98000</p>
+                        <span class="item-btn">￥ 98</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop05.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>328000</p>
+                        <span class="item-btn">￥ 328</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop06.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>648000</p>
+                        <span class="item-btn">￥ 648</span>
+                    </div>
+                    <div class="item">
+                        <img src="images/prop06.png">
+                        <p class="item-txt">送<i class="icon-jinbi"></i>648000</p>
+                        <span class="item-btn">￥ 648</span>
+                    </div>
+                </div>
+            </div>
+            <div class="main-list main-list-mine">
+                <p class="info">我的购买记录</p>
+                <div class="scroller clear">
+                    <div class="item">
+                        <p class="item-in">
+                            <img src="images/prop01.png">
+                            <span class="item-info">已获得 100 个</span>
+                        </p>
+                    </div>
+                    <div class="item">
+                        <p class="item-in">
+                            <img src="images/prop02.png">
+                            <span class="item-info">已获得 30 个</span></p>
+                    </div>
+                    <div class="item">
+                        <p class="item-in">
+                            <img src="images/prop03.png">
+                            <span class="item-info">已获得 12 个</span></p>
+                    </div>
+                    <div class="item">
+                        <p class="item-in">
+                            <img src="images/prop04.png">
+                            <span class="item-info">已获得 30000 个</span></p>
+                    </div>
+                    <div class="item item-no">
+                        <p class="item-in">
+                            <img src="images/prop05.png">
+                            <span class="item-info item-info-no">未获得</span></p>
+                    </div>
+                    <div class="item item-no">
+                        <p class="item-in">
+                            <img src="images/prop06.png">
+                            <span class="item-info item-info-no">未获得</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 充值弹层 end -->
+
+<!-- 加奖弹层 start -->
+<div class="pop pop_jiajiang hide">
+    <div class="pop_layer"></div>
+    <div class="popIn">
+        <div class="box">
+            <img src="images/jiajiang.jpg">
+        </div>
+        <span class="close"></span>
+    </div>
+</div>
+<!-- 加奖弹层 end -->
+
 <!--个人信息弹窗-->
-<div class="pop pop-myself">
+<div class="pop pop-myself hide">
     <div class="pop_layer"></div>
     <div class="pop-user">
         <ul>
@@ -530,6 +1198,94 @@
     </div>
 </div>
 <!--个人信息弹窗-->
+
+<!-- 吐槽弹窗 -->
+<div class="pop pop-opinion hide">
+    <div class="pop_layer"></div>
+    <div class="pop-o">
+        <span class="close">
+            <span></span>
+        </span>
+        <div class="pop-t">
+            在线客服
+        </div>
+        <p>微信搜索 "<i>疯狂猜球服务号</i>"</p>
+        <p>在线反馈您的问题</p>
+        <div class="pop-img">
+            <img src="images/img-public.png" alt="疯狂猜球服务号">
+        </div>
+        <h3>还有更新资讯、福利</h3>
+    </div>
+</div>
+<!-- 吐槽弹窗 -->
+
+<!--活动弹窗-->
+<div class="pop pop-act hide">
+    <div class="pop_layer">
+    </div>
+    <div class="popact-in">
+         <span class="close">
+             <span></span>
+         </span>
+        <div class="popTit">
+            <h2>活动中心</h2>
+        </div>
+        <div class="box">
+            <span class="popact-left"></span>
+            <span class="popact-right"></span>
+            <ul class="popact-t">
+                <li class="popact-hot on">
+                   <span>充值特惠</span>
+                </li>
+                <li class="popact-new">
+                    <span>NBA竞猜</span>
+                </li>
+                <li>
+                    <span>天天抽<br>IPHONE7</span>
+                </li>
+                <li>
+                    <span>测试</span>
+                </li>
+            </ul>
+            <ul class="popact-c">
+                <li><a href="javascript:;"><img src="images/pop-act1.jpg" alt="充值特惠">充值特惠</a></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--活动弹窗-->
+<!--新手引导弹窗-->
+<div class="pop pop-begin hide">
+    <div class="pop_layer"></div>
+    <div class="popbegin-in popbegin-in1">
+        <h3>不卖肾怎么换到iPhone x？</h3>
+        <img src="images/popbegin-img1.png" alt="">
+        <div class="popbegin-p">
+            <p>海量猜球币每日领</p>
+        </div>
+        <a href="javascript:;">有钱了，然后呢？</a>
+    </div>
+    <div class="popbegin-in popbegin-in2">
+        <h3>不卖肾怎么换到iPhone x？</h3>
+        <img src="images/popbegin-img1.png" alt="">
+        <p></p>
+        <div class="popbegin-p">
+            <p>找到一场稳胆投他个十万八万<br/>或者博单比分，单车变摩托</p>
+        </div>
+        <a href="javascript:;">发财了，我要领奖</a>
+    </div>
+    <div class="popbegin-in popbegin-in3">
+        <h3>不卖肾怎么换到iPhone x？</h3>
+        <img src="images/popbegin-img1.png" alt="">
+        <div class="popbegin-p">
+            <p>来吧，完成这个小目标<br/>还有充值卡，金条任性兑</p>
+        </div>
+        <a href="javascript:;">iPhone X，我来了</a>
+    </div>
+</div>
+<!--新手引导弹窗-->
 
 <!--国庆活动入口-->
 <div class="enter">
