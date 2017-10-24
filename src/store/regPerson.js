@@ -80,7 +80,7 @@ const actionsInfo = mapActions({
         /* 重置密码 */
         try {
             let nameResult = null;
-            nameResult = await ajax.get(`http://192.168.41.76:8691/user/modfiy/photo?photo=${img}&ck=${getCk()}`)
+            nameResult = await ajax.get(`/user/modfiy/photo?photo=${img}&ck=${getCk()}`)
             dispatch('getUserInfo');
             dispatch('showToast', {
                 message: '选择成功',
@@ -100,7 +100,7 @@ const actionsInfo = mapActions({
         /* 重置密码 */
         try {
             let nameResult = null;
-            nameResult = await ajax.get(`http://192.168.41.76:8691/user/modfiy/username?username=${nickName}&ck=${getCk()}`);
+            nameResult = await ajax.get(`/user/modfiy/username?username=${nickName}&ck=${getCk()}`);
             dispatch('showToast', {
                 message: '修改成功',
                 cb: () => {
@@ -120,7 +120,7 @@ const actionsInfo = mapActions({
         try {
             let resetData = null;
             console.log(state.resetSign);
-            resetData = await ajax.get(`http://192.168.41.76:8691/user/modfiy/password?mobile=${params.mobile}&sign=${state.resetSign}&password=${params.password}`)
+            resetData = await ajax.get(`/user/modfiy/password?mobile=${params.mobile}&sign=${state.resetSign}&password=${params.password}`)
             console.log(resetData);
             commit('removeCk');
             dispatch('showToast', {
@@ -144,7 +144,7 @@ const actionsInfo = mapActions({
         /*  重置密码验证手机code  */
         try {
             let checkData = null;
-            checkData = await ajax.get(`http://192.168.41.76:8691/user/modfiy/password/verifycode?mobile=${params.mobile}&verifycode=${params.verifycode}&platform=${platform}`);
+            checkData = await ajax.get(`/user/modfiy/password/verifycode?mobile=${params.mobile}&verifycode=${params.verifycode}&platform=${platform}`);
             commit(mTypes.setcheckWdReset, checkData.sign);
             console.log(checkData)
         } catch (e) {
@@ -160,14 +160,14 @@ const actionsInfo = mapActions({
     },
     async getTelCode ({state, commit, dispatch}, data) {
         // 获tel
-        // http://192.168.41.76:8691/login/mobile/sms?mobile=13319403333
+        // /login/mobile/sms?mobile=13319403333
         console.log(data);
         try {
             let codeData;
             if(typeof data==="object" && data.vtype && typeof data.vtype ==='string'){
-                codeData = await ajax.get(`http://192.168.41.76:8691/login/mobile/sms?mobile=${data.mobile}&vtype=${data.vtype}`);
+                codeData = await ajax.get(`/login/mobile/sms?mobile=${data.mobile}&vtype=${data.vtype}`);
             }else{
-                codeData = await ajax.get(`http://192.168.41.76:8691/login/mobile/sms?mobile=${data}`);
+                codeData = await ajax.get(`/login/mobile/sms?mobile=${data}`);
             }
             console.log(codeData)
         } catch (e) {
@@ -180,10 +180,10 @@ const actionsInfo = mapActions({
     },
     async getIsShowImgCode ({state, commit, dispatch}, deviceId) {
         // 获tel
-        // http://192.168.41.76:8691/login/mobile/sms?mobile=13319403333
+        // /login/mobile/sms?mobile=13319403333
         console.log(deviceId)
         try {
-            let IsShowImgCode = await ajax.get(`http://192.168.41.76:8691/login/verifycode/code?deviceid=${deviceId}`);
+            let IsShowImgCode = await ajax.get(`/login/verifycode/code?deviceid=${deviceId}`);
             console.log(IsShowImgCode)
             if (IsShowImgCode !== '') {
                 commit(mTypes.setIsShowImgCode, IsShowImgCode)
@@ -202,7 +202,7 @@ const actionsInfo = mapActions({
         console.log(sendData);
         // 是否需要
         try {
-            let regisData = await ajax.post(`http://192.168.41.76:8691/login/mobile`,sendData );
+            let regisData = await ajax.post(`/login/mobile`,sendData );
             console.log(regisData)
             if (regisData !== '') {
                 commit(mTypes.setRegis, regisData)
@@ -223,7 +223,7 @@ const actionsInfo = mapActions({
         console.log(sendData);
         // 是否需要
         try {
-            let loginData = await ajax.post(`http://192.168.41.76:8691/login/mobile`,sendData,);
+            let loginData = await ajax.post(`/login/mobile`,sendData,);
             console.log(loginData);
             if (loginData !== '' && loginData.ck) {
                 commit(mTypes.setLoginData , loginData)
