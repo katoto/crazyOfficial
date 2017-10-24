@@ -821,12 +821,9 @@
 }
 
 .list {
-    margin-bottom: 40px;
+    margin-bottom: 15px;
 }
 
-.list:first-child {
-    padding-top: 20px;
-}
 
 .list-tit {
     text-align: left;
@@ -841,11 +838,11 @@
 
 .list-cont {
     background: #1f2025;
-    margin-bottom: 10px;
     color: #d9ddff;
 }
 
 .cont-tit {
+    position: relative;
     height: 96px;
     line-height: 96px;
     padding: 0 20px;
@@ -863,15 +860,13 @@
 }
 
 .icon-raw {
-    display: inline-block;
+    position: absolute;
+    top:42px;
+    right:14px;
     width: 24px;
-    height: 24px;
-    background-position: -41px -226px;
-    margin-left: 20px;
-    vertical-align: middle;
-    position: relative;
-    top: -2px;
+    height: 15px;
     transition: transform .2s ease;
+    background-position: -180px -570px;
 }
 
 .icon-rawup {

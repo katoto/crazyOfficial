@@ -956,8 +956,25 @@
 }
 
 /*竞猜记录*/
-.pop2 .popTit .title {
+.pop02 .popTit .title {
     background-position: 0 0;
 }
 
-
+/*玩法说明*/
+.pop-help .popIn{
+    height:1110px;
+    margin-top:-555px;
+}
+.pop-help .help-tips{
+    padding:12px 15px 0;
+    line-height:30px;
+    font-size:22px;
+    color: #6f799a;
+}
+.pop-help .help-tips p{
+    margin-bottom:12px;
+}
+.pop-help .box{
+    padding-top: 45px;
+    height:730px;
+}
