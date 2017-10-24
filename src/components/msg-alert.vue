@@ -1,5 +1,5 @@
 <template>
-    <div class="pop pop_msg">
+    <div class="pop pop02 pop_msg message">
         <div class="pop_layer" v-tap="{ methods:closeMessbox }"></div>
         <div class="popIn">
             <div class="popTit">
@@ -47,48 +47,6 @@
                         <p class="message-tips" :class="{'hide':!messageList.length || messageList.length<3 }">只显示最近的50条系统消息</p>
                         <p class="message-tips" style="position: fixed;bottom: 0;width:100%;background-color: #1d1e23;" :class="{'hide':!messageList.length || messageList.length >= 3 }">只显示最近的50条系统消息</p>
                     </div>
-                    <!--<div class="msg_item msg_item_yidu">-->
-                        <!--<div class="msg_tit">-->
-                            <!--<h3>[系统] 维护通知<sup></sup></h3>-->
-                            <!--<p class="msg_time">今天&nbsp;&nbsp;15:30</p>-->
-                            <!--<i class="icon icon_raw icon_rawdown"></i>-->
-                        <!--</div>-->
-                        <!--<div class="msg_cont" style="display: none;">-->
-                            <!--亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="msg_item">-->
-                        <!--<div class="msg_tit">-->
-                            <!--<h3>[系统] 维护通知<sup></sup></h3>-->
-                            <!--<p class="msg_time">今天&nbsp;&nbsp;15:30</p>-->
-                            <!--<i class="icon icon_raw"></i>-->
-                        <!--</div>-->
-                        <!--<div class="msg_cont">-->
-                            <!--亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="msg_item">-->
-                        <!--<div class="msg_tit">-->
-                            <!--<h3>[系统] 维护通知<sup></sup></h3>-->
-                            <!--<p class="msg_time">今天&nbsp;&nbsp;15:30</p>-->
-                        <!--</div>-->
-                        <!--<div class="msg_cont">-->
-                            <!--中秋金币大礼，活动时间将于中秋金币大礼，活动时间将于 中秋金币大礼。-->
-                        <!--</div>-->
-                        <!--<div class="jiangli">-->
-                            <!--<strong class="yellow">奖励5000猜球币</strong><span class="btn-lingqu btn-lingqu-no">领取</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="msg_item msg_item_yidu">-->
-                        <!--<div class="msg_tit">-->
-                            <!--<h3>[系统] 维护通知<sup></sup></h3>-->
-                            <!--<p class="msg_time">今天&nbsp;&nbsp;15:30</p>-->
-                            <!--<i class="icon icon_raw icon_rawdown"></i>-->
-                        <!--</div>-->
-                        <!--<div class="msg_cont" style="display: none;">-->
-                            <!--亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。亲爱的玩家，系统在8月29日11点-12点将进行系统维护，造成不便敬请见谅。-->
-                        <!--</div>-->
-                    <!--</div>-->
                 </div>
             </div>
         </div>

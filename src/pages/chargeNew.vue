@@ -72,17 +72,17 @@
         <div class="layer hide"></div>
 
         <!--我的道具-->
-        <div class="pop pop-mytool" :class="{'hide':!isShowMyTool}">
+        <div class="pop pop02 pop-mytool" :class="{'hide':!isShowMyTool}">
             <div class="pop_layer" v-tap="{methods: choseMyTool}"></div>
-            <div class="mytool">
+            <div class="popIn">
                 <div class="close" v-tap="{methods: choseMyTool}">
                     <span></span>
                 </div>
-                <div class="my-t">
-                    我的道具
+                <div class="popTit">
+                    <h2>我的道具</h2>
                 </div>
                 <p>虚拟道具只用于展示，购买道具赠送猜球币</p>
-                <div class="mytool-c">
+                <div class="popIn-c">
                     <ul v-if="footballPropsList">
                         <li v-for="propsList in footballPropsList" :class="{'item-no':propsList.num === '0'}">
                             <img :src="propsList.img_url">
@@ -96,14 +96,14 @@
         </div>
         <!--我的道具-->
         <!--兑换记录-->
-        <div class="pop pop-myexchange" :class="{'hide':!isShowPrizeList}">
+        <div class="pop pop02 pop-myexchange" :class="{'hide':!isShowPrizeList}">
             <div class="pop_layer" v-tap="{methods: chosePrizeList}"></div>
-            <div class="myexchange">
+            <div class="popIn">
                 <div class="close" v-tap="{methods: chosePrizeList}">
                     <span></span>
                 </div>
-                <div class="my-t">
-                    兑奖记录
+                <div class="popTit">
+                    <h2>兑奖记录</h2>
                 </div>
                 <p v-if="winGoodslist && winGoodslist.allnum!=='0'">兑奖记录奖保留三个月</p>
                 <div class="emptyIn" v-else>
@@ -283,9 +283,9 @@
         <div class="pop pop-my-msg" :class="{'hide':!isShowMyMess}">
             <div class="pop_layer" v-tap="{methods: choseMyMess}"></div>
             <div class="pop-msg-c">
-                    <span>
-                        我的余额
-                    </span>
+                <span>
+                    我的余额
+                </span>
                 <ul v-if="userInfo">
                     <li class="pop-myover">
                         {{ userInfo.gold_total | golds }}

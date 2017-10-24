@@ -5,8 +5,8 @@
             <span class="close" v-tap="{methods:closekefu}" >
                 <span></span>
             </span>
-            <div class="pop-t">
-                在线客服
+            <div class="popTit">
+                <h2>在线客服</h2>
             </div>
             <p>微信搜索 "<i>疯狂猜球服务号</i>"</p>
             <p>在线反馈您的问题</p>
