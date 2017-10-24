@@ -23,7 +23,7 @@ export const getCookie = (sName) => {
 export const addCookie = (name, value) => {
     let Days = 30
     let exp = new Date()
-    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000)
+    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 100)
     document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString()
 }
 export const removeCookie = (sName) => {
@@ -40,7 +40,20 @@ export let getCk = function () {
     return localStorage.getItem('ck') || ''
 }
 
-export const src = '500touch'
+// export const src = '500touch'
+
+export const src = (function () {
+    let defaultSrc = '500touch';
+    if (!localStorage.getItem('src') || localStorage.getItem('src') === '' || localStorage.getItem('src') === 'undefined') {
+        if (getCookie('src') && getCookie('src') !== '') {
+            return getCookie('src');
+        }
+        return defaultSrc
+    }
+    return localStorage.getItem('src') || defaultSrc
+})()
+
+
 export const cptype = ''
 
 export const platform = (function () {

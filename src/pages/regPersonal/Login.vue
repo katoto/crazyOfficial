@@ -191,7 +191,6 @@
                         this.$router.push(`/register/`);
                         break;
                     case 'downLoad':
-
                         if (platform === 'android') {
                             window.location.href = 'http://download.choopaoo.com/download/cbet_for_Android_500cpH5.apk'
                         } else {
@@ -210,7 +209,10 @@
 
             LoginFn () {
                 let loginData = null;
-            /* 提交 */
+                /* 提交 */
+                if( this.LoTips !=='' ){
+                    return false;
+                }
                 if (this.telNumber === '') {
                     this.$store.commit(mTypes.setIsSerError , false );
                     this.$store.commit(mTypes.setLoTips , '请输入正确的手机号');
@@ -219,9 +221,6 @@
                     this.$store.commit(mTypes.setIsSerError , false );
                     this.$store.commit(mTypes.setLoTips , '请输入密码');
                     return false
-                }
-                if( this.LoTips !=='' ){
-                    return false;
                 }
                 let tel_reg = /^1[34578]\d{9}$/;
                 if (! ( this.telNumber ) &&this.telNumber !=='') {
