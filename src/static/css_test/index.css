@@ -3,9 +3,6 @@
     background-repeat: no-repeat;
     background-size: 781px;
 }
-.index{
-}
-
 /* 登录前 */
 .before-login {
     height: 92px;
@@ -650,15 +647,15 @@
 }
 
 /*排行榜弹层*/
-.pop_phb .popTit .title, .pop_msg .popTit .title, .pop_record .popTit .title, .pop_recharge .popTit .title {
-    background: url(../images/pop_phb.png) no-repeat 0 0;
-    background-size: 476px;
-    text-indent: -9999rem;
-    position: absolute;
-    left: 50%;
-    margin-left: -238px;
-    top: -32px;
-}
+/*.pop_phb .popTit .title, .pop_msg .popTit .title, .pop_record .popTit .title, .pop_recharge .popTit .title {*/
+    /*background: url(../images/pop_phb.png) no-repeat 0 0;*/
+    /*background-size: 476px;*/
+    /*text-indent: -9999rem;*/
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*margin-left: -238px;*/
+    /*top: -32px;*/
+/*}*/
 
 .pop_msg .popTit .title {
     background-position: 0 -212px;
@@ -1236,11 +1233,7 @@
 }
 
 .pop_msg .box {
-    background: #1d1e23;
-    margin: 30px 6px;
-    border-radius: 10px;
-    width: 590px;
-    height: 780px;
+    margin-top:45px;
 }
 
 .pop_msg .scroller {
@@ -1248,12 +1241,10 @@
 }
 
 .pop_msg .msg_item {
-    background: #2b2d36;
-    border-radius: 8px;
+    padding:24px 10px 24px;
+    background: #30313b;
     text-align: left;
-    margin: 8px 8px;
-    padding: 20px 30px;
-    color: #bbc2d7;
+    margin:0 0 16px 0;
 }
 
 .pop_msg .msg_item_yidu {
@@ -1261,11 +1252,13 @@
 }
 
 .msg_item .msg_tit {
-    height: 90px;
     position: relative;
+    overflow: hidden;
+    margin-bottom:6px;
 }
 
 .msg_item h3 {
+    float: left;
     font-size: 28px;
 }
 
@@ -1285,9 +1278,9 @@
 }
 
 .msg_item .msg_time {
-    font-size: 22px;
+    font-size: 24px;
     color: #6f799a;
-    padding-top: 10px;
+    float: right;
 }
 
 .msg_item .icon_raw {
@@ -1319,7 +1312,8 @@
 }
 
 .msg_item .msg_cont {
-    font-size: 24px;
+    line-height:36px;
+    font-size: 26px;
 }
 
 .pop_msg .jiangli {
@@ -1381,6 +1375,7 @@
 }
 
 .cont-tit {
+    position: relative;
     height: 96px;
     line-height: 96px;
     padding: 0 20px;
@@ -1398,14 +1393,13 @@
 }
 
 .icon-raw {
-    display: inline-block;
+    position: absolute;
+    right:28px;
+    top:42px;
+    display: block;
     width: 24px;
     height: 24px;
     background-position: -41px -226px;
-    margin-left: 20px;
-    vertical-align: middle;
-    position: relative;
-    top: -2px;
     transition: transform .2s ease;
 }
 
@@ -1647,7 +1641,7 @@
 }
 /*个人信息弹窗*/
 .pop-myself{
-    z-index:98;
+    z-index:98 !important;
 }
 .pop-user{
     position: fixed;

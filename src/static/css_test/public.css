@@ -1181,45 +1181,8 @@ html, body {
 }
 
 /*公用弹层*/
-.pop {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    overflow: hidden;
-    font-size: 24px;
-    z-index: 100;
-}
-
-.pop_layer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, .6);
-}
 .pop_jinbi .pop_layer {
     background: rgba(0, 0, 0, .85);
-}
-
-.popIn {
-    width: 600px;
-    height: 900px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -304px;
-    margin-top: -454px;
-    border: 4px solid #2f303a;
-    border-radius: 8px;
-    background: #26272f;
-}
-
-.popTit {
-    height: 76px;
-    position: relative;
 }
 
 .popTit .btn_tab {
@@ -1315,22 +1278,22 @@ html, body {
     height:50px;
 }
 
-.close{
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 22px;
-    height: 22px;
-    padding: 30px;
-    overflow: hidden;
-}
-.close span{
-    display: block;
-    width: 24px;
-    height: 24px;
-    background-position: -423px -555px;
-}
+/*.close{*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*width: 22px;*/
+    /*height: 22px;*/
+    /*padding: 30px;*/
+    /*overflow: hidden;*/
+/*}*/
+/*.close span{*/
+    /*display: block;*/
+    /*width: 24px;*/
+    /*height: 24px;*/
+    /*background-position: -423px -555px;*/
+/*}*/
 
 
 
@@ -1365,6 +1328,7 @@ html, body {
 .pop-o p{
     line-height:46px;
     font-size:32px;
+    margin-top:26px;
 }
 .pop-o p i{
     font-size:36px;

@@ -41,6 +41,7 @@
     height: 22px;
     padding: 30px;
     overflow: hidden;
+    z-index:999;
 }
 .pop .close span{
     display: block;
@@ -938,6 +939,7 @@
     width: 680px;
     height: 900px;
     margin-top: -454px;
+    overflow: hidden;
 }
 .pop02 .popTit{
     position: relative;
@@ -977,4 +979,53 @@
 .pop-help .box{
     padding-top: 45px;
     height:730px;
+    text-align: left;
+}
+
+/*我的道具*/
+.pop-mytool p{
+    line-height:100px;
+    text-align: center;
+    font-size:24px;
+    color: #6f799a;
+}
+.pop-mytool .popIn-c{
+    height:740px;
+    border-top:1px solid #444a60;
+}
+.pop-mytool li{
+    position: relative;
+    float: left;
+    width:50%;
+    height:245px;
+    overflow: hidden;
+    border-bottom:1px solid #444a60;
+    box-sizing: border-box;
+}
+.pop-mytool li:nth-child(2n-1){
+    border-right:1px solid #444a60;
+}
+.pop-mytool img{
+    display: block;
+    width: 193px;
+    height: 150px;
+    margin: 36px auto 0;
+}
+.pop-mytool li span{
+    display: block;
+    position: absolute;
+    right:0;
+    bottom:0;
+    width:106px;
+    height:50px;
+    overflow: hidden;
+    text-align: center;
+    line-height:50px;
+    background: #444a60;
+    border-top-left-radius: 10px;
+    font-size:26px;
+    color: #d9ddff;
+}
+.myprop-list .item-no img,.myprop-list .item-no span {
+    opacity: .3
 }

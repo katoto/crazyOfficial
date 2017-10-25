@@ -39,6 +39,7 @@
     overflow: hidden;
     line-height:92px;
     background: #26272f;
+    padding:0 60px 0 100px;
     border:1px solid #32343e;
     /*no*/
     outline:none;
@@ -47,10 +48,12 @@
     border-radius: 10px;
     font-size:30px;
     color: #d9ddff;
-    text-indent: 100px;
     box-sizing:border-box;
     -moz-box-sizing:border-box; /* Firefox */
     -webkit-box-sizing:border-box; /* Safari */
+}
+.reg-c input[type="password"],.login-c input[type="password"]{
+    padding-right: 160px !important;
 }
 #user .user-icon{
     position: absolute;
@@ -178,7 +181,7 @@
     left:32px;
     top:28px;
 }
-.reg-warning{
+.reg-warning,.reg-prompt{
     position: relative;
     float: left;
     font-size:26px;
@@ -195,6 +198,10 @@
     width: 26px;
     height: 26px;
     background-position: -358px -480px;
+}
+.reg-prompt{
+    padding-left:0 !important;
+    color: #6f799a !important;
 }
 .to-foeget{
     float: right;

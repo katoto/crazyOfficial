@@ -517,9 +517,7 @@
     margin: 36px auto 0;
 }
 
-.myprop-list .item-no img {
-    opacity: .3
-}
+
 
 /* draw_index */
 
@@ -2151,6 +2149,7 @@
     line-height:90px;
     font-size:24px;
     color: #6f799a;
+    text-align: center;
 }
 .pop-myexchange .emptyIn{
     position: relative;
@@ -2246,7 +2245,7 @@
 /*商城-我的兑换记录弹窗*/
 /*相关信息*/
 .pop-my-msg{
-    z-index:98;
+    z-index:98 !important;
 }
 .pop-msg-c{
     position: absolute;
@@ -2379,20 +2378,19 @@
     border-radius: 6px;
     background: #26272f;
 }
-.pop-winning h2{
-    position: absolute;
-    left:50%;
-    top:-50px;
-    margin-left:-238px;
-    width:476px;
-    height:97px;
-    overflow: hidden;
-    background-image: url("../images/pop_phb.png");
-    background-size: 476px;
-    background-position: 0 -482px;
-    font-size:0;
-    
-}
+/*.pop-winning h2{*/
+    /*position: absolute;*/
+    /*left:50%;*/
+    /*top:-50px;*/
+    /*margin-left:-238px;*/
+    /*width:476px;*/
+    /*height:97px;*/
+    /*overflow: hidden;*/
+    /*background-image: url("../images/pop_phb.png");*/
+    /*background-size: 476px;*/
+    /*background-position: 0 -482px;*/
+    /*font-size:0;*/
+/*}*/
 .pop-winning-c img{
     display: block;
     margin:0 auto;
