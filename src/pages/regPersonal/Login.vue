@@ -288,17 +288,19 @@
             this.deviceId = deviceId
             await this.$store.dispatch(aTypes.getIsShowImgCode, deviceId)
             this.$store.commit('showHeightTips', true)
+            if (this.autoLoginPassword) {
+                this.userPassWord = this.autoLoginPassword
+                this.$store.commit(mTypes.autoLoginPassword, null)
+            }
             if (this.autoTelNumber) {
                 this.telNumber = this.autoTelNumber
-                this.$store.commit(mTypes.autoTelNumber, null)
+                this.$store.commit(mTypes.autoTelNumber, null);
+                return false
             }
             if (this.autoLoginNumber) {
                 this.telNumber = this.autoLoginNumber
                 this.$store.commit(mTypes.autoLoginNumber, null)
-            }
-            if (this.autoLoginPassword) {
-                this.userPassWord = this.autoLoginPassword
-                this.$store.commit(mTypes.autoLoginPassword, null)
+                return false
             }
             let loginTel2 = localStorage.getItem('loginTel2')
             if(loginTel2 && loginTel2 !=='undefined'){

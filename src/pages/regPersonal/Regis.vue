@@ -223,12 +223,12 @@
                 let isAllStr = /^[A-Za-z]*$/
                 document.getElementById('passDom').setAttribute('placeholder', '密码')
                 this.userPassWordBlur = true
-                if (isAllNumber.test(e.target.value)) {
+                if (isAllNumber.test(e.target.value) && e.target.value !== '' ) {
                     console.log('密码过于简单，建议使用数字加字符')
                     this.showWarn = true
                     return false
                 }
-                if (isAllStr.test(e.target.value)) {
+                if (isAllStr.test(e.target.value) && e.target.value !== '') {
                     console.log('密码过于简单，建议使用数字加字符')
                     this.showWarn = true
                     return false

@@ -20,9 +20,9 @@
             </button>
         </div>
         <div class="chang-name" :class="{'hide':!showName}">
-            <p class="chang-tips">用户昵称只可以修改一次</p>
+            <p class="chang-tips">用户昵称每个月只可修改一次</p>
             <div class="chang-box">
-                <input @input="checkNickName" @focus="checkNickNameFocus" @blur="checkNickNameBlur" autofocus="autofocus" id="nickInp" name="nick" type="text" v-model="nickName">
+                <input @input="checkNickName" placeholder="2-16个字符，支持中英文、数字" @focus="checkNickNameFocus" @blur="checkNickNameBlur" autofocus="autofocus" id="nickInp" name="nick" type="text" v-model="nickName">
                 <span class="delete" v-if="nickName && !nickNameBlur"
                       v-tap="{methods:changeTab,params:'delNickName'}"
                 ></span>
@@ -158,7 +158,7 @@
         methods: {
             checkNickNameBlur () {
                 let regNickName = /[`~!@#$^&*()=|{}':;',\[\].<>\/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%]/
-                this.nickNameBlur = true
+                this.nickNameBlur = true;
                 if (regNickName.test(this.nickName)) {
                     this.$store.commit(mTypes.setPCTips, '不可使用特殊字符')
                 } else if (this.nickName.length <= 2 && this.nickName.length >= 16) {
@@ -208,6 +208,7 @@
                     this.$store.commit(mTypes.setPCTips, '不可使用特殊字符')
                 } else if (this.nickName.length >= 2 && this.nickName.length <= 16) {
                     this.$store.dispatch(aTypes.renameNickName, this.nickName.replace(/^\s+|\s+$/g, '').replace(/\s+/g, ''))
+
                 } else {
                     this.$store.commit(mTypes.setPCTips, '2-16个字符,支持中英文、数字')
                 }
@@ -273,6 +274,9 @@
             showImg () {
                 return this.$store.state.regPerson.showImg
             },
+            nameResultCode () {
+                return this.$store.state.regPerson.nameResultCode
+            },
             PCTips () {
                 return this.$store.state.regPerson.PCTips
             }
@@ -282,6 +286,14 @@
         watch: {
             showImg (data) {
                 if (data === false) {
+                    this.Ptitle = '个人中心'
+                    this.showCenter = true
+                    this.showName = false
+                    this.$store.commit(mTypes.setShowImg, false)
+                }
+            },
+            nameResultCode(data){
+                if (data) {
                     this.Ptitle = '个人中心'
                     this.showCenter = true
                     this.showName = false

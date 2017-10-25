@@ -7,6 +7,7 @@ import {platform, convertToQueryString, src, getCk, mapMutations, mapActions} fr
 import router from '../router'
 const state = {
     IsShowImgCode: null,
+    nameResultCode:null,
     loginData: null,
     regisData: null,
     resetSign: null,
@@ -28,6 +29,8 @@ const state = {
     fPTips: null,
 
     isCodeTime: false
+
+
 
 }
 const mutationsInfo = mapMutations({
@@ -70,6 +73,10 @@ const mutationsInfo = mapMutations({
     setIsShowImgCode (state, data) {
         state.IsShowImgCode = data
     },
+    setNameResultCode( state ,data ){
+        state.nameResultCode = data
+    },
+
     setLoginData (state, data) {
         state.loginData = data
     },
@@ -107,10 +114,13 @@ const actionsInfo = mapActions({
         try {
             let nameResult = null
             nameResult = await ajax.get(`/user/modfiy/username?username=${nickName}&ck=${getCk()}`)
+            dispatch('getUserInfo')
             dispatch('showToast', {
                 message: '修改成功',
                 cb: () => {
-                    router.push('/login')
+                    if (nameResult !== '') {
+                        commit(mTypes.setNameResultCode, nameResult)
+                    }
                 }
             })
         } catch (e) {
@@ -158,7 +168,7 @@ const actionsInfo = mapActions({
                 case '20105':
                 case '20106':
                 case '20107':
-                    commit(mTypes.setIsSerError, true)
+                    commit(mTypes.setIsSerError, true);
                     commit(mTypes.setfPTips, e.message)
                     ; break
                 }
