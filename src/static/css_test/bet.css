@@ -922,6 +922,7 @@
 /*  数据统计弹层 */
 .pop_shuju .popIn {
     width: 630px;
+
     background-color: #1d1e29;
     margin-top:-430px;
     margin-left:-315px;
@@ -936,6 +937,7 @@
     position: relative;
     height: 780px;
     margin-top: 40px;
+    overflow: hidden;
 }
 
 .pop_shuju .scroller {
