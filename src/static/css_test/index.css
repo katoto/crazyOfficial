@@ -1381,7 +1381,7 @@
     background: #2b2d36;
 }
 .cont-tit .fr span{
-    display: none;
+    margin-right:50px;
 }
 .cont-tit .fl span {
     color: #d9ddff;
@@ -1395,21 +1395,24 @@
 .icon-raw {
     position: absolute;
     right:28px;
-    top:42px;
+    top:40px;
     display: block;
     width: 24px;
     height: 24px;
     background-position: -41px -226px;
     transition: transform .2s ease;
+    overflow: hidden;
 }
 
 .icon-rawup {
     transform: rotate(180deg);
+    top:30px;
 }
 
 .btn-goBet {
     color: #cacaca;
     float: right;
+    margin-right:24px;
 }
 
 .btn-goBet .icon-raw {
@@ -1418,6 +1421,7 @@
     position: relative;
     top: 1px;
     /*no*/
+    left:20px;
 }
 
 .cont {
