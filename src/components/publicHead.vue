@@ -27,6 +27,7 @@
             },
             jumpRight () {
                 if (this.personTitle === '我要反馈') {
+                    _hmt.push(['_trackEvent', 'off_我要反馈点击', 'click', 'off_我要反馈'])
                     this.$router.push('/fb_list')
                 }
             }

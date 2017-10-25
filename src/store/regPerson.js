@@ -210,8 +210,8 @@ const actionsInfo = mapActions({
         /* 注册 */
         let sendData = Object.assign(data, {
             platform: platform,
-            src: src,
-            channel: src
+            src: src(),
+            channel: src()
         })
         console.log(sendData)
         // 是否需要
@@ -245,8 +245,8 @@ const actionsInfo = mapActions({
         console.log(data)
         let sendData = Object.assign(data, {
             platform: platform,
-            src: src,
-            channel: src
+            src: src(),
+            channel: src()
         })
         console.log(sendData)
         // 是否需要

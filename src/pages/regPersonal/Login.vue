@@ -91,8 +91,9 @@
                     if (loginData.ck) {
                         /* 可以到后台 */
                         let _this = this
-                        this.$store.commit('ck', loginData.ck)
-                    /* 来源 ！！！！！！！ */
+                        this.$store.commit('ck', loginData.ck);
+                        localStorage.setItem('loginTel2',this.telNumber)
+                        /* 来源 ！！！！！！！ */
                         this.$store.dispatch('showToast', {
                             message: '登录成功',
                             cb () {
@@ -213,9 +214,6 @@
                 if (!this.telNumber || !this.userPassWord || this.LoTips) {
                     return false
                 }
-                if (this.LoTips !== '') {
-                    return false
-                }
                 if (this.telNumber === '') {
                     this.$store.commit(mTypes.setIsSerError, false)
                     this.$store.commit(mTypes.setLoTips, '请输入正确的手机号')
@@ -301,6 +299,10 @@
             if (this.autoLoginPassword) {
                 this.userPassWord = this.autoLoginPassword
                 this.$store.commit(mTypes.autoLoginPassword, null)
+            }
+            let loginTel2 = localStorage.getItem('loginTel2')
+            if(loginTel2 && loginTel2 !=='undefined'){
+                this.telNumber = loginTel2
             }
         }
     }
