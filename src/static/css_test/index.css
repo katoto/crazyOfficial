@@ -239,7 +239,7 @@
     padding-bottom: 0;
 }
 .listWrap_tit {
-    padding-top:20px;
+    padding:20px 0;
     line-height:60px;
     overflow: hidden;
     position: relative;
@@ -291,7 +291,7 @@
 }
 .listWrap_tit .btn_record {
     position: absolute;
-    top:0;
+    top:20px;
     right: 25px;
     display: block;
     height: 60px;
@@ -1382,7 +1382,9 @@
     font-size: 28px;
     background: #2b2d36;
 }
-
+.cont-tit .fr span{
+    display: none;
+}
 .cont-tit .fl span {
     color: #ccc;
     margin: 0 10px;
