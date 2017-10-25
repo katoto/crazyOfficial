@@ -5,7 +5,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import ajax from '~common/ajax'
-import {addCookie, removeCookie, platform, src, wait, convertToQueryString, getCk} from '~common/util'
+import {addCookie, platform, src, wait, convertToQueryString, getCk} from '~common/util'
 import main from './main'
 import home from './home'
 import feedback from './feedback'
@@ -93,7 +93,7 @@ const state = {
     showHeightTips: false,
 
     kefuAlert: true,
-    showHelpbox:false,
+    showHelpbox: false
 
 }
 const mutations = {

@@ -1,7 +1,7 @@
 <template>
     <!-- 收货地址 -->
     <section class="address respon2">
-        <Public_Head person-title="收货地址"></Public_Head>
+        <PublicHead person-title="收货地址"></PublicHead>
         <div class="respon2-itm" v-if="addressMess">
             <div class="full-scroll">
                 <!-- 中间部分开始 -->
@@ -70,7 +70,7 @@
 
 <script>
     import ChineseDistricts from '~common/city-picker.data'
-    import Public_Head from '~components/publicHead'
+    import PublicHead from '~components/publicHead'
 export default {
         data () {
             return {
@@ -100,14 +100,14 @@ export default {
             }
         },
         components: {
-            Public_Head
+            PublicHead
         },
         methods: {
             saveAddrMess () {
                 if (this.hasUserInfo) {
                     let reg = /^1[0-9]{10}$/
                     if (this.addressMess.mobile && reg.test(this.addressMess.mobile)) {
-                        if (!this.currOrderId && this.isSaveBtn || this.currOrderId && this.isConfirmBtn) {
+                        if ( (!this.currOrderId && this.isSaveBtn) || (this.currOrderId && this.isConfirmBtn)) {
                             return false
                         } else {
                             if (this.currOrderId && this.addressMess.aid && parseInt(this.addressMess.aid) > 0) {

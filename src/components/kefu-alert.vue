@@ -19,14 +19,7 @@
 </template>
 
 <script>
-    import {aTypes, mTypes} from '~store/feedback'
     export default {
-        data () {
-            return {
-                title: '我是頭部'
-            }
-        },
-        watch: {},
         methods: {
             closekefu () {
                 this.$store.commit('setkefuAlert', true)
@@ -36,9 +29,6 @@
             kefuAlert () {
                 return this.$store.state.kefuAlert
             }
-        },
-        mounted () {
-
         }
     }
 </script>

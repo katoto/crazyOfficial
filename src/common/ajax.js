@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     options.baseURL = '/api'
 }
-const _axios = axios.create(options);
+const _axios = axios.create(options)
 
 const ajax = function (url, config) {
     return _axios.get(url, config).then((response) => {

@@ -1,6 +1,6 @@
 <template>
     <div id="feedback-answered" class="wrap respon2">
-        <Public_Head class="topBar" person-title="反馈详情"></Public_Head>
+        <PublicHead class="topBar" person-title="反馈详情"></PublicHead>
 
         <div class="respon2-itm">
             <div class="full-scroll">
@@ -63,16 +63,16 @@
         </div>
 
         <!-- 吐槽弹窗 -->
-        <Kefu_alert></Kefu_alert>
+        <KefuAlert></KefuAlert>
 
     </div>
 </template>
 
 <script>
-    import Kefu_alert from '~components/kefu-alert'
-    import Public_Head from '~components/publicHead'
+    import KefuAlert from '~components/kefu-alert'
+    import PublicHead from '~components/publicHead'
 
-    import {aTypes, mTypes} from '~store/feedback'
+    import {aTypes} from '~store/feedback'
 
     export default {
         data () {
@@ -99,8 +99,8 @@
             }
         },
         components: {
-            Public_Head,
-            Kefu_alert
+            PublicHead,
+            KefuAlert
         },
         mounted () {
             if (this.$route.params && this.$route.params.fbId) {

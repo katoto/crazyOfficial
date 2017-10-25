@@ -235,9 +235,6 @@
                 })
                 return isSign
             },
-            matchlist_hot () {
-                return this.$store.state.home.matchList_hot
-            },
             matchIDStr () {
                 let matchIDStr = ''
                 if (this.matchlist_hot) {

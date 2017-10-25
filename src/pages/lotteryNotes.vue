@@ -2,7 +2,7 @@
     <div class="wrap respon2 lotteryNotes">
         <div class="respon2-itm text-left">
             <div class="full-scroll">
-                <Public_Head person-title="抽奖说明"></Public_Head>
+                <PublicHead person-title="抽奖说明"></PublicHead>
                 <div class="intro_title">1.抽奖规则</div>
                 <div class="intro_text">
                     您一但参与本活动即视为同意本规则。
@@ -28,15 +28,10 @@
 </template>
 
 <script>
-    import Public_Head from '~components/publicHead'
-export default {
-        data () {
-            return {
-                title: ''
-            }
-        },
+    import PublicHead from '~components/publicHead'
+    export default {
         components: {
-            Public_Head
+            PublicHead
         }
     }
 </script>

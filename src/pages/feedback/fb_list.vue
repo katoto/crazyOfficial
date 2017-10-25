@@ -1,6 +1,6 @@
 <template>
     <div id="feedback" class="wrap respon2">
-        <Public_Head class="topBar" person-title="反馈记录"></Public_Head>
+        <PublicHead class="topBar" person-title="反馈记录"></PublicHead>
         <div class="feedback-items respon2-itm">
             <div class="full-scroll">
                 <ul class="" v-if="feedbackList && feedbackList.fb_lst &&  feedbackList.fb_lst.length>0">
@@ -44,8 +44,8 @@
     </div>
 </template>
 <script>
-    import Public_Head from '~components/publicHead'
-    import {aTypes, mTypes} from '~store/feedback'
+    import PublicHead from '~components/publicHead'
+    import {aTypes} from '~store/feedback'
     export default {
         data () {
             return {
@@ -72,7 +72,7 @@
             }
         },
         components: {
-            Public_Head
+            PublicHead
         },
         mounted () {
             this.$store.dispatch(aTypes.getFeedbackList)
@@ -82,12 +82,10 @@
                 status = status || '0'
                 switch (status) {
                 case '0':
-                    return '待回复'
-                        ;break
+                    return '待回复';
                 case '1':
                 case '2':
                     return '已回复'
-                        ;break
                 }
             },
             formatTime_week: (time, format = 'yyyy/MM/dd HH:mm') => {

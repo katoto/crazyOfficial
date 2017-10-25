@@ -84,7 +84,7 @@
                 userPassWordBlur: true,
 
                 telCodeBlur: true,
-                showWarn:false,
+                showWarn: false
             }
         },
         methods: {
@@ -93,12 +93,12 @@
                 this.$store.commit(mTypes.setrGTips, '')
             },
             checkuserPassWordFocus () {
-                document.getElementById('passDom').setAttribute('placeholder','6-16位数字或字符')
+                document.getElementById('passDom').setAttribute('placeholder', '6-16位数字或字符')
                 if (this.isSerError) {
                     this.$store.commit(mTypes.setrGTips, '')
                 }
-                this.userPassWordBlur = false;
-                this.showWarn = false;
+                this.userPassWordBlur = false
+                this.showWarn = false
             },
             checkCode (e) {
                 this.telCodeBlur = true
@@ -180,8 +180,8 @@
                     if (this.countDownStr !== '获取验证码') {
                         return false
                     }
-                    await this.$store.dispatch(aTypes.getTelCode, this.telNumber);
-                    if(this.isCodeTime){
+                    await this.$store.dispatch(aTypes.getTelCode, this.telNumber)
+                    if (this.isCodeTime) {
                         this.countDownStr = '重发（' + codeTime + 's）'
                         this.addUnable = true
                         times = setInterval(() => {
@@ -196,10 +196,9 @@
                                 this.addUnable = true
                             }
                         }, 1000)
-                    }else{
+                    } else {
                         clearInterval(times)
                     }
-
                 } else {
                     this.$store.commit(mTypes.setIsSerError, false)
                     this.$store.commit(mTypes.setrGTips, '请输入正确的手机号')
@@ -219,27 +218,25 @@
                 }
             },
             checkPassWord (e) {
-                let pass_reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
-                let isAllNumber = /^[0-9]*$/;
-                let isAllStr = /^[A-Za-z]*$/;
-                document.getElementById('passDom').setAttribute('placeholder','密码');
-                this.userPassWordBlur = true;
-                if( isAllNumber.test( e.target.value) ){
-                    console.log('密码过于简单，建议使用数字加字符');
+                let pass_reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/
+                let isAllNumber = /^[0-9]*$/
+                let isAllStr = /^[A-Za-z]*$/
+                document.getElementById('passDom').setAttribute('placeholder', '密码')
+                this.userPassWordBlur = true
+                if (isAllNumber.test(e.target.value)) {
+                    console.log('密码过于简单，建议使用数字加字符')
                     this.showWarn = true
-                    return false;
+                    return false
                 }
-                if( isAllStr.test( e.target.value) ){
-                    console.log('密码过于简单，建议使用数字加字符');
+                if (isAllStr.test(e.target.value)) {
+                    console.log('密码过于简单，建议使用数字加字符')
                     this.showWarn = true
-                    return false;
+                    return false
                 }
                 if (!(pass_reg.test(e.target.value)) && e.target.value !== '') {
-                    this.$store.commit(mTypes.setIsSerError, true);
+                    this.$store.commit(mTypes.setIsSerError, true)
                     this.$store.commit(mTypes.setrGTips, '请设置6~12位数字、字母组合密码')
                 }
-
-
             },
             checkTel (e) {
                 let tel_reg = /^1[34578]\d{9}$/

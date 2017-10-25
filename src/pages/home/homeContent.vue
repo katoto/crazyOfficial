@@ -2,7 +2,7 @@
     <div id="app">
         <!--  头部用户信息公用   listWrap-pb  -->
         <div class="index wrap respon2">
-            <Public_Head  v-if="!isHideHomeHead" person-title="疯狂猜球换好礼"></Public_Head>
+            <PublicHead  v-if="!isHideHomeHead" person-title="疯狂猜球换好礼"></PublicHead>
             <HeaderTemplateHome v-if="!isHideHomeHead"></HeaderTemplateHome>
             <router-view></router-view>
         </div>
@@ -330,7 +330,7 @@
     import {starHtml, stopHtml, platform} from '~common/util'
     import HeaderTemplateHome from '~components/header_template_home.vue'
     import MsgAlert from '~components/msg-alert.vue'
-    import Public_Head from '~components/publicHead'
+    import PublicHead from '~components/publicHead'
     import HelpAlert from '~components/help-alert'
 
     import BetListAlert from '~components/betList-alert.vue'
@@ -473,11 +473,11 @@
                 case 'goHelp':
                     _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
 //                    this.$router.push('/help')
-                    this.$store.commit('showHelpbox',true);
+                    this.$store.commit('showHelpbox', true)
                     break
                 case 'personCenter':
                     _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
-                    this.$router.push('/personCenter');
+                    this.$router.push('/personCenter')
                     break
                 }
             }
@@ -506,7 +506,7 @@
             isHideHomeHead () {
                 return this.$store.state.isHideHomeHead
             },
-            showHelpbox(){
+            showHelpbox () {
                 return this.$store.state.showHelpbox
             },
             userinfo () {
@@ -584,7 +584,7 @@
             MsgAlert,
             BetListAlert,
             AwardAlert,
-            Public_Head,
+            PublicHead,
             HelpAlert
         },
         filters: {

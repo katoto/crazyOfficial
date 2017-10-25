@@ -27,11 +27,11 @@ const state = {
 
     fPTips: null,
 
-    isCodeTime:false,
+    isCodeTime: false
 
 }
 const mutationsInfo = mapMutations({
-    isCodeTime( state ,data ){
+    isCodeTime (state, data) {
         state.isCodeTime = data
     },
     autoLoginNumber (state, data) {
@@ -178,14 +178,14 @@ const actionsInfo = mapActions({
             } else {
                 codeData = await ajax.get(`/login/mobile/sms?mobile=${data}`)
             }
-            commit(mTypes.isCodeTime, true);
+            commit(mTypes.isCodeTime, true)
             console.log(codeData)
         } catch (e) {
-            if(e.code ==='242'){
-                dispatch('showToast','验证码发送次数已达5次，请明天再试');
-                return false;
+            if (e.code === '242') {
+                dispatch('showToast', '验证码发送次数已达5次，请明天再试')
+                return false
             }
-            commit(mTypes.isCodeTime, false);
+            commit(mTypes.isCodeTime, false)
             dispatch('showToast', e.message)
             if (e.message === '手机号已经注册') {
                 commit(mTypes.isSendTelLogin, true)
@@ -235,7 +235,7 @@ const actionsInfo = mapActions({
                     commit(mTypes.setrGTips, e.message)
                         ; break
                 }
-            }  else{
+            } else {
                 dispatch('showToast', e.message)
             }
         }

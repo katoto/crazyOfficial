@@ -1,7 +1,7 @@
 <template>
     <div id="feedback" class="wrap respon2">
         <!--v-if="!isHideHomeHead"-->
-        <Public_Head class="topBar" person-title="我要反馈"></Public_Head>
+        <PublicHead class="topBar" person-title="我要反馈"></PublicHead>
 
         <div class="feedback01" :class="{'hide':!showFeedback01}">
             <div class="feedback-c">
@@ -44,7 +44,6 @@
                 <img id="imgMoreData" src="~static/images/testimg.png">
             </div>
         </div>
-
         <!--  <form id="form" enctype="multipart/form-data">-->
             <!--<input type="text" name="ck">-->
             <!--<input class="" type="file" name="image">-->
@@ -53,16 +52,15 @@
         <!--</form>  -->
 
         <!-- 吐槽弹窗 -->
-        <Kefu_alert></Kefu_alert>
+        <KefuAlert></KefuAlert>
     </div>
 
 </template>
 
 <script>
-    import Public_Head from '~components/publicHead'
-    import Kefu_alert from '~components/kefu-alert'
+    import PublicHead from '~components/publicHead'
+    import KefuAlert from '~components/kefu-alert'
     import $ from 'bc-zepto.full'
-    import {aTypes, mTypes} from '~store/feedback'
     import {platform, src, getCk} from '~common/util'
 
     export default {
@@ -128,8 +126,8 @@
             }
         },
         components: {
-            Public_Head,
-            Kefu_alert
+            PublicHead,
+            KefuAlert
         },
         mounted (t) {
             const options = {}

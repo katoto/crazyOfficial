@@ -54,7 +54,7 @@
 //                await this.$store.dispatch('getUserInfo')
             /* 线上 登陆 */
 //                await this.$store.dispatch('checkLogin')
-                await this.$store.dispatch('checkLogin');
+                await this.$store.dispatch('checkLogin')
 
                 if (this.isLogin) {
                     await this.$store.dispatch('getUserInfo')

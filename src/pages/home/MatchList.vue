@@ -1,6 +1,6 @@
 <template>
     <section class="listWrap respon2">
-        <Public_Head person-title="全部赛事"></Public_Head>
+        <PublicHead person-title="全部赛事"></PublicHead>
         <div class="listWrap_tit clear">
         <ul class="list_menu">
         <li :class="{'cur': currentNav==='noEnd'}" v-tap="{ methods:nav ,params:'noEnd'}">未结束</li>
@@ -21,7 +21,7 @@
 <script>
     import {mutationTypes} from '~store/home'
     import {stopHtml} from '~common/util'
-    import Public_Head from '~components/publicHead'
+    import PublicHead from '~components/publicHead'
 export default {
         data () {
             return {
@@ -29,7 +29,7 @@ export default {
             }
         },
         components: {
-            Public_Head
+            PublicHead
         },
         computed: {
             userInfo () {

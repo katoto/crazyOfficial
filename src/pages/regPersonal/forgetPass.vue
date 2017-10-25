@@ -69,13 +69,13 @@
                 </button>
             </div>
         </div>
-        <Kefu_alert></Kefu_alert>
+        <KefuAlert></KefuAlert>
     </div>
 </template>
 
 <script>
     import {aTypes, mTypes} from '~store/regPerson'
-    import Kefu_alert from '~components/kefu-alert'
+    import KefuAlert from '~components/kefu-alert'
 
     export default {
         data () {
@@ -274,7 +274,7 @@
             this.$store.commit('showHeightTips', true)
         },
         components: {
-            Kefu_alert
+            KefuAlert
         }
     }
 </script>
