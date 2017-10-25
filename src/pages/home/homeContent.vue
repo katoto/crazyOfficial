@@ -315,7 +315,7 @@
         <!--  底部选项 -->
 
         <!-- 五大联赛 -->
-        <div>
+        <div style="display: none;">
             <a href="javascript:;" class="enter" id="enter" v-tap="{ methods:jumpToRedCenter}">
                 <img src="~static/images/enter-nationDay.png">
             </a>
@@ -454,13 +454,13 @@
                     setTimeout(() => {
                         document.querySelector('.message').scrollTop = 0
                     }, 11)
-                    _hmt.push(['_trackEvent', '500fkcqH5_我的消息点击', 'click', '500fkcqH5_我的消息'])
+                    _hmt.push(['_trackEvent', 'off_我的消息点击', 'click', 'off_我的消息'])
                     break
                 case 'option':
-                    stopHtml()
+//                    stopHtml()
                     this.$router.push('/fb_upload')
 //                    this.showOption = true;
-                    _hmt.push(['_trackEvent', '500fkcqH5_我要反馈点击', 'click', '500fkcqH5_我要反馈'])
+                    _hmt.push(['_trackEvent', 'off_我要反馈点击', 'click', 'off_我要反馈'])
                     break
                 case 'crazyPage':
                     if (platform === 'android') {
@@ -468,15 +468,15 @@
                     } else {
                         window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
                     }
-                    _hmt.push(['_trackEvent', '500fkcqH5_下载app(头像内)点击', 'click', '500fkcqH5_下载app'])
+                    _hmt.push(['_trackEvent', 'off_下载app(头像内)点击', 'click', 'off_下载app'])
                     break
                 case 'goHelp':
-                    _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
+                    _hmt.push(['_trackEvent', 'off_玩法说明点击', 'click', 'off_玩法说明'])
 //                    this.$router.push('/help')
                     this.$store.commit('showHelpbox', true)
                     break
                 case 'personCenter':
-                    _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
+                    _hmt.push(['_trackEvent', 'off_玩法说明点击', 'click', 'off_玩法说明'])
                     this.$router.push('/personCenter')
                     break
                 }

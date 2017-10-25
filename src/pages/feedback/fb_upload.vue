@@ -146,6 +146,8 @@
             $('.btn-red').on('click', function () {
                 let content = $('#submitcontent').val() // 内容
                 let imageStr = ''
+
+                _hmt.push(['_trackEvent', 'off_提交反馈点击', 'click', 'off_提交反馈'])
 //                let img2 = ''
             // 图片base64编码
                 if (!content || content === '') {

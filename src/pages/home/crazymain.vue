@@ -27,6 +27,7 @@
                     <!--</a>-->
                 <!--</div>-->
 
+                <!-- https://crazybet.choopaoo.com/img/esun/upload/67/df/67df142ab95511e7a3a0.jpg -->
                 <swiper class="left" :options="swiperOption"  ref="mySwiper">
                         <swiper-slide  v-tap="{ methods:matchNav ,params:'chargeNew'}">
                             <a href="javascript:;" class=" act-center">
@@ -152,12 +153,12 @@
                 this.$store.commit(mutationTypes.currentBetSelect, null)  // 切换隐藏投注框
                 switch (params) {
                 case 'hot':
-                    _hmt.push(['_trackEvent', '500fkcqH5_首页热门赛事点击', 'click', '500fkcqH5_首页热门赛事'])
+                    _hmt.push(['_trackEvent', 'off_首页热门赛事点击', 'click', 'off_首页热门赛事'])
                     this.currentTap = params
                     this.$router.replace(`/h5/home/${params}/`)
                     break
                 case 'goMatchList':
-                    _hmt.push(['_trackEvent', '500fkcqH5_首页全部赛事点击', 'click', '500fkcqH5_首页全部赛事'])
+                    _hmt.push(['_trackEvent', 'off_首页全部赛事点击', 'click', 'off_首页全部赛事'])
                     this.$router.push(`/h5/matchList/noEnd`)
                     break
                 case 'tips':
@@ -165,12 +166,12 @@
                     break
                 case 'chargeNew':
                     this.$router.push(`/chargeNew/draw`)
-                    _hmt.push(['_trackEvent', '500fkcqH5_领奖中心点击', 'click', '500fkcqH5_领奖中心'])
+                    _hmt.push(['_trackEvent', 'off_领奖中心点击', 'click', 'off_领奖中心'])
                     break
                 case 'activeBox':
                     if (this.activityListData) {
                         this.$store.commit('setActiveBox', true)
-                        _hmt.push(['_trackEvent', '500fkcqH5_最新活动点击', 'click', '500fkcqH5_最新活动'])
+                        _hmt.push(['_trackEvent', 'off_最新活动点击', 'click', 'off_最新活动'])
                     } else {
                         this.$store.dispatch(actionTypes.getActivityList)
                     }
@@ -181,7 +182,7 @@
                     } else {
                         window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
                     }
-                    _hmt.push(['_trackEvent', '500fkcqH5_下载app点击', 'click', '500fkcqH5_下载app'])
+                    _hmt.push(['_trackEvent', 'off_下载app点击', 'click', 'off_下载app'])
                     break
                 }
             }

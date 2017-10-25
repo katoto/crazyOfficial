@@ -6177,11 +6177,11 @@
                         }, 10)
                         this.$store.dispatch('getUserInfo')
                     }
-                    _hmt.push(['_trackEvent', '500fkcqH5_投注页猜球记录点击', 'click', '500fkcqH5_投注页猜球记录'])
+                    _hmt.push(['_trackEvent', 'off_投注页猜球记录点击', 'click', 'off_投注页猜球记录'])
                     break
                 case 'homeHot':
                     this.$store.state.home.currentBetSelect = null
-                    _hmt.push(['_trackEvent', '500fkcqH5_投注页home点击', 'click', '500fkcqH5_投注页home'])
+                    _hmt.push(['_trackEvent', 'off_投注页home点击', 'click', 'off_投注页home'])
                     $('body').scrollTop(0)
                     this.$router.push(`/h5/home/hot`)
                     break
@@ -6200,7 +6200,7 @@
                     setTimeout(() => {
                         this.$store.commit('showEventCountbox', true)
                     }, 10)
-                    _hmt.push(['_trackEvent', '500fkcqH5_投注页事件统计点击', 'click', '500fkcqH5_投注页事件统计'])
+                    _hmt.push(['_trackEvent', 'off_投注页事件统计点击', 'click', 'off_投注页事件统计'])
                     break
                 }
             },
@@ -6209,7 +6209,7 @@
                 this.current = null
                 this.currentRuleType = null
                 this.currSelectItemStr = null
-                _hmt.push(['_trackEvent', '500fkcqH5_投注页选项点击', 'click', '500fkcqH5_投注页选项拼音' + tab])
+                _hmt.push(['_trackEvent', 'off_投注页选项点击', 'click', 'off_投注页选项拼音' + tab])
             },
             format2 (num) {
 //                金币格式处理
@@ -6336,7 +6336,7 @@
                                 })
                             }, 300)
                             stopHtml()
-                            _hmt.push(['_trackEvent', '500fkcqH5_充值点击', 'click', '500fkcqH5_充值'])
+                            _hmt.push(['_trackEvent', 'off_充值点击', 'click', 'off_充值'])
                         } else {
                             this.selectedNum = this.selectedNum + addMoney
                         }
@@ -6365,7 +6365,7 @@
 //                            setTimeout(() => {
 //                                this.$store.commit('showChargebox', true)
 //                            }, 10)
-                            _hmt.push(['_trackEvent', '500fkcqH5_充值点击', 'click', '500fkcqH5_充值'])
+                            _hmt.push(['_trackEvent', 'off_充值点击', 'click', 'off_充值'])
 
 //                            this.$router.push(`/my/charge`)
                         }

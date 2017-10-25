@@ -53,9 +53,9 @@ export default {
                 case 'noEnd':
                 case 'end':
                     if (params === 'noEnd') {
-                        _hmt.push(['_trackEvent', '500fkcqH5_全部赛事未结束点击', 'click', '500fkcqH5_全部赛事未结束'])
+                        _hmt.push(['_trackEvent', 'off_全部赛事未结束点击', 'click', 'off_全部赛事未结束'])
                     } else {
-                        _hmt.push(['_trackEvent', '500fkcqH5_全部赛事已结束点击', 'click', '500fkcqH5_全部赛事已结束'])
+                        _hmt.push(['_trackEvent', 'off_全部赛事已结束点击', 'click', 'off_全部赛事已结束'])
                     }
                     this.$router.replace(`/h5/matchList/${params}/`)
                     break

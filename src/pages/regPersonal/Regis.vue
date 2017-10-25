@@ -308,17 +308,19 @@
                 console.log('watch', regisData)
                 if (regisData.ck) {
                     /* 可以到后台 */
+                    let _this = this;
                     this.$store.commit('ck', regisData.ck)
                     this.$store.dispatch('showToast', {
                         duration: 1000,
                         message: '注册成功',
                         cb: () => {
                             /* 来源 ！！！！！！！ */
-                            this.$router.push(`/h5/home/`)
+                            _this.$router.push(`/h5/home/`);
                         }
                     })
                     setTimeout(() => {
-                        this.$store.dispatch('getUserInfo')
+                        _this.$store.dispatch('getUserInfo');
+                        _this.$store.dispatch('checkLogin')
                     }, 10)
                 } else {
                     this.$router.push(`/register`)

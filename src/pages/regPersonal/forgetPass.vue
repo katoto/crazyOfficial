@@ -167,7 +167,7 @@
                 forgetData = Object.assign({}, { mobile: this.telNumber, verifycode: this.telCode })
                 this.$store.dispatch(aTypes.checkWdReset, forgetData)
             },
-            sendCodeFn () {
+            async sendCodeFn () {
                 if (this.telNumber === '') { return false }
                 let tel_reg = /^1[34578]\d{9}$/
                 if (tel_reg.test(this.telNumber)) {
@@ -176,22 +176,27 @@
                     if (this.countDownStr !== '获取验证码') {
                         return false
                     }
-                    this.countDownStr = '重发（' + codeTime + 's）'
-                    this.addUnable = true
 
-                    this.$store.dispatch(aTypes.getTelCode, Object.assign({}, { mobile: this.telNumber, vtype: 'forgetPass' }))
-                    times = setInterval(() => {
-                        codeTime = codeTime - 1
-                        if (codeTime === 0) {
-                            this.countDownStr = '获取验证码'
-                            this.addUnable = false
-                            codeTime = 60
-                            clearInterval(times)
-                        } else {
-                            this.countDownStr = '重发（' + codeTime + 's）'
-                            this.addUnable = true
-                        }
-                    }, 1000)
+                    await  this.$store.dispatch(aTypes.getTelCode, Object.assign({}, { mobile: this.telNumber, vtype: 'forgetPass' }));
+                    if(this.isCodeTime){
+                        this.countDownStr = '重发（' + codeTime + 's）'
+                        this.addUnable = true
+                        times = setInterval(() => {
+                            codeTime = codeTime - 1
+                            if (codeTime === 0) {
+                                this.countDownStr = '获取验证码'
+                                this.addUnable = false
+                                codeTime = 60
+                                clearInterval(times)
+                            } else {
+                                this.countDownStr = '重发（' + codeTime + 's）'
+                                this.addUnable = true
+                            }
+                        }, 1000)
+
+                    }else{
+                        clearInterval(times)
+                    }
                 } else {
                     this.$store.commit(mTypes.setfPTips, '请输入正确的手机号')
                 }
@@ -257,7 +262,10 @@
             },
             fPTips () {
                 return this.$store.state.regPerson.fPTips
-            }
+            },
+            isCodeTime () {
+                return this.$store.state.regPerson.isCodeTime
+            },
         },
         watch: {
             resetSign (sign) {

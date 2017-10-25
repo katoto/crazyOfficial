@@ -50,7 +50,7 @@
         /* 登陆还得修改下 */
             try {
             //    线下账号  测试  !!!
-                await this.$store.dispatch('localLogin', 123)
+                await this.$store.dispatch('localLogin', 1233)
                 await this.$store.dispatch('getUserInfo')
             /* 线上 登陆 */
 //                await this.$store.dispatch('checkLogin')
