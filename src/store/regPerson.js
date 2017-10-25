@@ -27,10 +27,13 @@ const state = {
 
     fPTips: null,
 
+    isCodeTime:false,
 
 }
 const mutationsInfo = mapMutations({
-
+    isCodeTime( state ,data ){
+        state.isCodeTime = data
+    },
     autoLoginNumber (state, data) {
         state.autoLoginNumber = data
     },
@@ -175,9 +178,10 @@ const actionsInfo = mapActions({
             } else {
                 codeData = await ajax.get(`/login/mobile/sms?mobile=${data}`)
             }
+            commit(mTypes.isCodeTime, true);
             console.log(codeData)
         } catch (e) {
-            console.log(e.message)
+            commit(mTypes.isCodeTime, false);
             dispatch('showToast', e.message)
             if (e.message === '手机号已经注册') {
                 commit(mTypes.isSendTelLogin, true)
