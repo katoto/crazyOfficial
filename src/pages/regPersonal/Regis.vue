@@ -48,6 +48,9 @@
                     <span class="reg-warning" v-if="rGTips">
                         {{ rGTips }}
                     </span>
+                    <span class="reg-prompt" v-if="showWarn && !rGTips">
+                        密码过于简单，建议使用数字加字符
+                    </span>
                 </div>
 
                 <button class="btn btn-reg" v-tap="{ methods:sendSubmit}" :class="{'btn-unable':!telCode || !telNumber || !userPassWord }">
@@ -80,7 +83,8 @@
                 telNumberBlur: true,
                 userPassWordBlur: true,
 
-                telCodeBlur: true
+                telCodeBlur: true,
+                showWarn:false,
             }
         },
         methods: {
@@ -93,7 +97,8 @@
                 if (this.isSerError) {
                     this.$store.commit(mTypes.setrGTips, '')
                 }
-                this.userPassWordBlur = false
+                this.userPassWordBlur = false;
+                this.showWarn = false;
             },
             checkCode (e) {
                 this.telCodeBlur = true
@@ -195,8 +200,6 @@
                         clearInterval(times)
                     }
 
-
-
                 } else {
                     this.$store.commit(mTypes.setIsSerError, false)
                     this.$store.commit(mTypes.setrGTips, '请输入正确的手机号')
@@ -223,11 +226,12 @@
                 this.userPassWordBlur = true;
                 if( isAllNumber.test( e.target.value) ){
                     console.log('密码过于简单，建议使用数字加字符');
-
+                    this.showWarn = true
                     return false;
                 }
                 if( isAllStr.test( e.target.value) ){
                     console.log('密码过于简单，建议使用数字加字符');
+                    this.showWarn = true
                     return false;
                 }
                 if (!(pass_reg.test(e.target.value)) && e.target.value !== '') {

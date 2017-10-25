@@ -92,7 +92,8 @@ const state = {
     },
     showHeightTips: false,
 
-    kefuAlert: true
+    kefuAlert: true,
+    showHelpbox:false,
 
 }
 const mutations = {
@@ -221,6 +222,9 @@ const mutations = {
     },
     showAwardbox (state, data) {
         state.awardAllData.showAwardbox = data
+    },
+    showHelpbox (state, data) {
+        state.showHelpbox = data
     },
     setAwardImg (state, data) {
         state.awardAllData.setAwardImg = data

@@ -20,7 +20,7 @@
                 <!-- 消息不为空 -->
                 <div class="scroller message">
                     <div  id="MatchListDom">
-                        <div class="msg_item" v-for="msg in messageList">
+                        <div class="msg_item" v-for="msg in messageList" :class="{ 'msg_item_yidu' : !msg.valid }">
                             <div class="msg_tit"  v-tap="{methods: switchMsgContent, cid: msg.cid}">
                                 <h3>[{{ msg.pid?'奖励':'系统' }}] {{ msg.title }}<sup v-if="(msg.pid && msg.valid )|| (!msg.pid && msg.isnew==='1' )"></sup></h3>
                                 <p class="msg_time">{{msg.time}}</p>

@@ -191,6 +191,9 @@
         <!-- 嘉奖 弹窗  -->
         <AwardAlert v-if="showAwardbox"></AwardAlert>
 
+        <!-- 玩法说明弹窗 -->
+        <HelpAlert v-if="showHelpbox"></HelpAlert>
+
         <!-- 吐槽弹窗 new -->
         <div class="pop pop-opinion" :class="{'hide':!showOption}">
             <div class="pop_layer" v-tap="{ methods:closeOption}"></div>
@@ -328,6 +331,7 @@
     import HeaderTemplateHome from '~components/header_template_home.vue'
     import MsgAlert from '~components/msg-alert.vue'
     import Public_Head from '~components/publicHead'
+    import HelpAlert from '~components/help-alert'
 
     import BetListAlert from '~components/betList-alert.vue'
     import AwardAlert from '~components/award-alert.vue'
@@ -468,11 +472,12 @@
                     break
                 case 'goHelp':
                     _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
-                    this.$router.push('/help')
+//                    this.$router.push('/help')
+                    this.$store.commit('showHelpbox',true);
                     break
                 case 'personCenter':
                     _hmt.push(['_trackEvent', '500fkcqH5_玩法说明点击', 'click', '500fkcqH5_玩法说明'])
-                    this.$router.push('/personCenter')
+                    this.$router.push('/personCenter');
                     break
                 }
             }
@@ -500,6 +505,9 @@
             },
             isHideHomeHead () {
                 return this.$store.state.isHideHomeHead
+            },
+            showHelpbox(){
+                return this.$store.state.showHelpbox
             },
             userinfo () {
                 if (this.$store.state.userInfo && this.$store.state.userInfo.is_activity === '1' && this.isSign === '0') {
@@ -576,7 +584,8 @@
             MsgAlert,
             BetListAlert,
             AwardAlert,
-            Public_Head
+            Public_Head,
+            HelpAlert
         },
         filters: {
             format: (num) => {

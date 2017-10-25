@@ -181,6 +181,10 @@ const actionsInfo = mapActions({
             commit(mTypes.isCodeTime, true);
             console.log(codeData)
         } catch (e) {
+            if(e.code ==='242'){
+                dispatch('showToast','验证码发送次数已达5次，请明天再试');
+                return false;
+            }
             commit(mTypes.isCodeTime, false);
             dispatch('showToast', e.message)
             if (e.message === '手机号已经注册') {
@@ -231,7 +235,7 @@ const actionsInfo = mapActions({
                     commit(mTypes.setrGTips, e.message)
                         ; break
                 }
-            } else {
+            }  else{
                 dispatch('showToast', e.message)
             }
         }

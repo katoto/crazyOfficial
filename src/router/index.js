@@ -16,7 +16,6 @@ const matchListEnd = () => import('~pages/home/matchList_end' /* webpackChunkNam
 
 // main
 const Main = () => import('~pages/main/Main' /* webpackChunkName: "chunks/main" */)
-const Help = () => import('~pages/Help' /* webpackChunkName: "chunks/main" */)
 
 /* 活动相关的页面 */
 const FootballAct = () => import('~pages/actPage/footballAct' /* webpackChunkName: "chunks/actPage" */)
@@ -106,10 +105,6 @@ const router = new VueRouter({
         {
             path: '/lotteryNotes',
             component: LotteryNotes
-        },
-        {
-            path: '/help',
-            component: Help
         },
         {
             path: '/chargeNew/:others?',
