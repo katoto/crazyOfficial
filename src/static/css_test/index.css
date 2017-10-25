@@ -1233,9 +1233,11 @@
 }
 
 .pop_msg .box {
-    margin-top:45px;
+    margin: 30px auto;
+    border-radius: 10px;
+    width: 620px;
+    height: 780px;
 }
-
 .pop_msg .scroller {
     height: 780px;
 }
@@ -1349,10 +1351,6 @@
     height: 820px;
 }
 
-.list {
-    margin-bottom: 40px;
-}
-
 .list:first-child {
     padding-top: 20px;
 }
@@ -1386,7 +1384,7 @@
     display: none;
 }
 .cont-tit .fl span {
-    color: #ccc;
+    color: #d9ddff;
     margin: 0 10px;
 }
 

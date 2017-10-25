@@ -964,8 +964,8 @@
 
 /*玩法说明*/
 .pop-help .popIn{
-    height:1110px;
-    margin-top:-555px;
+    /*height:1110px;*/
+    /*margin-top:-555px;*/
 }
 .pop-help .help-tips{
     padding:12px 15px 0;
@@ -977,8 +977,8 @@
     margin-bottom:12px;
 }
 .pop-help .box{
-    padding-top: 45px;
-    height:730px;
+    padding-top: 26px;
+    height:570px;
     text-align: left;
 }
 
@@ -1026,6 +1026,6 @@
     font-size:26px;
     color: #d9ddff;
 }
-.myprop-list .item-no img,.myprop-list .item-no span {
+ .item-no img, .item-no span {
     opacity: .3
 }

@@ -365,7 +365,7 @@
     width:598px;
     height:545px;
     /*overflow: hidden;*/
-    margin:0 auto;
+    margin:40px auto 0;
 }
 .pop-userImg-c ul{
     display: flex;

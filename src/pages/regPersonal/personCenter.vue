@@ -40,7 +40,7 @@
             </button>
         </div>
         <!--选择头像弹窗-->
-        <div class="pop pop-userImg" :class="{'hide':!showImg }">
+        <div class="pop pop02 pop-userImg" :class="{'hide':!showImg }">
             <div class="pop_layer"
                  v-tap="{methods:changeTab,params:'per_center'}"
             ></div>
@@ -48,8 +48,8 @@
                 <span class="close" v-tap="{methods:changeTab,params:'per_center'}">
                     <span></span>
                 </span>
-                <div class="pop-t">
-                    选择头像
+                <div class="popTit">
+                    <h2 class="title">选择头像</h2>
                 </div>
                 <div class="pop-userImg-c">
                     <div class="full-scroll" id="selImgDom"
