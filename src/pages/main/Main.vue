@@ -6183,7 +6183,7 @@
                     this.$store.state.home.currentBetSelect = null
                     _hmt.push(['_trackEvent', 'off_投注页home点击', 'click', 'off_投注页home'])
                     $('body').scrollTop(0)
-                    this.$router.push(`/h5/home/hot`)
+                    this.$router.push(`/h5/home`)
                     break
                 case 'backHistory':
                     this.$store.state.home.currentBetSelect = null

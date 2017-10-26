@@ -29,13 +29,13 @@
 
                 <!-- https://crazybet.choopaoo.com/img/esun/upload/67/df/67df142ab95511e7a3a0.jpg -->
                 <swiper class="left" :options="swiperOption"  ref="mySwiper">
-                        <swiper-slide  v-tap="{ methods:matchNav ,params:'chargeNew'}">
-                            <a href="javascript:;" class=" act-center">
+                        <swiper-slide  v-tap="{ methods:matchNav ,params:'chargeNew'}" >
+                            <a href="javascript:;" class="act-center">
                                 <img :src="homeActivitiesData[0].image" alt="下载">
                             </a>
                         </swiper-slide>
                         <swiper-slide v-tap="{ methods:matchNav ,params:'downLoad'}">
-                            <a v-if="homeActivitiesData[2]" href="javascript:;" class=" act-center">
+                            <a v-if="homeActivitiesData[2]" href="javascript:;" class="act-center">
                                 <img :src="homeActivitiesData[2].image" alt="领奖中心">
                             </a>
                         </swiper-slide>

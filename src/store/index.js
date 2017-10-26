@@ -302,6 +302,7 @@ const actions = {
             const hasCk = await getCk()
             if (hasCk && hasCk !== 'undefined' && hasCk !== '') {
                 commit('setIsLogin', true)
+                commit('ck',hasCk)
             } else {
                 commit('setIsLogin', false)
             }
