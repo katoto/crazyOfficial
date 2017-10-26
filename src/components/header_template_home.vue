@@ -1,53 +1,49 @@
 <template>
-    <div class="header_hc clear" v-if="userInfo">
-        <div class="user" :class="{'on':showHeadBox }" v-tap="{methods:enterMy,params:'headParentBox'}">
-                <span class="face">
-                    <sup class="dot" v-if="(userInfo.notifies!='0') || ( userInfo.prize_records!='0')  || (userInfo.fb_badge && parseInt(userInfo.fb_badge)>0 )"></sup>
-                </span>
-            <span class="face-arrow"></span>
+    <div>
+        <div class="header_hc clear" v-if="hasLogin && userInfo">
+            <div class="user" :class="{'on':showHeadBox }" v-tap="{methods:enterMy,params:'headParentBox'}">
+            <span class="face">
+                <sup class="dot" v-if="(userInfo.notifies!='0') || ( userInfo.prize_records!='0')  || (userInfo.fb_badge && parseInt(userInfo.fb_badge)>0 )"></sup>
+            </span>
+                <span class="face-arrow"></span>
+            </div>
+            <div class="link" v-tap="{methods:enterMy,params:'betlist'}">
+            <span class="link-icon">
+                <sup class="dot" v-if=" userInfo && userInfo.newprize && userInfo.newprize !='0'"></sup>
+            </span>
+            </div>
+            <div class="rank" v-tap="{methods:enterMy,params:'rank'}">
+                <span class="rank-icon"></span>
+            </div>
+            <div class="my_moeny">
+                <span>{{userInfo.gold_total | format }}</span>
+                <a href="javascript:;" class="btn_add" v-tap="{methods:enterMy,params:'charge'}">
+                    <span class="my_moeny-icon"></span>
+                </a>
+            </div>
         </div>
-        <div class="link" v-tap="{methods:enterMy,params:'betlist'}">
-                <span class="link-icon">
-                    <sup class="dot" v-if=" userInfo && userInfo.newprize && userInfo.newprize !='0'"></sup>
-                </span>
-        </div>
-        <div class="rank" v-tap="{methods:enterMy,params:'rank'}">
-            <span class="rank-icon"></span>
-        </div>
-        <div class="my_moeny">
-            <span>{{userInfo.gold_total | format }}</span>
-            <a href="javascript:;" class="btn_add" v-tap="{methods:enterMy,params:'charge'}">
-                <span class="my_moeny-icon"></span>
-            </a>
-        </div>
-    </div>
-    <!--<div  class="header_hc clear" v-else>-->
-    <!--<div class="before-login clear">-->
-    <!--<p class="top_msg">与<em>{{ scrollNumber }}</em>人一起体验疯狂猜球</p>-->
-    <!--<a class="fr" v-tap="{methods:enterMy,params:'doAuth'}">请登录<i class="icon icon_raw"></i></a>-->
-    <!--</div>-->
-    <!--</div>-->
-    <div  class="header_hc clear" v-else>
-        <div class="user" :class="{'on':showHeadBox }" v-tap="{methods:enterMy,params:'doAuth'}">
+        <div  class="header_hc clear" v-else>
+            <div class="user" :class="{'on':showHeadBox }" v-tap="{methods:enterMy,params:'doAuth'}">
                 <span class="face">
                 </span>
-            <span class="face-arrow"></span>
-        </div>
-        <div class="link" v-tap="{methods:enterMy,params:'doAuth'}">
+                <span class="face-arrow"></span>
+            </div>
+            <div class="link" v-tap="{methods:enterMy,params:'doAuth'}">
                 <span class="link-icon">
                 </span>
-        </div>
-        <div class="rank" v-tap="{methods:enterMy,params:'rank'}">
-            <span class="rank-icon"></span>
-        </div>
-        <div class="my_moeny" v-if="userInfo">
-            <span>{{userInfo.gold_total | format }}</span>
-            <a href="javascript:;" class="btn_add" v-tap="{methods:enterMy,params:'doAuth'}">
-                <span class="my_moeny-icon"></span>
-            </a>
-        </div>
-        <div class="my_moeny" v-else>
-            <a  class="nologin" v-tap="{methods:enterMy,params:'doAuth'}">未登录 > &nbsp;&nbsp;</a>
+            </div>
+            <div class="rank" v-tap="{methods:enterMy,params:'rank'}">
+                <span class="rank-icon"></span>
+            </div>
+            <div class="my_moeny" v-if="userInfo">
+                <span>{{userInfo.gold_total | format }}</span>
+                <a href="javascript:;" class="btn_add" v-tap="{methods:enterMy,params:'doAuth'}">
+                    <span class="my_moeny-icon"></span>
+                </a>
+            </div>
+            <div class="my_moeny" v-else>
+                <a  class="nologin" v-tap="{methods:enterMy,params:'doAuth'}">未登录 > &nbsp;&nbsp;</a>
+            </div>
         </div>
     </div>
 </template>

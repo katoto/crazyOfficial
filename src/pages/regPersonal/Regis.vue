@@ -8,11 +8,9 @@
                 <a href="javascript:;" class="to-login"
                    v-tap="{methods:goPageFn,target:'login' }"
                 >登录</a>
-                <!--登录主页时这个a隐藏-->
             </div>
             <div class="logo"></div>
             <p class="">畅玩猜球 新用户立领888币</p>
-            <!--登录主页隐藏这个p，注册才显示-->
         </div>
         <div class="reg-c">
             <div >
@@ -37,7 +35,6 @@
                     <span class="delete" v-if="telCode && !telCodeBlur" v-tap="{ methods:delNumber ,params:'telCode'}"></span>
 
                 </div>
-                <!--1 or user-msg02-->
                 <a href="javascript:;"
                    v-tap="{ methods:sendCodeFn }" class="user-co" :class="{'user-msg01':telNumber.length === 11 , 'user-msg02': telNumber.length !== 11 || addUnable }"
                 >
@@ -56,7 +53,6 @@
                 <button class="btn btn-reg" v-tap="{ methods:sendSubmit}" :class="{'btn-unable':!telCode || !telNumber || !userPassWord }">
                     立即注册
                 </button>
-                <!--btn-unable 不可点击-->
             </div>
             <p class="reg-tips">创建帐号即代表你同意 <a href="javascript:;"
                   v-tap="{methods:goPageFn,target:'regProtocol' }"
@@ -113,7 +109,6 @@
             },
             checkTelCodeFocus () {
                 this.telCodeBlur = false
-//                this.$store.commit(mTypes.setrGTips , '');
             },
             sendSubmit () {
                 let sendData = null
@@ -140,7 +135,6 @@
                 document.getElementById('passDom').blur()
                 document.getElementById('LoCode').blur()
 
-        /* 提交数据  divicedid */
                 sendData = Object.assign({}, {
                     logintype: 'reg',
                     mobile: this.telNumber,
@@ -148,13 +142,12 @@
                     password: this.userPassWord
                 })
                 this.$store.dispatch(aTypes.setRegis, sendData)
-        /* function  */
             },
             goPageFn ({ target }) {
                 target = target || 'backHistory'
                 switch (target) {
                 case 'login':
-                    _hmt.push(['_trackEvent', '合伙人注册页登陆点击', 'click', '合伙人注册页登陆'])
+                    _hmt.push(['_trackEvent', 'off_合伙人注册页登陆点击', 'click', 'off_合伙人注册页登陆'])
                     if (this.isSendTelLogin) {
                         this.$store.commit(mTypes.autoTelNumber, this.telNumber)
                     } else {
@@ -224,12 +217,10 @@
                 document.getElementById('passDom').setAttribute('placeholder', '密码')
                 this.userPassWordBlur = true
                 if (isAllNumber.test(e.target.value) && e.target.value !== '' ) {
-                    console.log('密码过于简单，建议使用数字加字符')
                     this.showWarn = true
                     return false
                 }
                 if (isAllStr.test(e.target.value) && e.target.value !== '') {
-                    console.log('密码过于简单，建议使用数字加字符')
                     this.showWarn = true
                     return false
                 }
@@ -305,7 +296,6 @@
         },
         watch: {
             regisData (regisData) {
-                console.log('watch', regisData)
                 if (regisData.ck) {
                     /* 可以到后台 */
                     let _this = this;

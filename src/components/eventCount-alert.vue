@@ -161,27 +161,6 @@
                 default: return ''
                 }
             }
-//            formatFootballCase: (caseStr) => {
-/// /                足球比赛统计 主
-//                switch (caseStr) {
-//                case '101025':return '角球'
-//                case '101065':return '进球'
-//                case '101045':return '红牌'
-//                case '101032':return '红牌'
-//                case '101034':return '黄牌'
-//                case '100018':return '点球开始'
-//                case '102049':return '角球'
-//                case '102089':return '进球'
-//                case '102069':return '红牌'
-//                case '102056':return '红牌'
-//                case '102058':return '黄牌'
-//                case '100141':return '比赛开始' // 有数据就开始
-//                case '100001':return '中场休息'
-//                case '100008':return '点球开始'
-//                case '100782':return '取消比赛'
-//                default: return ''
-//                }
-//            }
         }
     }
 </script>

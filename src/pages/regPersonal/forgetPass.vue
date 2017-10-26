@@ -19,7 +19,6 @@
                     <span class="delete" v-if="telCode && !telCodeBlur" v-tap="{ methods:delNumber ,params:'telCode'}"></span>
 
                 </div>
-                <!--user-msg01 or user-msg02-->
                 <a href="javascript:;"
                    v-tap="{ methods:sendCodeFn }" class="user-co" :class="{'user-msg01':telNumber.length ===11 , 'user-msg02':telNumber.length !==11 || addUnable}"
                 >
@@ -48,7 +47,6 @@
             <div>
                 <div class="user-co user-pass">
                     <span class="user-icon pas-icon"></span>
-                    <!--eye-iconOff or eye-iconOff-->
                     <span
                             v-tap="{ methods:showCodeFn}" :class="{ 'eye-iconOn':showCode ,'eye-iconOff':!showCode }"
                     ></span>
@@ -109,7 +107,6 @@
             },
             checkCode (e) {
                 this.telCodeBlur = true
-//                this.$store.commit(mTypes.setIsSerError , false );
                 if (e.target.value.length !== 4) {
                     this.$store.commit(mTypes.setfPTips, '请输入4位验证码')
                     return false

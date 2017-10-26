@@ -304,9 +304,7 @@ const actionsInfo = mapActions({
 
     async getRedTimeInfo ({commit, dispatch}) {
         try {
-            // let InfoData = await ajax.get(`/activity/redpack/info?src=${src()}&ck=${getCk()}&platform=${platform}`);
             let InfoData = await ajax.get(`http://crazybet.choopaoo.com:7899/activity/redpack/info?src=${src()}&ck=${getCk()}&platform=${platform}`)
-            console.log(InfoData)
             commit(mTypes.setNationGetRed, InfoData)
         } catch (e) {
             dispatch('showToast', e.message)

@@ -244,7 +244,6 @@
                 }
             }
         },
-        watch: {},
         methods: {
             helpItem ({helpSel}) {
                 //                切换帮助里头的选项
@@ -296,9 +295,5 @@
                 }
             }
         },
-        computed: {},
-        mounted () {
-
-        }
     }
 </script>

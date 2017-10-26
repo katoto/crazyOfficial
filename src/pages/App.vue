@@ -17,11 +17,7 @@
     import '~static/css/media.css'
     import '~static/css/pop.css'
 
-    /* 到时候移到反馈里 */
-    import '~static/css/feedback.css'
-
     import '~static/css/reg.css'
-
     import {platform} from '~common/util'
 
     export default {
@@ -46,7 +42,6 @@
             }
         },
         async mounted () {
-//            console.log(window.location.href);
         /* 登陆还得修改下 */
             try {
             //    线下账号  测试  !!!
@@ -55,7 +50,6 @@
             /* 线上 登陆 */
 //                await this.$store.dispatch('checkLogin')
                 await this.$store.dispatch('checkLogin')
-
                 if (this.isLogin) {
                     await this.$store.dispatch('getUserInfo')
                 }
@@ -82,9 +76,6 @@
                 }
             }
         },
-        methods: {
-
-        }
     }
 </script>
 <style>

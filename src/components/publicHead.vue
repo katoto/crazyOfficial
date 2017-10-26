@@ -43,6 +43,5 @@
                 return this.$store.state.userInfo
             }
         }
-
     }
 </script>

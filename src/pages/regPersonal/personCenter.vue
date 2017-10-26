@@ -228,11 +228,6 @@
             exit () {
                 this.$store.commit('removeCk')
                 setTimeout(() => {
-                // 更新接口数据
-//                    this.$store.dispatch('checkLogin');
-//                    this.$store.dispatch(actionTypes.getFootballMatchList, 'newhot')
-//                    this.$store.dispatch(actionTypes.getSignList)
-//                    this.$store.dispatch(actionTypes.getActivityList)
                     this.$router.push(`/h5/home`)
                     window.location.reload()
                 }, 10)

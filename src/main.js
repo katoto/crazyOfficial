@@ -12,7 +12,6 @@ import vueTap from 'v-tap'
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
-// import platform from '~common/platform'
 const store = storeFactory()
 sync(store, router)
 Vue.use(vueTap)

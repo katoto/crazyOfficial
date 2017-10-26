@@ -87,7 +87,6 @@
         },
         watch: {
             loginData (loginData) {
-                console.log(loginData)
                 if (loginData) {
                     if (loginData.ck) {
                         /* 可以到后台 */

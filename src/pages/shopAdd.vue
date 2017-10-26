@@ -237,7 +237,7 @@ export default {
                 return this.$store.state.shopAddData.isSaveBtn
             },
             hasUserInfo () {
-                return !!this.$store.state.userInfo
+                return !!this.$store.state.ck
             }
         },
         mounted () {

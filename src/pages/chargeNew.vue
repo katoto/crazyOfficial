@@ -228,7 +228,6 @@
         <!-- 中奖弹窗 -->
 
         <!-- 物流弹窗开始   -->
-        <!--<div class="pop pop_logistics" :class="{'hide':!showLogisticTap}">-->
         <div class="pop pop_logistics" :class="{'hide':!showLogisticTap}">
             <div class="pop_layer" v-tap="{methods: closeWuliuBox}"></div>
             <div class="popIn">
@@ -375,7 +374,6 @@ export default {
             },
             startLuckDraw () {
                 if (this.luckMessData) {
-                    console.log(this.luckMessData)
                     if (this.luckMessData.company) {
                         this.$store.dispatch('getLuckGoodBingo', {
                             currGoodsid: this.luckMessData.goodsid,
@@ -395,17 +393,6 @@ export default {
                     this.$router.push('/chargeNew/draw')
                 }
             },
-//            showLogisticTapFn ({orderNum}) {
-//                orderNum = 22308677667;
-//                if (!orderNum) {
-//                    orderNum = 0;
-//                    console.log('无订单号');
-//                    return false
-//                }
-/// /                请求物流接口
-//                this.$store.dispatch('getLogisticMess', orderNum)
-//            },
-
             closeWuliuBox () {
                 this.showLogisticTap = false
             },
@@ -452,11 +439,11 @@ export default {
                 params = params || ''
                 switch (params) {
                 case 'lotteryNotes':
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页抽奖说明点击', 'click', '500fkcqH5_商城页抽奖说明'])
+                    _hmt.push(['_trackEvent', 'off_商城页抽奖说明点击', 'click', 'off_商城页抽奖说明'])
                     this.$router.push('/lotteryNotes')
                     ;break
                 case 'shopAdd':
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页收奖地址点击', 'click', '500fkcqH5_商城页收奖地址'])
+                    _hmt.push(['_trackEvent', 'off_商城页收奖地址点击', 'click', 'off_商城页收奖地址'])
                     this.$router.push('/shopAdd')
                     ;break
                 case 'myHome':
@@ -517,7 +504,7 @@ export default {
                     this.isShowPrizeList = params
                 /* 可优化 */
                     this.$store.dispatch('getWinGoodList')
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页兑换记录点击', 'click', '500fkcqH5_商城页兑换记录'])
+                    _hmt.push(['_trackEvent', 'off_商城页兑换记录点击', 'click', 'off_商城页兑换记录'])
                 } else {
                     this.$store.dispatch('doAuth')
                 }
@@ -533,7 +520,7 @@ export default {
                 /* 可在充值回调后 请求 */
                     this.$store.dispatch('getFootballPropsList')
                     this.isShowMyTool = params
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页我的道具点击', 'click', '500fkcqH5_商城页我的道具'])
+                    _hmt.push(['_trackEvent', 'off_商城页我的道具点击', 'click', 'off_商城页我的道具'])
                 } else {
                     this.$store.dispatch('doAuth')
                 }
@@ -550,19 +537,16 @@ export default {
                     if (this.userInfo) {
                         this.$store.dispatch('getWinGoodList')
                     }
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页兑换点击', 'click', '500fkcqH5_商城页兑换'])
+                    _hmt.push(['_trackEvent', 'off_商城页兑换点击', 'click', 'off_商城页兑换'])
                 } else {
                     this.$router.push('/chargeNew')
-                    _hmt.push(['_trackEvent', '500fkcqH5_商城页充值点击', 'click', '500fkcqH5_商城页充值'])
+                    _hmt.push(['_trackEvent', 'off_商城页充值点击', 'click', 'off_商城页充值'])
                 }
                 this.isShowChargeTab = params
             },
 
             /* 去抽奖展示 先按跳转的来处理吧  */
             gotoLuck ({item}) {
-/*                if (item.goodstype === '1' || item.goodstype === '3') {
-                    this.isVirtualPrizes = true
-                } */
                 //  抽奖入口判断
                 if (item) {
                     this.clickImgGood = true
@@ -590,7 +574,7 @@ export default {
                 params.goldnum = this.current.goldnum
                 params.payid = 3009
                 this.$store.dispatch('doCharge', params)
-                _hmt.push(['_trackEvent', '500fkcqH5_充值额度' + this.current.rmb + '点击', 'click', '500fkcqH5_充值额度' + this.current.rmb])
+                _hmt.push(['_trackEvent', 'off_充值额度' + this.current.rmb + '点击', 'click', 'off_充值额度' + this.current.rmb])
             }
 
         },

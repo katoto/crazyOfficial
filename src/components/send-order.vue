@@ -42,7 +42,6 @@
         props: ['orderMessage', 'orderObj'],
         data () {
             return {
-                title: '',
                 flashMsg: '', // 右下角闪动提示
                 inFlash: false, // 右下角闪动提示
                 currentRuleType: '100'

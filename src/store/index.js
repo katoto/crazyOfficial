@@ -350,7 +350,6 @@ const actions = {
 
     /*   我的消息   */
     async getMessageList ({commit, dispatch, state}, pageNum = 1) {
-        console.log('message')
         if (state.msgAllData.isReadyGet && !state.msgAllData.isNoneMessList) {
             state.msgAllData.isReadyGet = false
             state.msgAllData.isAddMessList = true
@@ -416,13 +415,13 @@ const actions = {
             delete newChatData.product_name
             delete newChatData.return_url
 
-            console.log({
-                'pid': weChatData.product_id,
-                'fee': weChatData.paymoney,
-                'title': weChatData.product_name,
-                'pay_type': '1', /* 1微信支付 2 支付宝支付 */
-                'mix': newChatData
-            })
+            // console.log({
+            //     'pid': weChatData.product_id,
+            //     'fee': weChatData.paymoney,
+            //     'title': weChatData.product_name,
+            //     'pay_type': '1', /* 1微信支付 2 支付宝支付 */
+            //     'mix': newChatData
+            // })
             if (window.qqsdApp && weChatData) {
                 try {
                     // app 支付
@@ -709,8 +708,8 @@ const actions = {
             const baseUrl = location.origin + location.pathname + '?params=_@_' + ck
             // 1,2         // 1 取消支付  2 支付成功
 
-            console.log(baseUrl + '_@_2')
-            console.log(baseUrl + '_@_1')
+            // console.log(baseUrl + '_@_2')
+            // console.log(baseUrl + '_@_1')
 
             params = Object.assign({}, params, {
                 return_url: baseUrl + '_@_2',
@@ -719,9 +718,7 @@ const actions = {
                 platform: platform,
                 src: src()
             })
-            console.log(params)
             const weChatData = await ajax.get(`/shops/gold/buy?${convertToQueryString(params)}`)
-            console.log(weChatData)
             location.href = weChatData.req
         } catch (e) {
             if (e.code === '101') {

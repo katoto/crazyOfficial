@@ -85,7 +85,6 @@
 export default {
         data () {
             return {
-                title: '',
                 alertGoodsBox: false,
                 showLuckEnd: false
             }
@@ -111,7 +110,7 @@ export default {
             },
             showLuckEndFn () {
                 /* 中奖框 */
-                if (this.userInfo) {
+                if ( !!this.ck) {
                     if (this.luckMessData) {
                         if (this.luckMessData.company) {
                             this.$store.dispatch('getLuckGoodBingo', {
@@ -128,7 +127,7 @@ export default {
                             })
                         }
                     } else {
-                        this.$store.dispatch('showToast', '抽取失败,请重新再试')
+                        this.$store.dispatch('showToast', '抽取失败,请重新再试');
                         this.alertGoodsBox = false
                     }
                 } else {
@@ -136,17 +135,7 @@ export default {
                 }
             },
             startLuckDraw () {
-                this.alertGoodsBox = true
-//                if(this.luckMessData){
-//                    this.$store.dispatch('getLuckGoodBingo', {
-//                        currGoodsid: this.luckMessData.goodsid,
-//                        currConsumgolds: this.luckMessData.consumgolds,
-//                        goodstype: this.luckMessData.goodstype
-//                    })
-//                }else{
-//                    this.$store.dispatch('showToast', '抽取失败,请重新再试');
-//                    this.$router.push('/chargeNew/draw');
-//                }
+                this.alertGoodsBox = true;
             }
         },
         components: {
@@ -162,6 +151,9 @@ export default {
             },
             userinfoMess () {
                 return this.$store.state.userInfo
+            },
+            ck () {
+                return this.$store.state.ck
             },
             /* 滚动数据 */
             bannerScrollData () {
@@ -192,5 +184,4 @@ export default {
         }
     }
 </script>
-<style>
-</style>
+

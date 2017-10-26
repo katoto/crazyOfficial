@@ -23,8 +23,8 @@
             </a>
         </div>
 
-        <div class="pop pop-loading" :class="{'hide':!showLoading}">
-            <img src="images/loading.svg" alt="">
+        <div class="pop pop-loading" :class="{'hide':!showLoading }">
+            <img src="~static/images/loading.svg" alt="">
             <p>正在提交</p>
         </div>
 
@@ -58,10 +58,12 @@
 </template>
 
 <script>
+    import '~static/css/feedback.css'
     import PublicHead from '~components/publicHead'
     import KefuAlert from '~components/kefu-alert'
     import $ from 'bc-zepto.full'
     import {platform, src, getCk} from '~common/util'
+
 
     export default {
         data () {

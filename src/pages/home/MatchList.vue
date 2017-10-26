@@ -71,7 +71,7 @@ export default {
                 } else {
                     this.$store.dispatch('doAuth')
                 }
-                _hmt.push(['_trackEvent', '500qqsd_全部赛事页猜球记录点击', 'click', '500qqsd_全部赛事页猜球记录'])
+                _hmt.push(['_trackEvent', 'off_全部赛事页猜球记录点击', 'click', 'off_全部赛事页猜球记录'])
             }
         }
     }

@@ -1,11 +1,9 @@
 <template>
     <div class="svg-box">
-        <!--<span class="ml1-ScoreHeader_Clock">40:50</span>-->
         <div class="ml1-MatchLiveSoccerModule_Constrainer ml1-SwipeContainer_Child ml1-SwipeContainer_ViewIndex-0 ">
             <div class="ml1-MatchLiveSoccerModule_MatchLiveWrapper ">
                 <div class="ml1-MatchLiveSoccerModule_PitchContainer ">
                     <img src="~static/images/bg.png" class="imgbg"/>
-                    <!--<a href="" class="yindao-dl">本数据由“球球是道”App独家提供</a>-->
                     <div class="svg-bg svg-bg1 hide"></div>
                     <div class="svg-bg  svg-bg2 hide"></div>
                     <div class="svg-bg svg-bg3 hide"></div>

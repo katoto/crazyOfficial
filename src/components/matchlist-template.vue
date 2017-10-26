@@ -53,13 +53,6 @@
 
     export default {
         props: ['matchData', 'matchStyle'],
-        data () {
-            return {
-                title: ''
-            }
-        },
-        watch: {
-        },
         methods: {
             showAwardBoxFn ({params}) {
                 this.$store.commit('showAwardbox', true)
@@ -113,9 +106,6 @@
             hidehotMatchID () {
                 return this.$store.state.home.hidehotMatchID
             }
-        },
-        mounted () {
-
         },
         filters: {
             format: (num) => {
@@ -233,5 +223,4 @@
         }
     }
 </script>
-<style>
-</style>
+

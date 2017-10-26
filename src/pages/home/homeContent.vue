@@ -357,7 +357,7 @@
                 if (this.ck) {
                     ck = this.ck.replace(/=/g, '$')
                 } else {
-                    this.$store.dispatch('doAuthLogin')
+                    this.$store.dispatch('doAuth')
                     return false
                 }
                 /* 带上参数 ！！ */
@@ -457,9 +457,7 @@
                     _hmt.push(['_trackEvent', 'off_我的消息点击', 'click', 'off_我的消息'])
                     break
                 case 'option':
-//                    stopHtml()
                     this.$router.push('/fb_upload')
-//                    this.showOption = true;
                     _hmt.push(['_trackEvent', 'off_我要反馈点击', 'click', 'off_我要反馈'])
                     break
                 case 'crazyPage':
@@ -472,7 +470,6 @@
                     break
                 case 'goHelp':
                     _hmt.push(['_trackEvent', 'off_玩法说明点击', 'click', 'off_玩法说明'])
-//                    this.$router.push('/help')
                     this.$store.commit('showHelpbox', true)
                     break
                 case 'personCenter':
@@ -510,10 +507,10 @@
                 return this.$store.state.showHelpbox
             },
             userinfo () {
-                if (this.$store.state.userInfo && this.$store.state.userInfo.is_activity === '1' && this.isSign === '0') {
-                    /* 活动弹窗 ( 弹窗规则有点问题 ) ???????  */
-//                    this.$store.commit('setActiveBox', true)
-                }
+//                if (this.$store.state.userInfo && this.$store.state.userInfo.is_activity === '1' && this.isSign === '0') {
+//                    /* 活动弹窗 ( 弹窗规则有点问题 ) ???????  */
+////                    this.$store.commit('setActiveBox', true)
+//                }
                 if (this.$store.state.userInfo && this.$store.state.userInfo.first_login === '1') {
                     /* 引导弹窗  + 888 金币弹窗  */
                     this.showNewUserBox = true
@@ -589,7 +586,7 @@
         },
         filters: {
             format: (num) => {
-                num = Number(num)
+                num = Number(num);
                 if (isNaN(num)) {
                     return 0
                 }

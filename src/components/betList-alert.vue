@@ -148,7 +148,6 @@
         methods: {
             beginBet () {
 //               关闭 消息
-//                this.$router.push(`/main/${this.currentMatchID_my}`)
                 starHtml()
                 this.$store.commit('showBetListbox', false)
             },

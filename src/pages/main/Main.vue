@@ -94,7 +94,6 @@
                                              :class="{ 'endItem':fmdetail.odds[100].State=='1'&&fmdetail.odds[100].Selections['1'].State==='0', 'slt':current===fmdetail.odds[100].Selections[1],'item-end':fmdetail.odds[100].State==='3'&&fmdetail.odds[100].result!=='1','item-zj': fmdetail.odds[100].Selections['1'].golds&&fmdetail.odds[100].Selections['1'].prize_state==='1'&&fmdetail.odds[100].Selections['1'].bonus!=='0' }"
                                              v-tap="{methods: selectItem, params: {item: fmdetail.odds[100].Selections['1'], ruleType: '100', rule: fmdetail.odds[100]}}"
                                         >
-                                            <!--<span class="item-xx">{{fmdetail.HomeTeamName}}</span>-->
                                             <span class="item-xx">主胜</span>
                                             <span class="item-pl"
                                                   :class="{'changeColor':stat['1001'],'item-gray':fmdetail.odds[100].State==='3'&&fmdetail.odds[100].result==='1'}">{{ fmdetail.odds[100].Selections[1].BackOdds}}</span>
@@ -6002,10 +6001,8 @@
                                     tabSel_140 = 'gussTab_away'
                                 break  //  以上负
                             default:
-                                    // eslint-disable-next-line
                                     tabSel_140 = 'gussTab_home'
                             }
-                            // eslint-disable-next-line
                             let tabSel_obj = {
                                 params: {tabStyle: tabSel_140}
                             }
@@ -6366,8 +6363,6 @@
 //                                this.$store.commit('showChargebox', true)
 //                            }, 10)
                             _hmt.push(['_trackEvent', 'off_充值点击', 'click', 'off_充值'])
-
-//                            this.$router.push(`/my/charge`)
                         }
                     })
                     return
@@ -6488,7 +6483,6 @@
                             }
                         }, 1000)
                     }
-
                     if (parseInt(this.$store.state.main.nationGetRed.next_time) >= 0) {
                         return '抢红包'
                     }

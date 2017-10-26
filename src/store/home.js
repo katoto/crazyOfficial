@@ -675,7 +675,6 @@ const actions = {
     async [actionTypes.clearActivityHot] ({commit, dispatch}, number) {
         try {
             const activityHotBack = await ajax.get(`/activity/single?ck=${getCk()}&number=${number}&src=${src()}&platform=${platform}`)
-            console.log(activityHotBack)
         } catch (e) {
             dispatch('showToast', e.message)
         }

@@ -135,9 +135,7 @@ const actionsInfo = mapActions({
         /* 重置密码 */
         try {
             let resetData = null
-            console.log(state.resetSign)
             resetData = await ajax.get(`/user/modfiy/password?mobile=${params.mobile}&sign=${state.resetSign}&password=${params.password}`)
-            console.log(resetData)
             commit('removeCk')
             dispatch('showToast', {
                 message: '密码设置成功',
@@ -157,7 +155,6 @@ const actionsInfo = mapActions({
             let checkData = null
             checkData = await ajax.get(`/user/modfiy/password/verifycode?mobile=${params.mobile}&verifycode=${params.verifycode}&platform=${platform}`)
             commit(mTypes.setcheckWdReset, checkData.sign)
-            console.log(checkData)
         } catch (e) {
             if (e.code) {
                 switch (e.code) {
@@ -168,7 +165,8 @@ const actionsInfo = mapActions({
                 case '20105':
                 case '20106':
                 case '20107':
-                    commit(mTypes.setIsSerError, true);
+                case '20108':
+                        commit(mTypes.setIsSerError, true);
                     commit(mTypes.setfPTips, e.message)
                     ; break
                 }
@@ -180,7 +178,6 @@ const actionsInfo = mapActions({
     async getTelCode ({state, commit, dispatch}, data) {
         // 获tel
         // /login/mobile/sms?mobile=13319403333
-        console.log(data)
         try {
             let codeData
             if (typeof data === 'object' && data.vtype && typeof data.vtype === 'string') {
@@ -189,7 +186,6 @@ const actionsInfo = mapActions({
                 codeData = await ajax.get(`/login/mobile/sms?mobile=${data}`)
             }
             commit(mTypes.isCodeTime, true)
-            console.log(codeData)
         } catch (e) {
             if (e.code === '242') {
                 dispatch('showToast', '验证码发送次数已达5次，请明天再试')
@@ -205,10 +201,8 @@ const actionsInfo = mapActions({
     async getIsShowImgCode ({state, commit, dispatch}, deviceId) {
         // 获tel
         // /login/mobile/sms?mobile=13319403333
-        console.log(deviceId)
         try {
             let IsShowImgCode = await ajax.get(`/login/verifycode/code?deviceid=${deviceId}`)
-            console.log(IsShowImgCode)
             if (IsShowImgCode !== '') {
                 commit(mTypes.setIsShowImgCode, IsShowImgCode)
             }
@@ -223,11 +217,9 @@ const actionsInfo = mapActions({
             src: src(),
             channel: src()
         })
-        console.log(sendData)
         // 是否需要
         try {
             let regisData = await ajax.post(`/login/mobile`, sendData)
-            console.log(regisData)
             if (regisData !== '') {
                 commit(mTypes.setRegis, regisData)
             }
@@ -241,6 +233,7 @@ const actionsInfo = mapActions({
                 case '20105':
                 case '20106':
                 case '20107':
+                case '20108':
                     commit(mTypes.setIsSerError, true)
                     commit(mTypes.setrGTips, e.message)
                         ; break
@@ -252,17 +245,14 @@ const actionsInfo = mapActions({
     },
     async doLogin ({state, commit, dispatch}, data) {
         /* 注册 */
-        console.log(data)
         let sendData = Object.assign(data, {
             platform: platform,
             src: src(),
             channel: src()
         })
-        console.log(sendData)
         // 是否需要
         try {
             let loginData = await ajax.post(`/login/mobile`, sendData)
-            console.log(loginData)
             if (loginData !== '' && loginData.ck) {
                 commit(mTypes.setLoginData, loginData)
             } else {
@@ -281,6 +271,7 @@ const actionsInfo = mapActions({
                 case '20105':
                 case '20106':
                 case '20107':
+                case '20108':
                     commit(mTypes.setIsSerError, true)
                     commit(mTypes.setLoTips, e.message)
                     ; break

@@ -15,19 +15,6 @@
 
             <!--活动-->
             <section class="act" v-if="homeActivitiesData && homeActivitiesData.length>=2">
-                <!--<div class="act-wrap hide">-->
-                    <!--<a href="javascript:;" class="act-center" v-tap="{ methods:matchNav ,params:'chargeNew'}">-->
-                        <!--<img :src="homeActivitiesData[0].image" alt="最新活动">-->
-                    <!--</a>-->
-                    <!--<a href="javascript:;" class="act-new"  v-tap="{ methods:matchNav ,params:'activeBox'}">-->
-                        <!--<img :src="homeActivitiesData[1].image" alt="最新活动">-->
-                    <!--</a>-->
-                    <!--<a href="javascript:;" class="act-down" v-if="homeActivitiesData[2]" v-tap="{ methods:matchNav ,params:'downLoad'}">-->
-                        <!--<img :src="homeActivitiesData[2].image" alt="下载">-->
-                    <!--</a>-->
-                <!--</div>-->
-
-                <!-- https://crazybet.choopaoo.com/img/esun/upload/67/df/67df142ab95511e7a3a0.jpg -->
                 <swiper class="left" :options="swiperOption"  ref="mySwiper">
                         <swiper-slide  v-tap="{ methods:matchNav ,params:'chargeNew'}" >
                             <a href="javascript:;" class="act-center">
@@ -45,10 +32,7 @@
                         <img :src="homeActivitiesData[1].image" alt="最新活动">
                     </a>
                 </div>
-
             </section>
-
-            <!-- 比赛列表 -->
             <!-- 比赛列表 -->
             <section class="index listWrap">
                 <header class="listWrap_tit clear">
@@ -56,8 +40,6 @@
                     <a class="list_all" v-if="runListNumber==='0'" href="javascript:;" v-tap="{ methods:matchNav ,params:'goMatchList'}">全部赛事(<i style="color: #fff" v-if="runListNumber==='0'"> {{ betListNumber}} </i>)</a>
                     <a class="list_all" v-else href="javascript:;" v-tap="{ methods:matchNav ,params:'goMatchList'}">全部赛事(<i> {{ runListNumber}} </i>)</a>
                 </header>
-                <!--<router-view></router-view>-->
-
                 <div class="listBox">
                     <template  v-if="matchlist_hot && parseInt(matchlist_hot.length)>1" v-for="item in matchlist_hot">
                         <matchListTemplate :matchStyle="'hot'" :matchData="item">
@@ -75,12 +57,10 @@
                     </template>
                 </div>
 
-
                 <a href="javascript:;" class="all-list" v-tap="{ methods:matchNav ,params:'goMatchList'}">
                     查看全部赛事
                 </a>
             </section>
-
         </div>
     </div>
 </template>
@@ -106,9 +86,6 @@
                     autoplay: 3000,
                     direction: 'vertical',
                     autoHeight: true,
-                    onTransitionStart (swiper) {
-//                        console.log(swiper)
-                    }
                 }
             }
         },
@@ -282,5 +259,3 @@
         }
     }
 </script>
-<style>
-</style>
