@@ -408,7 +408,7 @@ const actions = {
             params = Object.assign({}, params, {
                 ck: getCk(),
                 platform: platform,
-                src: src
+                src: src()
             })
             const weChatData = await ajax.get(`/shops/gold/buy?${convertToQueryString(params)}`)
             const newChatData = Object.assign({}, weChatData, {'type': '14'})
@@ -457,7 +457,7 @@ const actions = {
         }
         try {
             params.platform = platform
-            params.src = src
+            params.src = src()
             const weChatData = await ajax.get(`/shops/gold/buy?${convertToQueryString(params)}`)
             await invokeWxzf(weChatData)
             dispatch('showToast', '支付成功')
@@ -717,7 +717,7 @@ const actions = {
                 show_url: baseUrl + '_@_1',
                 ck: ck,
                 platform: platform,
-                src: src
+                src: src()
             })
             console.log(params)
             const weChatData = await ajax.get(`/shops/gold/buy?${convertToQueryString(params)}`)

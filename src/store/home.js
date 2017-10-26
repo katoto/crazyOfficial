@@ -493,7 +493,7 @@ const actions = {
             }
             marketdata.Markets = convertArrToObj(marketdata.Markets, 'RuleType')
             params.odds = getPeilv(marketdata.Markets, params.ruletype, params.selection)
-            Object.assign(params, {src: src})
+            Object.assign(params, {src: src()})
             let qs = '?' + convertToQueryString(params)
             qs = decodeURIComponent(qs)
             let orderObj = await ajax.get(`/trade/gold/order` + qs)

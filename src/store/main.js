@@ -387,7 +387,7 @@ const actionsInfo = mapActions({
         )
     },
     faqi (context, params) {
-        Object.assign(params, {src: src})
+        Object.assign(params, {src: src()})
         let urlStr = convertToQueryString(params)
         urlStr = '?' + urlStr
         return ajax.get(`/trade/gold/order` + urlStr).then(data => data.orderid)
