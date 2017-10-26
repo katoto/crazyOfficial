@@ -354,6 +354,7 @@
 .chang-name input{
     text-indent:30px !important;
     border:none !important;
+    padding: 0 !important;
 }
 /*弹窗*/
 .pop-userImg .pop-o{
@@ -449,7 +450,6 @@
 }
 .reg-pact .cont-tit .icon-raw{
     float: right;
-    margin-top: .170667rem;
 }
 
 

@@ -2,7 +2,7 @@
     <div id="app">
         <!--  头部用户信息公用   listWrap-pb  -->
         <div class="index wrap respon2">
-            <PublicHead  v-if="!isHideHomeHead" person-title="疯狂猜球换好礼"></PublicHead>
+            <PublicHead  v-if="!isHideHomeHead" person-title="疯狂猜球-猜足球赢豪礼"></PublicHead>
             <HeaderTemplateHome v-if="!isHideHomeHead"></HeaderTemplateHome>
             <router-view></router-view>
         </div>

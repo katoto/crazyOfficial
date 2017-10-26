@@ -35,7 +35,7 @@
                 } else {
                     window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
                 }
-                _hmt.push(['_trackEvent', '500fkcqH5_下载app(嘉奖)点击', 'click', '500fkcqH5_下载app'])
+                _hmt.push(['_trackEvent', 'off_下载app(嘉奖)点击', 'click', 'off_下载app'])
             }
         },
         computed: {

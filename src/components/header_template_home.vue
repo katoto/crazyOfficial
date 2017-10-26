@@ -72,11 +72,11 @@
                         this.$store.commit('showBetListbox', true)
                         this.$store.dispatch('getUserInfo')
                     }, 10)
-                    _hmt.push(['_trackEvent', '500fkcqH5_首页猜球记录点击', 'click', '500fkcqH5_猜球记录'])
+                    _hmt.push(['_trackEvent', 'off_首页猜球记录点击', 'click', 'off_猜球记录'])
 
                     break
                 case 'charge':
-                    _hmt.push(['_trackEvent', '500fkcqH5_首页充值点击', 'click', '500fkcqH5_首页充值'])
+                    _hmt.push(['_trackEvent', 'off_首页充值点击', 'click', 'off_首页充值'])
                     this.$router.push(`/chargeNew`)
 
                     break
@@ -90,7 +90,7 @@
                         this.$store.commit(mutationTypes.showRankbox, true)
                     }
                     stopHtml()
-                    _hmt.push(['_trackEvent', '500fkcqH5_首页猜球记录点击', 'click', '500fkcqH5_首页猜球记录'])
+                    _hmt.push(['_trackEvent', 'off_首页猜球记录点击', 'click', 'off_首页猜球记录'])
                     break
                 case 'headParentBox':
                     if (this.showHeadBox) {
@@ -120,9 +120,9 @@
                 case 'noEnd':
                 case 'end':
                     if (params === 'noEnd') {
-                        _hmt.push(['_trackEvent', '500fkcqH5_全部赛事页未结束点击', 'click', '500fkcqH5_未结束点击'])
+                        _hmt.push(['_trackEvent', 'off_全部赛事页未结束点击', 'click', 'off_未结束点击'])
                     } else {
-                        _hmt.push(['_trackEvent', '500fkcqH5_全部赛事页已结束点击', 'click', '500fkcqH5_全部赛事页已结束'])
+                        _hmt.push(['_trackEvent', 'off_全部赛事页已结束点击', 'click', 'off_全部赛事页已结束'])
                     }
                     this.$router.replace(`/h5/matchList/${params}/`)
                     break
@@ -136,7 +136,7 @@
                         this.$store.commit('showBetListbox', true)
                     }, 10)
                 }
-                _hmt.push(['_trackEvent', '500fkcqH5_首页猜球记录点击', 'click', '500fkcqH5_首页猜球记录'])
+                _hmt.push(['_trackEvent', 'off_首页猜球记录点击', 'click', 'off_首页猜球记录'])
             }
         },
         computed: {
