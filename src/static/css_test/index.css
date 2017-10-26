@@ -1395,7 +1395,7 @@
 .icon-raw {
     position: absolute;
     right:28px;
-    top:40px;
+    top:34px;
     display: block;
     width: 24px;
     height: 24px;
@@ -1406,7 +1406,6 @@
 
 .icon-rawup {
     transform: rotate(180deg);
-    top:30px;
 }
 
 .btn-goBet {
