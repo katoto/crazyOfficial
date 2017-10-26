@@ -86,9 +86,8 @@
                     <ul v-if="footballPropsList">
                         <li v-for="propsList in footballPropsList" :class="{'item-no':propsList.num === '0'}">
                             <img :src="propsList.img_url">
-                            <span>x{{ propsList.num }}</span>
                             <span  v-if="propsList.num === '0'">未点亮</span>
-                            <span  v-else>x{{ propsList.num }}</span>
+                            <span v-else>x{{ propsList.num }}</span>
                         </li>
                     </ul>
                 </div>
