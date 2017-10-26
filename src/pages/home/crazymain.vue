@@ -1,6 +1,6 @@
 <template>
     <div class="respon2-itm">
-        <div class="full-scroll">
+        <div class="full-scroll ">
             <!-- 直播头部 components -->
             <matchHot-play :matchData="matchHotData"></matchHot-play>
 

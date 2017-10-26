@@ -53,13 +53,14 @@
 
             </div>
             <p class="login-tips">新用户立领888币，<a href="javascript:;" v-tap="{methods:goPageFn,target:'register' }">一键注册</a></p>
-            <a href="javascript:;" class="btn-down"
-               v-tap="{methods:goPageFn,target:'downLoad' }"
-            >
-                下载官方APP
-            </a>
         </div>
+        <a href="javascript:;" class="btn-down"
+           v-tap="{methods:goPageFn,target:'downLoad' }"
+        >
+            下载官方APP
+        </a>
     </div>
+
 </template>
 
 <script>

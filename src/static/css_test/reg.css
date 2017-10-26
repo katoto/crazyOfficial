@@ -226,7 +226,7 @@
 }
 .reg-tips,.reg-tips a{
     text-align: center;
-    font-size:28px;
+    font-size:24px;
     color: #6f799a;
 }
 .reg-tips{
@@ -240,7 +240,10 @@
     width:100%;
     font-size:22px;
     color: #878fff;
-    margin-top:150px;
+    position: absolute;
+    bottom:20px;
+    left:0;
+    text-align: center;
 }
 .user-msg{
     float: left;
