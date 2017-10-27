@@ -1129,6 +1129,7 @@ html, body {
     margin: 0 auto;
     line-height: 88px;
     font-size: 34px;
+    color: #fff;
 }
 
 .btn-close::after {
