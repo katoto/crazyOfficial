@@ -198,13 +198,13 @@ const mutations = {
     },
     ck (state, ck) {
         state.ck = ck
-        addCookie('ck', ck)
-        localStorage.setItem('ck', ck)
+        addCookie(src()+'ck', ck)
+        localStorage.setItem(src()+'ck', ck)
     },
     removeCk (state) {
         state.ck = ''
-        addCookie('ck', '')
-        localStorage.setItem('ck', '')
+        addCookie(src()+'ck', '')
+        localStorage.setItem(src()+'ck', '')
     },
     userInfo (state, userInfo) {
         if (userInfo && userInfo.photo === '') {
@@ -300,8 +300,8 @@ const mutations = {
 const actions = {
     clearLoginState ({commit, dispatch}, data) {
         commit('ck', '')
-        addCookie('ck', '')
-        localStorage.setItem('ck', '')
+        addCookie(src()+'ck', '')
+        localStorage.setItem(src()+'ck', '')
     },
 
     /* 检查是否登录 */

@@ -30,16 +30,6 @@ export const removeCookie = (sName) => {
     addCookie(sName, 0, -1)
 }
 
-export let getCk = function () {
-    if (!localStorage.getItem('ck') || localStorage.getItem('ck') === '' || localStorage.getItem('ck') === 'undefined') {
-        if (getCookie('ck') && getCookie('ck') !== '') {
-            return getCookie('ck')
-        }
-        return ''
-    }
-    return localStorage.getItem('ck') || ''
-}
-
 // export const src = '500touch'
 export let src = function () {
     let defaultSrc = 'off'
@@ -52,6 +42,15 @@ export let src = function () {
     return localStorage.getItem('src') || defaultSrc
 }
 
+export let getCk = function () {
+    if (!localStorage.getItem(src()+'ck') || localStorage.getItem(src()+'ck') === '' || localStorage.getItem(src()+'ck') === 'undefined') {
+        if (getCookie(src()+'ck') && getCookie(src()+'ck') !== '') {
+            return getCookie(src()+'ck')
+        }
+        return ''
+    }
+    return localStorage.getItem(src()+'ck') || ''
+}
 export const cptype = ''
 
 export const platform = (function () {
