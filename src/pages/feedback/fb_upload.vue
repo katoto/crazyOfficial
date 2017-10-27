@@ -174,13 +174,13 @@
                     data: {
                         ck: getCk(),
                         os: platform,
-                        src: src,
+                        src: src(),
                         device: window.navigator.userAgent,
                         content: that.textareaData,
                         image: imageStr
                     },
                     dataType: 'json',
-                    timeout: 50000,
+                    timeout: 80000,
                     success: function (d) {
                         that.showLoading = false
                         if (d.status === '100') {
