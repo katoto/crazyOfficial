@@ -937,8 +937,9 @@
     float: right;
     color: #ffd146;
     font-size: 26px;
-    width: 142px;
+    width: 160px;
     white-space: nowrap;
+    font-weight:bold;
 }
 
 .phb_list .money .icon_jinbi {
@@ -1235,13 +1236,19 @@
 }
 
 .pop_msg .box {
-    margin: 30px auto;
+    margin: 30px auto 0;
     border-radius: 10px;
-    width: 620px;
-    height: 780px;
+    height: 720px;
+    overflow: hidden;
 }
 .pop_msg .scroller {
-    height: 780px;
+    height: 100%;
+}
+.pop-msg-tips{
+    font-size:24px;
+    text-align: center;
+    line-height:54px;
+    margin-top:20px;
 }
 
 .pop_msg .msg_item {
@@ -1285,6 +1292,7 @@
     font-size: 24px;
     color: #6f799a;
     float: right;
+    margin-right:24px;
 }
 
 .msg_item .icon_raw {
@@ -1294,7 +1302,6 @@
     top: 0;
     right: -30px;
     background: none;
-    display: none;
 }
 
 .msg_item .icon_raw::after {
@@ -1327,8 +1334,7 @@
 }
 
 .pop_msg .jiangli .yellow {
-    font-size: 32px;
-    font-weight: normal;
+    font-size: 26px;
 }
 
 .pop_msg .jiangli .btn-lingqu {
@@ -1392,7 +1398,7 @@
 }
 
 .cont-tit .color9 {
-    color: #6f799a;
+    color: #878fff;
 }
 
 .icon-raw {
@@ -1979,7 +1985,7 @@
     line-height:90px;
     font-size:30px;
     color: #fff;
-    background: #585fcd;
+    background: #3f437e;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;

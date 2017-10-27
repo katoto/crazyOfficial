@@ -364,7 +364,7 @@
 }
 .main-top .btn-myprop {
     float: right;
-    padding-right: 40px;
+    padding-right: 20px;
     color: #878fff;
 }
 .main-top .btn-myprop span{
@@ -2266,7 +2266,7 @@
     position: absolute;
     left:30px;
     top:0;
-    line-height:74px;
+    line-height:54px;
     font-size:26px;
     color: #6a7493;
 }
