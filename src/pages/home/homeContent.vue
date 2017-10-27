@@ -464,7 +464,7 @@
                     if (platform === 'android') {
                         window.location.href = 'http://download.choopaoo.com/download/cbet_for_Android_500cpH5.apk'
                     } else {
-                        window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
+                        window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.crazy500.cbet&ckey=CK1379012021813'
                     }
                     _hmt.push(['_trackEvent', 'off_下载app(头像内)点击', 'click', 'off_下载app'])
                     break
@@ -490,6 +490,7 @@
                     }, 2000)
                 }
             }
+
         },
         computed: {
             activityListData () {
@@ -509,7 +510,7 @@
             userinfo () {
 //                if (this.$store.state.userInfo && this.$store.state.userInfo.is_activity === '1' && this.isSign === '0') {
 //                    /* 活动弹窗 ( 弹窗规则有点问题 ) ???????  */
-////                    this.$store.commit('setActiveBox', true)
+/// /                    this.$store.commit('setActiveBox', true)
 //                }
                 if (this.$store.state.userInfo && this.$store.state.userInfo.first_login === '1') {
                     /* 引导弹窗  + 888 金币弹窗  */
@@ -586,7 +587,7 @@
         },
         filters: {
             format: (num) => {
-                num = Number(num);
+                num = Number(num)
                 if (isNaN(num)) {
                     return 0
                 }

@@ -216,7 +216,7 @@
                 let isAllStr = /^[A-Za-z]*$/
                 document.getElementById('passDom').setAttribute('placeholder', '密码')
                 this.userPassWordBlur = true
-                if (isAllNumber.test(e.target.value) && e.target.value !== '' ) {
+                if (isAllNumber.test(e.target.value) && e.target.value !== '') {
                     this.showWarn = true
                     return false
                 }
@@ -298,20 +298,20 @@
             regisData (regisData) {
                 if (regisData.ck) {
                     /* 可以到后台 */
-                    let _this = this;
+                    let _this = this
                     this.$store.commit('ck', regisData.ck)
-                    this.$store.dispatch('showToast', {
-                        duration: 1000,
-                        message: '注册成功',
-                        cb: () => {
-                            /* 来源 ！！！！！！！ */
-                            _this.$router.push(`/h5/home/`);
-                        }
-                    })
-                    setTimeout(() => {
-                        _this.$store.dispatch('getUserInfo');
-                        _this.$store.dispatch('checkLogin')
-                    }, 10)
+                    this.$store.dispatch('getUserInfo')
+                    this.$store.dispatch('checkLogin')
+                    this.$store.commit('regisSucc', new Date().getTime())
+                    this.$store.commit('showHeightTips', true)
+                    this.$router.push(`/h5/home/`)
+//                    this.$store.dispatch('showToast', {
+//                        duration: 1000,
+//                        message: '注册成功',
+//                        cb: () => {
+//                            /* 来源 ！！！！！！！ */
+//                        }
+//                    })
                 } else {
                     this.$router.push(`/register`)
                 }

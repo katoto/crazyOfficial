@@ -93,10 +93,18 @@ const state = {
     showHeightTips: false,
 
     kefuAlert: true,
-    showHelpbox: false
+    showHelpbox: false,
 
+    loginSucc: false,
+    regisSucc: false
 }
 const mutations = {
+    loginSucc (state, data) {
+        state.loginSucc = data
+    },
+    regisSucc (state, data) {
+        state.regisSucc = data
+    },
     setkefuAlert (state, data) {
         state.kefuAlert = data
     },
@@ -302,7 +310,7 @@ const actions = {
             const hasCk = await getCk()
             if (hasCk && hasCk !== 'undefined' && hasCk !== '') {
                 commit('setIsLogin', true)
-                commit('ck',hasCk)
+                commit('ck', hasCk)
             } else {
                 commit('setIsLogin', false)
             }

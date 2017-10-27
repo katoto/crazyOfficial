@@ -7,7 +7,7 @@ import {platform, convertToQueryString, src, getCk, mapMutations, mapActions} fr
 import router from '../router'
 const state = {
     IsShowImgCode: null,
-    nameResultCode:null,
+    nameResultCode: null,
     loginData: null,
     regisData: null,
     resetSign: null,
@@ -29,8 +29,6 @@ const state = {
     fPTips: null,
 
     isCodeTime: false
-
-
 
 }
 const mutationsInfo = mapMutations({
@@ -73,7 +71,7 @@ const mutationsInfo = mapMutations({
     setIsShowImgCode (state, data) {
         state.IsShowImgCode = data
     },
-    setNameResultCode( state ,data ){
+    setNameResultCode (state, data) {
         state.nameResultCode = data
     },
 
@@ -166,7 +164,7 @@ const actionsInfo = mapActions({
                 case '20106':
                 case '20107':
                 case '20108':
-                        commit(mTypes.setIsSerError, true);
+                    commit(mTypes.setIsSerError, true)
                     commit(mTypes.setfPTips, e.message)
                     ; break
                 }

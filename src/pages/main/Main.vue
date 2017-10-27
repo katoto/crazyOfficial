@@ -6001,7 +6001,7 @@
                                     tabSel_140 = 'gussTab_away'
                                 break  //  以上负
                             default:
-                                    tabSel_140 = 'gussTab_home'
+                                tabSel_140 = 'gussTab_home'
                             }
                             let tabSel_obj = {
                                 params: {tabStyle: tabSel_140}

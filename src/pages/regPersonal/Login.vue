@@ -90,18 +90,23 @@
                 if (loginData) {
                     if (loginData.ck) {
                         /* 可以到后台 */
-                        let _this = this
-                        this.$store.commit('ck', loginData.ck);
-                        localStorage.setItem('loginTel2',this.telNumber)
-                        /* 来源 ！！！！！！！ */
-                        this.$store.dispatch('showToast', {
-                            message: '登录成功',
-                            cb () {
-                                _this.$store.dispatch('getUserInfo')
-                                _this.$router.push(`/h5/home`)
-                                _this.$store.dispatch('checkLogin')
-                            }
-                        })
+                        this.$store.commit('ck', loginData.ck)
+                        localStorage.setItem('loginTel2', this.telNumber)
+                        /* 来源 ！！！！ */
+                        this.$store.dispatch('getUserInfo')
+                        this.$store.dispatch('checkLogin')
+                        this.$store.commit('loginSucc', new Date().getTime())
+                        this.$store.commit('showHeightTips', true)
+                        this.$router.push(`/h5/home`)
+
+//                        this.$store.dispatch('showToast', {
+//                            message: '登录成功',
+//                            cb () {
+//                                _this.$store.dispatch('getUserInfo')
+//                                _this.$router.push(`/h5/home`)
+//                                _this.$store.dispatch('checkLogin')
+//                            }
+//                        })
                     } else {
                         /* 审核页面 */
                         this.$router.push(`/register`)
@@ -287,14 +292,14 @@
             }
             this.deviceId = deviceId
             await this.$store.dispatch(aTypes.getIsShowImgCode, deviceId)
-            this.$store.commit('showHeightTips', true)
+//
             if (this.autoLoginPassword) {
                 this.userPassWord = this.autoLoginPassword
                 this.$store.commit(mTypes.autoLoginPassword, null)
             }
             if (this.autoTelNumber) {
                 this.telNumber = this.autoTelNumber
-                this.$store.commit(mTypes.autoTelNumber, null);
+                this.$store.commit(mTypes.autoTelNumber, null)
                 return false
             }
             if (this.autoLoginNumber) {
@@ -303,7 +308,7 @@
                 return false
             }
             let loginTel2 = localStorage.getItem('loginTel2')
-            if(loginTel2 && loginTel2 !=='undefined'){
+            if (loginTel2 && loginTel2 !== 'undefined') {
                 this.telNumber = loginTel2
             }
         }

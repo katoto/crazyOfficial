@@ -110,7 +110,7 @@ export default {
             },
             showLuckEndFn () {
                 /* 中奖框 */
-                if ( !!this.ck) {
+                if (this.ck) {
                     if (this.luckMessData) {
                         if (this.luckMessData.company) {
                             this.$store.dispatch('getLuckGoodBingo', {
@@ -127,7 +127,7 @@ export default {
                             })
                         }
                     } else {
-                        this.$store.dispatch('showToast', '抽取失败,请重新再试');
+                        this.$store.dispatch('showToast', '抽取失败,请重新再试')
                         this.alertGoodsBox = false
                     }
                 } else {
@@ -135,7 +135,7 @@ export default {
                 }
             },
             startLuckDraw () {
-                this.alertGoodsBox = true;
+                this.alertGoodsBox = true
             }
         },
         components: {
@@ -184,4 +184,3 @@ export default {
         }
     }
 </script>
-

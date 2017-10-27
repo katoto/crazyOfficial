@@ -85,7 +85,7 @@
                     // swiper options 所有的配置同swiper官方api配置
                     autoplay: 3000,
                     direction: 'vertical',
-                    autoHeight: true,
+                    autoHeight: true
                 }
             }
         },
@@ -157,7 +157,7 @@
                     if (platform === 'android') {
                         window.location.href = 'http://download.choopaoo.com/download/cbet_for_Android_500cpH5.apk'
                     } else {
-                        window.location.href = 'https://at.umeng.com/uKrSPn?cid=481'
+                        window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.crazy500.cbet&ckey=CK1379013173299'
                     }
                     _hmt.push(['_trackEvent', 'off_下载app点击', 'click', 'off_下载app'])
                     break
@@ -245,8 +245,6 @@
             }
             this.$store.dispatch(actionTypes.setIntervalFn, {type: 'newhot', time: 30000})
             this.$store.dispatch(actionTypes.getActivityList)
-
-            this.$store.commit('showHeightTips', false)
         },
         beforeRouteLeave (to, from, next) {
             this.$store.dispatch(actionTypes.clearIntervalFn)

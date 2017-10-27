@@ -663,9 +663,9 @@ const actions = {
             const activityData = await ajax.get(`/activity/list?ck=${getCk()}&src=${src()}&platform=${platform}`)
             commit(mutationTypes.activityData, activityData)
         } catch (e) {
-            if(e.code && e.code==='136'){
+            if (e.code && e.code === '136') {
                 dispatch('doAuth')
-                return false;
+                return false
             }
             dispatch('showToast', e.message)
         }

@@ -174,8 +174,8 @@
                         return false
                     }
 
-                    await  this.$store.dispatch(aTypes.getTelCode, Object.assign({}, { mobile: this.telNumber, vtype: 'forgetPass' }));
-                    if(this.isCodeTime){
+                    await this.$store.dispatch(aTypes.getTelCode, Object.assign({}, { mobile: this.telNumber, vtype: 'forgetPass' }))
+                    if (this.isCodeTime) {
                         this.countDownStr = '重发（' + codeTime + 's）'
                         this.addUnable = true
                         times = setInterval(() => {
@@ -190,8 +190,7 @@
                                 this.addUnable = true
                             }
                         }, 1000)
-
-                    }else{
+                    } else {
                         clearInterval(times)
                     }
                 } else {
@@ -262,7 +261,7 @@
             },
             isCodeTime () {
                 return this.$store.state.regPerson.isCodeTime
-            },
+            }
         },
         watch: {
             resetSign (sign) {

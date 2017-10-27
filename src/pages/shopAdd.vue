@@ -107,7 +107,7 @@ export default {
                 if (this.hasUserInfo) {
                     let reg = /^1[0-9]{10}$/
                     if (this.addressMess.mobile && reg.test(this.addressMess.mobile)) {
-                        if ( (!this.currOrderId && this.isSaveBtn) || (this.currOrderId && this.isConfirmBtn)) {
+                        if ((!this.currOrderId && this.isSaveBtn) || (this.currOrderId && this.isConfirmBtn)) {
                             return false
                         } else {
                             if (this.currOrderId && this.addressMess.aid && parseInt(this.addressMess.aid) > 0) {

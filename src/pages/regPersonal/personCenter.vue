@@ -158,7 +158,7 @@
         methods: {
             checkNickNameBlur () {
                 let regNickName = /[`~!@#$^&*()=|{}':;',\[\].<>\/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%]/
-                this.nickNameBlur = true;
+                this.nickNameBlur = true
                 if (regNickName.test(this.nickName)) {
                     this.$store.commit(mTypes.setPCTips, '不可使用特殊字符')
                 } else if (this.nickName.length <= 2 && this.nickName.length >= 16) {
@@ -208,7 +208,6 @@
                     this.$store.commit(mTypes.setPCTips, '不可使用特殊字符')
                 } else if (this.nickName.length >= 2 && this.nickName.length <= 16) {
                     this.$store.dispatch(aTypes.renameNickName, this.nickName.replace(/^\s+|\s+$/g, '').replace(/\s+/g, ''))
-
                 } else {
                     this.$store.commit(mTypes.setPCTips, '2-16个字符,支持中英文、数字')
                 }
@@ -287,7 +286,7 @@
                     this.$store.commit(mTypes.setShowImg, false)
                 }
             },
-            nameResultCode(data){
+            nameResultCode (data) {
                 if (data) {
                     this.Ptitle = '个人中心'
                     this.showCenter = true

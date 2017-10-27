@@ -2,9 +2,11 @@
     <div class="pop pop02 pop_msg message">
         <div class="pop_layer" v-tap="{ methods:closeMessbox }"></div>
         <div class="popIn">
+            <span class="close" v-tap="{ methods:closeMessbox }">
+                <span></span>
+            </span>
             <div class="popTit">
                 <h2 class="title">我的消息</h2>
-                <span class="close" v-tap="{ methods:closeMessbox }"><span></span></span>
                 <span class="user_id" v-if="userInfo">ID：{{ userInfo.uid }}</span>
             </div>
             <div class="box">
@@ -18,7 +20,7 @@
                     </div>
                 </div>
                 <!-- 消息不为空 -->
-                <div class="scroller message">
+                <div class="scroller">
                     <div  id="MatchListDom">
                         <div class="msg_item" v-for="msg in messageList" :class="{ 'msg_item_yidu' : !msg.valid }">
                             <div class="msg_tit"  v-tap="{methods: switchMsgContent, cid: msg.cid}">
@@ -29,8 +31,8 @@
                                  :class="{'icon_rawdown':!showsContent[msg.cid] }"
                                 ></i>
                             </div>
-                            <div class="msg_cont" :class="{'hide':!msg.pid && !showsContent[msg.cid] }"
-                                 style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+                            <div class="msg_cont" :class="{'hide':!msg.pid && !showsContent[msg.cid] }">
+                                <!--style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);"-->
                                 {{msg.content}}
                             </div>
                             <template v-if="msg.pid">
@@ -45,7 +47,7 @@
 
                         <p class="message-tips" :class="{'hide':!messageList.length}" v-show="isAddMessList">加载中...</p>
                         <p class="message-tips" :class="{'hide':!messageList.length || messageList.length<3 }">只显示最近的50条系统消息</p>
-                        <p class="message-tips" style="position: fixed;bottom: 0;width:100%;background-color: #1d1e23;" :class="{'hide':!messageList.length || messageList.length >= 3 }">只显示最近的50条系统消息</p>
+                        <p class="message-tips" :class="{'hide':!messageList.length || messageList.length >= 3 }">只显示最近的50条系统消息</p>
                     </div>
                 </div>
             </div>
@@ -136,4 +138,3 @@
         }
     }
 </script>
-

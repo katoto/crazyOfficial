@@ -64,7 +64,6 @@
     import $ from 'bc-zepto.full'
     import {platform, src, getCk} from '~common/util'
 
-
     export default {
         data () {
             return {

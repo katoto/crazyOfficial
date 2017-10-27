@@ -27,6 +27,34 @@
                 platform: platform
             }
         },
+        watch: {
+            '$store.state.loginSucc': function (ck) {
+                if (ck) {
+                    this.$store.dispatch('showToast', {
+                        duration: 1000,
+                        message: '登录成功',
+                        cb: () => {
+                            this.$store.commit('showHeightTips', false)
+                        }
+                    })
+                } else {
+                    console.error('登陆失败')
+                }
+            },
+            '$store.state.regisSucc': function (ck) {
+                if (ck) {
+                    this.$store.dispatch('showToast', {
+                        duration: 1000,
+                        message: '注册成功',
+                        cb: () => {
+                            this.$store.commit('showHeightTips', false)
+                        }
+                    })
+                } else {
+                    console.error('注册失败')
+                }
+            }
+        },
         computed: {
             userInfo () {
                 return this.$store.state.userInfo
@@ -75,7 +103,7 @@
                     this.$store.dispatch('showToast', e.message)
                 }
             }
-        },
+        }
     }
 </script>
 <style>

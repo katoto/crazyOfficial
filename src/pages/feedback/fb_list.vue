@@ -82,7 +82,7 @@
                 status = status || '0'
                 switch (status) {
                 case '0':
-                    return '待回复';
+                    return '待回复'
                 case '1':
                 case '2':
                     return '已回复'

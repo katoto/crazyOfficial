@@ -143,8 +143,8 @@
             },
             faqi () {
                 if (!this.hasLogin) {
-                    this.$router.push('/login');
-                    return false;
+                    this.$router.push('/login')
+                    return false
                 }
                 if (!this.selectedNum) {
                     this.$store.dispatch('showToast', '投注金币数不能为空！')
