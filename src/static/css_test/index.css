@@ -1238,7 +1238,7 @@
 .pop_msg .box {
     margin: 30px auto 0;
     border-radius: 10px;
-    height: 720px;
+    height: 780px;
     overflow: hidden;
 }
 .pop_msg .scroller {
@@ -1292,7 +1292,7 @@
     font-size: 24px;
     color: #6f799a;
     float: right;
-    margin-right:24px;
+    margin:8px 24px 0 0;
 }
 
 .msg_item .icon_raw {
@@ -1302,6 +1302,7 @@
     top: 0;
     right: -30px;
     background: none;
+    display: none;
 }
 
 .msg_item .icon_raw::after {
