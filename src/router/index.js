@@ -160,6 +160,11 @@ if (location.search) {
         document.cookie = 'src' + '=' + 'queryObj.from'
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home`)
     }
+    /* 微信取code */
+    if (queryObj.code && queryObj.state === 'STATE') {
+        history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew/_@${queryObj.code}`)
+    }
+
     /*
      if(queryObj.jumpToPay && queryObj.jumpToPay ==='true'){
      history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/h5/home/hot/showPay`)

@@ -5,7 +5,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import ajax from '~common/ajax'
-import {addCookie, platform, src, wait, convertToQueryString, getCk} from '~common/util'
+import {addCookie, platform, src, wait, convertToQueryString, getCk ,invokeWxzf } from '~common/util'
 import main from './main'
 import home from './home'
 import feedback from './feedback'

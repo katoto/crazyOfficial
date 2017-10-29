@@ -323,8 +323,10 @@
     import BannerScroll from '~components/banner-scroll.vue'
     import {starHtml, stopHtml} from '~common/util'
     import PublicHead from '~components/publicHead'
+    import {isWeiX} from '../common/util';
+
     import vueClipboard2 from 'vue-clipboard2'
-    Vue.use(vueClipboard2)
+    Vue.use(vueClipboard2);
 
 export default {
         data () {
@@ -563,7 +565,7 @@ export default {
                     this.$store.dispatch('showToast', '至少选择一项')
                     return
                 }
-                if (!this.userInfo) {
+                if (!this.ck) {
                     this.$store.dispatch('doAuth')
                     return false
                 }
@@ -572,8 +574,19 @@ export default {
                 params.goldid = this.current.goldid
                 params.money = this.current.rmb
                 params.goldnum = this.current.goldnum
-                params.payid = 3009
-                this.$store.dispatch('doCharge', params)
+                if (!isWeiX) {
+                    params.payid = 3009
+                    this.$store.dispatch('doCharge', params)
+
+                } else {
+                    /* 微信支付 */
+                    console.log( params  )
+                    params.code = sessionStorage.getItem('wx_code');
+                    params.payid = 3002;
+                    this.$store.dispatch('doWechatPay', params)
+
+                }
+
                 _hmt.push(['_trackEvent', 'off_充值额度' + this.current.rmb + '点击', 'click', 'off_充值额度' + this.current.rmb])
             }
 
@@ -590,6 +603,9 @@ export default {
             },
             userInfo () {
                 return this.$store.state.userInfo
+            },
+            ck () {
+                return this.$store.state.ck
             },
             /* 中奖几率 */
             winGoodslist () {
@@ -649,16 +665,39 @@ export default {
                     this.$store.dispatch('getWinGoodList')
                 }
             }
-            if (this.$route.params.others && this.$route.params.others.indexOf('_@_ck_@_') > -1) {
-                let arr = this.$route.params.others.split('_@_')
-                if (arr[0] === '2') {
-                    this.$store.dispatch('showToast', '充值成功')
-                    history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
-                } else if (arr[0] === '1') {
-                    this.$store.dispatch('showToast', '支付未完成，请重试')
-                    history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
+            if (!isWeiX) {
+
+                if (this.$route.params.others && this.$route.params.others.indexOf('_@_ck_@_') > -1) {
+                    let arr = this.$route.params.others.split('_@_')
+                    if (arr[0] === '2') {
+                        this.$store.dispatch('showToast', '充值成功')
+                        history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
+                    } else if (arr[0] === '1') {
+                        this.$store.dispatch('showToast', '支付未完成，请重试')
+                        history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
+                    }
+                }
+
+            } else {
+                if (this.$route.params.others && ~this.$route.params.others.indexOf('_@')) {
+                    let code = this.$route.params.others.split('_@')[1];
+                    sessionStorage.setItem('wx_code', code);
+//                    console.log(999)
+
+                    console.log(this.$route.path.replace(this.$route.params.others, ''))
+                    this.$router.replace(this.$route.path.replace(this.$route.params.others, ''));
+                } else {
+                    if (!sessionStorage.getItem('wx_code')) {
+//                        console.log('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx86d590e6cf755764&redirect_uri=' + location.href.split('?')[0].split('#')[0] + '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect')
+                        window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx86d590e6cf755764&redirect_uri=' + location.href.split('?')[0].split('#')[0] + '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect');
+                    }
                 }
             }
+
+
+
+
+
         },
         filters: {
             golds: (num) => {

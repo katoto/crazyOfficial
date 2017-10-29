@@ -16,12 +16,12 @@
             <!--活动-->
             <section class="act" v-if="homeActivitiesData && homeActivitiesData.length>=2">
                 <swiper class="left" :options="swiperOption"  ref="mySwiper">
-                        <swiper-slide  v-tap="{ methods:matchNav ,params:'chargeNew'}" >
+                        <swiper-slide v-tap="{ methods:matchNav ,params:'chargeNew'}" >
                             <a href="javascript:;" class="act-center">
-                                <img :src="homeActivitiesData[0].image" alt="下载">
+                                <img :src="homeActivitiesData[0].image">
                             </a>
                         </swiper-slide>
-                        <swiper-slide v-tap="{ methods:matchNav ,params:'downLoad'}">
+                        <swiper-slide v-if="!isHideDownLoad" v-tap="{ methods:matchNav ,params:'downLoad'}">
                             <a v-if="homeActivitiesData[2]" href="javascript:;" class="act-center">
                                 <img :src="homeActivitiesData[2].image" alt="领奖中心">
                             </a>
@@ -71,11 +71,12 @@
 
     import MatchListTemplate from '~components/matchlist-template.vue'
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
-    import {platform} from '~common/util'
+    import {platform ,src} from '~common/util'
 
     export default {
         data () {
             return {
+                isHideDownLoad:false,
                 current: null,
                 inFlash: false, // 右下角闪动提示
                 flashMsg: '', // 右下角闪动提示
@@ -226,6 +227,9 @@
         async mounted () {
             this.$store.commit('setIsHideHomeHead', false)
 
+            if( src() ==='off-mipan'){
+                this.isHideDownLoad = true;
+            }
             if (this.matchIDStr) {
                 this.$store.dispatch('subscribe', {
                     ptype: 'list',

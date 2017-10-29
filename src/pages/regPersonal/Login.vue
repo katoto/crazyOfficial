@@ -54,7 +54,7 @@
             </div>
             <p class="login-tips">新用户立领888币，<a href="javascript:;" v-tap="{methods:goPageFn,target:'register' }">一键注册</a></p>
         </div>
-        <a href="javascript:;" class="btn-down"
+        <a v-if="!isHideDownLoad" href="javascript:;" class="btn-down"
            v-tap="{methods:goPageFn,target:'downLoad' }"
         >
             下载官方APP
@@ -65,10 +65,11 @@
 
 <script>
     import {aTypes, mTypes} from '~store/regPerson'
-    import {starHtml, stopHtml, platform} from '~common/util'
+    import {starHtml, stopHtml, platform ,src} from '~common/util'
     export default {
         data () {
             return {
+                isHideDownLoad:false,
                 telNumber: '',
                 telCode: '',
                 userPassWord: '',
@@ -311,6 +312,10 @@
             if (loginTel2 && loginTel2 !== 'undefined') {
                 this.telNumber = loginTel2
             }
+            if( src() ==='off-mipan'){
+                this.isHideDownLoad = true;
+            }
+
         }
     }
 </script>

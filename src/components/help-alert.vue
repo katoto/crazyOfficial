@@ -28,7 +28,7 @@
                                         <h4>什么是猜球币？如何获得？</h4>
                                         <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_2 }"></i></div>
                                     <div class="cont" :class="{ 'hide': !helpSel.helpSel_2}">
-                                        猜球币是竞猜过程中需要使用的一种虚拟币，只可进行竞猜，不可提款。猜球币可以通过初始赠送，运营活动，或者充值获取。
+                                        猜球币是竞猜过程中需要使用的一种虚拟币，只可进行竞猜，不可提现，可用于兑换奖品。猜球币可以通过初始赠送，运营活动，或者充值获取。
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <div class="cont-tit">
                                         <h4>猜球币充值有哪些方式？</h4>
                                         <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_3 }"></i></div>
-                                    <div class="cont" :class="{ 'hide': !helpSel.helpSel_3}">本收银台支持500余额支付、连连支付、支付宝支付，不包括500红包</div>
+                                    <div class="cont" :class="{ 'hide': !helpSel.helpSel_3}">本收银台仅支持支付宝支付，其他支付方式敬请期待</div>
                                 </div>
                             </div>
                             <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_4'}">

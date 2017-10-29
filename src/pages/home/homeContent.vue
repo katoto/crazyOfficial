@@ -239,7 +239,7 @@
                         <i></i>我要反馈
                         <sup class="dot" v-if="( userinfo.fb_badge && parseInt(userinfo.fb_badge)>0 )"></sup>
                     </li>
-                    <li class="my-down" v-tap="{methods:enterMy,params:'crazyPage'}">
+                    <li class="my-down" v-tap="{methods:enterMy,params:'crazyPage'}" v-if="!isHideDownLoad">
                         <i></i>下载APP
                         <sup class="dot"></sup>
                         <span class="jj5"></span>
@@ -327,7 +327,7 @@
 <script>
     import SendOrder from '~components/send-order.vue'
     import { actionTypes, mutationTypes } from '~store/home'
-    import {starHtml, stopHtml, platform} from '~common/util'
+    import {starHtml, stopHtml, platform , src } from '~common/util'
     import HeaderTemplateHome from '~components/header_template_home.vue'
     import MsgAlert from '~components/msg-alert.vue'
     import PublicHead from '~components/publicHead'
@@ -339,6 +339,7 @@
     export default {
         data () {
             return {
+                isHideDownLoad:false,
                 showRankType: 'thisWeek',
                 isrankRule: false,  // 显示榜单规则
                 showOption: false,  // 反馈
@@ -598,6 +599,11 @@
                 } else {
                     return Math.round(num / 100000000 * 10) / 10 + '亿'
                 }
+            }
+        },
+        mounted () {
+            if( src() === 'off-mipan' ){
+                this.isHideDownLoad = true;
             }
         }
     }

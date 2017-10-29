@@ -20,6 +20,12 @@ export const getCookie = (sName) => {
         }
     }
 }
+
+export const isWeiX = (function () {
+    let ua = navigator.userAgent.toLowerCase();
+    return ~ua.indexOf('micromessenger');
+})();
+
 export const addCookie = (name, value) => {
     let Days = 30
     let exp = new Date()

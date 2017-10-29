@@ -31,7 +31,8 @@
                                  :class="{'icon_rawdown':!showsContent[msg.cid] }"
                                 ></i>
                             </div>
-                            <div class="msg_cont" :class="{'hide':!msg.pid && !showsContent[msg.cid] }">
+                            <!--<div class="msg_cont" :class="{'hide':!msg.pid && !showsContent[msg.cid] }">-->
+                            <div class="msg_cont">
                                 <!--style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);"-->
                                 {{msg.content}}
                             </div>

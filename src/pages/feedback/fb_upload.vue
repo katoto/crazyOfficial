@@ -18,7 +18,7 @@
             <a href="javascript:;" class="btn-red btn-ask" :class="{'btn-unable':!textareaData}">
                 提交反馈
             </a>
-            <a href="javascript:;" style="color: #878fff ;!important;" v-tap="{methods:showkefu}" class="btn-online">
+            <a href="javascript:;" style="color: #878fff ;!important;" v-if="!isHideDownLoad" v-tap="{methods:showkefu}" class="btn-online">
                 在线客服
             </a>
         </div>
@@ -62,11 +62,12 @@
     import PublicHead from '~components/publicHead'
     import KefuAlert from '~components/kefu-alert'
     import $ from 'bc-zepto.full'
-    import {platform, src, getCk} from '~common/util'
+    import {platform, src, getCk } from '~common/util'
 
     export default {
         data () {
             return {
+                isHideDownLoad:false,
                 showkf: false,
                 textareaData: '',
                 showLoading: false,
@@ -131,6 +132,9 @@
             KefuAlert
         },
         mounted (t) {
+            if( src() ==='off-mipan'){
+                this.isHideDownLoad = true;
+            }
             const options = {}
             if (process.env.NODE_ENV === 'production') {
                 if (window.location.protocol === 'http:') {
