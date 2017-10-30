@@ -20,7 +20,7 @@
                 </div>
                 <div class="intro_title">4.用户服务</div>
                 <div class="intro_text">
-                    如有任何疑问，请联系疯狂猜球服务号。
+                    如有任何疑问，请联系客服。
                 </div>
             </div>
         </div>

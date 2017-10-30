@@ -6,7 +6,7 @@
                 <img :src="setAwardImg"  @error="imgOnErrorLogo">
             </div>
             <span class="close" v-tap="{ methods:showAwardBoxFn}"></span>
-            <a href="javascript:;" class="pop-down"  v-tap="{ methods:downLoadApp}">
+            <a href="javascript:;" class="pop-down" v-if="!isHideDownLoad" v-tap="{ methods:downLoadApp}">
                 {{msg}}<i>{{msg2}}</i>
             </a>
         </div>
@@ -14,12 +14,13 @@
 </template>
 
 <script>
-    import {platform} from '~common/util'
+    import {platform,src} from '~common/util'
     export default {
         data () {
             return {
                 msg: '下载APP 加奖',
-                msg2: '10%'
+                msg2: '10%',
+                isHideDownLoad:false,
             }
         },
         methods: {
@@ -41,6 +42,11 @@
         computed: {
             setAwardImg () {
                 return this.$store.state.awardAllData.setAwardImg
+            }
+        },
+        mounted(){
+            if( src() ==='off-mipan'){
+                this.isHideDownLoad = true;
             }
         }
     }

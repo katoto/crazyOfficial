@@ -6012,7 +6012,7 @@
                 }
                 if (fmdetail && fmdetail.award_url) {
 //                    this.$store.commit('setAwardImg', fmdetail.award_url)
-                    this.$store.commit('setAwardImg', 'https://crazybet.choopaoo.com/img/esun/upload/d5/d7/d5d7597ca4f311e78ca3.jpg')
+                    this.$store.commit('setAwardImg', 'http://img.choopaoo.com/esun/upload/f4/26/f426f2ec555d11e78c88.jpg')
                     this.$store.commit('showAwardbox', true)
                 }
             },

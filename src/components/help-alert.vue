@@ -37,7 +37,7 @@
                                     <div class="cont-tit">
                                         <h4>猜球币充值有哪些方式？</h4>
                                         <i class="icon-raw" :class="{ 'rotate180':!helpSel.helpSel_3 }"></i></div>
-                                    <div class="cont" :class="{ 'hide': !helpSel.helpSel_3}">本收银台仅支持支付宝支付，其他支付方式敬请期待</div>
+                                    <div class="cont" :class="{ 'hide': !helpSel.helpSel_3}">本收银台在微信内，可使用微信支付，浏览器内使用支付宝支付。</div>
                                 </div>
                             </div>
                             <div class="list" v-tap="{methods:helpItem,helpSel:'helpSel_4'}">

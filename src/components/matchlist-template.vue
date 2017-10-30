@@ -57,7 +57,7 @@
             showAwardBoxFn ({params}) {
                 this.$store.commit('showAwardbox', true)
 //                this.$store.commit('setAwardImg', params)
-                this.$store.commit('setAwardImg', 'https://crazybet.choopaoo.com/img/esun/upload/d5/d7/d5d7597ca4f311e78ca3.jpg')
+                this.$store.commit('setAwardImg', 'http://img.choopaoo.com/esun/upload/f4/26/f426f2ec555d11e78c88.jpg')
             },
             imgOnErrorLogo (that) {
 //                that.target.setAttribute('src', 'https://crazybet.choopaoo.com/img/esun/upload/f8/33/f833e6e641ef11e78fcf.png')
