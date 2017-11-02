@@ -35,12 +35,12 @@
                     <span class="delete" v-if="telCode && !telCodeBlur" v-tap="{ methods:delNumber ,params:'telCode'}"></span>
 
                 </div>
+                <!--:class="{'user-msg01':telNumber.length === 11 , 'user-msg02': telNumber.length !== 11 || addUnable }"-->
                 <a href="javascript:;"
-                   v-tap="{ methods:sendCodeFn }" class="user-co" :class="{'user-msg01':telNumber.length === 11 , 'user-msg02': telNumber.length !== 11 || addUnable }"
+                   v-tap="{ methods:sendCodeFn }" class="user-co user-msg01"
                 >
                     {{ countDownStr }}
                 </a>
-
                 <div class="overflow">
                     <span class="reg-warning" v-if="rGTips">
                         {{ rGTips }}
