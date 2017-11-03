@@ -6329,7 +6329,10 @@
                             this.flashTips()
                             setTimeout(() => {
                                 this.$store.dispatch('showToast', {
-                                    message: '您的可用余额不足'
+                                    message: '您的可用余额不足',
+                                    cb:() =>{
+                                        this.$router.push(`/chargeNew/`)
+                                    }
                                 })
                             }, 300)
                             stopHtml()
@@ -6358,10 +6361,7 @@
                         message: '余额不足',
                         cb: () => {
                             stopHtml()
-                            console.log('show charge')
-//                            setTimeout(() => {
-//                                this.$store.commit('showChargebox', true)
-//                            }, 10)
+                            this.$router.push(`/chargeNew/`)
                             _hmt.push(['_trackEvent', 'off_充值点击', 'click', 'off_充值'])
                         }
                     })

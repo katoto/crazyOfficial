@@ -117,9 +117,9 @@
                             }, 300)
                             stopHtml()
                             setTimeout(() => {
-                                this.$store.commit('showChargebox', true)
+                                this.$router.push(`/chargeNew/`)
                             }, 10)
-                            _hmt.push(['_trackEvent', '500qqsd_充值点击', 'click', '500qqsd_充值'])
+                            _hmt.push(['_trackEvent', 'off_充值点击', 'click', 'off_充值'])
                         } else {
                             this.$store.commit(mutationTypes.setSelectedNum, this.selectedNum + addMoney)
                         }
@@ -134,8 +134,8 @@
                         this.$store.dispatch('showToast', {
                             message: '您的可用余额不足',
                             cb: () => {
-                                _hmt.push(['_trackEvent', '500qqsd_充值点击', 'click', '500qqsd_充值'])
-                                this.$router.push(`/my/charge`)
+                                _hmt.push(['_trackEvent', 'off_充值点击', 'click', 'off_充值'])
+                                this.$router.push(`/chargeNew/`)
                             }
                         })
                     }
