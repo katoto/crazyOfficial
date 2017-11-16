@@ -315,9 +315,9 @@
         <!--  底部选项 -->
 
         <!-- 五大联赛 -->
-        <div style="display: none;">
-            <a href="javascript:;" class="enter" id="enter" v-tap="{ methods:jumpToRedCenter}">
-                <img src="~static/images/enter-nationDay.png">
+        <div>
+            <a href="javascript:;" class="enter" v-tap="{ methods:jumpToRedCenter}">
+                <img src="http://img.choopaoo.com/esun/upload/0d/7e/0d7e829aca9911e7b71e.png">
             </a>
         </div>
         <send-order></send-order>
@@ -358,13 +358,17 @@
                 if (this.ck) {
                     ck = this.ck.replace(/=/g, '$')
                 } else {
-                    this.$store.dispatch('doAuth')
+                    this.$store.dispatch('doAuth');
                     return false
                 }
                 /* 带上参数 ！！ */
-                window.location.href = 'http://crazybet.choopaoo.com/guoqing/?from=500app&h5ck=' + ck + '&fromCopy=fromCopy'
+                window.location.href = 'http://crazybet.choopaoo.com/2017/thanksgive?from='+src()+'&h5ck='+ck;
             },
             activityJumpFn ({ params }) {
+                if( !this.ck ){
+                    this.$store.dispatch('doAuth');
+                    return false
+                }
                 location.href = params
             },
             newUserGuide ({ params }) {
@@ -509,10 +513,6 @@
                 return this.$store.state.showHelpbox
             },
             userinfo () {
-//                if (this.$store.state.userInfo && this.$store.state.userInfo.is_activity === '1' && this.isSign === '0') {
-//                    /* 活动弹窗 ( 弹窗规则有点问题 ) ???????  */
-/// /                    this.$store.commit('setActiveBox', true)
-//                }
                 if (this.$store.state.userInfo && this.$store.state.userInfo.first_login === '1') {
                     /* 引导弹窗  + 888 金币弹窗  */
                     this.showNewUserBox = true
@@ -608,3 +608,10 @@
         }
     }
 </script>
+<style>
+    .enter{
+        width: 1.1rem  !important;
+        height: 0.92rem !important;
+    }
+    .enter img{ display: block;width: 100%;height: 100%; }
+</style>

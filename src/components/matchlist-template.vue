@@ -60,8 +60,8 @@
                 this.$store.commit('setAwardImg', 'http://img.choopaoo.com/esun/upload/f4/26/f426f2ec555d11e78c88.jpg')
             },
             imgOnErrorLogo (that) {
-//                that.target.setAttribute('src', 'https://crazybet.choopaoo.com/img/esun/upload/f8/33/f833e6e641ef11e78fcf.png')
-                that.target.setAttribute('src', 'http://odds.500.com/static/soccerdata/images/TeamPic/teamsignnew_1213.png')
+                that.target.setAttribute('src', 'http://img.choopaoo.com/esun/upload/f8/33/f833e6e641ef11e78fcf.png')
+//                that.target.setAttribute('src', 'http://odds.500.com/static/soccerdata/images/TeamPic/teamsignnew_1213.png')
             },
             clickBetTab ({params}) {
                 let oldFlag = ''

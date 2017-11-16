@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
     }
 } else if (process.env.NODE_ENV === 'preRelease') {
     // options.baseURL = 'http://crazybet.choopaoo.com:8090'
-    options.baseURL = 'http://crazybet.choopaoo.com:3899'
+    options.baseURL = 'http://crazybet.choopaoo.com:8090'
 } else {
     options.baseURL = '/api'
 }

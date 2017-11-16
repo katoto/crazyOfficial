@@ -59,7 +59,7 @@
         watch: {},
         methods: {
             imgOnError (that) {
-                that.target.setAttribute('src', 'https://crazybet.choopaoo.com/img/esun/upload/f8/33/f833e6e641ef11e78fcf.png')
+                that.target.setAttribute('src', 'http://img.choopaoo.com/esun/upload/f8/33/f833e6e641ef11e78fcf.png')
 //                that.target.setAttribute('src', 'http://odds.500.com/static/soccerdata/images/TeamPic/teamsignnew_1213.png')
             },
             clickBetTab ({params}) {
