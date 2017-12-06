@@ -2010,3 +2010,11 @@
     width:171px;
     height:129px;
 }
+
+/*虚拟杯赛入口*/
+.enter-egret,.enter-egret img{
+    display: block;
+    width:750px;
+    height:173px;
+    margin: 20px 0;
+}
