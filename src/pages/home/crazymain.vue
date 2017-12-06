@@ -171,7 +171,8 @@
                 case 'jumpToCrazybet':
                     _hmt.push(['_trackEvent', 'off_虚拟杯点击', 'click', 'off_虚拟杯']);
                     if( this.ck ){
-                        window.location.href = 'http://crazybet.choopaoo.com/2017/crazybet/index.html?src='+ src() +'&uid='+ this.userInfo.uid +'&ck='+this.ck ;
+                        let ck = this.ck.replace(/=/g, '$');
+                        window.location.href = 'http://crazybet.choopaoo.com/2017/crazybet/index.html?src='+ src() +'&uid='+ this.userInfo.uid +'&ck='+ ck ;
                     }else{
                         this.$store.dispatch('doAuth');
                         return false
