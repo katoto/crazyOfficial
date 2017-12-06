@@ -13,6 +13,12 @@
                 </div>
             </banner-scroll>
 
+            <!--虚拟杯赛入口-->
+            <a href="javascript:;" class="enter-egret" v-tap="{ methods:matchNav ,params:'jumpToCrazybet'}">
+                <img src="~static/images/enter-egret.jpg" alt="虚拟杯赛">
+            </a>
+            <!--虚拟杯赛入口-->
+
             <!--活动-->
             <section class="act" v-if="homeActivitiesData && homeActivitiesData.length>=2">
                 <swiper class="left" :options="swiperOption"  ref="mySwiper">
@@ -160,8 +166,17 @@
                     } else {
                         window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.crazy500.cbet&ckey=CK1379013173299'
                     }
-                    _hmt.push(['_trackEvent', 'off_下载app点击', 'click', 'off_下载app'])
+                    _hmt.push(['_trackEvent', 'off_下载app点击', 'click', 'off_下载app']);
                     break
+                case 'jumpToCrazybet':
+                    _hmt.push(['_trackEvent', 'off_虚拟杯点击', 'click', 'off_虚拟杯']);
+                    if( this.ck ){
+                        window.location.href = 'http://crazybet.choopaoo.com/2017/crazybet/index.html?src='+ src() +'&uid='+ this.userInfo.uid +'&ck='+this.ck ;
+                    }else{
+                        this.$store.dispatch('doAuth');
+                        return false
+                    }
+                    break;
                 }
             }
         },

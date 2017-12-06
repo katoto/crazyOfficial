@@ -11,8 +11,8 @@ if (process.env.NODE_ENV === 'production') {
         options.baseURL = window.location.protocol + '//crazybet.choopaoo.com:46899'
     }
 } else if (process.env.NODE_ENV === 'preRelease') {
+    options.baseURL = 'http://10.0.1.41:6899'
     // options.baseURL = 'http://crazybet.choopaoo.com:8090'
-    options.baseURL = 'http://crazybet.choopaoo.com:8090'
 } else {
     options.baseURL = '/api'
 }
