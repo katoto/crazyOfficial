@@ -1,6 +1,5 @@
 <template>
     <div class="l-full">
-        <!--v-tap="{methods: trackEvent}"-->
         <div class="toast" v-show="toastMsg" :class="{'tipsHeight': showHeightTips }">{{ toastMsg }}</div>
         <router-view v-if="ready"></router-view>
         <div class="loading" v-else>
@@ -76,8 +75,8 @@
 //                await this.$store.dispatch('localLogin', 1233)
 //                await this.$store.dispatch('getUserInfo')
             /* 线上 登陆 */
-//                await this.$store.dispatch('checkLogin')
                 await this.$store.dispatch('checkLogin')
+
                 if (this.isLogin) {
                     await this.$store.dispatch('getUserInfo')
                 }

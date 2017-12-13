@@ -15,11 +15,11 @@ import $ from 'bc-zepto.full'
 
 Vue.use(Vuex)
 
-let baseURL = 'ws://192.168.41.76:6999'
+let baseURL = 'ws://10.0.1.167:6999'
 if (process.env.NODE_ENV === 'production') {
     baseURL = 'wss://crazybet.choopaoo.com/wss'
 } else if (process.env.NODE_ENV === 'preRelease') {
-    baseURL = 'ws://192.168.41.76:6999'
+    baseURL = 'ws://10.0.1.167:6999'
 }
 
 // 全局的就是直接变量，一个页面一个对象
