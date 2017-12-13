@@ -2012,6 +2012,9 @@
 }
 
 /*虚拟杯赛入口*/
+.enter-egret {
+    background: #389155;
+}
 .enter-egret,.enter-egret img{
     display: block;
     width:750px;
