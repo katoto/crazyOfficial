@@ -654,26 +654,33 @@ export default {
                     this.$store.dispatch('getWinGoodList')
                 }
             }
+            // 跳转 drawList
+            setTimeout(()=>{
+                if (~location.hash.indexOf('@@_@')) {
+                    this.showPrizeList({ params:true });
+                    history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew/draw`)
+                }
+            },0) ;
+
             if (this.$route.params.others && this.$route.params.others === 'showList') {
-                stopHtml()
-                this.isShowChargeTab = false
-                this.$store.dispatch('getGoodsList')
-                this.showLuckEnd = false
-                this.isShowPrizeList = true
+                stopHtml();
+                this.isShowChargeTab = false;
+                this.$store.dispatch('getGoodsList');
+                this.showLuckEnd = false;
+                this.isShowPrizeList = true;
                 if (this.userInfo) {
                     /* 可优化 */
                     this.$store.dispatch('getWinGoodList')
                 }
             }
             if (!isWeiX) {
-
                 if (this.$route.params.others && this.$route.params.others.indexOf('_@_ck_@_') > -1) {
-                    let arr = this.$route.params.others.split('_@_')
+                    let arr = this.$route.params.others.split('_@_');
                     if (arr[0] === '2') {
-                        this.$store.dispatch('showToast', '充值成功')
+                        this.$store.dispatch('showToast', '充值成功');
                         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
                     } else if (arr[0] === '1') {
-                        this.$store.dispatch('showToast', '支付未完成，请重试')
+                        this.$store.dispatch('showToast', '支付未完成，请重试');
                         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
                     }
                 }
