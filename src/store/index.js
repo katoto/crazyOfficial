@@ -86,6 +86,7 @@ const state = {
         chooseIDCartNumber: null
     },
     isLogin: false,
+    isLogin500:false,
     isHideHomeHead: false, // 隐藏头部
     activeBox: {
         showActBox: false // 弹窗
@@ -121,7 +122,9 @@ const mutations = {
     setIsLogin (state, data) {
         state.isLogin = data
     },
-
+    setIsLogin500 (state, data) {
+        state.isLogin500 = data
+    },
     setIsConfirmBtn (state, data) {
         state.shopAddData.isConfirmBtn = data
     },
@@ -319,16 +322,128 @@ const actions = {
         }
     },
 
+    // new  500 登陆
+    /* 检查是否登录 */
+    async checkLogin500 ({commit, dispatch}, params) {
+        try {
+            const waitCodePromise = () => {
+                return new Promise((resolve, reject) => {
+                    let url = `http://passport.500.com/auth/index.php?action=checkuserlogin&client_id=500guess&webtype=2129&isnew=1&callback=checkLogin`
+                    $.ajax({
+                        url: url,
+                        type: 'get',
+                        dataType: 'jsonp',
+                        jsonp: 'jpcallback',
+                        jsonpCallback: 'checkLogin',
+                        success: function (data) {
+                            resolve(data)
+                        },
+                        error: function (e) {
+                            reject('0')
+                            dispatch('showToast', e.message)
+                        }
+                    })
+                })
+            }
+            const CodeData = await waitCodePromise()
+            console.log(CodeData)
+            if (CodeData && CodeData.code === 100 && CodeData.msg) {
+                if (CodeData.msg.islogin === '1' && CodeData.msg.code !== '0') {
+                    /* 已经登录 */
+                    commit('setIsLogin500', true)
+                    /* 是否直接 */
+                    if (!(CodeData.msg.uuid && localStorage.getItem('userid') && getCk() && localStorage.getItem('userid') === CodeData.msg.uuid && getCk() !== 'undefined')) {
+                        await dispatch('doLogin500', CodeData.msg.code)
+                    }
+                    console.log('==============')
+                    console.log( CodeData.msg.uuid )
+                    console.log( getCk() );
+                    console.log( localStorage.getItem('userid') === CodeData.msg.uuid )
+
+                    commit('ck', getCk() )
+                } else {
+                    commit('setIsLogin500', false);
+                    // window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/official?from=500touch'
+                }
+            } else {
+                dispatch('showToast', '登录有误')
+            }
+        } catch (e) {
+            dispatch('showToast', e.message + '/login/cpuser')
+        }
+    },
+    async localCheckLogin500 ({commit, dispatch}, params) {
+        try {
+            const waitCodePromise = () => {
+                return new Promise((resolve, reject) => {
+                    let url = `http://passport.500boss.com/auth/index.php?action=checkuserlogin&client_id=500guess&webtype=2129&isnew=1&callback=checkLogin`
+                    $.ajax({
+                        url: url,
+                        type: 'get',
+                        dataType: 'jsonp',
+                        jsonp: 'jpcallback',
+                        jsonpCallback: 'checkLogin',
+                        success: function (data) {
+                            resolve(data)
+                        },
+                        error: function (e) {
+                            reject('0')
+                            dispatch('showToast', e.message)
+                        }
+                    })
+                })
+            }
+            const CodeData = await waitCodePromise()
+            if (CodeData && CodeData.code === 100 && CodeData.msg) {
+                if (CodeData.msg.islogin === '1' && CodeData.msg.code !== '0') {
+                    /* 已经登录 */
+                    commit('setIsLogin500', true)
+                    /* 是否直接给建成 */
+                    await dispatch('doLogin500', CodeData.msg.code)
+                } else {
+                    commit('setIsLogin500', false)
+                    window.location.href = 'http://wx.500boss.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/official?from=500touch'
+                }
+            } else {
+                dispatch('showToast', '登录有误')
+            }
+        } catch (e) {
+            dispatch('showToast', e.message + '/login/cpuser')
+        }
+    },
+    async doLogin500 ({commit, dispatch}, params) {
+        try {
+            let doLoginData = null
+            doLoginData = await ajax.get(`/login/cpuser?token=${params}&cptype=500&src=${src}&platform=${platform}`)
+            console.log( doLoginData );
+            if (doLoginData.userid) {
+                localStorage.setItem('userid', doLoginData.userid)
+            }
+            commit('ck', doLoginData.ck)
+            return doLoginData.ck
+        } catch (e) {
+            dispatch('showToast', e.message + '/login/cpuser')
+        }
+    },
+
+    // new  500 登陆
     async doAuth ({commit, dispatch}) {
         try {
             /* 处理登陆（调登陆 ） */
-            router.push('/login')
-            dispatch('clearLoginState')
+            if( src()==='500touch' ){
+                switch ( src() ){
+                    case '500touch':
+                        window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl='+ location.href.split(location.pathname)[0] + '/official?from=500touch' ;
+                        ;break;
+                }
+            }else{
+                router.push('/login');
+                dispatch('clearLoginState')
+            }
         } catch (e) {
             dispatch('showToast', e.message + 'doAuth')
         }
     },
-
     async showToast ({commit}, msg) {
         let cb = null, duration = 2000
         if (typeof msg === 'object') {
