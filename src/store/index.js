@@ -344,7 +344,7 @@ const actions = {
     async getGoodBingoNew ({state,commit, dispatch}, obj) {
         try {
             commit( 'setGoodBingoNew', null );
-            let luckGoodBingo = await ajax.get(`/shops/goods/exchange?amount=${obj.amount}&ck=${getCk()}&goodsid=${obj.goodsid}&channel=${obj.channel}&platform=${platform}&goodstype=${obj.goodstype}&src=${src}&company=${obj.company}`);
+            let luckGoodBingo = await ajax.get(`/shops/goods/exchange?amount=${obj.amount}&ck=${getCk()}&goodsid=${obj.goodsid}&channel=${obj.channel}&platform=${platform}&goodstype=${obj.goodstype}&src=${src()}&company=${obj.company}`);
             commit( 'setGoodBingoNew', luckGoodBingo );
             commit( 'showPopGiftSu',true ) ;
             dispatch('getUserInfo');
@@ -360,7 +360,7 @@ const actions = {
     async luckDrawGo ({commit, dispatch},params) {
         try {
             console.log( params ) ;
-            const bingoData = await ajax.get(`/wheel/bingo?platform=${platform}&src=${src}&wtype=55000&golds=55000&ck=${getCk()}`);
+            const bingoData = await ajax.get(`/wheel/bingo?platform=${platform}&src=${src()}&wtype=55000&golds=55000&ck=${getCk()}`);
             console.log( bingoData ) ;
 
             if( bingoData && bingoData.prize && bingoData.prize.idx ){
@@ -596,7 +596,7 @@ const actions = {
     async doLogin500 ({commit, dispatch}, params) {
         try {
             let doLoginData = null
-            doLoginData = await ajax.get(`/login/cpuser?token=${params}&cptype=500&src=${src}&platform=${platform}`)
+            doLoginData = await ajax.get(`/login/cpuser?token=${params}&cptype=500&src=${src()}&platform=${platform}`)
             console.log( doLoginData );
             if (doLoginData.userid) {
                 localStorage.setItem('userid', doLoginData.userid)
