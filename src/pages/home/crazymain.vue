@@ -15,7 +15,7 @@
 
             <!--虚拟杯赛入口-->
             <a href="javascript:;" class="enter-egret" v-tap="{ methods:matchNav ,params:'jumpToCrazybet'}">
-                <img src="~static/images/enter-egret.jpg" alt="虚拟杯赛">
+                <img src="~static/images/enter-egret.png" alt="虚拟杯赛">
             </a>
             <!--虚拟杯赛入口-->
 
