@@ -13,6 +13,10 @@
                     <i></i>
                 </a>
             </div>
+            <section v-if="userInfo">
+                右上角金币
+                {{ userInfo.gold_total | golds }}
+            </section>
             <div class="main-top">
                 <div class="fl" v-show="isShowChargeTab">
                     <span class="cz-icon">
@@ -33,7 +37,9 @@
 
                 <div class="btn-myprop">
                     <span class="my-tool" v-show="isShowChargeTab"  v-tap="{methods: showMyTool, params: true}">我的道具</span>
+
                     <span class="my-exchange" :class="{'on':isSureConfirmAdd }" v-show="!isShowChargeTab" v-tap="{methods: showPrizeList, params: true}">兑换记录</span>
+
                 </div>
 
             </div>
