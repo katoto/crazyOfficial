@@ -85,65 +85,65 @@
                         </div>
                         <div class="item" v-if="parseInt(goodslist.length)%2!==0"></div>
                     </div>
-
+                    <!--on  切换出 兑换劵 -->
+                    <div class="lottery-dhj":class="{ 'on': dhjMsg.lotteryDhj } ">
+                        <div class="lotteryDhj-t">
+                            获取兑换券
+                        </div>
+                        <div class="lotteryDhj-c">
+                            <ul class="hign-btn">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <template v-if="dhjObj.positionName !== 'default'">
+                                    <div :class="dhjObj.positionName"></div>
+                                </template>
+                            </ul>
+                            <ul class="lottery-bg">
+                                <li>
+                                    <p>兑奖券<i class="yellow">x2</i></p>
+                                </li>
+                                <li>
+                                    <p>兑奖券<i class="yellow">x1</i></p>
+                                </li>
+                                <li>
+                                    <p>兑奖券<i class="yellow">x1</i></p>
+                                </li>
+                                <li>
+                                    <p>兑奖券<i class="yellow">x1</i></p>
+                                </li>
+                                <li>
+                                    <p>55,000</p>
+                                </li>
+                                <li>
+                                    <p>兑奖券<i class="yellow">x1</i></p>
+                                </li>
+                                <li>
+                                    <p>兑奖券<i class="yellow">x1</i></p>
+                                </li>
+                                <li>
+                                    <p>兑奖券<i class="yellow">x2</i></p>
+                                </li>
+                            </ul>
+                            <!--on  开始动画的时候加on  -->
+                            <a href="javascript:;" :class="{'on':!dhjObj.dhjBtn }"  v-tap="{methods: startLuckgo }" class="btn-beginLottery">
+                                开始抽奖
+                            </a>
+                        </div>
+                        <a href="javascript:;" class="toDhc" v-tap="{methods: backToDraw }">返回兑换场</a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="layer hide"></div>
 
         <!-- full-scroll 新增 -->
-        <!--on  切换出 兑换劵 -->
-        <div class="lottery-dhj":class="{ 'on': dhjMsg.lotteryDhj } ">
-            <div class="lotteryDhj-t">
-                获取兑换券
-            </div>
-            <div class="lotteryDhj-c">
-                <ul class="hign-btn">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <template v-if="dhjObj.positionName !== 'default'">
-                        <div :class="dhjObj.positionName"></div>
-                    </template>
-                </ul>
-                <ul class="lottery-bg">
-                    <li>
-                        <p>兑奖券<i class="yellow">x2</i></p>
-                    </li>
-                    <li>
-                        <p>兑奖券<i class="yellow">x1</i></p>
-                    </li>
-                    <li>
-                        <p>兑奖券<i class="yellow">x1</i></p>
-                    </li>
-                    <li>
-                        <p>兑奖券<i class="yellow">x1</i></p>
-                    </li>
-                    <li>
-                        <p>55,000</p>
-                    </li>
-                    <li>
-                        <p>兑奖券<i class="yellow">x1</i></p>
-                    </li>
-                    <li>
-                        <p>兑奖券<i class="yellow">x1</i></p>
-                    </li>
-                    <li>
-                        <p>兑奖券<i class="yellow">x2</i></p>
-                    </li>
-                </ul>
-                <!--on  开始动画的时候加on  -->
-                <a href="javascript:;" :class="{'on':!dhjObj.dhjBtn }"  v-tap="{methods: startLuckgo }" class="btn-beginLottery">
-                    开始抽奖
-                </a>
-            </div>
-            <a href="javascript:;" class="toDhc" v-tap="{methods: backToDraw }">返回兑换场</a>
-        </div>
+
 
         <!-- 礼包弹窗  -->
         <div class="pop pop_prizes" :class="{'hide':!alertGoodsBox}">
@@ -250,6 +250,7 @@
                 <a href="javascript:;" v-tap="{methods: closeCoinLess }">确认</a>
             </div>
         </div>
+
 
         <!--我的道具-->
         <div class="pop pop02 pop-mytool" :class="{'hide':!isShowMyTool}">
@@ -446,11 +447,11 @@
         <div class="pop pop-my-msg" :class="{'hide':!isShowMyMess}">
             <div class="pop_layer" v-tap="{methods: choseMyMess}"></div>
             <div class="pop-msg-c">
-                <span>
-                    我的余额
-                </span>
+                <!--<span>-->
+                    <!--我的余额-->
+                <!--</span>-->
                 <ul v-if="userInfo">
-                    <li class="pop-myover" v-tap="{methods: jumpTodhj }">
+                    <li class="pop-mydhj" v-tap="{methods: jumpTodhj }">
                         获取兑换券
                     </li>
                     <li class="pop-myaddress"  v-tap="{methods: jumpToPage,params:'shopAdd'}" >

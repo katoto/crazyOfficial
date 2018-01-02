@@ -2266,22 +2266,23 @@
     width:265px;
     text-align: left;
     background: #26272f;
-    padding-top: 32px;
+    /*padding-top: 32px;*/
 }
 .pop-msg-c ul{}
 .pop-msg-c span{
-    position: absolute;
-    left:30px;
-    top:0;
-    line-height:54px;
-    font-size:26px;
-    color: #6a7493;
+    /*position: absolute;*/
+    /*left:30px;*/
+    /*top:0;*/
+    /*line-height:54px;*/
+    /*font-size:26px;*/
+    /*color: #6a7493;*/
 }
 .pop-msg-c li{
     position: relative;
     line-height:98px;
     font-size:36px;
-    text-indent: 74px;
+    /*text-indent: 74px;*/
+    text-indent:30px;
     border-bottom:2px solid #1f2025;
 }
 .pop-msg-c li::before{
@@ -2290,25 +2291,25 @@
     position: absolute;
 }
 .pop-msg-c .pop-myover::before{
-    left:34px;
-    top:35px;
-    width: 28px;
-    height: 28px;
-    background-position: -80px -180px;
+    /*left:34px;*/
+    /*top:35px;*/
+    /*width: 28px;*/
+    /*height: 28px;*/
+    /*background-position: -80px -180px;*/
 }
 .pop-msg-c .pop-myaddress::before{
-    left:34px;
-    top:33px;
-    width: 24px;
-    height: 32px;
-    background-position: 0 -567px;
+    /*left:34px;*/
+    /*top:33px;*/
+    /*width: 24px;*/
+    /*height: 32px;*/
+    /*background-position: 0 -567px;*/
 }
 .pop-msg-c .pop-explain::before{
-    left:34px;
-    top:32px;
-    width: 28px;
-    height: 30px;
-    background-position: -33px -567px;
+    /*left:34px;*/
+    /*top:32px;*/
+    /*width: 28px;*/
+    /*height: 30px;*/
+    /*background-position: -33px -567px;*/
 }
 /*相关信息*/
 /*商城*/
@@ -2660,10 +2661,11 @@
     left:0;
     width:100%;
     height:100%;
-    padding-top:300px;
+    /*padding-top:300px;*/
     box-sizing: border-box;
     transform: translateX(100%);
-    /*background: #1f2025;*/
+    background: #1f2025;
+    box-sizing: border-box;
 }
 .lottery-dhj.on{
     display: block;
@@ -2682,7 +2684,7 @@
     width:294px;
     height:60px;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 30px auto 0;
     background: #31333c;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
