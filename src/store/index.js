@@ -97,9 +97,45 @@ const state = {
     showHelpbox: false,
 
     loginSucc: false,
-    regisSucc: false
+    regisSucc: false,
+
+
+    dhj:{  // 兑换劵相关的对象
+        dhjBtn:true, // 抽奖按钮是否可点
+        positionName:'default', //position00 控制类名
+        goodBingoNew:null,  //抽取实物的数据
+    },
+    bingoPrize:{
+        number:0,
+        type:'',
+        isShow:false,
+    },
+    showPopGiftSu:false,  // 是否显示中奖弹窗
+    currOid:null,
+
 }
 const mutations = {
+
+    setcurrOid( state ,data ){
+        state.currOid = data ;
+    },
+    setPositionName( state ,data ){
+        state.dhj.positionName = data ;
+    },
+    setdhjBtn( state , data ){
+        state.dhj.dhjBtn = data ;
+    },
+    setbingoPrize( state ,data ){
+        state.bingoPrize = data ;
+    },
+    setGoodBingoNew( state ,data ){
+        state.dhj.goodBingoNew = data ;
+    },
+    showPopGiftSu( state ,data ){
+        state.showPopGiftSu = data ;
+    },
+    //  new
+
     loginSucc (state, data) {
         state.loginSucc = data
     },
@@ -301,6 +337,153 @@ const mutations = {
 
 }
 const actions = {
+
+    /**
+     *  换取实物
+     * */
+    async getGoodBingoNew ({state,commit, dispatch}, obj) {
+        try {
+            commit( mTypes.setGoodBingoNew, null );
+
+            let luckGoodBingo = await ajax.get(`/shops/goods/exchange?amount=${obj.amount}&ck=${getCk()}&goodsid=${obj.goodsid}&channel=${obj.channel}&platform=${platform}&goodstype=${obj.goodstype}&src=${src}&company=${obj.company}`);
+            commit( mTypes.setGoodBingoNew, luckGoodBingo );
+            commit( mTypes.showPopGiftSu,true ) ;
+            dispatch('getUserInfo');
+            // 更新oid
+            if( luckGoodBingo.oid ){
+                commit( mTypes.setcurrOid, luckGoodBingo.oid ) ;
+            }
+        } catch (e) {
+            dispatch('showToast', e.message)
+        }
+    },
+    // new  抽取兑换劵
+    async luckDrawGo ({commit, dispatch},params) {
+        try {
+            console.log( params ) ;
+            const bingoData = await ajax.get(`/wheel/bingo?platform=${platform}&src=${src}&wtype=55000&golds=55000&ck=${getCk()}`);
+            console.log( bingoData ) ;
+
+            if( bingoData && bingoData.prize && bingoData.prize.idx ){
+                console.log('+++++++++++++++')
+                console.log( bingoData.prize.idx )
+                dispatch (aTypes.moveFn,{
+                    endLocal: bingoData.prize.idx ,
+                    total: params.giftLen ,
+                    currLocal: params.currLocal ,
+                    initFunc:function () {
+                        // 初始化 按钮什么的
+                        commit( mTypes.setdhjBtn, false );
+                    },
+                    onComplete:function () {
+                        console.log('end move');
+                        commit( mTypes.setdhjBtn, true );
+                        // 弹窗奖品  把字段修改一下就行。
+                        commit(mTypes.setbingoPrize , {
+                            isShow: true,
+                            number: bingoData.prize.item ,
+                            type: bingoData.prize.type
+                        } );
+                        dispatch('getUserInfo') ;
+                    },
+                    rollFunc:function ( _index ) {
+                        commit( mTypes.setPositionName , 'position0'+ ( _index )  );
+                    },
+                })
+            }else{
+                console.error('bingo error item or prize ')
+            }
+            // 开始move
+
+        } catch (e) {
+            if (~e.message.indexOf('未登录') || ~e.message.indexOf('其他设备登录')) {
+                dispatch('clearLoginState', 0)
+                dispatch('doAuth')
+                return false
+            }
+            dispatch('showToast', e.message)
+        }
+    },
+    /***
+     *  抽奖 动画
+     * @param config
+     *     var defaultConfig = {
+            endLocal: 0 , // 开始停留的位置
+            total:4, // 奖品的个数
+            onComplete : function () {
+                console.log('end');
+            } ,
+            initFunc:function () {} // 初始化函数
+        };
+     */
+    moveFn( { commit ,state ,dispatch } ,config = defaultConfig ) {
+        var  _private = {
+                /***
+                 *  取旋转的随机数
+                 */
+                random (min , max) {
+                    return Math.floor(min + Math.random()*( max - min )) ;
+                },
+                aniFunction (t , b, c, d) {
+                    // 加速 、 减速
+                    return c * t /d + b ;
+                }
+            },
+            fastTime = 50 , slowTime = 400,
+            stepCounts = parseInt( config.endLocal ) + config.total * _private.random( 2 , 3 ) ,
+            index = 0, slowT = 0 ,
+            speedUp, uniform , slowDown ;
+
+        if( config.currLocal ){
+            // 算上初始的次数
+            stepCounts += ( parseInt( config.total ) - parseInt( config.currLocal )) - 1 ;
+        }
+        uniform = config.total * 2 ;
+        speedUp = Math.floor(( stepCounts - uniform )/ 3 );
+        uniform += speedUp ;
+        slowDown = stepCounts ;
+
+        if( config.initFunc ){
+            config.initFunc() ;
+        }
+
+        var moveFunc = function () {
+            var moveTime = null ;
+            index ++ ;
+            if( index > stepCounts ){
+                setTimeout( ()=>{
+                    config.onComplete();
+                },10) ;
+                return ;
+            }
+            var t = index, b = slowTime, c = fastTime - slowTime , d = speedUp;
+            if( index <= speedUp ){
+                moveTime = _private.aniFunction(t,b,c,d);
+            }
+            if( index > speedUp ){
+                moveTime = fastTime ;
+            }
+            if( index > uniform ){
+                t = slowT ++;
+                b = fastTime;
+                c = slowTime - fastTime;
+                d = slowDown - uniform;
+                moveTime = _private.aniFunction(t,b,c,d);
+            }
+            // 出赛果
+            if( config.currLocal ){
+                config.rollFunc( (index + parseInt(config.currLocal)) % 8 ) ;
+            }else{
+                config.rollFunc( index % 8 ) ;
+            }
+            setTimeout(moveFunc , moveTime ) ;
+        };
+        setTimeout(moveFunc , slowTime ) ;
+    } ,
+
+    // ====================
+
+
     clearLoginState ({commit, dispatch}, data) {
         commit('ck', '')
         addCookie(src()+'ck', '')
