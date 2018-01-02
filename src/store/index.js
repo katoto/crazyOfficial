@@ -343,15 +343,14 @@ const actions = {
      * */
     async getGoodBingoNew ({state,commit, dispatch}, obj) {
         try {
-            commit( mTypes.setGoodBingoNew, null );
-
+            commit( 'setGoodBingoNew', null );
             let luckGoodBingo = await ajax.get(`/shops/goods/exchange?amount=${obj.amount}&ck=${getCk()}&goodsid=${obj.goodsid}&channel=${obj.channel}&platform=${platform}&goodstype=${obj.goodstype}&src=${src}&company=${obj.company}`);
-            commit( mTypes.setGoodBingoNew, luckGoodBingo );
-            commit( mTypes.showPopGiftSu,true ) ;
+            commit( 'setGoodBingoNew', luckGoodBingo );
+            commit( 'showPopGiftSu',true ) ;
             dispatch('getUserInfo');
             // 更新oid
             if( luckGoodBingo.oid ){
-                commit( mTypes.setcurrOid, luckGoodBingo.oid ) ;
+                commit( 'setcurrOid', luckGoodBingo.oid ) ;
             }
         } catch (e) {
             dispatch('showToast', e.message)
@@ -367,19 +366,19 @@ const actions = {
             if( bingoData && bingoData.prize && bingoData.prize.idx ){
                 console.log('+++++++++++++++')
                 console.log( bingoData.prize.idx )
-                dispatch (aTypes.moveFn,{
+                dispatch ('moveFn',{
                     endLocal: bingoData.prize.idx ,
                     total: params.giftLen ,
                     currLocal: params.currLocal ,
                     initFunc:function () {
                         // 初始化 按钮什么的
-                        commit( mTypes.setdhjBtn, false );
+                        commit( 'setdhjBtn', false );
                     },
                     onComplete:function () {
                         console.log('end move');
-                        commit( mTypes.setdhjBtn, true );
+                        commit( 'setdhjBtn', true );
                         // 弹窗奖品  把字段修改一下就行。
-                        commit(mTypes.setbingoPrize , {
+                        commit('setbingoPrize' , {
                             isShow: true,
                             number: bingoData.prize.item ,
                             type: bingoData.prize.type
@@ -387,7 +386,7 @@ const actions = {
                         dispatch('getUserInfo') ;
                     },
                     rollFunc:function ( _index ) {
-                        commit( mTypes.setPositionName , 'position0'+ ( _index )  );
+                        commit( 'setPositionName' , 'position0'+ ( _index )  );
                     },
                 })
             }else{

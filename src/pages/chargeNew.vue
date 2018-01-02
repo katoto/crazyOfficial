@@ -55,27 +55,208 @@
                             <span class="item-btn" data-type="支付宝充值" :data-tab="item.money" v-tap="{methods: buy, item: item}">￥{{ item.rmb }}</span>
                         </div>
                     </div>
-                    <div class="main-list main-list02 clear" v-show="!isShowChargeTab">
+                    <!--// ================-->
+                    <!--<div class="main-list main-list02 clear" v-show="!isShowChargeTab">-->
+                        <!--<div class="item" v-for="good in goodslist">-->
+                            <!--<img :src="good.imgurl"-->
+                                 <!--v-tap="{methods: gotoLuck, item:good }"-->
+                            <!--&gt;-->
+                            <!--&lt;!&ndash;&ndash;&gt;-->
+                            <!--<p class="item-txt">{{ good.name }}</p>-->
+                            <!--<span class="item-btn" v-if="parseInt(good.restnum)>=1"-->
+                                  <!--data-type="点击抽奖" :data-tab="good.name"-->
+                                  <!--v-tap="{methods: alertGoodsMess,  params:good}"-->
+                            <!--&gt;-->
+
+                            <!--<i class="icon-jinbi"></i>{{ good.consumgolds | golds }}猜球币</span>-->
+                            <!--<span class="item-btn item-info-no" v-else>活动商品补货中</span>-->
+                        <!--</div>-->
+                        <!--<div class="item" v-if="goodslist && parseInt(goodslist.length)%2!==0"></div>-->
+                    <!--</div>-->
+<!--  11111111111    -->
+                    <!-- :class="{'hide': dhjMsg.lotteryDhj }" -->
+                    <div class="main-list clear" v-show="!isShowChargeTab">
                         <div class="item" v-for="good in goodslist">
                             <img :src="good.imgurl"
-                                 v-tap="{methods: gotoLuck, item:good }"
+                                 v-tap="{methods: alertGoodsMess, params: {goodImgUrl: good.imgurl, goodName: good.name, goodGolds: good.consumgolds, goodsdesc:good.goodsdesc}}"
                             >
-                            <!---->
                             <p class="item-txt">{{ good.name }}</p>
-                            <span class="item-btn" v-if="parseInt(good.restnum)>=1"
-                                  data-type="点击抽奖" :data-tab="good.name"
-                                  v-tap="{methods: alertGoodsMess,  params:good}"
-                            >
-
-                            <i class="icon-jinbi"></i>{{ good.consumgolds | golds }}猜球币</span>
-                            <span class="item-btn item-info-no" v-else>活动商品补货中</span>
+                            <span class="item-btn" v-if="parseInt(good.restnum)>=1" v-tap="{methods: alertdhjMess, params: good  }"  :data-tab="good.name" >
+                            <i class="icon-dhj"></i>
+                            {{ good.needtickets }}
+                        </span>
+                            <span class="item-btn item-lack" v-else style="background-color:#696f82">活动商品补货中</span>
                         </div>
-                        <div class="item" v-if="goodslist && parseInt(goodslist.length)%2!==0"></div>
+                        <div class="item" v-if="parseInt(goodslist.length)%2!==0"></div>
                     </div>
+
                 </div>
             </div>
         </div>
         <div class="layer hide"></div>
+
+        <!-- full-scroll 新增 -->
+        <!--on  切换出 兑换劵 -->
+        <div class="lottery-dhj":class="{ 'on': dhjMsg.lotteryDhj } ">
+            <div class="lotteryDhj-t">
+                获取兑换券
+            </div>
+            <div class="lotteryDhj-c">
+                <ul class="hign-btn">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <template v-if="dhjObj.positionName !== 'default'">
+                        <div :class="dhjObj.positionName"></div>
+                    </template>
+                </ul>
+                <ul class="lottery-bg">
+                    <li>
+                        <p>兑奖券<i class="yellow">x2</i></p>
+                    </li>
+                    <li>
+                        <p>兑奖券<i class="yellow">x1</i></p>
+                    </li>
+                    <li>
+                        <p>兑奖券<i class="yellow">x1</i></p>
+                    </li>
+                    <li>
+                        <p>兑奖券<i class="yellow">x1</i></p>
+                    </li>
+                    <li>
+                        <p>55,000</p>
+                    </li>
+                    <li>
+                        <p>兑奖券<i class="yellow">x1</i></p>
+                    </li>
+                    <li>
+                        <p>兑奖券<i class="yellow">x1</i></p>
+                    </li>
+                    <li>
+                        <p>兑奖券<i class="yellow">x2</i></p>
+                    </li>
+                </ul>
+                <!--on  开始动画的时候加on  -->
+                <a href="javascript:;" :class="{'on':!dhjObj.dhjBtn }"  v-tap="{methods: startLuckgo }" class="btn-beginLottery">
+                    开始抽奖
+                </a>
+            </div>
+            <a href="javascript:;" class="toDhc" v-tap="{methods: backToDraw }">返回兑换场</a>
+        </div>
+
+        <!-- 礼包弹窗  -->
+        <div class="pop pop_prizes" :class="{'hide':!alertGoodsBox}">
+            <div class="pop_layer"></div>
+            <div class="popIn" v-if="alertGoodsData">
+                <div class="popTit">
+                    <h2 class="titlle">奖品信息</h2>
+                    <span class="close" v-tap="{methods: closeAlert}"></span>
+                </div>
+                <div class="pop_cont">
+                    <p>{{alertGoodsData.goodName}}</p>
+                    <img :src="alertGoodsData.goodImgUrl">
+                    <p><i class="icon-jinbi"></i>{{alertGoodsData.goodGolds | golds }}</p>
+                    <div class="info">
+                        <span>奖品说明：</span>
+                        <p v-if="alertGoodsData.goodsdesc">{{alertGoodsData.goodsdesc}}</p>
+                        <p style="color: #e7e7e7;">抽奖100%可中实物商品或等额猜球币。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--奖品兑换-->
+        <div class="pop pop-gift" :class="{ 'hide' : !dhjMsg.showMsg,'lack': userInfo.exchangetkt_total>dhjMsg.needtickets}">
+            <div class="pop_layer"></div>
+            <div class="pop-m">
+                <span class="close" v-tap="{methods: closedhjMsg }"></span>
+                <div class="pop-t">奖品兑换</div>
+                <img class="prize-img" :src="dhjMsg.imgurl" alt="">
+                <p class="prize-name">
+                    {{ dhjMsg.name }}
+                </p>
+                <p class="prize-des">
+                    {{ dhjMsg.goodsdesc }}
+                </p>
+                <div class="prize-tips">
+                    <p class="prize-tips01">需要：</p>
+                    <!--当可以兑换的时候加这个行内样式否则删除，-->
+                    <p class="prize-tips02">{{ dhjMsg.needtickets }}张</p>
+                    <p class="prize-tips03" v-if="userInfo">（您有{{ userInfo.exchangetkt_total }}张）</p>
+                </div>
+                <div class="prize-lack" v-if="parseInt( userInfo.exchangetkt_total) < parseInt( dhjMsg.needtickets ) ">哎呀，兑换券不够，先点击获取吧！</div>
+
+                <div class="prize-btn">
+                    <div v-if="parseInt( userInfo.exchangetkt_total) < parseInt( dhjMsg.needtickets ) ">
+                        <a href="javascript:;" class="btn-cancel" v-tap="{methods: closedhjMsg }">取消</a>
+                        <a href="javascript:;" class="btn-get" v-tap="{methods: jumpTodhj }">获取</a>
+                    </div>
+                    <!-- 当可以兑换的时候用下面   是否需要带类型数据？？？  -->
+                    <a v-else href="javascript:;" class="btn-exchange"
+
+                       v-tap="{methods: goLuckGiftCopy, item:'' }"
+                    >立即兑换</a>
+                </div>
+            </div>
+        </div>
+
+        <!--兑换成功 弹窗-->
+        <div class="pop pop-giftSu" :class="{'hide': !showPopGiftSu}">
+            <div class="pop_layer"></div>
+            <div class="pop-m" v-if="dhjObj && dhjObj.goodBingoNew">
+                <span class="close" v-tap="{methods: closePopGiftSu }"></span>
+                <div class="pop-t">兑换结果</div>
+                <div class="chang-su">
+                    兑换成功！
+                </div>
+                <a href="javascript:;" v-if="dhjObj.goodBingoNew.goodstype !== '2' "
+                   v-tap="{methods: showResultFn }"
+                >查看卡号卡密</a>
+                <a href="javascript:;" v-else
+                   v-tap="{methods: showResultFn }"
+                >填写收货地址</a>
+            </div>
+        </div>
+
+        <!--获取兑换券弹窗成功-->
+        <div class="pop pop-dhj" :class="{'hide': !bingoPrize.isShow  }"
+             v-tap="{methods: closeGiftBox }"
+        >
+            <!--bingoPrize.type !=='golds' -->
+            <div class="pop_layer"></div>
+            <div class="pop-o">
+                <img class="bg-dhj" src="~static/images/bingo_bg.png">
+                <div v-if="bingoPrize.type === 'exchange'">
+                    <img class="dhj" src="~static/images/dhj.png" alt="">
+                    <p>兑换券 x{{ bingoPrize.number }}</p>
+                    <span>兑换券可用于兑换实物奖品</span>
+                </div>
+                <div v-else>
+                    <img class="dhj" src="~static/images/jb.png" alt="">
+                    <p>猜球币 x 55000</p>
+                    <span>猜球币可用于抽取兑换券</span>
+                </div>
+            </div>
+        </div>
+
+        <!--金币不足-->
+        <div class="pop pop-jbbz " :class="{'hide': !dhjMsg.showCoinLess }">
+            <div class="pop_layer"></div>
+            <div class="pop-m">
+                <span class="close" v-tap="{methods: closeCoinLess }"></span>
+                <div class="pop-t">金币不足</div>
+                <p>猜球币不足55000</p>
+                <span>您可通过玩游戏或充值，获取猜球币</span>
+                <a href="javascript:;" v-tap="{methods: closeCoinLess }">确认</a>
+            </div>
+        </div>
+
+        /////////
 
         <!--我的道具-->
         <div class="pop pop02 pop-mytool" :class="{'hide':!isShowMyTool}">
@@ -201,20 +382,21 @@
         </div>
 
         <!--兑换记录 123 -->
+        <!-- old -->
+        <!--<div class="pop pop-consume" :class="{'hide':!alertGoodsBox}">-->
+            <!--<div class="pop_layer" v-tap="{methods: closeGoodsMess}"></div>-->
+            <!--<div class="pop-consume-c" v-if="alertGoodsData">-->
+                <!--<div class="pop-consume-sure">-->
+                    <!--抽奖将花费{{ alertGoodsData.consumgolds | golds }}猜球币-->
+                <!--</div>-->
+                <!--<div class="pop-consume-tips">-->
+                    <!--{{ alertGoodsData.name }}-->
+                <!--</div>-->
+                <!--<a href="jascript:;" class="pop-consume-no" v-tap="{methods: closeGoodsMess}">取消</a>-->
+                <!--<a href="jascript:;" class="pop-consume-yes" v-tap="{methods: showLuckEndFn}" >确认</a>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <div class="pop pop-consume" :class="{'hide':!alertGoodsBox}">
-            <div class="pop_layer" v-tap="{methods: closeGoodsMess}"></div>
-            <div class="pop-consume-c" v-if="alertGoodsData">
-                <div class="pop-consume-sure">
-                    抽奖将花费{{ alertGoodsData.consumgolds | golds }}猜球币
-                </div>
-                <div class="pop-consume-tips">
-                    {{ alertGoodsData.name }}
-                </div>
-                <a href="jascript:;" class="pop-consume-no" v-tap="{methods: closeGoodsMess}">取消</a>
-                <a href="jascript:;" class="pop-consume-yes" v-tap="{methods: showLuckEndFn}" >确认</a>
-            </div>
-        </div>
 
         <div class="pop pop01 pop-winning" :class="{'hide':!showLuckEnd}">
             <div class="pop_layer" v-tap="{methods: closeLuckEnd}"></div>
@@ -356,7 +538,31 @@ export default {
                 alertGoodsBox: false,
                 showLuckEnd: false, // 现在中奖结果
 
-                clickImgGood: false
+                clickImgGood: false,
+
+
+                dhjMsg:{
+                    // 弹窗信息
+                    showMsg:false , // 兑换信息
+                    lotteryDhj:false , // 抽奖界面
+                    imgurl:'http://img.choopaoo.com/esun/goods/a3/87/a3877f8ea19711e695e9.png' , // 奖品图片
+                    name:'',
+                    goodsdesc:'',
+                    needtickets:'',
+                    showCoinLess:false, // 显示金币不足
+                },
+                // 兑换劵抽奖需要的相关数据
+                //                aid:null, 相关数据再my.js
+                goodsTypeNew:{
+                    goodsid:null,
+                    channel:'h5' ,
+                    amount:1,
+                    company:null, // 虚拟充值卡商家
+                    goodstype:null, //  2 实物商品， 1 京东卡 ， 3 话费卡
+                },
+                showResult: false ,  // 显示最终结果页
+
+
             }
         },
         watch: {
@@ -377,6 +583,106 @@ export default {
             PublicHead
         },
         methods: {
+            //            +++++++++++++
+            closeAlert () {
+                this.alertGoodsBox = false
+            },
+            initState(){
+                this.$store.state.showDrawTap = false;
+            },
+            closeshowResult(){
+                this.showResult = false;
+                this.$store.state.showGotoMainList = true ;
+            },
+            showResultFn(){
+                this.$store.commit( 'showPopGiftSu' , false );
+
+                // 初始化 实物收货按钮
+                this.$store.state.confirmAddrBtn = false;
+
+                //  新增列表请求
+                this.$store.dispatch('getWinGoodList');
+
+                this.showResult = true;
+            },
+            goLuckGiftCopy ({item}) {
+                setTimeout(() => {
+                    this.$store.dispatch('getGoodsList');
+                    // 关闭信息页
+                    this.closedhjMsg();
+                }, 200);
+                if (this.userInfo && this.userInfo.uid !== '0') {
+                    this.$store.dispatch('getGoodBingoNew', this.goodsTypeNew );
+                } else {
+                    this.$store.dispatch('showToast','请刷新再试一下');
+                }
+            },
+            closeGiftBox(){
+                this.$store.commit('setbingoPrize' , {
+                    isShow: false,
+                    number: 0 ,
+                    type: 'golds'
+                } );
+            },
+            alertdhjMess({params}){
+                console.log( params ) ;
+                this.dhjMsg.showMsg = true;
+                this.dhjMsg.imgurl = params.imgurl;
+                this.dhjMsg.name = params.name;
+                this.dhjMsg.goodsdesc = params.goodsdesc;
+                this.dhjMsg.needtickets = params.needtickets;
+
+                // 抽奖相关数据
+                this.goodsTypeNew.goodsid = params.goodsid ;
+                this.goodsTypeNew.goodstype = params.goodstype ;
+                if( params.company ){
+                    this.goodsTypeNew.company = params.company[0] ;
+                }
+
+            },
+            closePopGiftSu(){
+                this.$store.commit( 'showPopGiftSu' , false )
+            },
+            closedhjMsg(){
+                this.dhjMsg.showMsg = false;
+            },
+            closeCoinLess(){
+                this.dhjMsg.showCoinLess = false ;
+            },
+            jumpTodhj(){
+                //  跳转获取页
+                this.dhjMsg.showMsg = false;
+                this.dhjMsg.lotteryDhj = true ;
+            },
+            backToDraw(){
+                this.dhjMsg.lotteryDhj = false ;
+            },
+            startLuckgo(){
+                // 开始抽奖
+                let params = null;
+                if( this.dhjObj.positionName === 'default' ){
+                    params = {
+                        giftLen : 8 ,
+                        currLocal : -1 ,
+                    };
+                }else{
+                    params = {
+                        giftLen : 8 ,
+                        currLocal : this.dhjObj.positionName.slice(9) ,
+                    };
+                }
+                if( !this.dhjObj.dhjBtn ){
+                    // 重复点击
+                    return false ;
+                }
+                if( parseInt( this.userInfo.gold_total ) < 55000 ){
+                    this.dhjMsg.showCoinLess = true ;
+                    return false;
+                }
+                this.$store.dispatch( 'luckDrawGo' , params )
+            },
+
+            //////////
             closeCopyBox () {
                 this.isShowCopyBox = false
             },
@@ -406,10 +712,11 @@ export default {
             },
 
             alertGoodsMess ({params}) {
+                // old
                 this.alertGoodsBox = true
                 this.alertGoodsData = params
         /* 请求商品信息 */
-                this.$store.dispatch('getGotoLuckMess', params)
+//                this.$store.dispatch('getGotoLuckMess', params)
             },
             closeGoodsMess () {
                 /* 关闭抽奖提示花费窗口 */
@@ -598,6 +905,25 @@ export default {
 
         },
         computed: {
+
+            dhjEvent(){
+                return this.$store.state.dhjEvent
+            },
+            currOid(){
+                return this.$store.state.currOid
+            },
+            showPopGiftSu(){
+                return this.$store.state.showPopGiftSu
+            },
+            dhjObj(){
+                return this.$store.state.dhj
+            },
+            bingoPrize(){
+                return this.$store.state.bingoPrize
+            },
+            ///
+
+
             logisticMess () {
                 return this.$store.state.chargeNewData.logisticMess
             },
