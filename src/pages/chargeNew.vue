@@ -13,10 +13,7 @@
                     <i></i>
                 </a>
             </div>
-            <section v-if="userInfo">
-                右上角金币
-                {{ userInfo.gold_total | golds }}
-            </section>
+
             <div class="main-top">
                 <div class="fl" v-show="isShowChargeTab">
                     <span class="cz-icon">
@@ -34,14 +31,14 @@
                         </div>
                     </banner-scroll>
                 </section>
-
                 <div class="btn-myprop">
                     <span class="my-tool" v-show="isShowChargeTab"  v-tap="{methods: showMyTool, params: true}">我的道具</span>
-
                     <span class="my-exchange" :class="{'on':isSureConfirmAdd }" v-show="!isShowChargeTab" v-tap="{methods: showPrizeList, params: true}">兑换记录</span>
-
                 </div>
-
+                <!-- 用户的兑换劵数量 -->
+                <div class="my-dhj" v-if="userInfo" v-tap="{methods: jumpTodhj }">
+                    {{ userInfo.exchangetkt_total }}
+                </div>
             </div>
             <div class="main respon2-itm">
                 <div class="scroller clear">
@@ -171,7 +168,7 @@
         </div>
 
         <!--奖品兑换-->
-        <div class="pop pop-gift" :class="{ 'hide' : !dhjMsg.showMsg,'lack': userInfo.exchangetkt_total>dhjMsg.needtickets}">
+        <div class="pop pop-gift" :class="{ 'hide' : !dhjMsg.showMsg,'lack': userInfo.exchangetkt_total<dhjMsg.needtickets}">
             <div class="pop_layer"></div>
             <div class="pop-m">
                 <span class="close" v-tap="{methods: closedhjMsg }"></span>
@@ -474,7 +471,7 @@
                 </span>
                 <ul v-if="userInfo">
                     <li class="pop-myover">
-                        {{ userInfo.gold_total | golds }}
+                        获取兑换券
                     </li>
                     <li class="pop-myaddress"  v-tap="{methods: jumpToPage,params:'shopAdd'}" >
                         收货地址

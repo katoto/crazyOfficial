@@ -6,6 +6,10 @@
             反馈记录
             <sup class="dot" v-if="( userInfo.fb_badge && parseInt(userInfo.fb_badge)>0 )"></sup>
         </a>
+        <div class="my_moeny2" v-if="userInfo">
+            <i class="icon icon_jinbi"></i>
+            {{ userInfo.gold_total | golds }}
+        </div>
     </div>
 </template>
 

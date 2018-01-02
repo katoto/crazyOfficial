@@ -75,26 +75,26 @@
         /* 登陆还得修改下 */
             try {
             //    线下账号  测试  !!!
-//                await this.$store.dispatch('localLogin', 12342)
-//                await this.$store.dispatch('getUserInfo')
+                await this.$store.dispatch('localLogin', 12342222)
+                await this.$store.dispatch('getUserInfo')
                 console.log( src() );
-                if( src()==='500touch' ){
-                    switch ( src() ){
-                        case '500touch':
-                            await this.$store.dispatch('checkLogin500');
-                            if ( this.isLogin500 ) {
-                                console.log( getCk() )
-                                await this.$store.dispatch('getUserInfo')
-                            }
-                            ;break;
-                    }
-                }else{
-                    /* 线上 登陆 */
-                    await this.$store.dispatch('checkLogin');
-                    if (this.isLogin) {
-                        await this.$store.dispatch('getUserInfo')
-                    }
-                }
+//                if( src()==='500touch' ){
+//                    switch ( src() ){
+//                        case '500touch':
+//                            await this.$store.dispatch('checkLogin500');
+//                            if ( this.isLogin500 ) {
+//                                console.log( getCk() )
+//                                await this.$store.dispatch('getUserInfo')
+//                            }
+//                            ;break;
+//                    }
+//                }else{
+//                    /* 线上 登陆 */
+//                    await this.$store.dispatch('checkLogin');
+//                    if (this.isLogin) {
+//                        await this.$store.dispatch('getUserInfo')
+//                    }
+//                }
 
                 if (window.WebSocket) {
                     await this.$store.dispatch('initWebsocket')
