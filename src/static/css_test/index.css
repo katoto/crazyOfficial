@@ -1996,20 +1996,7 @@
 
 
 
-/*国庆活动入口*/
-.enter{
-    position: fixed;
-    right:0;
-    top:27%;
-    width:171px;
-    height:129px;
-    overflow: hidden;
-}
-.enter a,.enter img{
-    display: block;
-    width:171px;
-    height:129px;
-}
+
 
 /*虚拟杯赛入口*/
 .enter-egret {

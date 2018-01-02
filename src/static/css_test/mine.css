@@ -2420,3 +2420,469 @@
     color: #fff;
 }
 /*中奖弹窗*/
+
+/*兑换优化*/
+.my-dhj{
+    position: relative;
+    float: right;
+    width:124px;
+    height:34px;
+    /*overflow: hidden;*/
+    border-radius:17px;
+    background: #000;
+    text-align: left;
+    line-height:34px;
+    font-size:30px;
+    margin-top:16px;
+    text-indent: 50px;
+}
+.my-dhj::before{
+    content: '';
+    display: block;
+    left:-26px;
+    top:-1px;
+    /*no*/
+}
+.icon-dhj,.my-dhj::before{
+    position: absolute;
+    width:68px;
+    height:36px;
+    background-position: 0 0;
+}
+.icon-dhj{
+    left:83px;
+    top:13px;
+}
+.pop-dhj{
+    text-align: center;
+}
+.dhj{
+    position: relative;
+    z-index:2;
+    display: block;
+    width:153px;
+    height:98px;
+    margin:100px auto 0
+}
+.bg-dhj{
+    position: absolute;
+    left:50%;
+    top:0;
+    margin-left:-135px;
+    display: block;
+    width:270px;
+    height:270px;
+    -webkit-animation: imgRotate 15s linear infinite;
+    animation: imgRotate 15s linear infinite;
+}
+.pop-dhj .pop-o{
+    position: absolute;
+    left:0;
+    top:50%;
+    margin-top:-200px;
+    width:100%;
+    overflow: hidden;
+}
+.pop-dhj p{
+    font-size:36px;
+    color: #ffd146;
+    font-weight:bold;
+    line-height:54px;
+    margin-top:66px;
+}
+.pop-dhj span{
+    font-size:24px;
+    color: #d9ddff;
+    line-height:44px;
+}
+.pop-gift .pop-m,.pop-jbbz .pop-m,.pop-giftSu .pop-m{
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left:-336px;
+    margin-top:-405px;
+    height:810px;
+    width:532px;
+    text-align: center;
+    padding:0 70px;
+    border:4px solid #2f303a;
+    background: #26272f;
+    border-radius:10px;
+    color: #d9ddff;
+}
+.pop-gift .close,.pop-jbbz .close,.pop-giftSu .close{
+    position: absolute;
+    right:0;
+    top:0;
+    width:62px;
+    height:62px;
+}
+.pop-gift .close::after,.pop-jbbz .close::after,.pop-giftSu .close::after{
+    content: '';
+    display: block;
+    width:22px;
+    height:22px;
+    overflow: hidden;
+    margin:20px auto;
+    background-position: -460px 0;
+}
+.pop-gift .pop-t,.pop-jbbz .pop-t,.pop-giftSu .pop-t{
+    width:370px;
+    height:60px;
+    overflow: hidden;
+    background-position: -80px 0;
+    margin:0 auto;
+    font-size:34px;
+    line-height:60px;
+}
+.pop-gift .prize-img{
+    width:240px;
+    height:160px;
+    margin:40px auto 0;
+}
+.pop-gift .prize-name{
+    font-size:36px;
+    line-height:110px;
+    margin-top:5px;
+    text-align: center;
+}
+.pop-gift .prize-des{
+    line-height:48px;
+    max-height:144px;
+    overflow: hidden;
+    text-align: left;
+    font-size:28px;
+}
+.pop-gift .prize-tips{
+    /*overflow: hidden;*/
+    text-align: left;
+    font-size:30px;
+    color: #6f799a;
+    margin-top:10px;
+    line-height:36px;
+}
+.prize-tips p{
+    float: left;
+}
+.pop-gift .prize-tips02{
+    position: relative;
+    font-size:34px;
+    text-indent: 74px;
+    color: #d9ddff;
+}
+.pop-gift .prize-tips02::before{
+    content: '';
+    position: absolute;
+    left:0;
+    top:0px;
+    width:68px;
+    height:36px;
+    background-position: 0 0;
+}
+.lack .pop-m .prize-name,.lack .pop-m .prize-des,.lack .pop-m .prize-tips02{
+    color: #6f799a;
+}
+.pop-gift .prize-lack{
+    position: absolute;
+    width:100%;
+    height:108px;
+    bottom:120px;
+    left:0;
+    line-height:108px;
+    text-align: center;
+    font-size:28px;
+    color: #fff;
+}
+.prize-btn{
+    position: absolute;
+    left:20px;
+    bottom:46px;
+    width:637px;
+}
+.btn-cancel,.btn-get,.btn-exchange{
+    display: block;
+    width:312px;
+    height:80px;
+    text-align: center;
+    line-height:80px;
+    border-radius:10px;
+    font-size:36px;
+    color: #fff;
+}
+.btn-cancel{
+    background: #3f437e;
+    float: left;
+}
+.btn-get{
+    float: right;
+    background: #e5393a;
+}
+.btn-exchange{
+    width:500px;
+    background: #e5393a;
+    margin:0 auto;
+}
+
+
+/*抽奖*/
+.lottery-dhj{
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    padding-top:85px;
+    box-sizing: border-box;
+    /*background: #1f2025;*/
+    transform: translateX(100%);
+}
+.lottery-dhj.on{
+    display: block;
+    animation: moveIn 0.5s both;
+}
+@keyframes moveIn {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+
+    }
+}
+.lotteryDhj-t{
+    width:294px;
+    height:60px;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #31333c;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    line-height:60px;
+    text-align: center;
+    font-size:36px;
+    color: #d9ddff;
+    font-weight:bold;
+}
+.lotteryDhj-c{
+    position: relative;
+    width:667px;
+    height:680px;
+    padding:38px 20px;
+    border:4px solid #2f303a;
+    background: #26272f;
+    border-radius:10px;
+    margin:0 auto;
+    text-align: center;
+}
+.lottery-bg{
+    position: absolute;
+    top:38px;
+    left:20px;
+    z-index:2;
+}
+.btn-beginLottery{
+    display: block;
+    position: absolute;
+    left:50%;
+    top:50%;
+    z-index:3;
+    margin-left:-109px;
+    margin-top:-100px;
+    width:218px;
+    height:205px;
+    font-size:0;
+    background-position:-214px -70px;
+}
+.btn-beginLottery::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left:4px;
+    top:-14px;
+    width: 210px;
+    height:210px;
+    overflow: hidden;
+    background-position: 0 -70px;
+    transition: all .1s;
+}
+.btn-beginLottery.on::before{
+    transform: translateY(8px);
+}
+.lottery-bg li,.hign-btn li{
+    position: relative;
+    float: left;
+    width:210px;
+    height:210px;
+    overflow: hidden;
+    /*background: #494a59;*/
+    border-radius:10px;
+    margin-bottom:22px;
+}
+.hign-btn li{
+    background: #494a59;
+}
+.lottery-bg li::before{
+    content: '';
+    display: block;
+    width:144px;
+    height:78px;
+    overflow: hidden;
+    margin:42px auto 0;
+    background-position: -502px 0
+}
+.lottery-bg li:nth-child(1)::before,.lottery-bg li:nth-child(8)::before{
+    content: '';
+    display: block;
+    width:145px;
+    height:100px;
+    overflow: hidden;
+    margin:36px auto 0;
+    background-position: -664px 0
+}
+.lottery-bg li:nth-child(5)::before{
+    content: '';
+    display: block;
+    width:159px;
+    height:102px;
+    overflow: hidden;
+    margin:36px auto 0;
+    background-position: -808px 0
+}
+.lottery-bg li:nth-child(2),.lottery-bg li:nth-child(7),.hign-btn li:nth-child(2),.hign-btn li:nth-child(7){
+    margin:0 16px;
+}
+.lottery-bg li:nth-child(5),.hign-btn li:nth-child(5){
+    margin-left:245px;
+}
+.lottery-bg li p{
+    position: absolute;
+    left: 0;
+    bottom:0;
+    width:100%;
+    font-size:30px;
+    color: #d9d9ec;
+    font-weight:bold;
+    line-height:66px;
+}
+.hign-btn{
+    position: relative;
+}
+.hign-btn div{
+    position: absolute;
+    width:210px;
+    height:210px;
+    background: #604bbe;
+    border:6px solid #fff145;
+    border-radius:15px;
+}
+.position00{
+    left:-3px;
+    top:-6px;
+}
+.position01{
+    left:220px;
+    top:-6px;
+}
+.position02{
+    left:450px;
+    top:-6px;
+}
+.position03{
+    left:450px;
+    top:226px;
+}
+.position04{
+    left:450px;
+    top:460px;
+}
+.position05{
+    left:220px;
+    top:460px;
+}
+.position06{
+    left:-3px;
+    top:460px;
+}
+.position07{
+    left:-3px;
+    top:226px;
+}
+.toDhc{
+    display: block;
+    width:265px;
+    height:70px;
+    overflow: hidden;
+    font-size:36px;
+    color: #d9ddff;
+    text-align: center;
+    line-height:70px;
+    background: #3f437e;
+    border-radius:10px;
+    margin:25px 0 40px 26px;
+}
+/*金币不足*/
+.pop-jbbz .pop-m{
+    height:600px;
+    margin-top:-300px;
+}
+.pop-jbbz p{
+    font-size:36px;
+    line-height:100px;
+    margin-top:100px;
+}
+.pop-jbbz span{
+    font-size:32px;
+}
+.pop-jbbz a{
+    display: block;
+    width:500px;
+    height:80px;
+    text-align: center;
+    line-height:80px;
+    border-radius:10px;
+    font-size:36px;
+    color: #fff;
+    background: #e5393a;
+    margin:150px auto 0;
+}
+.chang-su::before{
+    position: absolute;
+    top:0;
+    left:102px;
+    content: '';
+    display: block;
+    width:86px;
+    height:86px;
+    background-position: -470px -106px;
+}
+.chang-su{
+    position: relative;
+    line-height:86px;
+    font-size:42px;
+    text-align: left;
+    text-indent: 212px;
+    margin:136px 0 147px 0;
+}
+.pop-giftSu a{
+    display: block;
+    width:500px;
+    height:80px;
+    text-align: center;
+    line-height:80px;
+    border-radius:10px;
+    font-size:36px;
+    color: #fff;
+    background: #e5393a;
+    margin:0 auto;
+}
+.pop-giftSu .pop-m{
+    height:550px;
+    margin-top:-275px;
+}
+
+
+.icon-dhj,.my-dhj::before,.pop-gift .close::after,.pop-giftSu .close::after,.pop-jbbz .close::after,.pop .pop-t,.pop-gift .prize-tips02::before,.btn-beginLottery,.btn-beginLottery::before,.lottery-bg li::before,.chang-su::before{
+    background-image: url(../images/newSprite.png);
+    background-size: 1000px;
+}
