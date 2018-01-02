@@ -6,6 +6,10 @@
             反馈记录
             <sup class="dot" v-if="( userInfo.fb_badge && parseInt(userInfo.fb_badge)>0 )"></sup>
         </a>
+        <div class="my_moeny2" v-if="userInfo">
+            <i class="icon icon_jinbi"></i>
+            {{ userInfo.gold_total | golds }}
+        </div>
     </div>
 </template>
 
@@ -46,6 +50,18 @@
             userInfo () {
                 return this.$store.state.userInfo
             }
+        },
+        filters: {
+            golds: (num) => {
+                num = Number(num)
+                if (num < 10000) {
+                    return num
+                } else if (num < 100000000) {
+                    return Math.round(num / 10000 * 10) / 10 + '万'
+                } else {
+                    return Math.round(num / 100000000 * 10) / 10 + '亿'
+                }
+            },
         }
     }
 </script>

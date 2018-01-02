@@ -13,10 +13,7 @@
                     <i></i>
                 </a>
             </div>
-            <section v-if="userInfo">
-                右上角金币
-                {{ userInfo.gold_total | golds }}
-            </section>
+
             <div class="main-top">
                 <div class="fl" v-show="isShowChargeTab">
                     <span class="cz-icon">
@@ -34,10 +31,14 @@
                         </div>
                     </banner-scroll>
                 </section>
-
                 <div class="btn-myprop">
                     <span class="my-tool" v-show="isShowChargeTab"  v-tap="{methods: showMyTool, params: true}">我的道具</span>
                     <span class="my-exchange" :class="{'on':isSureConfirmAdd }" v-show="!isShowChargeTab" v-tap="{methods: showPrizeList, params: true}">兑换记录</span>
+                </div>
+
+                <!-- 用户的兑换劵数量 -->
+                <div class="my-dhj" v-if="userInfo" v-tap="{methods: jumpTodhj }">
+                    {{ userInfo.exchangetkt_total }}
                 </div>
             </div>
             <div class="main respon2-itm">
@@ -166,7 +167,7 @@
         </div>
 
         <!--奖品兑换-->
-        <div class="pop pop-gift" :class="{ 'hide' : !dhjMsg.showMsg,'lack': userInfo.exchangetkt_total>dhjMsg.needtickets}">
+        <div class="pop pop-gift" :class="{ 'hide' : !dhjMsg.showMsg,'lack': userInfo.exchangetkt_total<dhjMsg.needtickets}">
             <div class="pop_layer"></div>
             <div class="pop-m">
                 <span class="close" v-tap="{methods: closedhjMsg }"></span>
@@ -193,7 +194,6 @@
                     </div>
                     <!-- 当可以兑换的时候用下面   是否需要带类型数据？？？  -->
                     <a v-else href="javascript:;" class="btn-exchange"
-
                        v-tap="{methods: goLuckGiftCopy, item:'' }"
                     >立即兑换</a>
                 </div>
@@ -450,8 +450,8 @@
                     我的余额
                 </span>
                 <ul v-if="userInfo">
-                    <li class="pop-myover">
-                        {{ userInfo.gold_total | golds }}
+                    <li class="pop-myover" v-tap="{methods: jumpTodhj }">
+                        获取兑换券
                     </li>
                     <li class="pop-myaddress"  v-tap="{methods: jumpToPage,params:'shopAdd'}" >
                         收货地址
@@ -622,6 +622,10 @@ export default {
                 //  跳转获取页
                 this.dhjMsg.showMsg = false;
                 this.dhjMsg.lotteryDhj = true ;
+
+                //  处理tab 切换
+                this.isShowMyMess = false ;
+
             },
             backToDraw(){
                 this.dhjMsg.lotteryDhj = false ;
@@ -999,10 +1003,6 @@ export default {
                     }
                 }
             }
-
-
-
-
 
         },
         filters: {
