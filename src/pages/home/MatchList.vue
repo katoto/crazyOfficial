@@ -62,6 +62,8 @@ export default {
                 }
             },
             openBetListbox () {
+                console.log('---------')
+                console.log(this.hasLogin)
                 if (this.hasLogin) {
                     stopHtml()
                     this.$store.dispatch('getGoldList', 0)

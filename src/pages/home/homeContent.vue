@@ -315,7 +315,7 @@
         <!--  底部选项 -->
 
         <!-- 五大联赛 -->
-        <div>
+        <div style="display: none;">
             <a href="javascript:;" class="enter" v-tap="{ methods:jumpToRedCenter}">
                 <img src="http://img.choopaoo.com/esun/upload/0d/7e/0d7e829aca9911e7b71e.png">
             </a>

@@ -13,6 +13,10 @@
                     <i></i>
                 </a>
             </div>
+            <section v-if="userInfo">
+                右上角金币
+                {{ userInfo.gold_total | golds }}
+            </section>
             <div class="main-top">
                 <div class="fl" v-show="isShowChargeTab">
                     <span class="cz-icon">
@@ -33,7 +37,9 @@
 
                 <div class="btn-myprop">
                     <span class="my-tool" v-show="isShowChargeTab"  v-tap="{methods: showMyTool, params: true}">我的道具</span>
+
                     <span class="my-exchange" :class="{'on':isSureConfirmAdd }" v-show="!isShowChargeTab" v-tap="{methods: showPrizeList, params: true}">兑换记录</span>
+
                 </div>
 
             </div>
@@ -654,26 +660,33 @@ export default {
                     this.$store.dispatch('getWinGoodList')
                 }
             }
+            // 跳转 drawList
+            setTimeout(()=>{
+                if (~location.hash.indexOf('@@_@')) {
+                    this.showPrizeList({ params:true });
+                    history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew/draw`)
+                }
+            },0) ;
+
             if (this.$route.params.others && this.$route.params.others === 'showList') {
-                stopHtml()
-                this.isShowChargeTab = false
-                this.$store.dispatch('getGoodsList')
-                this.showLuckEnd = false
-                this.isShowPrizeList = true
+                stopHtml();
+                this.isShowChargeTab = false;
+                this.$store.dispatch('getGoodsList');
+                this.showLuckEnd = false;
+                this.isShowPrizeList = true;
                 if (this.userInfo) {
                     /* 可优化 */
                     this.$store.dispatch('getWinGoodList')
                 }
             }
             if (!isWeiX) {
-
                 if (this.$route.params.others && this.$route.params.others.indexOf('_@_ck_@_') > -1) {
-                    let arr = this.$route.params.others.split('_@_')
+                    let arr = this.$route.params.others.split('_@_');
                     if (arr[0] === '2') {
-                        this.$store.dispatch('showToast', '充值成功')
+                        this.$store.dispatch('showToast', '充值成功');
                         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
                     } else if (arr[0] === '1') {
-                        this.$store.dispatch('showToast', '支付未完成，请重试')
+                        this.$store.dispatch('showToast', '支付未完成，请重试');
                         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
                     }
                 }

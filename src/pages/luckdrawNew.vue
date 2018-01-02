@@ -16,7 +16,7 @@
                 <!-- 奖品介绍和抽奖说明结束 -->
                 <template v-if="luckMessData">
                     <div class="drawBg">
-                        <img   :src="luckMessData.img_url" >
+                        <img :src="luckMessData.img_url" >
                         <h1>{{luckMessData.goodsname}} </h1>
                         <p>{{luckMessData.goodsdesc}}</p>
                         <div><span>{{luckMessData.consumgolds | golds }}猜球币</span></div>

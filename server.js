@@ -29,21 +29,32 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(function (req, resp, next) {
-
     if (~req.originalUrl.indexOf('/api')) {
+
         forward({
             req,
             resp,
-            // host: 'crazybet.choopaoo.com',
-            // ip: '192.168.50.12',
             host: 'crazybet.choopaoo.com',
-            ip: '10.0.1.41',
-            // host: 'crazybet.choopaoo.com',
-            // ip: '106.75.167.151',
+            ip: '10.0.1.167',
             path: req.originalUrl.replace('/api', ''),
-            port: '6899',
+            port: '8091',
             showLog: true
-        })
+        });
+
+        // forward({
+        //     req,
+        //     resp,
+        //     // host: 'crazybet.choopaoo.com',
+        //     // ip: '192.168.50.12',
+        //     host: 'crazybet.choopaoo.com',
+        //     ip: '10.0.1.41',
+        //     // host: 'crazybet.choopaoo.com',
+        //     // ip: '106.75.167.151',
+        //     path: req.originalUrl.replace('/api', ''),
+        //     port: '6899',
+        //     showLog: true
+        // })
+
         // 9899
     } else {
         forward({
