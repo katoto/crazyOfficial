@@ -75,27 +75,26 @@
         /* 登陆还得修改下 */
             try {
             //    线下账号  测试  !!!
-                await this.$store.dispatch('localLogin', 12342)
-                await this.$store.dispatch('getUserInfo')
+//                await this.$store.dispatch('localLogin', 12342)
+//                await this.$store.dispatch('getUserInfo')
 
-
-//                if( src()==='500touch' ){
-//                    switch ( src() ){
-//                        case '500touch':
-//                            await this.$store.dispatch('checkLogin500');
-//                            if ( this.isLogin500 ) {
-//                                console.log( getCk() )
-//                                await this.$store.dispatch('getUserInfo')
-//                            }
-//                            ;break;
-//                    }
-//                }else{
-//                    /* 线上 登陆 */
-//                    await this.$store.dispatch('checkLogin');
-//                    if (this.isLogin) {
-//                        await this.$store.dispatch('getUserInfo')
-//                    }
-//                }
+                if( src()==='500touch' ){
+                    switch ( src() ){
+                        case '500touch':
+                            await this.$store.dispatch('checkLogin500');
+                            if ( this.isLogin500 ) {
+                                console.log( getCk() )
+                                await this.$store.dispatch('getUserInfo')
+                            }
+                            ;break;
+                    }
+                }else{
+                    /* 线上 登陆 */
+                    await this.$store.dispatch('checkLogin');
+                    if (this.isLogin) {
+                        await this.$store.dispatch('getUserInfo')
+                    }
+                }
 
                 if (window.WebSocket) {
                     await this.$store.dispatch('initWebsocket')
@@ -106,10 +105,10 @@
             } catch (e) {
                 if (e.code === '102') {
                     try {
-                        await this.$store.dispatch('initWebsocket')
+                        await this.$store.dispatch('initWebsocket');
                         this.ready = true
                     } catch (e) {
-                        this.ready = true
+                        this.ready = true;
                         this.$store.dispatch('showToast', '网络异常， 请稍后再试')
                     }
                 } else if (e.code === '103') { // 有websocket， 但是不触发如何事件， 导致超时

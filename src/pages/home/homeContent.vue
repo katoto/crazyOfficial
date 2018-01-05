@@ -315,10 +315,14 @@
         <!--  底部选项 -->
 
         <!-- 五大联赛 -->
-        <div style="display: none;">
-            <a href="javascript:;" class="enter" v-tap="{ methods:jumpToRedCenter}">
-                <img src="http://img.choopaoo.com/esun/upload/0d/7e/0d7e829aca9911e7b71e.png">
-            </a>
+        <!--<div >-->
+            <!--<a href="javascript:;" class="enter-actEgert" v-tap="{ methods:jumpToRedCenter}">-->
+                <!--&lt;!&ndash;<img src="http://img.choopaoo.com/esun/upload/0d/7e/0d7e829aca9911e7b71e.png">&ndash;&gt;-->
+                <!--<img src="~static/images/enter-actEgert.png">-->
+            <!--</a>-->
+        <!--</div>-->
+        <div class="enter-actEgert" v-tap="{ methods:jumpToRedCenter}">
+            <img src="~static/images/enter-actEgert.png" alt="">
         </div>
         <send-order></send-order>
     </div>
@@ -327,7 +331,7 @@
 <script>
     import SendOrder from '~components/send-order.vue'
     import { actionTypes, mutationTypes } from '~store/home'
-    import {starHtml, stopHtml, platform , src } from '~common/util'
+    import { starHtml, stopHtml, platform , src } from '~common/util'
     import HeaderTemplateHome from '~components/header_template_home.vue'
     import MsgAlert from '~components/msg-alert.vue'
     import PublicHead from '~components/publicHead'
@@ -362,7 +366,13 @@
                     return false
                 }
                 /* 带上参数 ！！ */
-                window.location.href = 'http://crazybet.choopaoo.com/2017/thanksgive?from='+src()+'&h5ck='+ck;
+//                window.location.href = 'http://crazybet.choopaoo.com/2017/thanksgive?from='+src()+'&h5ck='+ck;
+                if( this.userinfo && this.userinfo.uid ){
+                    window.location.href = 'http://crazybet.choopaoo.com/2017/actEgert/index.html?src='+src()+'&ck='+ck +'&uid='+this.userinfo.uid ;
+                }else{
+                    window.location.href = 'http://crazybet.choopaoo.com/2017/actEgert/index.html?src='+src()+'&ck='+ck;
+                }
+
             },
             activityJumpFn ({ params }) {
                 if( !this.ck ){
