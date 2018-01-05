@@ -6,7 +6,7 @@
             反馈记录
             <sup class="dot" v-if="( userInfo.fb_badge && parseInt(userInfo.fb_badge)>0 )"></sup>
         </a>
-        <div class="my_moeny2" v-if="userInfo">
+        <div class="my_moeny2" v-if="userInfo && isShowCoin">
             <i class="icon icon_jinbi"></i>
             {{ userInfo.gold_total | golds }}
         </div>
@@ -21,12 +21,13 @@
             return {
                 showFeedback: false,
                 isCopyWeix:null,
+                isShowCoin:false,
             }
         },
         methods: {
             goback () {
                 if (this.personTitle === '商城') {
-                    this.$router.push('/h5/home')
+                    this.$router.push('/h5/home');
                 } else {
                     window.history.back()
                 }
@@ -43,6 +44,10 @@
             if (this.personTitle === '我要反馈') {
                 this.showFeedback = true
             }
+            if (this.personTitle === '商城') {
+                this.isShowCoin = true ;
+            }
+
             this.isCopyWeix = isWeiX ;
             console.log( this.isCopyWeix );
         },
