@@ -75,9 +75,10 @@
         /* 登陆还得修改下 */
             try {
             //    线下账号  测试  !!!
-                await this.$store.dispatch('localLogin', 12342222)
+                await this.$store.dispatch('localLogin', 12342)
                 await this.$store.dispatch('getUserInfo')
-                console.log( src() );
+
+
 //                if( src()==='500touch' ){
 //                    switch ( src() ){
 //                        case '500touch':

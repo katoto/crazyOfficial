@@ -35,6 +35,7 @@
                     <span class="my-tool" v-show="isShowChargeTab"  v-tap="{methods: showMyTool, params: true}">我的道具</span>
                     <span class="my-exchange" :class="{'on':isSureConfirmAdd }" v-show="!isShowChargeTab" v-tap="{methods: showPrizeList, params: true}">兑换记录</span>
                 </div>
+
                 <!-- 用户的兑换劵数量 -->
                 <div class="my-dhj" v-if="userInfo" v-tap="{methods: jumpTodhj }">
                     {{ userInfo.exchangetkt_total }}
@@ -46,8 +47,6 @@
                         <div class="item" v-for="item in chargeList">
                             <img :src="item.imgurl">
                             <img v-if="item.gifturl !==''" :src="item.gifturl" alt="" class="itemAdd">
-                            <!--<p class="item-txt">送<i class="icon-jinbi"></i><strong>{{ (parseInt( item.goldnum ) + parseInt( item.attchgolds )) |golds }}</strong></p>-->
-                            <!-- 补个角标 !! -->
                             <p class="item-txt">送<i class="icon-jinbi"></i><strong>{{ item.goldnum|golds }}<i v-if="parseInt( item.attchgolds )>0" class="addCoin">+{{ item.attchgolds  |golds }}  </i></strong></p>
                             <span class="item-btn" data-type="支付宝充值" :data-tab="item.money" v-tap="{methods: buy, item: item}">￥{{ item.rmb }}</span>
                         </div>
@@ -78,7 +77,7 @@
                                  v-tap="{methods: alertGoodsMess, params: {goodImgUrl: good.imgurl, goodName: good.name, goodGolds: good.consumgolds, goodsdesc:good.goodsdesc}}"
                             >
                             <p class="item-txt">{{ good.name }}</p>
-                            <span class="item-btn" v-if="parseInt(good.restnum)>=1" v-tap="{methods: alertdhjMess, params: good  }"  :data-tab="good.name" >
+                            <span class="item-btn" v-if="parseInt(good.restnum)>=1" v-tap="{methods: alertdhjMess, params: good  }" >
                             <i class="icon-dhj"></i>
                             {{ good.needtickets }}
                         </span>
@@ -195,7 +194,6 @@
                     </div>
                     <!-- 当可以兑换的时候用下面   是否需要带类型数据？？？  -->
                     <a v-else href="javascript:;" class="btn-exchange"
-
                        v-tap="{methods: goLuckGiftCopy, item:'' }"
                     >立即兑换</a>
                 </div>
@@ -203,22 +201,22 @@
         </div>
 
         <!--兑换成功 弹窗-->
-        <div class="pop pop-giftSu" :class="{'hide': !showPopGiftSu}">
-            <div class="pop_layer"></div>
-            <div class="pop-m" v-if="dhjObj && dhjObj.goodBingoNew">
-                <span class="close" v-tap="{methods: closePopGiftSu }"></span>
-                <div class="pop-t">兑换结果</div>
-                <div class="chang-su">
-                    兑换成功！
-                </div>
-                <a href="javascript:;" v-if="dhjObj.goodBingoNew.goodstype !== '2' "
-                   v-tap="{methods: showResultFn }"
-                >查看卡号卡密</a>
-                <a href="javascript:;" v-else
-                   v-tap="{methods: showResultFn }"
-                >填写收货地址</a>
-            </div>
-        </div>
+        <!--<div class="pop pop-giftSu" :class="{'hide': !showPopGiftSu}">-->
+            <!--<div class="pop_layer"></div>-->
+            <!--<div class="pop-m" v-if="dhjObj && dhjObj.goodBingoNew">-->
+                <!--<span class="close" v-tap="{methods: closePopGiftSu }"></span>-->
+                <!--<div class="pop-t">兑换结果</div>-->
+                <!--<div class="chang-su">-->
+                    <!--兑换成功！-->
+                <!--</div>-->
+                <!--<a href="javascript:;" v-if="dhjObj.goodBingoNew.goodstype !== '2' "-->
+                   <!--v-tap="{methods: showResultFn }"-->
+                <!--&gt;查看卡号卡密</a>-->
+                <!--<a href="javascript:;" v-else-->
+                   <!--v-tap="{methods: showResultFn }"-->
+                <!--&gt;填写收货地址</a>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <!--获取兑换券弹窗成功-->
         <div class="pop pop-dhj" :class="{'hide': !bingoPrize.isShow  }"
@@ -377,40 +375,24 @@
             </div>
         </div>
 
-        <!--兑换记录 123 -->
-        <!-- old -->
-        <!--<div class="pop pop-consume" :class="{'hide':!alertGoodsBox}">-->
-            <!--<div class="pop_layer" v-tap="{methods: closeGoodsMess}"></div>-->
-            <!--<div class="pop-consume-c" v-if="alertGoodsData">-->
-                <!--<div class="pop-consume-sure">-->
-                    <!--抽奖将花费{{ alertGoodsData.consumgolds | golds }}猜球币-->
-                <!--</div>-->
-                <!--<div class="pop-consume-tips">-->
-                    <!--{{ alertGoodsData.name }}-->
-                <!--</div>-->
-                <!--<a href="jascript:;" class="pop-consume-no" v-tap="{methods: closeGoodsMess}">取消</a>-->
-                <!--<a href="jascript:;" class="pop-consume-yes" v-tap="{methods: showLuckEndFn}" >确认</a>-->
-            <!--</div>-->
-        <!--</div>-->
+        <!--兑换记录 123   :class="{'hide':!showLuckEnd}"-->
 
-
-        <div class="pop pop01 pop-winning" :class="{'hide':!showLuckEnd}">
+        <div class="pop pop01 pop-winning" :class="{'hide': !showPopGiftSu}" >
             <div class="pop_layer" v-tap="{methods: closeLuckEnd}"></div>
-            <div class="popIn" v-if="alertGoodsData">
+            <div class="popIn" v-if="dhjMsg">
                 <div class="close" v-tap="{methods: closeLuckEnd}">
                     <span></span>
                 </div>
                 <div class="popTit">
                     <h2>恭喜中奖</h2>
                 </div>
-                <img :src="alertGoodsData.imgurl" >
-                <h3>{{ alertGoodsData.name }}</h3>
+                <img :src="dhjMsg.imgurl" >
+                <h3>{{ dhjMsg.name }}</h3>
                 <a href="javascript:;" class="btn-myWinning" v-tap="{methods: showPrizeList, params: true}">查看奖品</a>
             </div>
         </div>
 
         <!-- 中奖弹窗 -->
-
         <!-- 物流弹窗开始   -->
         <div class="pop pop_logistics" :class="{'hide':!showLogisticTap}">
             <div class="pop_layer" v-tap="{methods: closeWuliuBox}"></div>
@@ -469,7 +451,7 @@
                     <!--我的余额-->
                 <!--</span>-->
                 <ul v-if="userInfo">
-                    <li class="pop-mydhj">
+                    <li class="pop-mydhj" v-tap="{methods: jumpTodhj }">
                         获取兑换券
                     </li>
                     <li class="pop-myaddress"  v-tap="{methods: jumpToPage,params:'shopAdd'}" >
@@ -497,7 +479,6 @@
                 </div>
             </div>
         </div>
-
 
     </div>
 </template>
@@ -536,7 +517,6 @@ export default {
 
                 clickImgGood: false,
 
-
                 dhjMsg:{
                     // 弹窗信息
                     showMsg:false , // 兑换信息
@@ -567,19 +547,13 @@ export default {
                     this.$router.push('/luckdraw')
                 }
             },
-            winInformation (data) {
-                if (data) {
-                    this.showLuckEnd = true
-                    this.alertGoodsBox = false
-                }
-            }
+
         },
         components: {
             BannerScroll,
             PublicHead
         },
         methods: {
-            //            +++++++++++++
             closeAlert () {
                 this.alertGoodsBox = false
             },
@@ -649,6 +623,10 @@ export default {
                 //  跳转获取页
                 this.dhjMsg.showMsg = false;
                 this.dhjMsg.lotteryDhj = true ;
+
+                //  处理tab 切换
+                this.isShowMyMess = false ;
+
             },
             backToDraw(){
                 this.dhjMsg.lotteryDhj = false ;
@@ -719,31 +697,31 @@ export default {
                 this.alertGoodsBox = false
                 this.alertGoodsData = null
             },
-            showLuckEndFn () {
-                /* 中奖框 */
-                if (this.luckMessData) {
-                    if (this.luckMessData.company) {
-                        this.$store.dispatch('getLuckGoodBingo', {
-                            currGoodsid: this.luckMessData.goodsid,
-                            currConsumgolds: this.luckMessData.consumgolds,
-                            goodstype: this.luckMessData.goodstype,
-                            company: this.luckMessData.company
-                        })
-                    } else {
-                        this.$store.dispatch('getLuckGoodBingo', {
-                            currGoodsid: this.luckMessData.goodsid,
-                            currConsumgolds: this.luckMessData.consumgolds,
-                            goodstype: this.luckMessData.goodstype
-                        })
-                    }
-                } else {
-                    this.$store.dispatch('showToast', '抽取失败,请重新再试')
-                    this.alertGoodsBox = false
-                }
-            },
+//            showLuckEndFn () {
+//                /* 中奖框 */
+//                if (this.luckMessData) {
+//                    if (this.luckMessData.company) {
+//                        this.$store.dispatch('getLuckGoodBingo', {
+//                            currGoodsid: this.luckMessData.goodsid,
+//                            currConsumgolds: this.luckMessData.consumgolds,
+//                            goodstype: this.luckMessData.goodstype,
+//                            company: this.luckMessData.company
+//                        })
+//                    } else {
+//                        this.$store.dispatch('getLuckGoodBingo', {
+//                            currGoodsid: this.luckMessData.goodsid,
+//                            currConsumgolds: this.luckMessData.consumgolds,
+//                            goodstype: this.luckMessData.goodstype
+//                        })
+//                    }
+//                } else {
+//                    this.$store.dispatch('showToast', '抽取失败,请重新再试')
+//                    this.alertGoodsBox = false
+//                }
+//            },
             closeLuckEnd () {
                 /* 关闭中奖窗口 */
-                this.showLuckEnd = false
+                this.$store.commit( 'showPopGiftSu' , false );
             },
 
             jumpToPage ({params}) {
@@ -811,7 +789,7 @@ export default {
             showPrizeList ({params}) {
                 if (this.userInfo) {
                     stopHtml()
-                    this.showLuckEnd = false
+                    this.$store.commit( 'showPopGiftSu' , false );
                     this.isShowPrizeList = params
                 /* 可优化 */
                     this.$store.dispatch('getWinGoodList')
@@ -918,8 +896,6 @@ export default {
                 return this.$store.state.bingoPrize
             },
             ///
-
-
             logisticMess () {
                 return this.$store.state.chargeNewData.logisticMess
             },
@@ -994,7 +970,7 @@ export default {
                 stopHtml();
                 this.isShowChargeTab = false;
                 this.$store.dispatch('getGoodsList');
-                this.showLuckEnd = false;
+                this.$store.commit( 'showPopGiftSu' , false );
                 this.isShowPrizeList = true;
                 if (this.userInfo) {
                     /* 可优化 */
@@ -1028,10 +1004,6 @@ export default {
                     }
                 }
             }
-
-
-
-
 
         },
         filters: {
