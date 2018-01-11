@@ -360,7 +360,7 @@ const actions = {
     async luckDrawGo ({commit, dispatch},params) {
         try {
             console.log( params ) ;
-            const bingoData = await ajax.get(`/wheel/bingo?platform=${platform}&src=${src()}&wtype=55000&golds=55000&ck=${getCk()}`);
+            const bingoData = await ajax.get(`/wheel/bingo?platform=${platform}&src=${src()}&wtype=60000&golds=60000&ck=${getCk()}`);
             console.log( bingoData ) ;
 
             if( bingoData && bingoData.prize && bingoData.prize.idx ){
@@ -383,7 +383,6 @@ const actions = {
                             number: bingoData.prize.item ,
                             type: bingoData.prize.type
                         } );
-                        dispatch('getUserInfo') ;
                     },
                     rollFunc:function ( _index ) {
                         commit( 'setPositionName' , 'position0'+ ( _index )  );

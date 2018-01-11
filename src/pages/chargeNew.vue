@@ -143,8 +143,6 @@
         <div class="layer hide"></div>
 
         <!-- full-scroll 新增 -->
-
-
         <!-- 礼包弹窗  -->
         <div class="pop pop_prizes" :class="{'hide':!alertGoodsBox}">
             <div class="pop_layer"></div>
@@ -156,7 +154,7 @@
                 <div class="pop_cont">
                     <p>{{alertGoodsData.goodName}}</p>
                     <img :src="alertGoodsData.goodImgUrl">
-                    <p><i class="icon-jinbi"></i>{{alertGoodsData.goodGolds | golds }}</p>
+                    <p style="visibility: hidden"><i class="icon-jinbi"></i>{{alertGoodsData.goodGolds | golds }}</p>
                     <div class="info">
                         <span>奖品说明：</span>
                         <p v-if="alertGoodsData.goodsdesc">{{alertGoodsData.goodsdesc}}</p>
@@ -222,19 +220,19 @@
         <div class="pop pop-dhj" :class="{'hide': !bingoPrize.isShow  }"
              v-tap="{methods: closeGiftBox }"
         >
-            <!--bingoPrize.type !=='golds' -->
+            <!-- bingoPrize.type !=='golds' -->
             <div class="pop_layer"></div>
             <div class="pop-o">
                 <img class="bg-dhj" src="~static/images/bingo_bg.png">
                 <div v-if="bingoPrize.type === 'exchange'">
                     <img class="dhj" src="~static/images/dhj.png" alt="">
                     <p>兑换券 x{{ bingoPrize.number }}</p>
-                    <span>兑换券可用于兑换实物奖品</span>
+                    <span>兑换券可在兑换场兑换心仪奖品</span>
                 </div>
                 <div v-else>
                     <img class="dhj" src="~static/images/jb.png" alt="">
-                    <p>猜球币 x 55000</p>
-                    <span>猜球币可用于抽取兑换券</span>
+                    <p>猜球币 x {{ bingoPrize.number }}</p>
+                    <span style="visibility: hidden">猜球币可用于抽取兑换券</span>
                 </div>
             </div>
         </div>
@@ -245,7 +243,7 @@
             <div class="pop-m">
                 <span class="close" v-tap="{methods: closeCoinLess }"></span>
                 <div class="pop-t">金币不足</div>
-                <p>猜球币不足55000</p>
+                <p>猜球币不足60000</p>
                 <span>您可通过玩游戏或充值，获取猜球币</span>
                 <a href="javascript:;" v-tap="{methods: closeCoinLess }">确认</a>
             </div>
@@ -593,6 +591,7 @@ export default {
                     number: 0 ,
                     type: 'golds'
                 } );
+                this.$store.dispatch('getUserInfo');
             },
             alertdhjMess({params}){
                 console.log( params ) ;
@@ -630,6 +629,8 @@ export default {
             },
             backToDraw(){
                 this.dhjMsg.lotteryDhj = false ;
+
+
             },
             startLuckgo(){
                 // 开始抽奖
