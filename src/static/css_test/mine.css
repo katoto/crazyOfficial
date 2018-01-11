@@ -444,6 +444,9 @@
     border-radius: 10px;
     text-indent: 100px;
 }
+.main-list01 .item .item-btn{
+    text-indent: 0;
+}
 .main-list .item .item-lack{
     background-color:#696f82;
     text-indent: 0;
