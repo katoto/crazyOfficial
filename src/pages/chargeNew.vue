@@ -597,18 +597,24 @@ export default {
                 this.$store.dispatch('getUserInfo');
             },
             alertdhjMess({params}){
-                console.log( params ) ;
-                this.dhjMsg.showMsg = true;
-                this.dhjMsg.imgurl = params.imgurl;
-                this.dhjMsg.name = params.name;
-                this.dhjMsg.goodsdesc = params.goodsdesc;
-                this.dhjMsg.needtickets = params.needtickets;
+                //11
+                // console.log( params ) ;
 
-                // 抽奖相关数据
-                this.goodsTypeNew.goodsid = params.goodsid ;
-                this.goodsTypeNew.goodstype = params.goodstype ;
-                if( params.company ){
-                    this.goodsTypeNew.company = params.company[0] ;
+                if (this.userInfo) {
+                    this.dhjMsg.showMsg = true;
+                    this.dhjMsg.imgurl = params.imgurl;
+                    this.dhjMsg.name = params.name;
+                    this.dhjMsg.goodsdesc = params.goodsdesc;
+                    this.dhjMsg.needtickets = params.needtickets;
+
+                    // 抽奖相关数据
+                    this.goodsTypeNew.goodsid = params.goodsid ;
+                    this.goodsTypeNew.goodstype = params.goodstype ;
+                    if( params.company ){
+                        this.goodsTypeNew.company = params.company[0] ;
+                    }
+                }else{
+                    this.$store.dispatch('doAuth')
                 }
 
             },
