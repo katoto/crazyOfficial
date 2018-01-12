@@ -2014,11 +2014,11 @@
 .enter-actEgert{
     position: fixed;
     right:10px;
-    top:10%;
+    top:20%;
     -webkit-animation: toRo 2s infinite linear;
     animation: toRo 2s infinite linear;
     transform-origin: 50% 100%;
-    z-index:999;
+    z-index:10;
 }
 .enter-actEgert img{
     display: block;
