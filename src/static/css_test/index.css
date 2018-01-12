@@ -2014,7 +2014,9 @@
 .enter-actEgert{
     position: fixed;
     right:10px;
-    top:25%;
+    top:16%;
+    width:121px;
+    height:124px;
     -webkit-animation: toRo 2s infinite linear;
     animation: toRo 2s infinite linear;
     transform-origin: 50% 100%;
