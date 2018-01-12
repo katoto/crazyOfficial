@@ -37,7 +37,7 @@
                 </div>
 
                 <!-- 用户的兑换劵数量 -->
-                <div class="my-dhj" v-if="userInfo" v-tap="{methods: jumpTodhj }">
+                <div class="my-dhj" v-if="userInfo && !isShowChargeTab" v-tap="{methods: jumpTodhj }">
                     {{ userInfo.exchangetkt_total }}
                 </div>
             </div>
