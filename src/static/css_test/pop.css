@@ -1033,7 +1033,9 @@
 .pop-t{
     padding-top: 0 !important;
 }
-
+.pop-jbbz .close::after{
+    margin:0 !important;
+}
 /*物流状态*/
 .pop_logistics .popIn{
     width:680px;
