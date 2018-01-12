@@ -344,9 +344,9 @@
                                     <div v-if="goodList.sid!==''">
                                         <span >快递单号：{{goodList.sid}}</span>
                                         <button href="javascript:;" class="btn myexchange-copy"
-                                           v-clipboard:copy="item.sid"
-                                           v-clipboard:success="succCopy"
-                                           v-clipboard:error="onError"
+                                                v-clipboard:copy="goodList.sid"
+                                                v-clipboard:success="succCopy"
+                                                v-clipboard:error="onError"
                                         >复制</button>
                                     </div>
                                     <div class="myexchange-time">
