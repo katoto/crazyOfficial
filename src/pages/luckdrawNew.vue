@@ -99,7 +99,6 @@
                 }
             },
             methods: {
-
                 jumpToWin () {
                     this.$router.push('/chargeNew/showList')
                 },
