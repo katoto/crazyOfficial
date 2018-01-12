@@ -42,49 +42,51 @@
                 </div>
             </div>
             <div class="main respon2-itm">
-                <div class="scroller clear">
-                    <div class="main-list main-list01 clear" v-show="isShowChargeTab">
-                        <div class="item" v-for="item in chargeList">
-                            <img :src="item.imgurl">
-                            <img v-if="item.gifturl !==''" :src="item.gifturl" alt="" class="itemAdd">
-                            <p class="item-txt">送<i class="icon-jinbi"></i><strong>{{ item.goldnum|golds }}<i v-if="parseInt( item.attchgolds )>0" class="addCoin">+{{ item.attchgolds  |golds }}  </i></strong></p>
-                            <span class="item-btn" data-type="支付宝充值" :data-tab="item.money" v-tap="{methods: buy, item: item}">￥{{ item.rmb }}</span>
+                <div class="scroller clear" >
+                    <template v-if="!selectBoxHide">
+                        <div class="main-list main-list01 clear" v-show="isShowChargeTab">
+                            <div class="item" v-for="item in chargeList">
+                                <img :src="item.imgurl">
+                                <img v-if="item.gifturl !==''" :src="item.gifturl" alt="" class="itemAdd">
+                                <p class="item-txt">送<i class="icon-jinbi"></i><strong>{{ item.goldnum|golds }}<i v-if="parseInt( item.attchgolds )>0" class="addCoin">+{{ item.attchgolds  |golds }}  </i></strong></p>
+                                <span class="item-btn" data-type="支付宝充值" :data-tab="item.money" v-tap="{methods: buy, item: item}">￥{{ item.rmb }}</span>
+                            </div>
                         </div>
-                    </div>
-                    <!--// ================-->
-                    <!--<div class="main-list main-list02 clear" v-show="!isShowChargeTab">-->
+                        <!--// ================-->
+                        <!--<div class="main-list main-list02 clear" v-show="!isShowChargeTab">-->
                         <!--<div class="item" v-for="good in goodslist">-->
-                            <!--<img :src="good.imgurl"-->
-                                 <!--v-tap="{methods: gotoLuck, item:good }"-->
-                            <!--&gt;-->
-                            <!--&lt;!&ndash;&ndash;&gt;-->
-                            <!--<p class="item-txt">{{ good.name }}</p>-->
-                            <!--<span class="item-btn" v-if="parseInt(good.restnum)>=1"-->
-                                  <!--data-type="点击抽奖" :data-tab="good.name"-->
-                                  <!--v-tap="{methods: alertGoodsMess,  params:good}"-->
-                            <!--&gt;-->
+                        <!--<img :src="good.imgurl"-->
+                        <!--v-tap="{methods: gotoLuck, item:good }"-->
+                        <!--&gt;-->
+                        <!--&lt;!&ndash;&ndash;&gt;-->
+                        <!--<p class="item-txt">{{ good.name }}</p>-->
+                        <!--<span class="item-btn" v-if="parseInt(good.restnum)>=1"-->
+                        <!--data-type="点击抽奖" :data-tab="good.name"-->
+                        <!--v-tap="{methods: alertGoodsMess,  params:good}"-->
+                        <!--&gt;-->
 
-                            <!--<i class="icon-jinbi"></i>{{ good.consumgolds | golds }}猜球币</span>-->
-                            <!--<span class="item-btn item-info-no" v-else>活动商品补货中</span>-->
+                        <!--<i class="icon-jinbi"></i>{{ good.consumgolds | golds }}猜球币</span>-->
+                        <!--<span class="item-btn item-info-no" v-else>活动商品补货中</span>-->
                         <!--</div>-->
                         <!--<div class="item" v-if="goodslist && parseInt(goodslist.length)%2!==0"></div>-->
-                    <!--</div>-->
-<!--  11111111111    -->
-                    <!-- :class="{'hide': dhjMsg.lotteryDhj }" -->
-                    <div class="main-list clear" v-show="!isShowChargeTab">
-                        <div class="item" v-for="good in goodslist">
-                            <img :src="good.imgurl"
-                                 v-tap="{methods: alertGoodsMess, params: {goodImgUrl: good.imgurl, goodName: good.name, goodGolds: good.consumgolds, goodsdesc:good.goodsdesc}}"
-                            >
-                            <p class="item-txt">{{ good.name }}</p>
-                            <span class="item-btn" v-if="parseInt(good.restnum)>=1" v-tap="{methods: alertdhjMess, params: good  }" >
+                        <!--</div>-->
+                        <!--  11111111111    -->
+                        <!-- :class="{'hide': dhjMsg.lotteryDhj }" -->
+                        <div class="main-list clear" v-show="!isShowChargeTab">
+                            <div class="item" v-for="good in goodslist">
+                                <img :src="good.imgurl"
+                                     v-tap="{methods: alertGoodsMess, params: {goodImgUrl: good.imgurl, goodName: good.name, goodGolds: good.consumgolds, goodsdesc:good.goodsdesc}}"
+                                >
+                                <p class="item-txt">{{ good.name }}</p>
+                                <span class="item-btn" v-if="parseInt(good.restnum)>=1" v-tap="{methods: alertdhjMess, params: good  }" >
                             <i class="icon-dhj"></i>
                             {{ good.needtickets }}
                         </span>
-                            <span class="item-btn item-lack" v-else style="background-color:#696f82">活动商品补货中</span>
+                                <span class="item-btn item-lack" v-else style="background-color:#696f82">活动商品补货中</span>
+                            </div>
+                            <div class="item" v-if="parseInt(goodslist.length)%2!==0"></div>
                         </div>
-                        <div class="item" v-if="parseInt(goodslist.length)%2!==0"></div>
-                    </div>
+                    </template>
                     <!--on  切换出 兑换劵 -->
                     <div class="lottery-dhj":class="{ 'on': dhjMsg.lotteryDhj } ">
                         <div class="lotteryDhj-t">
@@ -540,6 +542,7 @@ export default {
                     goodstype:null, //  2 实物商品， 1 京东卡 ， 3 话费卡
                 },
                 showResult: false ,  // 显示最终结果页
+                selectBoxHide:false,
             }
         },
         watch: {
@@ -596,18 +599,24 @@ export default {
                 this.$store.dispatch('getUserInfo');
             },
             alertdhjMess({params}){
-                console.log( params ) ;
-                this.dhjMsg.showMsg = true;
-                this.dhjMsg.imgurl = params.imgurl;
-                this.dhjMsg.name = params.name;
-                this.dhjMsg.goodsdesc = params.goodsdesc;
-                this.dhjMsg.needtickets = params.needtickets;
+                //11
+                // console.log( params ) ;
 
-                // 抽奖相关数据
-                this.goodsTypeNew.goodsid = params.goodsid ;
-                this.goodsTypeNew.goodstype = params.goodstype ;
-                if( params.company ){
-                    this.goodsTypeNew.company = params.company[0] ;
+                if (this.userInfo) {
+                    this.dhjMsg.showMsg = true;
+                    this.dhjMsg.imgurl = params.imgurl;
+                    this.dhjMsg.name = params.name;
+                    this.dhjMsg.goodsdesc = params.goodsdesc;
+                    this.dhjMsg.needtickets = params.needtickets;
+
+                    // 抽奖相关数据
+                    this.goodsTypeNew.goodsid = params.goodsid ;
+                    this.goodsTypeNew.goodstype = params.goodstype ;
+                    if( params.company ){
+                        this.goodsTypeNew.company = params.company[0] ;
+                    }
+                }else{
+                    this.$store.dispatch('doAuth')
                 }
 
             },
@@ -628,10 +637,13 @@ export default {
                 //  处理tab 切换
                 this.isShowMyMess = false ;
 
+                // 隐藏 领奖页
+
+                this.selectBoxHide = true;
             },
             backToDraw(){
                 this.dhjMsg.lotteryDhj = false ;
-
+                this.selectBoxHide = false;
 
             },
             startLuckgo(){
@@ -758,9 +770,10 @@ export default {
                     let orderNum = param.sid
                     this.currentLogistic = param
                     if (!orderNum) {
-                        orderNum = 0
-                        this.$store.commit('setLogisticMess', 0)
-                        this.showLogisticTap = true
+                        orderNum = 0;
+                        console.log('无订单号')
+                        this.$store.commit('setLogisticMess', 0);
+//                        this.showLogisticTap = true
                         return false
                     }
                     //                请求物流接口
