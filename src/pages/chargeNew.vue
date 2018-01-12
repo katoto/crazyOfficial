@@ -663,7 +663,7 @@ export default {
                     // 重复点击
                     return false ;
                 }
-                if( parseInt( this.userInfo.gold_total ) < 55000 ){
+                if( parseInt( this.userInfo.gold_total ) < 60000 ){
                     this.dhjMsg.showCoinLess = true ;
                     return false;
                 }
