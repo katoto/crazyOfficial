@@ -1616,8 +1616,10 @@
 }
 
 .pop_prizes .popIn {
-    height: 640px;
+    width:680px;
+    height: 600px;
     margin-top: -320px;
+    margin-left:-340px ;
 }
 
 .pop_prizes .pop_cont {

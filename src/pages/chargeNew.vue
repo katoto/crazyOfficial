@@ -149,7 +149,9 @@
             <div class="popIn" v-if="alertGoodsData">
                 <div class="popTit">
                     <h2 class="titlle">奖品信息</h2>
-                    <span class="close" v-tap="{methods: closeAlert}"></span>
+                    <span class="close" v-tap="{methods: closeAlert}">
+                        <span></span>
+                    </span>
                 </div>
                 <div class="pop_cont">
                     <p>{{alertGoodsData.goodName}}</p>

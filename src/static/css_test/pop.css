@@ -1029,3 +1029,13 @@
  .item-no img, .item-no span {
     opacity: .3
 }
+
+.pop-t{
+    padding-top: 0 !important;
+}
+
+/*物流状态*/
+.pop_logistics .popIn{
+    width:680px;
+    margin-top:-200px;
+}
