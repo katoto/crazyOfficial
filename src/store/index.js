@@ -933,6 +933,7 @@ const actions = {
             // 如果是未确认的保存
             state.shopAddData.AddressId = result.aid
             commit('setIsSaveBtn', true)
+            commit('setIsConfirmBtn', true)
 
             dispatch('showToast', result.msg)
         } catch (e) {

@@ -290,52 +290,52 @@
                 </div>
                 <div class="pop-myexchange-wrap" v-if="winGoodslist && winGoodslist.allnum!=='0'">
                     <ul v-if="winGoodslist">
-                        <template v-for="item in winGoodslist.list">
-                            <li class="myexchange-list" v-if="item.goodstype==='1'|| item.goodstype==='3'">
+                        <template v-for="goodList in winGoodslist.list">
+                            <li class="myexchange-list" v-if="goodList.goodstype==='1'|| goodList.goodstype==='3'">
                                 <div class="fl">
-                                    <img :src="item.imgurl">
+                                    <img :src="goodList.imgurl">
                                 </div>
                                 <div class="fr">
                                     <h3 class="myexchange-t">
-                                        <span v-if="item.goodstype==='3'">{{ item.company | companyName }}{{ item.goodsname }}</span>
-                                        <span v-else>{{ item.goodsname }}</span>
+                                        <span v-if="goodList.goodstype==='3'">{{ goodList.company | companyName }}{{ goodList.goodsname }}</span>
+                                        <span v-else>{{ goodList.goodsname }}</span>
                                     </h3>
                                     <div>
-                                        <span>卡号:{{ item.cardno }}</span>
+                                        <span>卡号:{{ goodList.cardno }}</span>
                                         <button href="javascript:;" class="btn myexchange-copy"
-                                           v-clipboard:copy="item.cardno"
+                                           v-clipboard:copy="goodList.cardno"
                                            v-clipboard:success="succCopy"
                                            v-clipboard:error="onError"
                                         >复制</button>
                                     </div>
                                     <div>
-                                        <span>密码：{{ item.password }}</span>
+                                        <span>密码：{{ goodList.password }}</span>
                                         <button href="javascript:;" class="btn myexchange-copy"
-                                           v-clipboard:copy="item.password"
+                                           v-clipboard:copy="goodList.password"
                                            v-clipboard:success="succCopy"
                                            v-clipboard:error="onError"
                                         >复制</button>
                                     </div>
                                     <div class="myexchange-time">
-                                        <span>{{ item.crtime }}</span>
+                                        <span>{{ goodList.crtime }}</span>
                                     </div>
                                 </div>
                             </li>
-                            <li class="myexchange-list" v-if="item.goodstype==='2'&&item.aid!=='-1'">
+                            <li class="myexchange-list" v-if="goodList.goodstype==='2'&&goodList.aid!=='-1'">
                                 <div class="fl">
-                                    <img :src="item.imgurl">
+                                    <img :src="goodList.imgurl">
                                 </div>
                                 <div class="fr">
-                                    <section v-tap="{methods: showTapLi, item:'showWuliu',param:item}">
+                                    <section v-tap="{methods: showTapLi, item:'showWuliu',param:goodList}">
                                         <h3 class="myexchange-t">
-                                            <span>{{ item.goodsname }}</span>
+                                            <span>{{ goodList.goodsname }}</span>
                                         </h3>
                                         <div>
-                                            <span>物流状态：{{ item.orderstatus | WuliuStatus(item.logistics_company)}}</span>
+                                            <span>物流状态：{{ goodList.orderstatus | WuliuStatus(goodList.logistics_company)}}</span>
                                         </div>
                                     </section>
-                                    <div v-if="item.sid!==''">
-                                        <span >快递单号：{{item.sid}}</span>
+                                    <div v-if="goodList.sid!==''">
+                                        <span >快递单号：{{goodList.sid}}</span>
                                         <button href="javascript:;" class="btn myexchange-copy"
                                            v-clipboard:copy="item.sid"
                                            v-clipboard:success="succCopy"
@@ -343,27 +343,27 @@
                                         >复制</button>
                                     </div>
                                     <div class="myexchange-time">
-                                        <span>{{ item.crtime }}</span>
+                                        <span>{{ goodList.crtime }}</span>
                                     </div>
                                 </div>
                             </li>
-                            <li class="myexchange-list" v-if="item.goodstype==='2'&&item.aid==='-1'">
+                            <li class="myexchange-list" v-if="goodList.goodstype==='2'&&goodList.aid==='-1'">
                                 <div class="fl">
-                                    <img :src="item.imgurl">
+                                    <img :src="goodList.imgurl">
                                 </div>
                                 <div class="fr">
                                     <h3 class="myexchange-t">
-                                        <span>{{ item.goodsname }}</span>
+                                        <span>{{ goodList.goodsname }}</span>
                                     </h3>
                                     <div>
                                         <span>物流状态:</span>
                                         <a
-                                           v-tap="{methods: showTapLi, item:'goAddressPage',param:item}"
+                                           v-tap="{methods: showTapLi, item:'goAddressPage',param:goodList }"
                                            href="javascript:;" class="btn myexchange-address">请确认地址</a>
 
                                     </div>
                                     <div class="myexchange-time">
-                                        <span>{{ item.crtime }}</span>
+                                        <span>{{ goodList.crtime }}</span>
                                     </div>
                                 </div>
                             </li>
@@ -535,8 +535,6 @@ export default {
                     goodstype:null, //  2 实物商品， 1 京东卡 ， 3 话费卡
                 },
                 showResult: false ,  // 显示最终结果页
-
-
             }
         },
         watch: {
@@ -545,7 +543,6 @@ export default {
                     this.$router.push('/luckdraw')
                 }
             },
-
         },
         components: {
             BannerScroll,
@@ -742,8 +739,11 @@ export default {
             },
 
             showTapLi ({item, param}) {
+                console.log( param )
                 switch (item) {
                 case 'goAddressPage':
+                    console.log('+++++++++')
+                    console.log(param)
 //                        /* 商品id  两个接口是否合成一个接口 ？？ */
                     if (param && param.oid) {
                         this.$router.push(`/shopAdd/${param.oid}`)
@@ -822,14 +822,15 @@ export default {
             /* tap 切换 */
             changeCharge ({params}) {
                 if (!params) {
-                    this.$router.push('/chargeNew/draw')
-                    this.$store.dispatch('getGoodsList')
+                    this.$router.push('/chargeNew/draw');
+                    this.$store.dispatch('getGoodsList');
                     if (this.userInfo) {
                         this.$store.dispatch('getWinGoodList')
                     }
                     _hmt.push(['_trackEvent', 'off_商城页兑换点击', 'click', 'off_商城页兑换'])
                 } else {
-                    this.$router.push('/chargeNew')
+                    this.$router.push('/chargeNew');
+                    this.dhjMsg.lotteryDhj = false ;
                     _hmt.push(['_trackEvent', 'off_商城页充值点击', 'click', 'off_商城页充值'])
                 }
                 this.isShowChargeTab = params
@@ -846,7 +847,6 @@ export default {
                     this.$store.dispatch('showToast', '抽奖失败，请再试一试！')
                 }
             },
-
             buy ({item}) {
                 this.current = item
                 if (!this.current) {
@@ -946,7 +946,7 @@ export default {
             }
         },
         mounted () {
-            this.$store.dispatch('getChargeList')
+            this.$store.dispatch('getChargeList');
         /* homeinfo 数据 */
             if (!(this.bannerScrollData)) {
                 this.$store.dispatch('getHomeInfo')
@@ -958,6 +958,8 @@ export default {
                     /* 小红点 */
                     this.$store.dispatch('getWinGoodList')
                 }
+            }else{
+                this.dhjMsg.lotteryDhj = false ;
             }
             // 跳转 drawList
             setTimeout(()=>{

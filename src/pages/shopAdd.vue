@@ -28,8 +28,8 @@
                 <div class="addresss_text">为保证奖品正常派发，请按正确格式填写您的收件地址</div>
                 <a class="address_save_btn" v-tap="{methods:saveAddrMess}" v-if="!currOrderId && !isSaveBtn">保存</a>
                 <a class="address_save_btn" v-tap="{methods:saveAddrMess}" style="background-color: #666" v-if="!currOrderId && isSaveBtn">已保存</a>
-                <a class="address_save_btn" v-tap="{methods:saveAddrMess}" v-if="currOrderId && !isConfirmBtn">确认地址</a>
-                <a class="address_save_btn" v-tap="{methods:saveAddrMess}" style="background-color: #666" v-if="currOrderId && isConfirmBtn">已确认</a>
+                <a class="address_save_btn" v-tap="{methods:saveAddrMess}" v-if="(currOrderId && !isConfirmBtn) ">确认地址</a>
+                <a class="address_save_btn" v-tap="{methods:saveAddrMess}" style="background-color: #666" v-if="(currOrderId && isConfirmBtn)">已确认</a>
                 <!-- 中间部分结束 -->
                 <p class="address_tips">确认后不可修改</p>
             </div>
@@ -242,7 +242,8 @@ export default {
         },
         mounted () {
             if (this.$route.params.orderId) {
-                this.currOrderId = this.$route.params.orderId
+                this.currOrderId = this.$route.params.orderId;
+                this.$store.commit('setIsConfirmBtn', false)
             }
             if (this.hasUserInfo) {
                 this.$store.dispatch('getAddressMess')
