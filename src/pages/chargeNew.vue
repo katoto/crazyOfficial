@@ -789,11 +789,9 @@ export default {
             },
             onError (e) {
                 this.isShowCopyBox = true;
-                alert( e );
                 console.log( e.text );
-
                 if (e.text) {
-                    this.value = e.text
+                    this.copyValue = e.text
                 }
                 this.$store.dispatch('showToast', '复制失败~请手动复制')
             },
