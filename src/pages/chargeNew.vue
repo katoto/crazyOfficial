@@ -788,7 +788,10 @@ export default {
                 this.$store.dispatch('showToast', '复制成功')
             },
             onError (e) {
-                this.isShowCopyBox = true
+                this.isShowCopyBox = true;
+                alert( e );
+                console.log( e.text );
+
                 if (e.text) {
                     this.value = e.text
                 }
