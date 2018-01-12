@@ -2669,13 +2669,13 @@
     height:100%;
     /*padding-top:300px;*/
     box-sizing: border-box;
-    transform: translateX(100%);
+    /*transform: translateX(100%);*/
     background: #1f2025;
     box-sizing: border-box;
 }
 .lottery-dhj.on{
     display: block;
-    animation: moveIn 0.5s both;
+    /*animation: moveIn 0.5s both;*/
 }
 @keyframes moveIn {
     0%{
@@ -2683,7 +2683,6 @@
     }
     100%{
         transform: translateX(0);
-
     }
 }
 .lotteryDhj-t{
