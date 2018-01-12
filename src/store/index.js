@@ -115,7 +115,11 @@ const state = {
 
 }
 const mutations = {
-
+    setUserInfoIconData (state, data) {
+        if (state.userInfo) {
+            state.userInfo.gold_total = data
+        }
+    },
     setcurrOid( state ,data ){
         state.currOid = data ;
     },
@@ -373,6 +377,10 @@ const actions = {
                     initFunc:function () {
                         // 初始化 按钮什么的
                         commit( 'setdhjBtn', false );
+                        //  手动减金币
+                        if( state.userInfo && state.userInfo.gold_total ){
+                            commit('setUserInfoIconData', parseInt(state.userInfo.gold_total) - 60000 );
+                        }
                     },
                     onComplete:function () {
                         console.log('end move');
@@ -934,8 +942,10 @@ const actions = {
             state.shopAddData.AddressId = result.aid
             commit('setIsSaveBtn', true)
             commit('setIsConfirmBtn', true)
-
             dispatch('showToast', result.msg)
+            setTimeout(()=>{
+                window.history.back();
+            },1000)
         } catch (e) {
             dispatch('showToast', e.message)
         }
@@ -974,7 +984,10 @@ const actions = {
 &country=中国&city=${state.shopAddData.addressMess.city}&province=${state.shopAddData.addressMess.province}&district=${state.shopAddData.addressMess.district}&street=${state.shopAddData.addressMess.street}
 &oid=${oid}&aid=${state.shopAddData.addressMess.aid}&src=${src()}`)
             dispatch('showToast', '确认收货地址成功')
-            commit('setIsConfirmBtn', true)
+            commit('setIsConfirmBtn', true);
+            setTimeout(()=>{
+                window.history.back();
+            },1000)
         } catch (e) {
             dispatch('showToast', e.message)
         }
