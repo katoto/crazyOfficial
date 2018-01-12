@@ -7,7 +7,7 @@
                     <li :class="{'on':isShowChargeTab}" v-tap="{methods: changeCharge, params:true }">充值</li>
                     <li :class="{'on':!isShowChargeTab}" v-tap="{methods: changeCharge, params:false}">领奖</li>
                 </ul>
-                <a href="javascript:;" class="my-msg" v-tap="{methods: showMyMess}"
+                <a v-if="userInfo" href="javascript:;" class="my-msg" v-tap="{methods: showMyMess}"
                     :class="{'transform':isShowMyMess}"
                 >
                     <i></i>
@@ -165,38 +165,41 @@
         </div>
 
         <!--奖品兑换-->
-        <div class="pop pop-gift" :class="{ 'hide' : !dhjMsg.showMsg,'lack': userInfo.exchangetkt_total<dhjMsg.needtickets}">
-            <div class="pop_layer"></div>
-            <div class="pop-m">
-                <span class="close" v-tap="{methods: closedhjMsg }"></span>
-                <div class="pop-t">奖品兑换</div>
-                <img class="prize-img" :src="dhjMsg.imgurl" alt="">
-                <p class="prize-name">
-                    {{ dhjMsg.name }}
-                </p>
-                <p class="prize-des">
-                    {{ dhjMsg.goodsdesc }}
-                </p>
-                <div class="prize-tips">
-                    <p class="prize-tips01">需要：</p>
-                    <!--当可以兑换的时候加这个行内样式否则删除，-->
-                    <p class="prize-tips02">{{ dhjMsg.needtickets }}张</p>
-                    <p class="prize-tips03" v-if="userInfo">（您有{{ userInfo.exchangetkt_total }}张）</p>
-                </div>
-                <div class="prize-lack" v-if="parseInt( userInfo.exchangetkt_total) < parseInt( dhjMsg.needtickets ) ">哎呀，兑换券不够，先点击获取吧！</div>
-
-                <div class="prize-btn">
-                    <div v-if="parseInt( userInfo.exchangetkt_total) < parseInt( dhjMsg.needtickets ) ">
-                        <a href="javascript:;" class="btn-cancel" v-tap="{methods: closedhjMsg }">取消</a>
-                        <a href="javascript:;" class="btn-get" v-tap="{methods: jumpTodhj }">获取</a>
+        <template v-if="userInfo">
+            <div class="pop pop-gift" :class="{ 'hide' : !dhjMsg.showMsg,'lack': userInfo.exchangetkt_total<dhjMsg.needtickets}">
+                <div class="pop_layer"></div>
+                <div class="pop-m">
+                    <span class="close" v-tap="{methods: closedhjMsg }"></span>
+                    <div class="pop-t">奖品兑换</div>
+                    <img class="prize-img" :src="dhjMsg.imgurl" alt="">
+                    <p class="prize-name">
+                        {{ dhjMsg.name }}
+                    </p>
+                    <p class="prize-des">
+                        {{ dhjMsg.goodsdesc }}
+                    </p>
+                    <div class="prize-tips" v-if="userInfo">
+                        <p class="prize-tips01">需要：</p>
+                        <!--当可以兑换的时候加这个行内样式否则删除，-->
+                        <p class="prize-tips02">{{ dhjMsg.needtickets }}张</p>
+                        <p class="prize-tips03" v-if="userInfo">（您有{{ userInfo.exchangetkt_total }}张）</p>
                     </div>
-                    <!-- 当可以兑换的时候用下面   是否需要带类型数据？？？  -->
-                    <a v-else href="javascript:;" class="btn-exchange"
-                       v-tap="{methods: goLuckGiftCopy, item:'' }"
-                    >立即兑换</a>
+                    <div class="prize-lack" v-if="parseInt( userInfo.exchangetkt_total) < parseInt( dhjMsg.needtickets ) ">哎呀，兑换券不够，先点击获取吧！</div>
+
+                    <div class="prize-btn">
+                        <div v-if="parseInt( userInfo.exchangetkt_total) < parseInt( dhjMsg.needtickets ) ">
+                            <a href="javascript:;" class="btn-cancel" v-tap="{methods: closedhjMsg }">取消</a>
+                            <a href="javascript:;" class="btn-get" v-tap="{methods: jumpTodhj }">获取</a>
+                        </div>
+                        <!-- 当可以兑换的时候用下面   是否需要带类型数据？？？  -->
+                        <a v-else href="javascript:;" class="btn-exchange"
+                           v-tap="{methods: goLuckGiftCopy, item:'' }"
+                        >立即兑换</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </template>
+
 
         <!--兑换成功 弹窗-->
         <!--<div class="pop pop-giftSu" :class="{'hide': !showPopGiftSu}">-->
