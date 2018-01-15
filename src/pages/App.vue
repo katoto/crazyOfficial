@@ -77,7 +77,6 @@
             //    线下账号  测试  !!!
 //                await this.$store.dispatch('localLogin', 12342)
 //                await this.$store.dispatch('getUserInfo')
-
                 if( src()==='500touch' ){
                     switch ( src() ){
                         case '500touch':

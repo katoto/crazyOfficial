@@ -321,7 +321,7 @@
                 <!--<img src="~static/images/enter-actEgert.png">-->
             <!--</a>-->
         <!--</div>-->
-        <div class="enter-actEgert" v-tap="{ methods:jumpToRedCenter}">
+        <div class="enter-actEgert hide" v-tap="{ methods:jumpToRedCenter}">
             <img src="~static/images/enter-actEgert.png" alt="">
         </div>
         <send-order></send-order>

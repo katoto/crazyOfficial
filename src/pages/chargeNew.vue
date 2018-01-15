@@ -162,7 +162,7 @@
                     <div class="info">
                         <span>奖品说明：</span>
                         <p v-if="alertGoodsData.goodsdesc">{{alertGoodsData.goodsdesc}}</p>
-                        <p style="color: #e7e7e7;">抽奖100%可中实物商品或等额猜球币。</p>
+                        <p style="color: #e7e7e7;visibility: hidden">抽奖100%可中实物商品或等额猜球币。</p>
                     </div>
                 </div>
             </div>
@@ -669,7 +669,6 @@ export default {
                 }
                 this.$store.dispatch( 'luckDrawGo' , params )
             },
-
             //////////
             closeCopyBox () {
                 this.isShowCopyBox = false
