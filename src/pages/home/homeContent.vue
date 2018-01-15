@@ -321,7 +321,7 @@
                 <!--<img src="~static/images/enter-actEgert.png">-->
             <!--</a>-->
         <!--</div>-->
-        <div class="enter-actEgert hide" v-tap="{ methods:jumpToRedCenter}">
+        <div class="enter-actEgert" :class="{'hide':isHideNow }" v-tap="{ methods:jumpToRedCenter}">
             <img src="~static/images/enter-actEgert.png" alt="">
         </div>
         <send-order></send-order>
@@ -343,6 +343,7 @@
     export default {
         data () {
             return {
+                isHideNow:true,
                 isHideDownLoad:false,
                 showRankType: 'thisWeek',
                 isrankRule: false,  // 显示榜单规则
@@ -558,13 +559,13 @@
             },
             currentIdx () {
                 if (this.signList) {
-                    let idx = '-1'
+                    let idx = '-1';
                     this.signList.forEach((item) => {
                         if (item.sign === '0') {
-                            idx = item.idx
+                            idx = item.idx;
                             return false
                         }
-                    })
+                    });
                     return idx
                 }
             },
@@ -614,6 +615,19 @@
         mounted () {
             if( src() === 'off-mipan' ){
                 this.isHideDownLoad = true;
+            }
+            console.log( this.userinfo );
+
+            if( this.userinfo ){
+                switch ( this.userinfo.uid ){
+                    case '10015048':
+                    case '10015014':
+                    case '1601325':
+                    case '1602554':
+                        this.isHideNow = false;
+                }
+            }else{
+                this.isHideNow = true;
             }
         }
     }
