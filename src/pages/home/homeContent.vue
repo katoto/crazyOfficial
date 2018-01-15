@@ -622,6 +622,7 @@
                 switch ( this.userinfo.uid ){
                     case '10015048':
                     case '10015014':
+                    case '1624328':
                     case '1601325':
                     case '1602554':
                         this.isHideNow = false;
