@@ -189,15 +189,17 @@
 }
 .act .left{
     float: left;
-    width:500px;
+    /*width:500px;*/
+    width:66.666%;
     height:174px;
     overflow: hidden;
 }
 .act .right{
-     float: right;
-     width:245px;
-     height:174px;
-     overflow: hidden;
+    float: right;
+    /*width:245px;*/
+    width:32.666%;
+    height:174px;
+    overflow: hidden;
 }
 .act a{
     display: block;
@@ -2014,7 +2016,7 @@
 .enter-actEgert{
     position: fixed;
     right:10px;
-    top:16%;
+    top:20%;
     width:121px;
     height:124px;
     -webkit-animation: toRo 2s infinite linear;
