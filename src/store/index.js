@@ -363,13 +363,10 @@ const actions = {
     // new  抽取兑换劵
     async luckDrawGo ({commit, dispatch},params) {
         try {
-            console.log( params ) ;
             const bingoData = await ajax.get(`/wheel/bingo?platform=${platform}&src=${src()}&wtype=60000&golds=60000&ck=${getCk()}`);
             console.log( bingoData ) ;
 
             if( bingoData && bingoData.prize && bingoData.prize.idx ){
-                console.log('+++++++++++++++')
-                console.log( bingoData.prize.idx )
                 dispatch ('moveFn',{
                     endLocal: bingoData.prize.idx ,
                     total: params.giftLen ,
@@ -383,7 +380,6 @@ const actions = {
                         }
                     },
                     onComplete:function () {
-                        console.log('end move');
                         commit( 'setdhjBtn', true );
                         // 弹窗奖品  把字段修改一下就行。
                         commit('setbingoPrize' , {
@@ -391,6 +387,7 @@ const actions = {
                             number: bingoData.prize.item ,
                             type: bingoData.prize.type
                         } );
+                        dispatch('getUserInfo');
                     },
                     rollFunc:function ( _index ) {
                         commit( 'setPositionName' , 'position0'+ ( _index )  );

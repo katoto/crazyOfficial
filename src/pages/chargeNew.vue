@@ -227,7 +227,6 @@
         <div class="pop pop-dhj" :class="{'hide': !bingoPrize.isShow  }"
              v-tap="{methods: closeGiftBox }"
         >
-            <!-- bingoPrize.type !=='golds' -->
             <div class="pop_layer"></div>
             <div class="pop-o">
                 <img class="bg-dhj" src="~static/images/bingo_bg.png">
@@ -664,7 +663,7 @@ export default {
                     // 重复点击
                     return false ;
                 }
-                if( parseInt( this.userInfo.gold_total ) < 55000 ){
+                if( parseInt( this.userInfo.gold_total ) < 60000 ){
                     this.dhjMsg.showCoinLess = true ;
                     return false;
                 }
@@ -849,10 +848,12 @@ export default {
                     _hmt.push(['_trackEvent', 'off_商城页兑换点击', 'click', 'off_商城页兑换'])
                 } else {
                     this.$router.push('/chargeNew');
-                    this.dhjMsg.lotteryDhj = false ;
                     _hmt.push(['_trackEvent', 'off_商城页充值点击', 'click', 'off_商城页充值'])
                 }
-                this.isShowChargeTab = params
+                this.dhjMsg.lotteryDhj = false ;
+
+                this.isShowChargeTab = params;
+                this.selectBoxHide = false;
             },
 
             /* 去抽奖展示 先按跳转的来处理吧  */
