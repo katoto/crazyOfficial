@@ -14,5 +14,5 @@ http://192.168.41.76:6899/match/football/detail?ck=MTAwMjkwOTJmYzA5OWQ5YWFjNGM3M
 3157085145@qq.com	Crazy500.com
 AppID(应用ID) wx86d590e6cf755764   AppSecret （应用密钥）  需重置才行
 
-###  球球是道
-service@10.0.0.31:/home/service/touch/crazy_qqsd.git
+# crazyOfficial
+猜球H5官方版
