@@ -1,18 +1,70 @@
-##获取ck
+## 疯狂猜球官方版（代理版）
+### 采用单页面的形式进行开发（比赛数据通过websocket进行推送）
+####主要涉及功能比赛列表、比赛动画直播、兑换场、抽奖场、登陆、注册、反馈、个人中心协议、比赛订单列表等内容。
+#### 充值部分 ，微信环境走微信充值，微信外走支付宝支付 。
 ~~~
-http://192.168.41.76:6899/login/guest?deviceid=1
+部分 package.json  内容。
+  "name": "crazybet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist/* && cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js --progress --hide-modules",
+    "prod": "rimraf dist/* && cross-env NODE_ENV=preRelease webpack --config build/webpack.prod.config.js --progress --hide-modules",
+    "dev": "node server.js",
+    "localdev": "cross-env LOCAL_ENV=true PORT=80 node server.js",
+    "clean": "rimraf dist/*",
+    "lint": "eslint --ext .js,.vue src",
+    "lint-fix": "eslint --ext .js,.vue src --fix",
+    "precommit": "npm run lint"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.1", // 请求
+    "bc-zepto.full": "^1.1.6-b", //  $ 最要用户主页的动画
+    "commonjs-touchslider": "^1.1.0",
+    "es6-promise": "^4.1.0", // promise 兼容
+    "js-cookie": "^2.1.3",
+    "moment": "^2.18.1",
+    "scroller": "0.0.3",
+    "v-tap": "^2.2.2",
+    "vue": "^2.3.3",
+    "vue-clipboard2": "0.0.6",
+    "vue-router": "^2.5.3",
+    "vuex": "^2.3.1",
+    "vuex-router-sync": "^4.1.1"
+  },
 ~~~
-##wiki
-~~~
-http://wiki.boss.com/wiki/index.php/$crazy_bet/match/football/detail_%E8%B6%B3%E7%90%83%E6%AF%94%E8%B5%9B%E8%B5%9B%E4%BA%8B%E8%AF%A6%E6%83%85
-~~~
-###例子
-~~~
-http://192.168.41.76:6899/match/football/detail?ck=MTAwMjkwOTJmYzA5OWQ5YWFjNGM3MTcxMTNiMzk4MjNkMjA5N2Y2&matchid=757945 
-~~~
-###服务号账号
-3157085145@qq.com	Crazy500.com
-AppID(应用ID) wx86d590e6cf755764   AppSecret （应用密钥）  需重置才行
 
-# crazyOfficial
-猜球H5官方版
+
+
+## git clone 之后，npm install 一下，然后走本地跑项目走localdev（默认80端口可修改）。 
+#### 上线打包走build 。
+
+~~~
+    线上访问 （ 目前已经下线 ）:
+    http://crazybet.choopaoo.com/official/#/h5/home
+    or
+    http://crazybet.choopaoo.com/official?from=500touch
+~~~
+####内部需求地址：
+~~~
+http://192.168.17.42:8010/H5-OUT/#g=1&p=h5%E5%85%91%E6%8D%A2%E4%BA%A4%E4%BA%92
+~~~
+
+#### 外部可用 石墨表格 进行bug 修正跟踪。
+~~~
+https://shimo.im/sheet/FnWezzumwI0v5fqo
+~~~
+#### 公司内网使用 ：
+ ~~~
+ http://jira.500boss.com/secure/Dashboard.jspa
+ ~~~
+ 
+ ###项目部分截图:
+ ![Image text](http://img.choopaoo.com/esun/upload/96/0a/960a40eeff3811e7a441.png)
+ ![Image text](https://crazybet.choopaoo.com/img/esun/upload/d3/5e/d35ea83eff5311e7bdd2.png)
+ ![Image text](https://crazybet.choopaoo.com/img/esun/upload/dc/29/dc29c98aff5311e7bc49.png)
+ ![Image text](https://crazybet.choopaoo.com/img/esun/upload/df/d2/dfd22342ff5411e7928e.png)
+ ![Image text](https://crazybet.choopaoo.com/img/esun/upload/d5/a5/d5a59c50ff5411e7a008.png)
