@@ -62,7 +62,8 @@ https://shimo.im/sheet/FnWezzumwI0v5fqo
  http://jira.500boss.com/secure/Dashboard.jspa
  ~~~
  
- ###项目部分截图:
+ ##项目部分截图:
+ 
  ![Image text](https://raw.githubusercontent.com/katoto/crazyOfficial/master/projectImg/1.png)
  ![Image text](https://raw.githubusercontent.com/katoto/crazyOfficial/master/projectImg/2.png)
  ![Image text](https://raw.githubusercontent.com/katoto/crazyOfficial/master/projectImg/3.png)
