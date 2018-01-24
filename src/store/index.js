@@ -5,7 +5,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import ajax from '~common/ajax'
-import {addCookie, platform, src, wait, convertToQueryString, getCk ,invokeWxzf } from '~common/util'
+import {addCookie, platform, src, wait, convertToQueryString, getCk, invokeWxzf } from '~common/util'
 import main from './main'
 import home from './home'
 import feedback from './feedback'
@@ -86,7 +86,7 @@ const state = {
         chooseIDCartNumber: null
     },
     isLogin: false,
-    isLogin500:false,
+    isLogin500: false,
     isHideHomeHead: false, // 隐藏头部
     activeBox: {
         showActBox: false // 弹窗
@@ -99,19 +99,18 @@ const state = {
     loginSucc: false,
     regisSucc: false,
 
-
-    dhj:{  // 兑换劵相关的对象
-        dhjBtn:true, // 抽奖按钮是否可点
-        positionName:'default', //position00 控制类名
-        goodBingoNew:null,  //抽取实物的数据
+    dhj: {  // 兑换劵相关的对象
+        dhjBtn: true, // 抽奖按钮是否可点
+        positionName: 'default', // position00 控制类名
+        goodBingoNew: null  // 抽取实物的数据
     },
-    bingoPrize:{
-        number:0,
-        type:'',
-        isShow:false,
+    bingoPrize: {
+        number: 0,
+        type: '',
+        isShow: false
     },
-    showPopGiftSu:false,  // 是否显示中奖弹窗
-    currOid:null,
+    showPopGiftSu: false,  // 是否显示中奖弹窗
+    currOid: null
 
 }
 const mutations = {
@@ -120,23 +119,23 @@ const mutations = {
             state.userInfo.gold_total = data
         }
     },
-    setcurrOid( state ,data ){
-        state.currOid = data ;
+    setcurrOid (state, data) {
+        state.currOid = data
     },
-    setPositionName( state ,data ){
-        state.dhj.positionName = data ;
+    setPositionName (state, data) {
+        state.dhj.positionName = data
     },
-    setdhjBtn( state , data ){
-        state.dhj.dhjBtn = data ;
+    setdhjBtn (state, data) {
+        state.dhj.dhjBtn = data
     },
-    setbingoPrize( state ,data ){
-        state.bingoPrize = data ;
+    setbingoPrize (state, data) {
+        state.bingoPrize = data
     },
-    setGoodBingoNew( state ,data ){
-        state.dhj.goodBingoNew = data ;
+    setGoodBingoNew (state, data) {
+        state.dhj.goodBingoNew = data
     },
-    showPopGiftSu( state ,data ){
-        state.showPopGiftSu = data ;
+    showPopGiftSu (state, data) {
+        state.showPopGiftSu = data
     },
     //  new
 
@@ -241,13 +240,13 @@ const mutations = {
     },
     ck (state, ck) {
         state.ck = ck
-        addCookie(src()+'ck', ck)
-        localStorage.setItem(src()+'ck', ck)
+        addCookie(src() + 'ck', ck)
+        localStorage.setItem(src() + 'ck', ck)
     },
     removeCk (state) {
         state.ck = ''
-        addCookie(src()+'ck', '')
-        localStorage.setItem(src()+'ck', '')
+        addCookie(src() + 'ck', '')
+        localStorage.setItem(src() + 'ck', '')
     },
     userInfo (state, userInfo) {
         if (userInfo && userInfo.photo === '') {
@@ -345,59 +344,58 @@ const actions = {
     /**
      *  换取实物
      * */
-    async getGoodBingoNew ({state,commit, dispatch}, obj) {
+    async getGoodBingoNew ({state, commit, dispatch}, obj) {
         try {
-            commit( 'setGoodBingoNew', null );
-            let luckGoodBingo = await ajax.get(`/shops/goods/exchange?amount=${obj.amount}&ck=${getCk()}&goodsid=${obj.goodsid}&channel=${obj.channel}&platform=${platform}&goodstype=${obj.goodstype}&src=${src()}&company=${obj.company}`);
-            commit( 'setGoodBingoNew', luckGoodBingo );
-            commit( 'showPopGiftSu',true ) ;
-            dispatch('getUserInfo');
+            commit('setGoodBingoNew', null)
+            let luckGoodBingo = await ajax.get(`/shops/goods/exchange?amount=${obj.amount}&ck=${getCk()}&goodsid=${obj.goodsid}&channel=${obj.channel}&platform=${platform}&goodstype=${obj.goodstype}&src=${src()}&company=${obj.company}`)
+            commit('setGoodBingoNew', luckGoodBingo)
+            commit('showPopGiftSu', true)
+            dispatch('getUserInfo')
             // 更新oid
-            if( luckGoodBingo.oid ){
-                commit( 'setcurrOid', luckGoodBingo.oid ) ;
+            if (luckGoodBingo.oid) {
+                commit('setcurrOid', luckGoodBingo.oid)
             }
         } catch (e) {
             dispatch('showToast', e.message)
         }
     },
     // new  抽取兑换劵
-    async luckDrawGo ({commit, dispatch},params) {
+    async luckDrawGo ({commit, dispatch}, params) {
         try {
-            const bingoData = await ajax.get(`/wheel/bingo?platform=${platform}&src=${src()}&wtype=60000&golds=60000&ck=${getCk()}`);
-            console.log( bingoData ) ;
+            const bingoData = await ajax.get(`/wheel/bingo?platform=${platform}&src=${src()}&wtype=60000&golds=60000&ck=${getCk()}`)
+            console.log(bingoData)
 
-            if( bingoData && bingoData.prize && bingoData.prize.idx ){
-                dispatch ('moveFn',{
-                    endLocal: bingoData.prize.idx ,
-                    total: params.giftLen ,
-                    currLocal: params.currLocal ,
-                    initFunc:function () {
+            if (bingoData && bingoData.prize && bingoData.prize.idx) {
+                dispatch('moveFn', {
+                    endLocal: bingoData.prize.idx,
+                    total: params.giftLen,
+                    currLocal: params.currLocal,
+                    initFunc: function () {
                         // 初始化 按钮什么的
-                        commit( 'setdhjBtn', false );
+                        commit('setdhjBtn', false)
                         //  手动减金币
-                        if( state.userInfo && state.userInfo.gold_total ){
-                            commit('setUserInfoIconData', parseInt(state.userInfo.gold_total) - 60000 );
+                        if (state.userInfo && state.userInfo.gold_total) {
+                            commit('setUserInfoIconData', parseInt(state.userInfo.gold_total) - 60000)
                         }
                     },
-                    onComplete:function () {
-                        commit( 'setdhjBtn', true );
+                    onComplete: function () {
+                        commit('setdhjBtn', true)
                         // 弹窗奖品  把字段修改一下就行。
-                        commit('setbingoPrize' , {
+                        commit('setbingoPrize', {
                             isShow: true,
-                            number: bingoData.prize.item ,
+                            number: bingoData.prize.item,
                             type: bingoData.prize.type
-                        } );
-                        dispatch('getUserInfo');
+                        })
+                        dispatch('getUserInfo')
                     },
-                    rollFunc:function ( _index ) {
-                        commit( 'setPositionName' , 'position0'+ ( _index )  );
-                    },
+                    rollFunc: function (_index) {
+                        commit('setPositionName', 'position0' + (_index))
+                    }
                 })
-            }else{
+            } else {
                 console.error('bingo error item or prize ')
             }
             // 开始move
-
         } catch (e) {
             if (~e.message.indexOf('未登录') || ~e.message.indexOf('其他设备登录')) {
                 dispatch('clearLoginState', 0)
@@ -419,78 +417,77 @@ const actions = {
             initFunc:function () {} // 初始化函数
         };
      */
-    moveFn( { commit ,state ,dispatch } ,config = defaultConfig ) {
-        var  _private = {
+    moveFn ({ commit, state, dispatch }, config = defaultConfig) {
+        var _private = {
                 /***
                  *  取旋转的随机数
                  */
-                random (min , max) {
-                    return Math.floor(min + Math.random()*( max - min )) ;
+                random (min, max) {
+                    return Math.floor(min + Math.random() * (max - min))
                 },
-                aniFunction (t , b, c, d) {
+                aniFunction (t, b, c, d) {
                     // 加速 、 减速
-                    return c * t /d + b ;
+                    return c * t / d + b
                 }
             },
-            fastTime = 50 , slowTime = 400,
-            stepCounts = parseInt( config.endLocal ) + config.total * _private.random( 2 , 3 ) ,
-            index = 0, slowT = 0 ,
-            speedUp, uniform , slowDown ;
+            fastTime = 50, slowTime = 400,
+            stepCounts = parseInt(config.endLocal) + config.total * _private.random(2, 3),
+            index = 0, slowT = 0,
+            speedUp, uniform, slowDown
 
-        if( config.currLocal ){
+        if (config.currLocal) {
             // 算上初始的次数
-            stepCounts += ( parseInt( config.total ) - parseInt( config.currLocal )) - 1 ;
+            stepCounts += (parseInt(config.total) - parseInt(config.currLocal)) - 1
         }
-        uniform = config.total * 2 ;
-        speedUp = Math.floor(( stepCounts - uniform )/ 3 );
-        uniform += speedUp ;
-        slowDown = stepCounts ;
+        uniform = config.total * 2
+        speedUp = Math.floor((stepCounts - uniform) / 3)
+        uniform += speedUp
+        slowDown = stepCounts
 
-        if( config.initFunc ){
-            config.initFunc() ;
+        if (config.initFunc) {
+            config.initFunc()
         }
 
         var moveFunc = function () {
-            var moveTime = null ;
-            index ++ ;
-            if( index > stepCounts ){
-                setTimeout( ()=>{
-                    config.onComplete();
-                },10) ;
-                return ;
+            var moveTime = null
+            index++
+            if (index > stepCounts) {
+                setTimeout(() => {
+                    config.onComplete()
+                }, 10)
+                return
             }
-            var t = index, b = slowTime, c = fastTime - slowTime , d = speedUp;
-            if( index <= speedUp ){
-                moveTime = _private.aniFunction(t,b,c,d);
+            var t = index, b = slowTime, c = fastTime - slowTime, d = speedUp
+            if (index <= speedUp) {
+                moveTime = _private.aniFunction(t, b, c, d)
             }
-            if( index > speedUp ){
-                moveTime = fastTime ;
+            if (index > speedUp) {
+                moveTime = fastTime
             }
-            if( index > uniform ){
-                t = slowT ++;
-                b = fastTime;
-                c = slowTime - fastTime;
-                d = slowDown - uniform;
-                moveTime = _private.aniFunction(t,b,c,d);
+            if (index > uniform) {
+                t = slowT++
+                b = fastTime
+                c = slowTime - fastTime
+                d = slowDown - uniform
+                moveTime = _private.aniFunction(t, b, c, d)
             }
             // 出赛果
-            if( config.currLocal ){
-                config.rollFunc( (index + parseInt(config.currLocal)) % 8 ) ;
-            }else{
-                config.rollFunc( index % 8 ) ;
+            if (config.currLocal) {
+                config.rollFunc((index + parseInt(config.currLocal)) % 8)
+            } else {
+                config.rollFunc(index % 8)
             }
-            setTimeout(moveFunc , moveTime ) ;
-        };
-        setTimeout(moveFunc , slowTime ) ;
-    } ,
+            setTimeout(moveFunc, moveTime)
+        }
+        setTimeout(moveFunc, slowTime)
+    },
 
     // ====================
 
-
     clearLoginState ({commit, dispatch}, data) {
         commit('ck', '')
-        addCookie(src()+'ck', '')
-        localStorage.setItem(src()+'ck', '')
+        addCookie(src() + 'ck', '')
+        localStorage.setItem(src() + 'ck', '')
     },
 
     /* 检查是否登录 */
@@ -542,13 +539,13 @@ const actions = {
                         await dispatch('doLogin500', CodeData.msg.code)
                     }
                     console.log('==============')
-                    console.log( CodeData.msg.uuid )
-                    console.log( getCk() );
-                    console.log( localStorage.getItem('userid') === CodeData.msg.uuid )
+                    console.log(CodeData.msg.uuid)
+                    console.log(getCk())
+                    console.log(localStorage.getItem('userid') === CodeData.msg.uuid)
 
-                    commit('ck', getCk() )
+                    commit('ck', getCk())
                 } else {
-                    commit('setIsLogin500', false);
+                    commit('setIsLogin500', false)
                     // window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/official?from=500touch'
                 }
             } else {
@@ -601,7 +598,7 @@ const actions = {
         try {
             let doLoginData = null
             doLoginData = await ajax.get(`/login/cpuser?token=${params}&cptype=500&src=${src()}&platform=${platform}`)
-            console.log( doLoginData );
+            console.log(doLoginData)
             if (doLoginData.userid) {
                 localStorage.setItem('userid', doLoginData.userid)
             }
@@ -616,14 +613,14 @@ const actions = {
     async doAuth ({commit, dispatch}) {
         try {
             /* 处理登陆（调登陆 ） */
-            if( src()==='500touch' ){
-                switch ( src() ){
-                    case '500touch':
-                        window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl='+ location.href.split(location.pathname)[0] + '/official?from=500touch' ;
-                        ;break;
+            if (src() === '500touch') {
+                switch (src()) {
+                case '500touch':
+                    window.location.href = 'http://m.500.com/user/index.php?c=home&a=login&backurl=' + location.href.split(location.pathname)[0] + '/official?from=500touch'
+                        ;break
                 }
-            }else{
-                router.push('/login');
+            } else {
+                router.push('/login')
                 dispatch('clearLoginState')
             }
         } catch (e) {
@@ -940,9 +937,9 @@ const actions = {
             commit('setIsSaveBtn', true)
             commit('setIsConfirmBtn', true)
             dispatch('showToast', result.msg)
-            setTimeout(()=>{
-                window.history.back();
-            },1000)
+            setTimeout(() => {
+                window.history.back()
+            }, 1000)
         } catch (e) {
             dispatch('showToast', e.message)
         }
@@ -981,10 +978,10 @@ const actions = {
 &country=中国&city=${state.shopAddData.addressMess.city}&province=${state.shopAddData.addressMess.province}&district=${state.shopAddData.addressMess.district}&street=${state.shopAddData.addressMess.street}
 &oid=${oid}&aid=${state.shopAddData.addressMess.aid}&src=${src()}`)
             dispatch('showToast', '确认收货地址成功')
-            commit('setIsConfirmBtn', true);
-            setTimeout(()=>{
-                window.history.back();
-            },1000)
+            commit('setIsConfirmBtn', true)
+            setTimeout(() => {
+                window.history.back()
+            }, 1000)
         } catch (e) {
             dispatch('showToast', e.message)
         }

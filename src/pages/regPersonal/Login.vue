@@ -65,11 +65,11 @@
 
 <script>
     import {aTypes, mTypes} from '~store/regPerson'
-    import {starHtml, stopHtml, platform ,src} from '~common/util'
+    import {starHtml, stopHtml, platform, src} from '~common/util'
     export default {
         data () {
             return {
-                isHideDownLoad:false,
+                isHideDownLoad: false,
                 telNumber: '',
                 telCode: '',
                 userPassWord: '',
@@ -312,10 +312,9 @@
             if (loginTel2 && loginTel2 !== 'undefined') {
                 this.telNumber = loginTel2
             }
-            if( src() ==='off-mipan'){
-                this.isHideDownLoad = true;
+            if (src() === 'off-mipan') {
+                this.isHideDownLoad = true
             }
-
         }
     }
 </script>

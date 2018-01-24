@@ -242,7 +242,7 @@ export default {
         },
         mounted () {
             if (this.$route.params.orderId) {
-                this.currOrderId = this.$route.params.orderId;
+                this.currOrderId = this.$route.params.orderId
                 this.$store.commit('setIsConfirmBtn', false)
             }
             if (this.hasUserInfo) {

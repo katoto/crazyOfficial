@@ -6330,7 +6330,7 @@
                             setTimeout(() => {
                                 this.$store.dispatch('showToast', {
                                     message: '您的可用余额不足',
-                                    cb:() =>{
+                                    cb: () => {
                                         this.$router.push(`/chargeNew/`)
                                     }
                                 })

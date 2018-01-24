@@ -14,13 +14,13 @@
 </template>
 
 <script>
-    import {platform,src} from '~common/util'
+    import {platform, src} from '~common/util'
     export default {
         data () {
             return {
                 msg: '下载APP 加奖',
                 msg2: '10%',
-                isHideDownLoad:false,
+                isHideDownLoad: false
             }
         },
         methods: {
@@ -44,9 +44,9 @@
                 return this.$store.state.awardAllData.setAwardImg
             }
         },
-        mounted(){
-            if( src() ==='off-mipan'){
-                this.isHideDownLoad = true;
+        mounted () {
+            if (src() === 'off-mipan') {
+                this.isHideDownLoad = true
             }
         }
     }

@@ -37,8 +37,6 @@
   },
 ~~~
 
-
-
 ## git clone 之后，npm install 一下，然后走本地跑项目走localdev（默认80端口可修改）。 
 #### 上线打包走build 。
 

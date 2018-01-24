@@ -331,7 +331,7 @@
 <script>
     import SendOrder from '~components/send-order.vue'
     import { actionTypes, mutationTypes } from '~store/home'
-    import { starHtml, stopHtml, platform , src } from '~common/util'
+    import { starHtml, stopHtml, platform, src } from '~common/util'
     import HeaderTemplateHome from '~components/header_template_home.vue'
     import MsgAlert from '~components/msg-alert.vue'
     import PublicHead from '~components/publicHead'
@@ -343,8 +343,8 @@
     export default {
         data () {
             return {
-                isHideNow:true,
-                isHideDownLoad:false,
+                isHideNow: true,
+                isHideDownLoad: false,
                 showRankType: 'thisWeek',
                 isrankRule: false,  // 显示榜单规则
                 showOption: false,  // 反馈
@@ -363,21 +363,20 @@
                 if (this.ck) {
                     ck = this.ck.replace(/=/g, '$')
                 } else {
-                    this.$store.dispatch('doAuth');
+                    this.$store.dispatch('doAuth')
                     return false
                 }
                 /* 带上参数 ！！ */
 //                window.location.href = 'http://crazybet.choopaoo.com/2017/thanksgive?from='+src()+'&h5ck='+ck;
-                if( this.userinfo && this.userinfo.uid ){
-                    window.location.href = 'http://crazybet.choopaoo.com/2017/actEgert/index.html?src='+src()+'&ck='+ck +'&uid='+this.userinfo.uid ;
-                }else{
-                    window.location.href = 'http://crazybet.choopaoo.com/2017/actEgert/index.html?src='+src()+'&ck='+ck;
+                if (this.userinfo && this.userinfo.uid) {
+                    window.location.href = 'http://crazybet.choopaoo.com/2017/actEgert/index.html?src=' + src() + '&ck=' + ck + '&uid=' + this.userinfo.uid
+                } else {
+                    window.location.href = 'http://crazybet.choopaoo.com/2017/actEgert/index.html?src=' + src() + '&ck=' + ck
                 }
-
             },
             activityJumpFn ({ params }) {
-                if( !this.ck ){
-                    this.$store.dispatch('doAuth');
+                if (!this.ck) {
+                    this.$store.dispatch('doAuth')
                     return false
                 }
                 location.href = params
@@ -559,13 +558,13 @@
             },
             currentIdx () {
                 if (this.signList) {
-                    let idx = '-1';
+                    let idx = '-1'
                     this.signList.forEach((item) => {
                         if (item.sign === '0') {
-                            idx = item.idx;
+                            idx = item.idx
                             return false
                         }
-                    });
+                    })
                     return idx
                 }
             },
@@ -613,22 +612,22 @@
             }
         },
         mounted () {
-            if( src() === 'off-mipan' ){
-                this.isHideDownLoad = true;
+            if (src() === 'off-mipan') {
+                this.isHideDownLoad = true
             }
-            console.log( this.userinfo );
+            console.log(this.userinfo)
 
-            if( this.userinfo ){
-                switch ( this.userinfo.uid ){
-                    case '10015048':
-                    case '10015014':
-                    case '1624328':
-                    case '1601325':
-                    case '1602554':
-                        this.isHideNow = false;
+            if (this.userinfo) {
+                switch (this.userinfo.uid) {
+                case '10015048':
+                case '10015014':
+                case '1624328':
+                case '1601325':
+                case '1602554':
+                    this.isHideNow = false
                 }
-            }else{
-                this.isHideNow = true;
+            } else {
+                this.isHideNow = true
             }
         }
     }

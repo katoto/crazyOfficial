@@ -22,9 +22,9 @@ export const getCookie = (sName) => {
 }
 
 export const isWeiX = (function () {
-    let ua = navigator.userAgent.toLowerCase();
-    return ~ua.indexOf('micromessenger');
-})();
+    let ua = navigator.userAgent.toLowerCase()
+    return ~ua.indexOf('micromessenger')
+})()
 
 export const addCookie = (name, value) => {
     let Days = 30
@@ -49,13 +49,13 @@ export let src = function () {
 }
 
 export let getCk = function () {
-    if (!localStorage.getItem(src()+'ck') || localStorage.getItem(src()+'ck') === '' || localStorage.getItem(src()+'ck') === 'undefined') {
-        if (getCookie(src()+'ck') && getCookie(src()+'ck') !== '') {
-            return getCookie(src()+'ck')
+    if (!localStorage.getItem(src() + 'ck') || localStorage.getItem(src() + 'ck') === '' || localStorage.getItem(src() + 'ck') === 'undefined') {
+        if (getCookie(src() + 'ck') && getCookie(src() + 'ck') !== '') {
+            return getCookie(src() + 'ck')
         }
         return ''
     }
-    return localStorage.getItem(src()+'ck') || ''
+    return localStorage.getItem(src() + 'ck') || ''
 }
 export const cptype = ''
 

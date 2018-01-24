@@ -20,14 +20,14 @@
         data () {
             return {
                 showFeedback: false,
-                isCopyWeix:null,
-                isShowCoin:false,
+                isCopyWeix: null,
+                isShowCoin: false
             }
         },
         methods: {
             goback () {
                 if (this.personTitle === '商城') {
-                    this.$router.push('/h5/home');
+                    this.$router.push('/h5/home')
                 } else {
                     window.history.back()
                 }
@@ -45,11 +45,11 @@
                 this.showFeedback = true
             }
             if (this.personTitle === '商城') {
-                this.isShowCoin = true ;
+                this.isShowCoin = true
             }
 
-            this.isCopyWeix = isWeiX ;
-            console.log( this.isCopyWeix );
+            this.isCopyWeix = isWeiX
+            console.log(this.isCopyWeix)
         },
         computed: {
             userInfo () {
@@ -66,7 +66,7 @@
                 } else {
                     return Math.round(num / 100000000 * 10) / 10 + '亿'
                 }
-            },
+            }
         }
     }
 </script>

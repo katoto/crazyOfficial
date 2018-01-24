@@ -492,10 +492,10 @@
     import BannerScroll from '~components/banner-scroll.vue'
     import {starHtml, stopHtml} from '~common/util'
     import PublicHead from '~components/publicHead'
-    import {isWeiX} from '../common/util';
+    import {isWeiX} from '../common/util'
 
-    import vueClipboard2 from 'vue-clipboard2'
-    Vue.use(vueClipboard2);
+import vueClipboard2 from 'vue-clipboard2'
+    Vue.use(vueClipboard2)
 
 export default {
         data () {
@@ -521,27 +521,27 @@ export default {
 
                 clickImgGood: false,
 
-                dhjMsg:{
+                dhjMsg: {
                     // 弹窗信息
-                    showMsg:false , // 兑换信息
-                    lotteryDhj:false , // 抽奖界面
-                    imgurl:'http://img.choopaoo.com/esun/goods/a3/87/a3877f8ea19711e695e9.png' , // 奖品图片
-                    name:'',
-                    goodsdesc:'',
-                    needtickets:'',
-                    showCoinLess:false, // 显示金币不足
+                    showMsg: false, // 兑换信息
+                    lotteryDhj: false, // 抽奖界面
+                    imgurl: 'http://img.choopaoo.com/esun/goods/a3/87/a3877f8ea19711e695e9.png', // 奖品图片
+                    name: '',
+                    goodsdesc: '',
+                    needtickets: '',
+                    showCoinLess: false // 显示金币不足
                 },
                 // 兑换劵抽奖需要的相关数据
                 //                aid:null, 相关数据再my.js
-                goodsTypeNew:{
-                    goodsid:null,
-                    channel:'h5' ,
-                    amount:1,
-                    company:null, // 虚拟充值卡商家
-                    goodstype:null, //  2 实物商品， 1 京东卡 ， 3 话费卡
+                goodsTypeNew: {
+                    goodsid: null,
+                    channel: 'h5',
+                    amount: 1,
+                    company: null, // 虚拟充值卡商家
+                    goodstype: null //  2 实物商品， 1 京东卡 ， 3 话费卡
                 },
-                showResult: false ,  // 显示最终结果页
-                selectBoxHide:false,
+                showResult: false,  // 显示最终结果页
+                selectBoxHide: false
             }
         },
         watch: {
@@ -549,7 +549,7 @@ export default {
                 if (this.clickImgGood) {
                     this.$router.push('/luckdraw')
                 }
-            },
+            }
         },
         components: {
             BannerScroll,
@@ -559,117 +559,115 @@ export default {
             closeAlert () {
                 this.alertGoodsBox = false
             },
-            initState(){
-                this.$store.state.showDrawTap = false;
+            initState () {
+                this.$store.state.showDrawTap = false
             },
-            closeshowResult(){
-                this.showResult = false;
-                this.$store.state.showGotoMainList = true ;
+            closeshowResult () {
+                this.showResult = false
+                this.$store.state.showGotoMainList = true
             },
-            showResultFn(){
-                this.$store.commit( 'showPopGiftSu' , false );
+            showResultFn () {
+                this.$store.commit('showPopGiftSu', false)
 
-                // 初始化 实物收货按钮
-                this.$store.state.confirmAddrBtn = false;
+            // 初始化 实物收货按钮
+                this.$store.state.confirmAddrBtn = false
 
-                //  新增列表请求
-                this.$store.dispatch('getWinGoodList');
+            //  新增列表请求
+                this.$store.dispatch('getWinGoodList')
 
-                this.showResult = true;
+                this.showResult = true
             },
             goLuckGiftCopy ({item}) {
                 setTimeout(() => {
-                    this.$store.dispatch('getGoodsList');
-                    // 关闭信息页
-                    this.closedhjMsg();
-                }, 200);
+                    this.$store.dispatch('getGoodsList')
+                // 关闭信息页
+                    this.closedhjMsg()
+                }, 200)
                 if (this.userInfo && this.userInfo.uid !== '0') {
-                    this.$store.dispatch('getGoodBingoNew', this.goodsTypeNew );
+                    this.$store.dispatch('getGoodBingoNew', this.goodsTypeNew)
                 } else {
-                    this.$store.dispatch('showToast','请刷新再试一下');
+                    this.$store.dispatch('showToast', '请刷新再试一下')
                 }
             },
-            closeGiftBox(){
-                this.$store.commit('setbingoPrize' , {
+            closeGiftBox () {
+                this.$store.commit('setbingoPrize', {
                     isShow: false,
-                    number: 0 ,
+                    number: 0,
                     type: 'golds'
-                } );
-                this.$store.dispatch('getUserInfo');
+                })
+                this.$store.dispatch('getUserInfo')
             },
-            alertdhjMess({params}){
-                //11
+            alertdhjMess ({params}) {
+                // 11
                 // console.log( params ) ;
 
                 if (this.userInfo) {
-                    this.dhjMsg.showMsg = true;
-                    this.dhjMsg.imgurl = params.imgurl;
-                    this.dhjMsg.name = params.name;
-                    this.dhjMsg.goodsdesc = params.goodsdesc;
-                    this.dhjMsg.needtickets = params.needtickets;
+                    this.dhjMsg.showMsg = true
+                    this.dhjMsg.imgurl = params.imgurl
+                    this.dhjMsg.name = params.name
+                    this.dhjMsg.goodsdesc = params.goodsdesc
+                    this.dhjMsg.needtickets = params.needtickets
 
-                    // 抽奖相关数据
-                    this.goodsTypeNew.goodsid = params.goodsid ;
-                    this.goodsTypeNew.goodstype = params.goodstype ;
-                    if( params.company ){
-                        this.goodsTypeNew.company = params.company[0] ;
+                // 抽奖相关数据
+                    this.goodsTypeNew.goodsid = params.goodsid
+                    this.goodsTypeNew.goodstype = params.goodstype
+                    if (params.company) {
+                        this.goodsTypeNew.company = params.company[0]
                     }
-                }else{
+                } else {
                     this.$store.dispatch('doAuth')
                 }
-
             },
-            closePopGiftSu(){
-                this.$store.commit( 'showPopGiftSu' , false )
+            closePopGiftSu () {
+                this.$store.commit('showPopGiftSu', false)
             },
-            closedhjMsg(){
-                this.dhjMsg.showMsg = false;
+            closedhjMsg () {
+                this.dhjMsg.showMsg = false
             },
-            closeCoinLess(){
-                this.dhjMsg.showCoinLess = false ;
+            closeCoinLess () {
+                this.dhjMsg.showCoinLess = false
             },
-            jumpTodhj(){
+            jumpTodhj () {
                 //  跳转获取页
-                this.dhjMsg.showMsg = false;
-                this.dhjMsg.lotteryDhj = true ;
+                this.dhjMsg.showMsg = false
+                this.dhjMsg.lotteryDhj = true
 
-                //  处理tab 切换
-                this.isShowMyMess = false ;
+            //  处理tab 切换
+                this.isShowMyMess = false
 
-                // 隐藏 领奖页
+            // 隐藏 领奖页
 
-                this.selectBoxHide = true;
+                this.selectBoxHide = true
             },
-            backToDraw(){
-                this.dhjMsg.lotteryDhj = false ;
-                this.selectBoxHide = false;
-
+            backToDraw () {
+                this.dhjMsg.lotteryDhj = false
+                this.selectBoxHide = false
             },
-            startLuckgo(){
+            startLuckgo () {
                 // 开始抽奖
-                let params = null;
-                if( this.dhjObj.positionName === 'default' ){
+                let params = null
+                if (this.dhjObj.positionName === 'default') {
                     params = {
-                        giftLen : 8 ,
-                        currLocal : -1 ,
-                    };
-                }else{
+                        giftLen: 8,
+                        currLocal: -1
+                    }
+                } else {
                     params = {
-                        giftLen : 8 ,
-                        currLocal : this.dhjObj.positionName.slice(9) ,
-                    };
+                        giftLen: 8,
+                        currLocal: this.dhjObj.positionName.slice(9)
+                    }
                 }
-                if( !this.dhjObj.dhjBtn ){
+                if (!this.dhjObj.dhjBtn) {
                     // 重复点击
-                    return false ;
+                    return false
                 }
-                if( parseInt( this.userInfo.gold_total ) < 60000 ){
-                    this.dhjMsg.showCoinLess = true ;
-                    return false;
+                if (parseInt(this.userInfo.gold_total) < 60000) {
+                    this.dhjMsg.showCoinLess = true
+                    return false
                 }
-                this.$store.dispatch( 'luckDrawGo' , params )
+                this.$store.dispatch('luckDrawGo', params)
             },
-            //////////
+            /// ///////
             closeCopyBox () {
                 this.isShowCopyBox = false
             },
@@ -734,7 +732,7 @@ export default {
 //            },
             closeLuckEnd () {
                 /* 关闭中奖窗口 */
-                this.$store.commit( 'showPopGiftSu' , false );
+                this.$store.commit('showPopGiftSu', false)
             },
 
             jumpToPage ({params}) {
@@ -754,7 +752,7 @@ export default {
             },
 
             showTapLi ({item, param}) {
-                console.log( param )
+                console.log(param)
                 switch (item) {
                 case 'goAddressPage':
                     console.log('+++++++++')
@@ -768,9 +766,9 @@ export default {
                     let orderNum = param.sid
                     this.currentLogistic = param
                     if (!orderNum) {
-                        orderNum = 0;
+                        orderNum = 0
                         console.log('无订单号')
-                        this.$store.commit('setLogisticMess', 0);
+                        this.$store.commit('setLogisticMess', 0)
 //                        this.showLogisticTap = true
                         return false
                     }
@@ -786,8 +784,8 @@ export default {
                 this.$store.dispatch('showToast', '复制成功')
             },
             onError (e) {
-                this.isShowCopyBox = true;
-                console.log( e.text );
+                this.isShowCopyBox = true
+                console.log(e.text)
                 if (e.text) {
                     this.copyValue = e.text
                 }
@@ -807,7 +805,7 @@ export default {
             showPrizeList ({params}) {
                 if (this.userInfo) {
                     stopHtml()
-                    this.$store.commit( 'showPopGiftSu' , false );
+                    this.$store.commit('showPopGiftSu', false)
                     this.isShowPrizeList = params
                 /* 可优化 */
                     this.$store.dispatch('getWinGoodList')
@@ -839,20 +837,20 @@ export default {
             /* tap 切换 */
             changeCharge ({params}) {
                 if (!params) {
-                    this.$router.push('/chargeNew/draw');
-                    this.$store.dispatch('getGoodsList');
+                    this.$router.push('/chargeNew/draw')
+                    this.$store.dispatch('getGoodsList')
                     if (this.userInfo) {
                         this.$store.dispatch('getWinGoodList')
                     }
                     _hmt.push(['_trackEvent', 'off_商城页兑换点击', 'click', 'off_商城页兑换'])
                 } else {
-                    this.$router.push('/chargeNew');
+                    this.$router.push('/chargeNew')
                     _hmt.push(['_trackEvent', 'off_商城页充值点击', 'click', 'off_商城页充值'])
                 }
-                this.dhjMsg.lotteryDhj = false ;
+                this.dhjMsg.lotteryDhj = false
 
-                this.isShowChargeTab = params;
-                this.selectBoxHide = false;
+                this.isShowChargeTab = params
+                this.selectBoxHide = false
             },
 
             /* 去抽奖展示 先按跳转的来处理吧  */
@@ -884,14 +882,12 @@ export default {
                 if (!isWeiX) {
                     params.payid = 3009
                     this.$store.dispatch('doCharge', params)
-
                 } else {
                     /* 微信支付 */
-                    console.log( params  )
-                    params.code = sessionStorage.getItem('wx_code');
-                    params.payid = 3002;
+                    console.log(params)
+                    params.code = sessionStorage.getItem('wx_code')
+                    params.payid = 3002
                     this.$store.dispatch('doWechatPay', params)
-
                 }
 
                 _hmt.push(['_trackEvent', 'off_充值额度' + this.current.rmb + '点击', 'click', 'off_充值额度' + this.current.rmb])
@@ -900,19 +896,19 @@ export default {
         },
         computed: {
 
-            dhjEvent(){
+            dhjEvent () {
                 return this.$store.state.dhjEvent
             },
-            currOid(){
+            currOid () {
                 return this.$store.state.currOid
             },
-            showPopGiftSu(){
+            showPopGiftSu () {
                 return this.$store.state.showPopGiftSu
             },
-            dhjObj(){
+            dhjObj () {
                 return this.$store.state.dhj
             },
-            bingoPrize(){
+            bingoPrize () {
                 return this.$store.state.bingoPrize
             },
             ///
@@ -965,8 +961,8 @@ export default {
             }
         },
         mounted () {
-            this.$store.dispatch('getChargeList');
-        /* homeinfo 数据 */
+            this.$store.dispatch('getChargeList')
+    /* homeinfo 数据 */
             if (!(this.bannerScrollData)) {
                 this.$store.dispatch('getHomeInfo')
             }
@@ -977,23 +973,23 @@ export default {
                     /* 小红点 */
                     this.$store.dispatch('getWinGoodList')
                 }
-            }else{
-                this.dhjMsg.lotteryDhj = false ;
+            } else {
+                this.dhjMsg.lotteryDhj = false
             }
             // 跳转 drawList
-            setTimeout(()=>{
+            setTimeout(() => {
                 if (~location.hash.indexOf('@@_@')) {
-                    this.showPrizeList({ params:true });
+                    this.showPrizeList({ params: true })
                     history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew/draw`)
                 }
-            },0) ;
+            }, 0)
 
             if (this.$route.params.others && this.$route.params.others === 'showList') {
-                stopHtml();
-                this.isShowChargeTab = false;
-                this.$store.dispatch('getGoodsList');
-                this.$store.commit( 'showPopGiftSu' , false );
-                this.isShowPrizeList = true;
+                stopHtml()
+                this.isShowChargeTab = false
+                this.$store.dispatch('getGoodsList')
+                this.$store.commit('showPopGiftSu', false)
+                this.isShowPrizeList = true
                 if (this.userInfo) {
                     /* 可优化 */
                     this.$store.dispatch('getWinGoodList')
@@ -1001,32 +997,30 @@ export default {
             }
             if (!isWeiX) {
                 if (this.$route.params.others && this.$route.params.others.indexOf('_@_ck_@_') > -1) {
-                    let arr = this.$route.params.others.split('_@_');
+                    let arr = this.$route.params.others.split('_@_')
                     if (arr[0] === '2') {
-                        this.$store.dispatch('showToast', '充值成功');
+                        this.$store.dispatch('showToast', '充值成功')
                         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
                     } else if (arr[0] === '1') {
-                        this.$store.dispatch('showToast', '支付未完成，请重试');
+                        this.$store.dispatch('showToast', '支付未完成，请重试')
                         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew`)
                     }
                 }
-
             } else {
                 if (this.$route.params.others && ~this.$route.params.others.indexOf('_@')) {
-                    let code = this.$route.params.others.split('_@')[1];
-                    sessionStorage.setItem('wx_code', code);
+                    let code = this.$route.params.others.split('_@')[1]
+                    sessionStorage.setItem('wx_code', code)
 //                    console.log(999)
 
                     console.log(this.$route.path.replace(this.$route.params.others, ''))
-                    this.$router.replace(this.$route.path.replace(this.$route.params.others, ''));
+                    this.$router.replace(this.$route.path.replace(this.$route.params.others, ''))
                 } else {
                     if (!sessionStorage.getItem('wx_code')) {
 //                        console.log('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx86d590e6cf755764&redirect_uri=' + location.href.split('?')[0].split('#')[0] + '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect')
-                        window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx86d590e6cf755764&redirect_uri=' + location.href.split('?')[0].split('#')[0] + '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect');
+                        window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx86d590e6cf755764&redirect_uri=' + location.href.split('?')[0].split('#')[0] + '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect')
                     }
                 }
             }
-
         },
         filters: {
             golds: (num) => {

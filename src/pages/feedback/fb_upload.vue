@@ -67,7 +67,7 @@
     export default {
         data () {
             return {
-                isHideDownLoad:false,
+                isHideDownLoad: false,
                 showkf: false,
                 textareaData: '',
                 showLoading: false,
@@ -132,8 +132,8 @@
             KefuAlert
         },
         mounted (t) {
-            if( src() ==='off-mipan'){
-                this.isHideDownLoad = true;
+            if (src() === 'off-mipan') {
+                this.isHideDownLoad = true
             }
             const options = {}
             if (process.env.NODE_ENV === 'production') {

@@ -77,12 +77,12 @@
 
     import MatchListTemplate from '~components/matchlist-template.vue'
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
-    import {platform ,src} from '~common/util'
+    import {platform, src} from '~common/util'
 
     export default {
         data () {
             return {
-                isHideDownLoad:false,
+                isHideDownLoad: false,
                 current: null,
                 inFlash: false, // 右下角闪动提示
                 flashMsg: '', // 右下角闪动提示
@@ -166,18 +166,18 @@
                     } else {
                         window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.crazy500.cbet&ckey=CK1379013173299'
                     }
-                    _hmt.push(['_trackEvent', 'off_下载app点击', 'click', 'off_下载app']);
+                    _hmt.push(['_trackEvent', 'off_下载app点击', 'click', 'off_下载app'])
                     break
                 case 'jumpToCrazybet':
-                    _hmt.push(['_trackEvent', 'off_虚拟杯点击', 'click', 'off_虚拟杯']);
-                    if( this.ck ){
-                        let ck = this.ck.replace(/=/g, '$');
-                        window.location.href = 'http://crazybet.choopaoo.com/2017/crazybet/index.html?src='+ src() +'&uid='+ this.userInfo.uid +'&ck='+ ck ;
-                    }else{
-                        this.$store.dispatch('doAuth');
+                    _hmt.push(['_trackEvent', 'off_虚拟杯点击', 'click', 'off_虚拟杯'])
+                    if (this.ck) {
+                        let ck = this.ck.replace(/=/g, '$')
+                        window.location.href = 'http://crazybet.choopaoo.com/2017/crazybet/index.html?src=' + src() + '&uid=' + this.userInfo.uid + '&ck=' + ck
+                    } else {
+                        this.$store.dispatch('doAuth')
                         return false
                     }
-                    break;
+                    break
                 }
             }
         },
@@ -243,8 +243,8 @@
         async mounted () {
             this.$store.commit('setIsHideHomeHead', false)
 
-            if( src() ==='off-mipan'){
-                this.isHideDownLoad = true;
+            if (src() === 'off-mipan') {
+                this.isHideDownLoad = true
             }
             if (this.matchIDStr) {
                 this.$store.dispatch('subscribe', {

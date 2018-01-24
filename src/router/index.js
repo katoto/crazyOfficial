@@ -176,11 +176,9 @@ if (location.search) {
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew/`)
     }
 
-    if(queryObj.jumpToDrawList && queryObj.jumpToDrawList ==='true'){
+    if (queryObj.jumpToDrawList && queryObj.jumpToDrawList === 'true') {
         history.replaceState({}, '', `${location.href.split(location.pathname)[0]}${location.pathname}#/chargeNew/@@_@drawList`)
     }
-
-
 }
 
 // 注意暴露出来

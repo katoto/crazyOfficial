@@ -84,105 +84,105 @@
     import BannerScroll from '~components/banner-scroll.vue'
     import Public_Head from '~components/publicHead'
     export default {
-            data () {
-                return {
-                    alertGoodsBox: false,
-                    showLuckEnd: false ,
-                }
-            },
-            watch: {
-                winInformation (data) {
-                    if (data) {
-                        this.showLuckEnd = true
-                        this.alertGoodsBox = false
-                    }
-                }
-            },
-            methods: {
-                jumpToWin () {
-                    this.$router.push('/chargeNew/showList')
-                },
-                closeLuckEnd () {
-                    /* 关闭中奖窗口 */
-                    this.showLuckEnd = false
-                },
-                closeGoodsMess () {
+        data () {
+            return {
+                alertGoodsBox: false,
+                showLuckEnd: false
+            }
+        },
+        watch: {
+            winInformation (data) {
+                if (data) {
+                    this.showLuckEnd = true
                     this.alertGoodsBox = false
-                },
-                showLuckEndFn () {
+                }
+            }
+        },
+        methods: {
+            jumpToWin () {
+                this.$router.push('/chargeNew/showList')
+            },
+            closeLuckEnd () {
+                    /* 关闭中奖窗口 */
+                this.showLuckEnd = false
+            },
+            closeGoodsMess () {
+                this.alertGoodsBox = false
+            },
+            showLuckEndFn () {
                     /* 中奖框 */
-                    if (this.ck) {
-                        if (this.luckMessData) {
-                            if (this.luckMessData.company) {
-                                this.$store.dispatch('getLuckGoodBingo', {
-                                    currGoodsid: this.luckMessData.goodsid,
-                                    currConsumgolds: this.luckMessData.consumgolds,
-                                    goodstype: this.luckMessData.goodstype,
-                                    company: this.luckMessData.company
-                                })
-                            } else {
-                                this.$store.dispatch('getLuckGoodBingo', {
-                                    currGoodsid: this.luckMessData.goodsid,
-                                    currConsumgolds: this.luckMessData.consumgolds,
-                                    goodstype: this.luckMessData.goodstype
-                                })
-                            }
+                if (this.ck) {
+                    if (this.luckMessData) {
+                        if (this.luckMessData.company) {
+                            this.$store.dispatch('getLuckGoodBingo', {
+                                currGoodsid: this.luckMessData.goodsid,
+                                currConsumgolds: this.luckMessData.consumgolds,
+                                goodstype: this.luckMessData.goodstype,
+                                company: this.luckMessData.company
+                            })
                         } else {
-                            this.$store.dispatch('showToast', '抽取失败,请重新再试')
-                            this.alertGoodsBox = false
+                            this.$store.dispatch('getLuckGoodBingo', {
+                                currGoodsid: this.luckMessData.goodsid,
+                                currConsumgolds: this.luckMessData.consumgolds,
+                                goodstype: this.luckMessData.goodstype
+                            })
                         }
                     } else {
-                        this.$store.dispatch('doAuth')
+                        this.$store.dispatch('showToast', '抽取失败,请重新再试')
+                        this.alertGoodsBox = false
                     }
-                },
-                startLuckDraw () {
-                    this.alertGoodsBox = true
+                } else {
+                    this.$store.dispatch('doAuth')
                 }
             },
-            components: {
-                BannerScroll,
-                Public_Head
-            },
-            computed: {
+            startLuckDraw () {
+                this.alertGoodsBox = true
+            }
+        },
+        components: {
+            BannerScroll,
+            Public_Head
+        },
+        computed: {
 
-                winInformation () {
-                    return this.$store.state.chargeNewData.winInformation
-                },
-                luckMessData () {
-                    return this.$store.state.luckdrawData.luckMessData
-                },
-                userinfoMess () {
-                    return this.$store.state.userInfo
-                },
-                ck () {
-                    return this.$store.state.ck
-                },
+            winInformation () {
+                return this.$store.state.chargeNewData.winInformation
+            },
+            luckMessData () {
+                return this.$store.state.luckdrawData.luckMessData
+            },
+            userinfoMess () {
+                return this.$store.state.userInfo
+            },
+            ck () {
+                return this.$store.state.ck
+            },
                 /* 滚动数据 */
-                bannerScrollData () {
-                    return this.$store.state.chargeNewData.bannerScrollData
-                }
-            },
-            mounted () {
-                if (!this.bannerScrollData) {
-                    this.$store.dispatch('getHomeInfo')
-                }
-                if (!this.luckMessData) {
-                    setTimeout(() => {
-                        this.$router.push('/chargeNew/draw')
-                    }, 100)
-                }
-            },
-            filters: {
-                golds: (num) => {
-                    num = Number(num)
-                    if (num < 10000) {
-                        return num
-                    } else if (num < 100000000) {
-                        return Math.round(num / 10000 * 10) / 10 + '万'
-                    } else {
-                        return Math.round(num / 100000000 * 10) / 10 + '亿'
-                    }
+            bannerScrollData () {
+                return this.$store.state.chargeNewData.bannerScrollData
+            }
+        },
+        mounted () {
+            if (!this.bannerScrollData) {
+                this.$store.dispatch('getHomeInfo')
+            }
+            if (!this.luckMessData) {
+                setTimeout(() => {
+                    this.$router.push('/chargeNew/draw')
+                }, 100)
+            }
+        },
+        filters: {
+            golds: (num) => {
+                num = Number(num)
+                if (num < 10000) {
+                    return num
+                } else if (num < 100000000) {
+                    return Math.round(num / 10000 * 10) / 10 + '万'
+                } else {
+                    return Math.round(num / 100000000 * 10) / 10 + '亿'
                 }
             }
         }
+    }
 </script>
