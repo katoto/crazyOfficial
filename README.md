@@ -41,10 +41,14 @@
 #### 上线打包走build 。
 
 ~~~
-    线上访问 （ 目前已经下线 ）:
+    线上访问:
     http://crazybet.choopaoo.com/official/#/h5/home
     or
     http://crazybet.choopaoo.com/official?from=500touch
+    or
+    http://crazybet.choopaoo.com/official?from=off
+    or
+    http://crazybet.choopaoo.com/official?from=off-mipan
 ~~~
 ####内部需求地址：
 ~~~
@@ -60,6 +64,10 @@ https://shimo.im/sheet/FnWezzumwI0v5fqo
  http://jira.500boss.com/secure/Dashboard.jspa
  ~~~
  
+ ####现在已经停止注册了，体验可以用
+ ~~~
+ 18649633327  xie123  体验
+  ~~~
  ##项目部分截图:
  
  ![Image text](https://raw.githubusercontent.com/katoto/crazyOfficial/master/projectImg/1.png)

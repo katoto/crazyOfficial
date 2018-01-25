@@ -1,0 +1,52 @@
+npm root -g  查看全局的插件安装目录
+npm install -g 包名  安装一个命令行工具
+
+npm install -g gulp       gulp 
+npm install -g webpack     webpack
+
+npm install --save-dev jquery
+
+服务器自启动插件
+
+git 指令汇总
+远程仓库类：git clone/remote/pull/push/rebase/fetch
+分支类（包括tag）：git branch/tag/checkout/stash
+信息查阅：git status/log/diff
+本地常规操作：git add/commit/rm/merge/reset
+
+是隐藏的，用ls -ah命令就可以看见
+$ git reset --hard HEAD^   or  git reset --hard 傻值   回滚  
+git reflog  查看命令纪录
+
+将本地仓库和远程仓库关联起来
+ git remote add origin git@github.com:michaelliao/learngit.git
+
+git log --graph  查看分支合并图
+git log --oneline 
+
+git merge --no-off -m '描述' dev   合并分支  建议使用禁用的Fast forward 模式  而不是 git  merge  dev
+
+丢弃一个没有被合并的分支 使用 git branch -D <name> 强行删除
+git remote -v  查看远程库的信息  (地址信息) 
+
+如果推送到其他分支 就用 git push origin  dev  
+
+如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
+
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+创建带有说明的标签，用-a指定标签名，-m指定说明文字：
+git tag -a v0.1 -m "version 0.1 released" 3628164
+
+git stash 
+
+git stash pop 
+
+casperJs 爬页面工具  bet365.js 
+
+npm update <package>  把当前目录下node_modules子目录里边的对应模块更新至最新版本。
+使用npm update <package> -g可以把全局安装的对应命令行程序更新至最新版。
+使用npm cache clear可以清空NPM本地缓存，用于对付使用相同版本号发布新版本代码的人。
+
+
+

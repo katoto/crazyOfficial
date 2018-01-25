@@ -1,0 +1,127 @@
+﻿Axure RP8  rp文件打开工具 ，产品，需求开发工具。
+
+https://crazybet.choopaoo.com/img/esun/upload/96/0a/960a40eeff3811e7a441.png
+https://crazybet.choopaoo.com/img/esun/upload/d3/5e/d35ea83eff5311e7bdd2.png
+https://crazybet.choopaoo.com/img/esun/upload/dc/29/dc29c98aff5311e7bc49.png
+
+https://crazybet.choopaoo.com/img/esun/upload/d5/a5/d5a59c50ff5411e7a008.png
+https://crazybet.choopaoo.com/img/esun/upload/df/d2/dfd22342ff5411e7928e.png
+
+https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/2.5.2/vconsole.min.js
+
+wuwh500
+Crazy500.com
+
+this.dispatchEventWith(egret.TouchEvent.CHANGE,false,{selectedIndex:this.list.selectedIndex, itemValue:this.list.selectedItem.itemValue});
+
+192.168.41.76 迁移过来的 10.0.1.167  服务组线下机器  
+
+pixi.js  //  记得学习一下
+
+图片上传后台
+http://43.247.69.28:9933/upload
+liujc   liujc
+
+https://crazybet.choopaoo.com/img/esun/upload/ad/be/adbe0682aca711e7b829.png
+http://img.choopaoo.com/esun/upload/cd/2c/cd2cf546aca711e7bb60.png
+
+ssr 服务端渲染  ☆
+ uc无法打开的话，设置→更多→极速／省流→云端加速
+部分uc 手机不能很好支持localStage  用cookie   
+tail -f /home/service/var/crazybet/appweb_8691.log
+
+实现Safari 浏览器，放置快捷图标
+ <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/icon114.png" /> <!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有 -->
+
+t_shipping_address  邮寄地址
+
+t_exchangetkt_account  兑换券
+
+你每次部署到线下的时候， 你合并分支到master， 然后push master 到远程， 最后你运行 pm2 deploy development
+git remote -v  查看当前的 地址
+git stash  存储变化
+
+// 金币
+SELECT * FROM t_gold_account WHERE f_uid=1004383  
+
+微信服务号账号
+3157085145@qq.com	Crazy500.com
+
+AppID(应用ID) wx86d590e6cf755764   AppSecret （应用密钥）
+
+服务器密码  106.75.146.252 www#crazY121   线上
+
+www  www#crazY121     106.75.138.85   52222    预发布机器
+
+service  123456  10.0.1.167   22   线下机器
+目录地址： /home/service/html/web/crazy-bet-h5/
+
+public 是线上的index   微信充值
+
+
+UI 图
+\\192.168.18.25\f\12_竞猜游戏任务共享\H5联运版\商城
+
+monitor  qwert12345
+
+
+https://tongji.baidu.com/
+账号：500PM周颖
+密码：crazy500.com
+
+pm2 线下机器 代码部署
+ssh xiezg@10.0.1.167    密码 123456
+pm2 list 
+pm2 delete all 
+pm2 deploy development
+pm2 deploy production  setup
+
+git 仓库地址  10.0.0.31
+ssh service@10.0.0.31   密码  service#500wan
+git init --bare NAME
+git remote -v  拉项目的地址
+
+项目目录在，D盘下的H5project。
+
+ 三五互联 :
+账号：whbag888a
+:
+密码：Wh@56789
+
+192.168.18.25  UI 共享机器
+monitor
+qwert12345
+
+线上预发布环境 
+ http://106.75.138.85:7899
+
+默认头像
+http://img.choopaoo.com/esun/upload/be/83/be837ad8049611e797ef.png
+
+
+500  线下 
+500app 里面 走500boss域名（服务端线下也要更改）（这样m 站线下就可以了）
+
+应用线下
+500app代码里面 走500boss域名（服务端线下也要更改）
+
+应用下发
+500boss 域的cookie  （打线下包走保留的包）
+并且绑定host ( 应用可以登录线下  账号：aaa  123456 )
+ftd2011    123456
+10.0.1.31  ets.500image.com
+10.0.1.31   ets.500.com
+10.0.1.31  ews.500.com 
+192.168.41.246  push.wap.500boss.com
+
+（直接调起登陆有点问题）
+然后就ok 了
+
+
+off & off-mipan  线下，直接走线下接口就行。
+
+先pull，因为两个仓库不同，发现refusing to merge unrelated histories，无法pull
+
+git remote xiezg ‘’ 拉取另一个远程的store
+因为他们是两个不同的项目，要把两个不同的项目合并，git需要添加一句代码，在git pull，这句代码是在git 2.9.2版本发生的，
+最新的版本需要添加--allow-unrelated-histories
