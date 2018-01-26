@@ -68,6 +68,98 @@ https://shimo.im/sheet/FnWezzumwI0v5fqo
  ~~~
  18649633327  xie123  体验
   ~~~
+  
+  ### 改善写法：
+  ~~~
+  1、
+  getFoo和getBar是两个独立的异步操作（即互不依赖），被写成继发关系。
+  这样比较耗时，因为只有getFoo完成以后，才会执行getBar，完全可以让它们同时触发。
+  下例就是 同时触发：
+        let [foo,bar] = await Promise.all([getFoo(),getBar()]);
+        
+ //  async 写法可优化例子  (非继发)
+    async function logInOrder(urls){
+      for( const url of urls ){
+        const response = await fetch(url);
+        console.log( await response.text());
+      }
+    }
+    
+ //  继发
+    async function logInOrder(urls){
+        const textPromises = urls.map( async url =>{
+            const response = await fetch( url );
+            return response.text();
+        } );
+        
+        for( const textPromise of textPromises ){
+            console.log( await textPromise );
+        }
+    }
+    
+    
+    
+        
+      
+        
+        
+  2、利用async await  实现多次重复尝试
+     const superagent = require('superagent');
+     const NUM = 3;
+     async function test(){
+        let i;
+        for( i=0;i<NUM;i++ ){
+          try{
+             await superagent.get('http://...........');
+          } catch(e){
+            
+          }
+        }
+     }
+     test();
+      ======================
+       //  async 函数的实现原理，就是将Generator 函数和自动执行器，包装在一个函数里。
+         
+         async function fn(args){}
+        // 等价于
+        function fn(args){
+            return spawn(function *(){
+            
+            }) ;
+        }
+        
+        spawn 函数就是自动执行器 实现
+        
+        function spawn(genF){
+            return new Promise(function(resolve,reject){
+                const gen = genF();
+                function step(nextF){
+                    let next;
+                    try{
+                        next = nextF();
+                    }catch(e){
+                        return reject(e);
+                    }
+                    if( next.done ){
+                        return resolve( next.value );
+                    }
+                    Promise.resolve( next.value ).then(function(v){
+                        step( function(){ return gen.next(v); } );
+                    },function(e){
+                        step(function(){ return gen.throw(e) })
+                    }) 
+                }
+                step(function(){ return gen.next(undefined ) })
+            })
+        }
+         
+         
+
+         
+         
+         
+  ~~~
+  
  ##项目部分截图:
  
  ![Image text](https://raw.githubusercontent.com/katoto/crazyOfficial/master/projectImg/1.png)

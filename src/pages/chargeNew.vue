@@ -1024,7 +1024,7 @@ export default {
         },
         filters: {
             golds: (num) => {
-                num = Number(num)
+                num = Number(num);
                 if (num < 10000) {
                     return num
                 } else if (num < 100000000) {
@@ -1036,25 +1036,25 @@ export default {
             companyName (name) {
                 if (name) {
                     switch (name) {
-                    case 'lt': return '联通'
-                    case 'dx': return '电信'
-                    case 'yd': return '移动'
+                    case 'lt': return '联通';
+                    case 'dx': return '电信';
+                    case 'yd': return '移动';
                     default : return '其他'
                     }
                 }
             },
             WuliuStatus (status, wuliu) {
 //                物流状态
-                let str = ''
+                let str = '';
                 switch (status) {
                 case '1':
-                    str = '未发货'
-                    break
+                    str = '未发货';
+                    break;
                 case '2':
-                    str = '已发货(' + wuliu + ')'
-                    break
+                    str = '已发货(' + wuliu + ')';
+                    break;
                 case '3':
-                    str = '已签收(' + wuliu + ')'
+                    str = '已签收(' + wuliu + ')';
                     break
                 }
                 return str
